@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Teste de Dimensões</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>
+        <script>
+            function detectarOrientacao(){
+                var string = 'orientação:';
+                if(window.matchMedia("(orientation:portrait)").matches ){
+                    string=string+"PORTRAIT - retrato";
+                }
+                if(window.matchMedia("(orientation:landscape)").matches){
+                    string=string+"LANDSCAPE - paisagem";
+                }
+                string=string+"<br/>";
+                return string;
+            }
+            function detectarDimensoes(elemento){
+                var string ="dimensões do elemento:";
+                string=string+elemento.width() + "x" + elemento.height();
+                string=string+"<br/>";
+                return string;
+            }
+            function detectarDimensoesComPadding(elemento){
+                var string ="dimensões + padding do elemento:";
+                string=string+ elemento.innerWidth() + "x" + elemento.innerHeight();
+                string=string+"<br/>";
+                return string;
+            }
+            function detectarDimensoesComBorder(elemento){
+                var string ="dimensões + border do elemento:";
+                string=string+ elemento.outerWidth() + "x" + elemento.outerHeight() ;
+                string=string+"<br/>";
+                return string;
+            }
+            function detectarDimensoesComMargin(elemento){
+                var string ="dimensões + margin do elemento:";
+                string=string+ elemento.outerWidth(true) + "x" + elemento.outerHeight(true) ;
+                string=string+"<br/>";
+                return string;
+            }
+            function detectarDimensoesBrowser(){
+                var string ='dimensões browser:';
+                string=string+ $(window).width() + "x" + $(window).height()  ;
+                string=string+"<br/>";
+                return string;
+            }
+            function detectarDimensoesDocumento(){
+                var string ='dimensões documento:';
+                string=string+$(document).width()  + "x" + $(document).height();
+                string=string+"<br/>";
+                return string;
+            }
+            function detectarDimensoesTela(){
+                var string ='dimensões tela:';
+                string=string+ screen.width + "x" + screen.height ;
+                string=string+"<br/>";
+                return string;
+            }
+                
+            function init(){
+                var string = "";
+                string = string+detectarOrientacao();
+                string = string+detectarDimensoesBrowser();
+                string = string+detectarDimensoesDocumento();
+                string = string+detectarDimensoesTela();
+                
+                var obj = $("#teste1");
+                
+                string = string+detectarDimensoes(obj);
+                string = string+detectarDimensoesComPadding(obj);
+                string = string+detectarDimensoesComBorder(obj);
+                string = string+detectarDimensoesComMargin(obj);
+                string = string+"<hr/>"
+                obj.append(string);
+            }
+        </script>
+        <style>
+            #teste1{
+                background: red;
+                border: 2px solid green;
+                padding: 20px;
+                margin: 15px;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <div id="teste1" onclick="init();">
+            teste1
+            <br/>
+        </div>
+    </body>
+</html>

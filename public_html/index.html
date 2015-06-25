@@ -26,41 +26,45 @@ and open the template in the editor.
             function detectarOrientacao(){
                 console.log('orientação');
                 if(window.matchMedia("(orientation:portrait)").matches ){
-                    console.log("PORTRAIT");
+                    console.log("PORTRAIT - retrato");
                 }
                 if(window.matchMedia("(orientation:landscape)").matches){
-                    console.log("LANDSCAPE");
+                    console.log("LANDSCAPE - paisagem");
                 }
             }
             function detectarDimensoes(elemento){
+                console.log("dimensões do elemento");
                 console.log( elemento.width() + "x" + elemento.height() );
             }
             function detectarDimensoesComPadding(elemento){
+                console.log("dimensões + padding do elemento");
                 console.log( elemento.innerWidth() + "x" + elemento.innerHeight() );
             }
             function detectarDimensoesComBorder(elemento){
+                console.log("dimensões + border do elemento");
                 console.log( elemento.outerWidth() + "x" + elemento.outerHeight() );
             }
             function detectarDimensoesComMargin(elemento){
+                console.log("dimensões + margin do elemento");
                 console.log( elemento.outerWidth(true) + "x" + elemento.outerHeight(true) );
             }
             function detectarDimensoesBrowser(){
                 //$(window).height();   // altura do browser  
                 //$(window).width();   // comprimento do browser
                 console.log('dimensões browser');
-                console.log( $(window).height() + "x" + $(window).width() );
+                console.log( $(window).width() + "x" + $(window).height()   );
             }
             function detectarDimensoesDocumento(){
                 //$(document).height(); // altura do documento HTML
                 //$(document).width(); // comprimento do documento HTML
                 console.log('dimensões documento');
-                console.log($(document).height() + "x" + $(document).width());
+                console.log($(document).width()  + "x" + $(document).height() );
             }
             function detectarDimensoesTela(){
                 screen.height;
                 screen.width;
                 console.log('dimensões tela');
-                console.log(screen.height + "x" + screen.width);
+                console.log(screen.width + "x" + screen.height  );
             }
                 
             function init(){
@@ -69,11 +73,11 @@ and open the template in the editor.
                 detectarDimensoesDocumento();
                 detectarDimensoesTela();
                 
-                var obj = $("#main");
-                //detectarDimensoes(obj);
-                //detectarDimensoesComPadding(obj);
-                //detectarDimensoesComBorder(obj);
-                //detectarDimensoesComMargin(obj);
+                var obj = $("#tituloTeste");
+                detectarDimensoes(obj);
+                detectarDimensoesComPadding(obj);
+                detectarDimensoesComBorder(obj);
+                detectarDimensoesComMargin(obj);
             }
         </script>
    
@@ -91,7 +95,7 @@ and open the template in the editor.
   
     <div id="main">
         <div class="header">
-            <h1>Page Title</h1>
+            <h1 id="tituloTeste">Page Title</h1>
             <h2>A subtitle for your page goes here</h2>
         </div>
 
