@@ -21,9 +21,64 @@ and open the template in the editor.
         <!--<![endif]-->
 
         <link rel="stylesheet" href="css/side-menu.css">
+        <script src="js/jquery-2.1.4.min.js"></script>
+        <script>
+            function detectarOrientacao(){
+                console.log('orientação');
+                if(window.matchMedia("(orientation:portrait)").matches ){
+                    console.log("PORTRAIT");
+                }
+                if(window.matchMedia("(orientation:landscape)").matches){
+                    console.log("LANDSCAPE");
+                }
+            }
+            function detectarDimensoes(elemento){
+                console.log( elemento.width() + "x" + elemento.height() );
+            }
+            function detectarDimensoesComPadding(elemento){
+                console.log( elemento.innerWidth() + "x" + elemento.innerHeight() );
+            }
+            function detectarDimensoesComBorder(elemento){
+                console.log( elemento.outerWidth() + "x" + elemento.outerHeight() );
+            }
+            function detectarDimensoesComMargin(elemento){
+                console.log( elemento.outerWidth(true) + "x" + elemento.outerHeight(true) );
+            }
+            function detectarDimensoesBrowser(){
+                //$(window).height();   // altura do browser  
+                //$(window).width();   // comprimento do browser
+                console.log('dimensões browser');
+                console.log( $(window).height() + "x" + $(window).width() );
+            }
+            function detectarDimensoesDocumento(){
+                //$(document).height(); // altura do documento HTML
+                //$(document).width(); // comprimento do documento HTML
+                console.log('dimensões documento');
+                console.log($(document).height() + "x" + $(document).width());
+            }
+            function detectarDimensoesTela(){
+                screen.height;
+                screen.width;
+                console.log('dimensões tela');
+                console.log(screen.height + "x" + screen.width);
+            }
+                
+            function init(){
+                detectarOrientacao();
+                detectarDimensoesBrowser();
+                detectarDimensoesDocumento();
+                detectarDimensoesTela();
+                
+                var obj = $("#main");
+                //detectarDimensoes(obj);
+                //detectarDimensoesComPadding(obj);
+                //detectarDimensoesComBorder(obj);
+                //detectarDimensoesComMargin(obj);
+            }
+        </script>
    
     </head>
-    <body>
+    <body onload="init();">
         
 
 <div id="layout">
