@@ -75,7 +75,7 @@ and open the template in the editor.
                 console.log(screen.width + "x" + screen.height  );
             }
                 
-            function init(){
+            function ajustarDimensoesPlaca(){
                 detectarOrientacao();
                 detectarDimensoesBrowser();
                 getWidthBrowser();
@@ -84,16 +84,20 @@ and open the template in the editor.
                 $("#placaVirtual").height(getHeightBrowser());
                // $("#placaVirtual").width(getWidthBrowser());
             }
+            function initPlacaVirtual(){
+                ajustarDimensoesPlaca();
+                $("#placaVirtual").load("placaVirtual.html");
+            }
             
         $(document).ready(function(){
             console.log("ready"); 
             $(window).on({
                     resize: function(){
-                        init();
+                        ajustarDimensoesPlaca();
                         console.log("resize");
                     },
                     orientationchange: function(){
-                        init();
+                        ajustarDimensoesPlaca();
                         console.log("orientationchange");
                         
                     }
@@ -103,7 +107,7 @@ and open the template in the editor.
         </script>
        
     </head>
-    <body onload="init();">
+    <body onload="initPlacaVirtual();">
         
 
 <div id="layout">
@@ -116,12 +120,8 @@ and open the template in the editor.
   
     <div id="main">
         <section id="placaVirtual">
-            <p class="b1">nossa turma</p>
-            <p class="b2">nossa turma</p>
-            <p class="b3">nossa turma</p>
-            <p class="b4">nossa turma</p>
-            <p class="b5">nossa turma</p>
-            <p class="c">nossa turma</p>
+            <h1>calma</h1>
+            <h3>só mais um minuto...</h3>
         </section>
         <div class="header">
             <h1 id="tituloTeste">Page Title</h1>
