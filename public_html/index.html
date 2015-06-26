@@ -78,7 +78,23 @@ and open the template in the editor.
                 detectarDimensoesBrowser();
                 getWidthBrowser();
                 getHeightBrowser();
+                
+                $("#placaVirtual").height(getHeightBrowser());
+               // $("#placaVirtual").width(getWidthBrowser());
             }
+            
+        $(document).ready(function(){
+            alert("ready"); 
+            $(window).on({
+                resize: function(){
+                    alert("resize");
+                },
+                orientationchange: function(){
+                    alert("orientationchange");
+                }
+            });
+
+        }); 
         </script>
         <style>
             #placaVirtual{
@@ -99,7 +115,7 @@ and open the template in the editor.
 
   
     <div id="main">
-        <section id="placaVirtual">
+        <section id="placaVirtual">sdf
         </section>
         <div class="header">
             <h1 id="tituloTeste">Page Title</h1>

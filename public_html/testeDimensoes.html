@@ -9,7 +9,7 @@ and open the template in the editor.
         <title>Teste de Dimensões</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"> </script>
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"> </script>
         <script>
             function detectarOrientacao(){
                 var string = 'orientação:';
@@ -64,9 +64,14 @@ and open the template in the editor.
                 string=string+"<br/>";
                 return string;
             }
-                
+            function getWidthBrowser(){
+                return $(window).width();
+            }
+            function getHeightBrowser(){
+                return $(window).height();
+            }
             function init(){
-                var string = "";
+                /*var string = "";
                 string = string+detectarOrientacao();
                 string = string+detectarDimensoesBrowser();
                 string = string+detectarDimensoesDocumento();
@@ -80,19 +85,53 @@ and open the template in the editor.
                 string = string+detectarDimensoesComMargin(obj);
                 string = string+"<hr/>"
                 obj.append(string);
+                */
+                
+                detectarOrientacao();
+                detectarDimensoesBrowser();
+                getWidthBrowser();
+                getHeightBrowser();
+                console.log(getWidthBrowser() + "x" + getHeightBrowser());
+                $("#placaVirtual").height(getHeightBrowser());
+                $("#placaVirtual").width(getWidthBrowser());
             }
+            
+            $(document).ready(function(){
+                alert("ready"); 
+                init();
+                $(window).on({
+                    resize: function(){
+                        init();
+                        alert("resize");
+                    },
+                    orientationchange: function(){
+                        init();
+                        alert("orientationchange");
+                        
+                    }
+                });
+            }); 
         </script>
         <style>
+            *{
+                margin: 0;
+            }
             #teste1{
                 background: red;
                 border: 2px solid green;
                 padding: 20px;
                 margin: 15px;
             }
+            #placaVirtual{
+                background: green;
+                width: 100%;
+            }
         </style>
     </head>
     
     <body>
+        <section id="placaVirtual">sdf
+        </section>
         <div id="teste1" onclick="init();">
             teste1
             <br/>
