@@ -54,6 +54,12 @@ and open the template in the editor.
                 console.log('dimensões browser');
                 console.log( $(window).width() + "x" + $(window).height()   );
             }
+            function getWidthBrowser(){
+                return $(window).width();
+            }
+            function getHeightBrowser(){
+                return $(window).height();
+            }
             function detectarDimensoesDocumento(){
                 //$(document).height(); // altura do documento HTML
                 //$(document).width(); // comprimento do documento HTML
@@ -70,17 +76,16 @@ and open the template in the editor.
             function init(){
                 detectarOrientacao();
                 detectarDimensoesBrowser();
-                detectarDimensoesDocumento();
-                detectarDimensoesTela();
-                
-                var obj = $("#tituloTeste");
-                detectarDimensoes(obj);
-                detectarDimensoesComPadding(obj);
-                detectarDimensoesComBorder(obj);
-                detectarDimensoesComMargin(obj);
+                getWidthBrowser();
+                getHeightBrowser();
             }
         </script>
-   
+        <style>
+            #placaVirtual{
+                background: green;
+                width: 100%;
+            }
+        </style>
     </head>
     <body onload="init();">
         
@@ -94,6 +99,8 @@ and open the template in the editor.
 
   
     <div id="main">
+        <section id="placaVirtual">
+        </section>
         <div class="header">
             <h1 id="tituloTeste">Page Title</h1>
             <h2>A subtitle for your page goes here</h2>
