@@ -84,22 +84,92 @@ and open the template in the editor.
             }
             
         $(document).ready(function(){
-            alert("ready"); 
+            console.log("ready"); 
             $(window).on({
-                resize: function(){
-                    alert("resize");
-                },
-                orientationchange: function(){
-                    alert("orientationchange");
-                }
+                    resize: function(){
+                        init();
+                        console.log("resize");
+                    },
+                    orientationchange: function(){
+                        init();
+                        console.log("orientationchange");
+                        
+                    }
             });
 
         }); 
         </script>
         <style>
+            @font-face {
+                font-family: bebasneueBold;
+                src: url("css/font/BebasNeue Bold.otf");
+                font-weight: bold;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: bebasneue;
+                src: url("css/font/BebasNeue Regular.otf");
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: bebasneueBook;
+                src: url("css/font/BebasNeue Book.otf");
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: bebasneueLight;
+                src: url("css/font/BebasNeue Light.otf");
+                font-weight: normal;
+                font-style: normal;
+            }
+            
+            @font-face {
+                font-family: bebasneueThin;
+                src: url("css/font/BebasNeue Thin.otf");
+                font-weight: normal;
+                font-style: normal;
+            }
+            @font-face {
+                font-family: corbeli;
+                src: url("css/font/corbeli.ttf");
+                font-weight: normal;
+                font-style: normal;
+            }
+            
             #placaVirtual{
-                background: green;
+                background: #333;
                 width: 100%;
+                font-family: bebasneueBold;
+            }
+            #placaVirtual h1{
+                margin: 0;
+                font-weight: normal;
+            }
+            #placaVirtual h3{
+                margin: 0;
+                font-weight: normal;
+            }
+            .b1{
+                font-family: bebasneueBold;
+            }
+            .b2{
+                font-family: bebasneue;
+                
+            }
+            .b3{
+                font-family: bebasneueBook;
+               
+            }
+            .b4{
+                 font-family: bebasneueLight;
+            }
+            .b5{
+                font-family: bebasneueThin;
+            }
+            .c{
+                font-family: corbeli;
             }
         </style>
     </head>
@@ -115,7 +185,13 @@ and open the template in the editor.
 
   
     <div id="main">
-        <section id="placaVirtual">sdf
+        <section id="placaVirtual">
+            <p class="b1">nossa turma</p>
+            <p class="b2">nossa turma</p>
+            <p class="b3">nossa turma</p>
+            <p class="b4">nossa turma</p>
+            <p class="b5">nossa turma</p>
+            <p class="c">nossa turma</p>
         </section>
         <div class="header">
             <h1 id="tituloTeste">Page Title</h1>
