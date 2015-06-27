@@ -76,7 +76,7 @@
         function ajustarDimensoesPlaca(){
             $("#placaVirtual").height(getHeightBrowser());
         }
-        function initPlacaVirtual(){
+        function loadPlacaVirtual(){
             ajustarDimensoesPlaca();
             if ($('html').hasClass('cssanimations' )) {
                 console.log("Aceita cssanimation");
@@ -89,7 +89,7 @@
 
     $(document).ready(function(){
         console.log("ready"); 
-        initPlacaVirtual();
+        loadPlacaVirtual();
         $(window).on({
                 resize: function(){
                     ajustarDimensoesPlaca();
