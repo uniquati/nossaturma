@@ -1,209 +1,185 @@
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html class="no-js">
-    <head>
-        <title>TESTE</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
-        <link rel="stylesheet" href="css/style.css">
-         
-        <!--<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">-->
-        <link rel="stylesheet" href="css/pure-min.css">
+<head>
+    <title>GERAÇÃO KEKULÉ</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!--[if lte IE 8]>
-            <link rel="stylesheet" href="css/grids-responsive-old-ie-min.css">
-        <![endif]-->
-        <!--[if gt IE 8]><!-->
-            <link rel="stylesheet" href="css/grids-responsive-min.css">
-        <!--<![endif]-->
+    <link rel="stylesheet" href="css/style.css">
 
-        <link rel="stylesheet" href="css/side-menu.css">
-        
-        <script src="js/jquery-2.1.4.min.js"></script>
-        <script src="js/modernizr.custom.js"></script>
-        
-        <script>
-            function detectarOrientacao(){
-                //não tem suporte no IE antigo
-                /*console.log('orientação');
-                if(window.matchMedia("(orientation:portrait)").matches ){
-                    console.log("PORTRAIT - retrato");
+    <!--<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">-->
+    <link rel="stylesheet" href="css/pure-min.css">
+
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="css/grids-responsive-old-ie-min.css">
+    <![endif]-->
+    <!--[if gt IE 8]><!-->
+        <link rel="stylesheet" href="css/grids-responsive-min.css">
+    <!--<![endif]-->
+
+    <link rel="stylesheet" href="css/side-menu.css">
+
+    <script src="js/jquery-2.1.4.min.js"></script>
+    <script src="js/modernizr.custom.js"></script>
+
+    <script>
+        function detectarOrientacao(){
+            //não tem suporte no IE antigo
+            /*console.log('orientação');
+            if(window.matchMedia("(orientation:portrait)").matches ){
+                console.log("PORTRAIT - retrato");
+            }
+            if(window.matchMedia("(orientation:landscape)").matches){
+                console.log("LANDSCAPE - paisagem");
+            }
+            */
+        }
+        function detectarDimensoes(elemento){
+            console.log("dimensões do elemento");
+            console.log( elemento.width() + "x" + elemento.height() );
+        }
+        function detectarDimensoesComPadding(elemento){
+            console.log("dimensões + padding do elemento");
+            console.log( elemento.innerWidth() + "x" + elemento.innerHeight() );
+        }
+        function detectarDimensoesComBorder(elemento){
+            console.log("dimensões + border do elemento");
+            console.log( elemento.outerWidth() + "x" + elemento.outerHeight() );
+        }
+        function detectarDimensoesComMargin(elemento){
+            console.log("dimensões + margin do elemento");
+            console.log( elemento.outerWidth(true) + "x" + elemento.outerHeight(true) );
+        }
+        function detectarDimensoesBrowser(){
+            console.log('dimensões browser');
+            console.log( $(window).width() + "x" + $(window).height()   );
+        }
+        function getWidthBrowser(){
+            return $(window).width();
+        }
+        function getHeightBrowser(){
+            return $(window).height();
+        }
+        function detectarDimensoesDocumento(){
+            console.log('dimensões documento');
+            console.log($(document).width()  + "x" + $(document).height() );
+        }
+        function detectarDimensoesTela(){
+            //não tem suporte em mobile
+            /*screen.height;
+            screen.width;
+            console.log('dimensões tela');
+            console.log(screen.width + "x" + screen.height  );
+            */
+        }
+
+        function ajustarDimensoesPlaca(){
+            $("#placaVirtual").height(getHeightBrowser());
+        }
+        function initPlacaVirtual(){
+            ajustarDimensoesPlaca();
+            if ($('html').hasClass('cssanimations' )) {
+                console.log("Aceita cssanimation");
+                $("#placaVirtual").load("placaVirtual.html");
+            } else {
+                console.log("Não aceita cssanimation");
+                 $("#placaVirtual").load("semSuporte.html");
+            }
+        }
+
+    $(document).ready(function(){
+        console.log("ready"); 
+        initPlacaVirtual();
+        $(window).on({
+                resize: function(){
+                    ajustarDimensoesPlaca();
+                    console.log("resize");
+                },
+                orientationchange: function(){
+                    ajustarDimensoesPlaca();
+                    console.log("orientationchange");
+
                 }
-                if(window.matchMedia("(orientation:landscape)").matches){
-                    console.log("LANDSCAPE - paisagem");
-                }
-                */
-            }
-            function detectarDimensoes(elemento){
-                console.log("dimensões do elemento");
-                console.log( elemento.width() + "x" + elemento.height() );
-            }
-            function detectarDimensoesComPadding(elemento){
-                console.log("dimensões + padding do elemento");
-                console.log( elemento.innerWidth() + "x" + elemento.innerHeight() );
-            }
-            function detectarDimensoesComBorder(elemento){
-                console.log("dimensões + border do elemento");
-                console.log( elemento.outerWidth() + "x" + elemento.outerHeight() );
-            }
-            function detectarDimensoesComMargin(elemento){
-                console.log("dimensões + margin do elemento");
-                console.log( elemento.outerWidth(true) + "x" + elemento.outerHeight(true) );
-            }
-            function detectarDimensoesBrowser(){
-                //$(window).height();   // altura do browser  
-                //$(window).width();   // comprimento do browser
-                console.log('dimensões browser');
-                console.log( $(window).width() + "x" + $(window).height()   );
-            }
-            function getWidthBrowser(){
-                return $(window).width();
-            }
-            function getHeightBrowser(){
-                return $(window).height();
-            }
-            function detectarDimensoesDocumento(){
-                //$(document).height(); // altura do documento HTML
-                //$(document).width(); // comprimento do documento HTML
-                console.log('dimensões documento');
-                console.log($(document).width()  + "x" + $(document).height() );
-            }
-            function detectarDimensoesTela(){
-                //não tem suporte em mobile
-                /*screen.height;
-                screen.width;
-                console.log('dimensões tela');
-                console.log(screen.width + "x" + screen.height  );
-                */
-            }
-                
-            function ajustarDimensoesPlaca(){
-                detectarOrientacao();
-                detectarDimensoesBrowser();
-                getWidthBrowser();
-                getHeightBrowser();
-                
-                $("#placaVirtual").height(getHeightBrowser());
-               // $("#placaVirtual").width(getWidthBrowser());
-            }
-            function initPlacaVirtual(){
-                ajustarDimensoesPlaca();
-             //Modernizr.cssanimation
-                if ($('html').hasClass('cssanimations' )) {
-                    console.log("Aceita cssanimation");
-                    $("#placaVirtual").load("placaVirtual.html");
-                } else {
-                    console.log("Não aceita cssanimation");
-                     $("#placaVirtual").load("semSuporte.html");
-                }
-            }
-            
-        $(document).ready(function(){
-            console.log("ready"); 
-            initPlacaVirtual();
-            $(window).on({
-                    resize: function(){
-                        ajustarDimensoesPlaca();
-                        console.log("resize");
-                    },
-                    orientationchange: function(){
-                        ajustarDimensoesPlaca();
-                        console.log("orientationchange");
-                        
-                    }
-            });
+        });
+    }); 
+    </script>
 
-        }); 
-        </script>
-       
-    </head>
-    <body onload="">
-        <div id="outdated"></div>
-        
+</head>
+<body>
+    <div id="layout">
+        <!-- Menu toggle -->
+        <a href="#menu" id="menuLink" class="menu-link">
+            <!-- Hamburger icon -->
+            <span></span>
+        </a>
 
-<div id="layout">
-    <!-- Menu toggle -->
-    <a href="#menu" id="menuLink" class="menu-link">
-        <!-- Hamburger icon -->
-        <span></span>
-    </a>
 
-  
-    <div id="main">
-        <section id="placaVirtual">
-            <h1>calma</h1>
-            <h3>só mais um minuto...</h3>
-        </section>
-        <div class="header">
-            <h1 id="tituloTeste">Page Title</h1>
-            <h2>A subtitle for your page goes here</h2>
-        </div>
-
-        <div class="content">
-            <h2 class="content-subhead">How to use this layout</h2>
-            <p>
-                To use this layout, you can just copy paste the HTML, along with the CSS in <a href="/css/layouts/side-menu.css" alt="Side Menu CSS">side-menu.css</a>, and the JavaScript in <a href="/js/ui.js">ui.js</a>. The JS file uses vanilla JavaScript to simply toggle an <code>active</code> class that makes the menu responsive.
-            </p>
-
-            <h2 class="content-subhead">Now Let's Speak Some Latin</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-
-            <div class="pure-g">
-                <div class="pure-u-1-4">
-                    <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2875/9069037713_1752f5daeb.jpg" alt="Peyto Lake">
-                </div>
-                <div class="pure-u-1-4">
-                    <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2813/9069585985_80da8db54f.jpg" alt="Train">
-                </div>
-                <div class="pure-u-1-4">
-                    <img class="pure-img-responsive" src="http://farm6.staticflickr.com/5456/9121446012_c1640e42d0.jpg" alt="T-Shirt Store">
-                </div>
-                <div class="pure-u-1-4">
-                    <img class="pure-img-responsive" src="http://farm8.staticflickr.com/7357/9086701425_fda3024927.jpg" alt="Mountain">
-                </div>
+        <div id="main">
+            <section id="placaVirtual">
+                <h1>calma</h1>
+                <h3>só mais um minuto...</h3>
+            </section>
+            <div class="header">
+                <h1 id="tituloTeste">Page Title</h1>
+                <h2>A subtitle for your page goes here</h2>
             </div>
 
-            <h2 class="content-subhead">Try Resizing your Browser</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
+            <div class="content">
+                <h2 class="content-subhead">How to use this layout</h2>
+                <p>
+                    To use this layout, you can just copy paste the HTML, along with the CSS in <a href="/css/layouts/side-menu.css" alt="Side Menu CSS">side-menu.css</a>, and the JavaScript in <a href="/js/ui.js">ui.js</a>. The JS file uses vanilla JavaScript to simply toggle an <code>active</code> class that makes the menu responsive.
+                </p>
+
+                <h2 class="content-subhead">Now Let's Speak Some Latin</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+
+                <div class="pure-g">
+                    <div class="pure-u-1-4">
+                        <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2875/9069037713_1752f5daeb.jpg" alt="Peyto Lake">
+                    </div>
+                    <div class="pure-u-1-4">
+                        <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2813/9069585985_80da8db54f.jpg" alt="Train">
+                    </div>
+                    <div class="pure-u-1-4">
+                        <img class="pure-img-responsive" src="http://farm6.staticflickr.com/5456/9121446012_c1640e42d0.jpg" alt="T-Shirt Store">
+                    </div>
+                    <div class="pure-u-1-4">
+                        <img class="pure-img-responsive" src="http://farm8.staticflickr.com/7357/9086701425_fda3024927.jpg" alt="Mountain">
+                    </div>
+                </div>
+
+                <h2 class="content-subhead">Try Resizing your Browser</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </p>
+            </div>
         </div>
-    </div>
-    
-      <div id="menu">
-        <div class="pure-menu">
-            <a class="pure-menu-heading" href="#">Company</a>
 
-            <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+          <div id="menu">
+            <div class="pure-menu">
+                <a class="pure-menu-heading" href="#">Company</a>
 
-                <li class="pure-menu-item" class="menu-item-divided pure-menu-selected">
-                    <a href="#" class="pure-menu-link">Services</a>
-                </li>
+                <ul class="pure-menu-list">
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
 
-                <li class="pure-menu-item"><a href="#" class="pure-menu-link">Contact</a></li>
-            </ul>
+                    <li class="pure-menu-item" class="menu-item-divided pure-menu-selected">
+                        <a href="#" class="pure-menu-link">Services</a>
+                    </li>
+
+                    <li class="pure-menu-item"><a href="#" class="pure-menu-link">Contact</a></li>
+                </ul>
+            </div>
         </div>
+
     </div>
 
-</div>
 
 
 
 
-
-<script src="js/side-menu.js"></script>
-<script>
-  
-</script>                        
-
-    </body>
+    <script src="js/side-menu.js"></script>                      
+</body>
 </html>
