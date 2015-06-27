@@ -348,11 +348,12 @@ var ordem = new Array();
             }
             
             function restart(){
-                alert( 'restart');
+               console.log('RESTART');
                console.log(ordem.join(" "));
                
                var fim = $(".fim");
-               fim.removeClass("animate");
+               //fim.removeClass("animate");
+               $(".fim").fadeOut("slow");
                
                var barra = $(".barra");
                barra.addClass("animate");
@@ -474,7 +475,8 @@ var ordem = new Array();
                $(".legenda").removeClass("animate");
                $(".linhas").removeClass("animate");
                $(".barra").removeClass("animate");
-               $(".fim").addClass("animate");
+               //$(".fim").addClass("animate");
+               $(".fim").fadeIn("slow");
             }
             
             function tooglePlayPause(){
