@@ -252,6 +252,9 @@ var ordem = new Array();
                   linha4[1].style.display = "none"; 
                }
                */
+              
+              //inicia a execução com a tela de restart
+              telaRestartSlide();
                
             }
             function resizePlaca(){
@@ -460,53 +463,18 @@ var ordem = new Array();
                i++;
                if(i >= ordem.length){ 
                    i=0;
-                   intervaloEntreSlides = window.setTimeout(function(){ fimSlide();}, tempo);
+                   intervaloEntreSlides = window.setTimeout(function(){ telaRestartSlide();}, tempo);
                }else{
                    intervaloEntreSlides = window.setTimeout(function(){ proximoSlide();}, tempo);
                 } 
             }
-            function fimSlide(){
-               var tela = document.querySelectorAll(".tela");
-               var circulo = document.querySelectorAll(".circulo");
-               var foto = document.querySelectorAll(".foto");
-               var legenda = document.querySelectorAll(".legenda");
-               var strong = document.querySelectorAll(".legenda strong");
-               var linhas = document.querySelectorAll(".linhas");
-               var linha1 = document.querySelectorAll(".a1");
-               var linha2 = document.querySelectorAll(".a2");
-               var linha3 = document.querySelectorAll(".a3");
-               var linha4 = document.querySelectorAll(".a4");
-               
-               var a,b, indiceAnterior = ordem[ordem.length - 1], indiceAtual = ordem[i];
-               if(i%2 == 0){
-                   a=0;
-                   b=1;
-               }else{
-                   b=0;
-                   a=1;
-               }
-               
-               tela[a].classList.remove(estrutura[indiceAnterior].tela);
-               tela[a].classList.remove("animate");
-               tela[b].classList.remove("animate");
-               
-               circulo[a].classList.remove("animate");
-               circulo[b].classList.remove("animate");
-               
-               legenda[a].classList.remove("animate");
-               legenda[b].classList.remove("animate");
-               
-               linhas[a].classList.remove(estrutura[indiceAnterior].linhas);
-               
-               linhas[a].classList.remove("animate");
-               linhas[b].classList.remove("animate");
-               
-               var barra = document.querySelectorAll(".barra");
-               barra[0].classList.remove("animate");
-               
-               var fim = document.querySelectorAll(".fim");      
-               fim[0].classList.add("animate");
-              
+            function telaRestartSlide(){
+               $(".tela").removeClass("animate");
+               $(".circulo").removeClass("animate");
+               $(".legenda").removeClass("animate");
+               $(".linhas").removeClass("animate");
+               $(".barra").removeClass("animate");
+               $(".fim").addClass("animate");
             }
             
             function tooglePlayPause(){
