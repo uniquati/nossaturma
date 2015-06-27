@@ -4,12 +4,12 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<html>
+<html class="no-js">
     <head>
         <title>TESTE</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+        
         <link rel="stylesheet" href="css/style.css">
          
         <!--<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">-->
@@ -23,16 +23,21 @@ and open the template in the editor.
         <!--<![endif]-->
 
         <link rel="stylesheet" href="css/side-menu.css">
+        
         <script src="js/jquery-2.1.4.min.js"></script>
+        <script src="js/modernizr.custom.js"></script>
+        
         <script>
             function detectarOrientacao(){
-                console.log('orientação');
+                //não tem suporte no IE antigo
+                /*console.log('orientação');
                 if(window.matchMedia("(orientation:portrait)").matches ){
                     console.log("PORTRAIT - retrato");
                 }
                 if(window.matchMedia("(orientation:landscape)").matches){
                     console.log("LANDSCAPE - paisagem");
                 }
+                */
             }
             function detectarDimensoes(elemento){
                 console.log("dimensões do elemento");
@@ -69,10 +74,12 @@ and open the template in the editor.
                 console.log($(document).width()  + "x" + $(document).height() );
             }
             function detectarDimensoesTela(){
-                screen.height;
+                //não tem suporte em mobile
+                /*screen.height;
                 screen.width;
                 console.log('dimensões tela');
                 console.log(screen.width + "x" + screen.height  );
+                */
             }
                 
             function ajustarDimensoesPlaca(){
@@ -86,11 +93,19 @@ and open the template in the editor.
             }
             function initPlacaVirtual(){
                 ajustarDimensoesPlaca();
-                $("#placaVirtual").load("placaVirtual.html");
+             //Modernizr.cssanimation
+                if ($('html').hasClass('cssanimations' )) {
+                    console.log("Aceita cssanimation");
+                    $("#placaVirtual").load("placaVirtual.html");
+                } else {
+                    console.log("Não aceita cssanimation");
+                     $("#placaVirtual").load("semSuporte.html");
+                }
             }
             
         $(document).ready(function(){
             console.log("ready"); 
+            initPlacaVirtual();
             $(window).on({
                     resize: function(){
                         ajustarDimensoesPlaca();
@@ -107,7 +122,8 @@ and open the template in the editor.
         </script>
        
     </head>
-    <body onload="initPlacaVirtual();">
+    <body onload="">
+        <div id="outdated"></div>
         
 
 <div id="layout">
@@ -185,7 +201,9 @@ and open the template in the editor.
 
 
 <script src="js/side-menu.js"></script>
-
+<script>
+  
+</script>                        
 
     </body>
 </html>
