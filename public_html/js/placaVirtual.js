@@ -211,13 +211,16 @@ var ordem = new Array();
             var intervaloEntreSlides;
             
             function initSlide(){
-               resize();
-               window.addEventListener('resize', resize);
+               alert('initSlide');
+               $("#placaVirtual").addClass('sucesso');
+               resizePlaca();
+               //window.addEventListener('resize', resize);
                ordem = shuffle(ordem);
                rodarSlide();
                
             }
-            function resize(){
+            function resizePlaca(){
+                console.log('resize Placa');
                 innerWidth = window.innerWidth;
                 innerHeight = window.innerHeight;
                 diagonal = parseInt(Math.sqrt(innerWidth*innerWidth + innerHeight*innerHeight));
@@ -313,7 +316,7 @@ var ordem = new Array();
                 return v;
             }
             
-            function rodarSlide(){
+            function restart(){
                console.log(ordem.join(" "));
                
                var fim = document.querySelectorAll(".fim");
@@ -506,6 +509,10 @@ var ordem = new Array();
                var fim = document.querySelectorAll(".fim");      
                fim[0].classList.add("animate");
               
+            }
+            
+            function tooglePlayPause(){
+                console.log('play/pause');
             }
 
 

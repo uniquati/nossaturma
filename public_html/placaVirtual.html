@@ -351,6 +351,11 @@
         animation-duration: 1s;
         animation-fill-mode: forwards; 
     }
+    .fim .btRestart{
+        width: 100px;
+        height: 100px;
+        background: violet;
+    }
 
     @media screen and (min-width : 600px){
         .brasao, .fim{ 
@@ -394,12 +399,14 @@
         </div>
     </div>
     <div class="botoes">
-
-
+        <button onclick="tooglePlayPause();" >play/pause</button>
     </div>
+<div class="fim" >
+    dê play!
+    <div onclick="restart();" class="btRestart"></div>
+</div>
     <div class="brasao"></div>
-    <div class="fim" onclick="rodarSlide();">
-    </div>
+    
     <div class="barraProgresso"><div class="barra"></div></div>
     
 <script src="js/jquery.timer.js"></script>

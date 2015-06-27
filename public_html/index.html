@@ -93,11 +93,13 @@
         $(window).on({
                 resize: function(){
                     ajustarDimensoesPlaca();
-                    console.log("resize");
+                    if($('#placaVirtual').hasClass('sucesso'))
+                        resizePlaca();
                 },
                 orientationchange: function(){
                     ajustarDimensoesPlaca();
-                    console.log("orientationchange");
+                    if($('#placaVirtual').hasClass('sucesso'))
+                        resizePlaca();
 
                 }
         });
