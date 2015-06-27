@@ -39,7 +39,7 @@ Estilo da página
                 font-style: normal;
             }
             
-            #placaVirtual{
+            .carregando{
                 background: #333;
                 width: 100%;
                 font-family: bebasneueBold;

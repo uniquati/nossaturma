@@ -1,14 +1,55 @@
 <script>
-    alert('de play');
+    //alert('de play');
+    $('#placaVirtual').addClass('palco');
+    $('#placaVirtual').removeClass('carregando');
 </script>
 <style>
-    .t{
-        background: red;
+    .palco{
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+        background-image:linear-gradient(130deg, rgba(50,0,0,1) -5%,rgba(0,0,2, 0.05)), linear-gradient(340deg, rgba(0,0,20,1) , rgba(0,28,100, .85)),  url('media/triangulos.png') ;
+        background-size: cover;
+        background-position: center center;
     }    
 </style>
-<h1 class="t">
-    dê play!
-</h1>
-<h3>
-   ...
-</h3>
+
+
+    <div class="raios">
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="tela" >
+        <div class="linhas" >
+            <div class="linha a1" ></div>
+            <div class="linha a2"></div>
+            <div class="linha a3"></div>
+            <div class="linha a4"></div>            
+        </div>
+        <div class="circulo">
+            <div class="foto"></div>
+            <div class="legenda"><span></span><strong></strong></div>
+        </div>
+    </div>
+    <div class="tela" >
+        <div class="linhas">
+            <div class="linha a1" ></div>
+            <div class="linha a2"></div>
+            <div class="linha a3"></div>
+            <div class="linha a4"></div>            
+        </div>
+        <div class="circulo">
+            <div class="foto"></div>
+            <div class="legenda"><span></span><strong></strong></div>
+        </div>
+    </div>
+    <div class="botoes">
+
+
+    </div>
+    <div class="brasao"></div>
+    <div class="fim" onclick="rodarSlide();">
+    </div>
+    <div class="barraProgresso"><div class="barra"></div></div>
+
