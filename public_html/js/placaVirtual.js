@@ -211,144 +211,24 @@ var ordem = new Array();
             var intervaloEntreSlides;
             
             function initSlide(){
-               alert('initSlide');
+               console.log('INIT SLIDE');
                $("#placaVirtual").addClass('sucesso');
                resizePlaca();
-               //window.addEventListener('resize', resize);
+              
                ordem = shuffle(ordem);
-               rodarSlide();
                
-            }
-            function resizePlaca(){
-                console.log('resize Placa');
-                innerWidth = window.innerWidth;
-                innerHeight = window.innerHeight;
-                diagonal = parseInt(Math.sqrt(innerWidth*innerWidth + innerHeight*innerHeight));
-                console.log(innerWidth+" x "+innerHeight + " diagonal:"+diagonal);
-                
-                
-                if(innerWidth>=1280){
-                    tamanhoCirculo = 350;
-                }
-                else if(innerWidth>=600){
-                    tamanhoCirculo = 250;
-                }else{
-                    tamanhoCirculo = 150;
-                }
-                
-                var brasao =  document.querySelectorAll(".brasao");
-               // brasao[0].style.width = innerWidth+"px";
-                brasao[0].style.height = innerHeight+"px";
-                var fim =  document.querySelectorAll(".fim");
-               // fim[0].style.width = innerWidth+"px";
-                fim[0].style.height = innerHeight+"px";
-                
-                var palco = document.querySelectorAll(".palco");
-                palco[0].style.height = innerHeight + "px";
-                
-                var raios = document.querySelectorAll(".raios div");
-                raios[0].classList.add("raios1");
-                raios[0].style.height = diagonal + "px";
-                raios[0].style.width = diagonal + "px";
-                raios[0].style.left = ((innerWidth - diagonal)/2) + "px";
-                raios[0].style.top = ((innerHeight - diagonal)/2) + "px";
-                
-                raios[1].classList.add("raios2");
-                raios[1].style.height = diagonal + "px";
-                raios[1].style.width = diagonal + "px";
-                raios[1].style.left = ((innerWidth - diagonal)/2) + "px";
-                raios[1].style.top = ((innerHeight - diagonal)/2) + "px";
-                
-                var tela = document.querySelectorAll(".tela");
-                tela[0].style.width = innerWidth+"px";
-                tela[0].style.height = innerHeight+"px";
-                tela[1].style.width = innerWidth+"px";
-                tela[1].style.height = innerHeight+"px";
-                
-                
-                var linhas = document.querySelectorAll(".linhas");
-                linhas[0].style.width = innerWidth+"px";
-                linhas[0].style.height = innerHeight+"px";
-                linhas[1].style.width = innerWidth+"px";
-                linhas[1].style.height = innerHeight+"px";
-                
-                var linha = document.querySelectorAll(".linha");
-                for(var i=0; i< linha.length; i++){
-                    linha[i].style.height = diagonal + "px";
-                    linha[i].style.marginLeft = ((innerWidth - 13)/2)+"px";
-                    linha[i].style.marginTop = (innerHeight/2)+"px";
-                }
-                
-                var circulo = document.querySelectorAll(".circulo");
-                circulo[0].style.height = (tamanhoCirculo + 13*2) + "px";
-                circulo[0].style.width = (tamanhoCirculo + 13*2)*2 + "px";
-                circulo[0].style.marginLeft = (innerWidth - (tamanhoCirculo + 2*13))/2 + "px";
-                circulo[0].style.marginTop = (innerHeight - (tamanhoCirculo + 2*13))/2 + "px";
-                circulo[1].style.height = (tamanhoCirculo + 13*2) + "px";
-                circulo[1].style.width = (tamanhoCirculo + 13*2)*2 + "px";
-                circulo[1].style.marginLeft = (innerWidth - (tamanhoCirculo + 2*13))/2 + "px";
-                circulo[1].style.marginTop = (innerHeight - (tamanhoCirculo + 2*13))/2 + "px";
-                
-                var foto = document.querySelectorAll(".foto");
-                foto[0].style.height = tamanhoCirculo + "px";
-                foto[0].style.width = tamanhoCirculo + "px";
-                foto[1].style.height = tamanhoCirculo + "px";
-                foto[1].style.width = tamanhoCirculo + "px";
-                
-                
-                var containerPlaylist = document.getElementById("container-playlist");
-                containerPlaylist.style.height = innerHeight+"px";
-                if(innerWidth>=600){
-                    containerPlaylist.style.width = 600+"px";
-                }else{
-                    containerPlaylist.style.width = innerWidth+"px";
-                }
-                
-                var audio = document.querySelectorAll("#container-playlist audio");
-                audio[0].style.width = (parseInt(containerPlaylist.style.width)-20) + "px";
-                
-                var playlist = document.querySelectorAll("#container-playlist #playlist");
-                playlist[0].style.height = (innerHeight-150) + "px";
-                
-            }
-            function shuffle(v){
-                for(var j, x, i = v.length; i; j = parseInt(Math.random() *i), x = v[--i], v[i]=v[j], v[j]=x );
-                return v;
-            }
-            
-            function restart(){
-               console.log(ordem.join(" "));
-               
-               var fim = document.querySelectorAll(".fim");
-               fim[0].classList.remove("animate");
-               
-               var barra = document.querySelectorAll(".barra");
-               barra[0].classList.add("animate");
-               
-               var brasao = document.querySelectorAll(".brasao");
-               brasao[0].classList.add("animate");
-               
-               
-               intervaloBrasao = window.setTimeout(function(){ proximoSlide();}, tempo);
-               
-               
-               //configurações do proximo slide
-               var tela = document.querySelectorAll(".tela");
-               //var circulo = document.querySelectorAll(".circulo");
-               var foto = document.querySelectorAll(".foto");
-               //var legenda = document.querySelectorAll(".legenda");
-               var strong = document.querySelectorAll(".legenda strong");
-               var linhas = document.querySelectorAll(".linhas");
-               var linha1 = document.querySelectorAll(".a1");
-               var linha2 = document.querySelectorAll(".a2");
-               var linha3 = document.querySelectorAll(".a3");
-               var linha4 = document.querySelectorAll(".a4");
-               
-               tela[1].classList.add(estrutura[ordem[0]].tela);
-               foto[1].style.backgroundImage = "url('imagens/"+estrutura[ordem[0]].foto+"')";
-               strong[1].innerHTML = estrutura[ordem[0]].legenda;
-               linhas[1].classList.add(estrutura[ordem[0]].linhas);
-               if(estrutura[ordem[0]].linha1 == 1){
+               for(var indice = 0; indice<19; indice++){
+                    estrutura[ordem[indice]].legenda;
+                    estrutura[ordem[indice]].foto;
+                    var foto = $('#t'+i+' .foto');
+                    foto.css("background", "url('imagens/"+estrutura[ordem[indice]].foto+"')");
+                    var legenda = $('#t'+i+' .legenda strong');
+                    legenda.html(estrutura[ordem[indice]].legenda);
+               }
+              
+               /*
+                * trecho ainda não convertido para jQuery... 
+                if(estrutura[ordem[0]].linha1 == 1){
                   linha1[1].style.display = "block"; 
                }else{
                   linha1[1].style.display = "none"; 
@@ -371,6 +251,124 @@ var ordem = new Array();
                }else{
                   linha4[1].style.display = "none"; 
                }
+               */
+               
+            }
+            function resizePlaca(){
+                console.log('resize Placa');
+                
+                innerWidth = getWidthBrowser();
+                innerHeight = getHeightBrowser();
+                diagonal = parseInt(Math.sqrt(innerWidth*innerWidth + innerHeight*innerHeight));
+                console.log(innerWidth+" x "+innerHeight + " diagonal:"+diagonal);
+                
+                
+                if(innerWidth>=1280){
+                    tamanhoCirculo = 350;
+                }
+                else if(innerWidth>=600){
+                    tamanhoCirculo = 250;
+                }else{
+                    tamanhoCirculo = 150;
+                }
+                
+                var brasao =  $(".brasao");
+               // brasao[0].style.width = innerWidth+"px";
+                brasao.height(innerHeight);
+                var fim =  $(".fim");
+               // fim[0].style.width = innerWidth+"px";
+                fim.height(innerHeight);
+                
+                var palco = $(".palco");
+                palco.height(innerHeight);
+                
+                var raios = $(".raios");
+                raios.height(diagonal);
+                raios.width(diagonal);
+               // raios.css("transform", "translate(300px,0)");
+                //raios.css("left", "0px");
+                //raios.css("top",  "0px");
+                raios.css("left", ((innerWidth-diagonal)/2) + "px");
+                raios.css("top", ((innerHeight-diagonal )/2) + "px");
+                
+                
+                var tela = $(".tela");
+                tela.width( innerWidth);
+                tela.height(innerHeight);
+                
+                
+                var linhas = $(".linhas");
+                linhas.width( innerWidth);
+                linhas.height( innerHeight);
+                
+                var linha = $(".linha");
+                linha.height(diagonal);
+                linha.css( "margin-left",((innerWidth - 13)/2)+"px" );
+                linha.css( "margin-top",(innerHeight/2)+"px" );
+                
+                
+                var circulo = $(".circulo");
+                circulo.height( (tamanhoCirculo + 13*2) );
+                circulo.width( (tamanhoCirculo + 13*2)*2 );
+                circulo.css( "margin-left", (innerWidth - (tamanhoCirculo + 2*13))/2 + "px" );
+                circulo.css( "margin-top", (innerHeight - (tamanhoCirculo + 2*13))/2 + "px" );
+           
+                
+                var foto = $(".foto");
+                foto.height( tamanhoCirculo );
+                foto.width( tamanhoCirculo );
+                
+                
+                /*
+                 * container da playlist 
+                 * esse treçho de código ainda não foi convertido para jQuery...
+                var containerPlaylist = document.getElementById("container-playlist");
+                containerPlaylist.style.height = innerHeight+"px";
+                if(innerWidth>=600){
+                    containerPlaylist.style.width = 600+"px";
+                }else{
+                    containerPlaylist.style.width = innerWidth+"px";
+                }
+                
+                var audio = document.querySelectorAll("#container-playlist audio");
+                audio[0].style.width = (parseInt(containerPlaylist.style.width)-20) + "px";
+                
+                var playlist = document.querySelectorAll("#container-playlist #playlist");
+                playlist[0].style.height = (innerHeight-150) + "px";
+                
+                */
+                
+            }
+            function shuffle(v){
+                for(var j, x, i = v.length; i; j = parseInt(Math.random() *i), x = v[--i], v[i]=v[j], v[j]=x );
+                return v;
+            }
+            
+            function restart(){
+                alert( 'restart');
+               console.log(ordem.join(" "));
+               
+               var fim = $(".fim");
+               fim.removeClass("animate");
+               
+               var barra = $(".barra");
+               barra.addClass("animate");
+               
+               var brasao = $(".brasao");
+               brasao.addClass("animate");
+               
+               
+               //intervaloBrasao = window.setTimeout(function(){ proximoSlide();}, tempo);
+               timer = $.timer(function() {
+                    
+                    console.log('This message was sent by a timer:');
+                    //proximoSlide();
+                    //timer.stop();
+                });
+
+                timer.set({ time : 10000, autostart : false });
+                
+                timer.play();
                
             }
             function proximoSlide(){
