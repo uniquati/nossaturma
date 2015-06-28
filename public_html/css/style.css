@@ -1,74 +1,67 @@
 /*
-Estilo da página
+FONTES
 */
- @font-face {
-                font-family: bebasneueBold;
-                src: url("font/BebasNeue Bold.otf");
-                font-weight: bold;
-                font-style: normal;
-            }
-            @font-face {
-                font-family: bebasneue;
-                src: url("font/BebasNeue Regular.otf");
-                font-weight: normal;
-                font-style: normal;
-            }
-            @font-face {
-                font-family: bebasneueBook;
-                src: url("font/BebasNeue Book.otf");
-                font-weight: normal;
-                font-style: normal;
-            }
-            @font-face {
-                font-family: bebasneueLight;
-                src: url("font/BebasNeue Light.otf");
-                font-weight: normal;
-                font-style: normal;
-            }
-            
-            @font-face {
-                font-family: bebasneueThin;
-                src: url("font/BebasNeue Thin.otf");
-                font-weight: normal;
-                font-style: normal;
-            }
-            @font-face {
-                font-family: corbeli;
-                src: url("font/corbeli.ttf");
-                font-weight: normal;
-                font-style: normal;
-            }
-            
-            .carregando{
-                background: #333;
-                width: 100%;
-                font-family: bebasneueBold;
-            }
-            #placaVirtual h1{
-                margin: 0;
-                font-weight: normal;
-            }
-            #placaVirtual h3{
-                margin: 0;
-                font-weight: normal;
-            }
-            .b1{
-                font-family: bebasneueBold;
-            }
-            .b2{
-                font-family: bebasneue;
-                
-            }
-            .b3{
-                font-family: bebasneueBook;
-               
-            }
-            .b4{
-                 font-family: bebasneueLight;
-            }
-            .b5{
-                font-family: bebasneueThin;
-            }
-            .c{
-                font-family: corbeli;
-            }
+@font-face {
+    font-family: bebasneueBold;
+    src: url("font/BebasNeue Bold.otf");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: bebasneue;
+    src: url("font/BebasNeue Regular.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: bebasneueBook;
+    src: url("font/BebasNeue Book.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: bebasneueLight;
+    src: url("font/BebasNeue Light.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: bebasneueThin;
+    src: url("font/BebasNeue Thin.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: corbeli;
+    src: url("font/corbeli.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*PLACA VIRTUAL*/
+.carregando{
+    background: #333;
+    width: 100%;  
+}
+.sem-suporte{
+    width: 100%;  
+    background-image:  url('../media/triangulos.png') ;
+    background-size: cover;
+    background-position: center center; 
+}
+#placaVirtual h1{
+    margin:0;
+    padding: 30px 30px 0 30px;
+    font-family: bebasneueBold;
+    font-weight: normal;
+    font-size: 50px;
+    color:white;
+}
+#placaVirtual h3{
+    margin:0;
+    padding: 0 30px; 
+    font-family: bebasneueBold;
+    font-size: 21px;
+    font-weight: normal;
+    color:white;
+}

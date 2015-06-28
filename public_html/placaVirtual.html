@@ -1,9 +1,9 @@
 <script>
-    //alert('de play');
     $('#placaVirtual').addClass('palco');
     $('#placaVirtual').removeClass('carregando');
 </script>
 <style>
+    /*KEYFRAMES*/
     @keyframes giroRaioHorario{
         from{
             transform: rotate(0deg);
@@ -14,7 +14,6 @@
     }
     @keyframes giroTela{
         0%{
-            //opacity:0;
             opacity:1;
             transform:rotate(60deg);
         }
@@ -27,7 +26,6 @@
         }
         100%{
             transform:rotate(-60deg);
-            //opacity:0;
             opacity:1;
         }       
     }
@@ -94,8 +92,6 @@
         }
 
     }
-    
-    
     @keyframes brasao{
         0%{
            
@@ -119,17 +115,12 @@
         width: 100%;
         overflow: hidden;
         position: relative;
-        //background-image:linear-gradient(130deg, rgba(50,0,0,1) -5%,rgba(0,0,2, 0.05)), linear-gradient(340deg, rgba(0,0,20,1) , rgba(0,28,100, .85)),  url('media/triangulos.png') ;
-        background-image:linear-gradient(130deg, rgba(50,0,0,1) -25%,rgba(0,0,20,.5) ), linear-gradient(340deg, rgba(0,0,20,.5) , rgba(0,28,100, .1)),  url('media/triangulos.png') ;
         background-image:  url('media/triangulos.png') ;
-        //background-image:linear-gradient(130deg, rgba(50,0,0,0.6) -5%,rgba(0,0,2, 0.05)), linear-gradient(340deg, rgba(0,0,20,0.6) , rgba(0,28,100, .5)),  url('media/triangulos.png') ;
         background-size: cover;
         background-position: center center; 
     }  
     .raios{
         width: 100%;
-        //height: 500px;
-        //transform: scale(3);
         opacity: .05;
         position: absolute;
         background: url('media/raios.png') center center;
@@ -139,16 +130,12 @@
         animation-timing-function: linear;
         animation-direction: alternate;
         animation-iteration-count: infinite;
-        //transform-origin: 60% 60%;
     }
-    
     .tela{
         position: absolute;
-        //background: red;
         top:0;
         left: 0;
         width: 100%;
-        //height: 500px;
         transform:rotate(-90deg);
         visibility: hidden;
     }
@@ -186,7 +173,6 @@
         animation-duration: 10s;
         animation-timing-function:linear;
         animation-iteration-count: infinite;
-        /*animation-play-state: paused;*/
     }
     .linhas.animate.linha-horario{
        animation-name: giroLinhaHorario;
@@ -197,12 +183,8 @@
     .linha{
         position: absolute;
         width: 13px;
-        //height: 848px;/* Math.sqrt(600*600 + 600*600);*/
         background-color: white;
-        //margin-left: 293.5px;/*(600 - 13) /2*/
-        //margin-top: 300px;/*600/2*/  
     }
-
     .linha.a1{
         transform-origin: center top;
         transform: rotate(0deg);
@@ -219,15 +201,9 @@
         transform-origin: center top;
         transform: rotate(225deg);
     }
-    
     .circulo{
-        //background: blue;
         position: absolute;
         transition: width 1s linear;
-        //width: 352px;/* 176*2 para permitir a expansão da legenda, e fazer girar como centro na foto*/
-        //height: 176px;
-        //margin-left: 212px; /*(600 -(2*13+ 150)) / 2*/
-        //margin-top: 212px; /*(600 -(2*13+ 150)) / 2*/
     }
     .circulo.animate{
         transform-origin: 25% 50%; /* para girar com centro na foto*/
@@ -251,10 +227,8 @@
         position: absolute;
         left: 20%;
         bottom: -5%;
-        //height: 30px;
         padding-top: 15px;
         overflow: hidden;
-       // background: purple;
     }
     .legenda.animate{
         transform-origin: left top; 
@@ -286,24 +260,14 @@
         text-align: left;
         background: rgb(20,9,88);;
         padding:7px 10px;
-        //padding-left: 10px;
-        //padding-right: 10px;
-        //padding-top: 7px;
-        //padding-bottom: 7px;
         margin: 0;
     }
      .legenda p strong{
-         
         font-size: 20px;
         font-family: bebasneueBold;
         color:white;
         font-weight: normal;
         text-align: left;
-        //background: green;
-        //padding-left: 10px;
-        //padding-right: 10px;
-        //padding-top: 7px;
-        //padding-bottom: 7px;
         margin: 0;
     }
     .botoes{
@@ -323,9 +287,6 @@
     .btPlay.pause{
         background: url('media/miniplay.png') center center no-repeat;
         background-size: cover;
-    }
-    .btPlay.paused{
-        
     }
     .barraProgresso{
         background: rgba(0,0,0,.4);
@@ -348,12 +309,6 @@
     .barra.paused{
         animation-play-state: paused;
     }
-    
-    
-    
-    
-    
-    
     .brasao{
         width: 100%;
         position: absolute;
@@ -377,19 +332,14 @@
         position: absolute;
         top:0;
         left:0;
-        //background: greenyellow  center center no-repeat;
     }
     .fim .btRestart{
         width: 100px;
         height: 100px;
-        
         margin: 0 auto;
         background-image: url('media/play.png');
         background-size: cover;
         cursor: pointer;
-    }
-    .fim .btRestart.play{
-        
     }
     .fim .btRestart.restart{
        background-image: url('media/restart.png'); 
@@ -407,218 +357,214 @@
         .brasao, .fim{ 
             background-size: 20%;
         }
-    }
-    
+    }  
 </style>
-
-
-    <div class="raios">
-    </div>
-    <div class="brasao">
-    </div>
-    <div class="fim" >
-        <div onclick="restart();" class="btRestart"></div>
-    </div>
-
-    <div id='t0' class="tela right-top" >
-        <div class="linhas linha-horario">
-            <div class="linha a1" ></div>           
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t1' class="tela right-bottom" >
-        <div class="linhas linha-antihorario">
-            <div class="linha a1" ></div>
-            <div class="linha a2"></div>           
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t2' class="tela left-top" >
-        <div class="linhas linha-horario">
-            <div class="linha a1" ></div>
-            <div class="linha a3"></div>         
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t3' class="tela left-bottom" >
-        <div class="linhas linha-antihorario">
-            <div class="linha a1" ></div>
-            <div class="linha a4"></div>            
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t4' class="tela right-bottom" >
-        <div class="linhas linha-horario">
-            <div class="linha a1" ></div>
-            <div class="linha a2"></div>
-            <div class="linha a3"></div>          
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t5' class="tela right-top" >
-        <div class="linhas linha-antihorario">
-            <div class="linha a1" ></div>
-            <div class="linha a3"></div>
-            <div class="linha a4"></div>            
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t6' class="tela right-top" >
-        <div class="linhas linha-horario">
-            <div class="linha a1" ></div>          
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t7' class="tela right-bottom" >
-        <div class="linhas linha-antihorario">
-            <div class="linha a1" ></div>
-            <div class="linha a2"></div>           
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t8' class="tela left-top" >
-        <div class="linhas linha-horario">
-            <div class="linha a1" ></div>
-            <div class="linha a3"></div>           
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t9' class="tela left-bottom" >
-        <div class="linhas linha-antihorario">
-            <div class="linha a1" ></div>
-            <div class="linha a4"></div>            
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t10' class="tela right-bottom" >
-        <div class="linhas linha-horario">
-            <div class="linha a1" ></div>
-            <div class="linha a2"></div>
-            <div class="linha a3"></div>          
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t11' class="tela right-top" >
-        <div class="linhas linha-antihorario">
-            <div class="linha a1" ></div>
-            <div class="linha a3"></div>
-            <div class="linha a4"></div>            
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t12' class="tela right-top" >
-        <div class="linhas linha-horario">
-            <div class="linha a1" ></div>           
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t13' class="tela right-bottom" >
-        <div class="linhas linha-antihorario">
-            <div class="linha a1" ></div>
-            <div class="linha a2"></div>         
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t14' class="tela left-top" >
-        <div class="linhas linha-horario">
-            <div class="linha a1" ></div>
-            <div class="linha a3"></div>           
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t15' class="tela left-bottom" >
-        <div class="linhas linha-antihorario">
-            <div class="linha a1" ></div>
-            <div class="linha a4"></div>            
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t16' class="tela right-bottom" >
-        <div class="linhas linha-horario">
-            <div class="linha a1" ></div>
-            <div class="linha a2"></div>
-            <div class="linha a3"></div>        
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t17' class="tela right-top" >
-        <div class="linhas linha-antihorario">
-            <div class="linha a1" ></div>
-            <div class="linha a3"></div>
-            <div class="linha a4"></div>            
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-    <div id='t18' class="tela right-top" >
-        <div class="linhas linha-horario">
-            <div class="linha a1" ></div>           
-        </div>
-        <div class="circulo">
-            <div class="foto"></div>
-            <div class="legenda"><span></span><p></p></div>
-        </div>
-    </div>
-
-    <div class="botoes">
-        <div class="btPlay" onclick="tooglePlayPause();" ></div>
-    </div>
     
-    <div class="barraProgresso"><div class="barra"></div></div>
-    
+<div class="raios"></div>
+<div class="brasao"></div>
+<div class="fim" >
+    <div onclick="restart();" class="btRestart"></div>
+</div>
+
+<div id='t0' class="tela right-top" >
+    <div class="linhas linha-horario">
+        <div class="linha a1" ></div>           
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t1' class="tela right-bottom" >
+    <div class="linhas linha-antihorario">
+        <div class="linha a1" ></div>
+        <div class="linha a2"></div>           
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t2' class="tela left-top" >
+    <div class="linhas linha-horario">
+        <div class="linha a1" ></div>
+        <div class="linha a3"></div>         
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t3' class="tela left-bottom" >
+    <div class="linhas linha-antihorario">
+        <div class="linha a1" ></div>
+        <div class="linha a4"></div>            
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t4' class="tela right-bottom" >
+    <div class="linhas linha-horario">
+        <div class="linha a1" ></div>
+        <div class="linha a2"></div>
+        <div class="linha a3"></div>          
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t5' class="tela right-top" >
+    <div class="linhas linha-antihorario">
+        <div class="linha a1" ></div>
+        <div class="linha a3"></div>
+        <div class="linha a4"></div>            
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t6' class="tela right-top" >
+    <div class="linhas linha-horario">
+        <div class="linha a1" ></div>          
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t7' class="tela right-bottom" >
+    <div class="linhas linha-antihorario">
+        <div class="linha a1" ></div>
+        <div class="linha a2"></div>           
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t8' class="tela left-top" >
+    <div class="linhas linha-horario">
+        <div class="linha a1" ></div>
+        <div class="linha a3"></div>           
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t9' class="tela left-bottom" >
+    <div class="linhas linha-antihorario">
+        <div class="linha a1" ></div>
+        <div class="linha a4"></div>            
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t10' class="tela right-bottom" >
+    <div class="linhas linha-horario">
+        <div class="linha a1" ></div>
+        <div class="linha a2"></div>
+        <div class="linha a3"></div>          
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t11' class="tela right-top" >
+    <div class="linhas linha-antihorario">
+        <div class="linha a1" ></div>
+        <div class="linha a3"></div>
+        <div class="linha a4"></div>            
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t12' class="tela right-top" >
+    <div class="linhas linha-horario">
+        <div class="linha a1" ></div>           
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t13' class="tela right-bottom" >
+    <div class="linhas linha-antihorario">
+        <div class="linha a1" ></div>
+        <div class="linha a2"></div>         
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t14' class="tela left-top" >
+    <div class="linhas linha-horario">
+        <div class="linha a1" ></div>
+        <div class="linha a3"></div>           
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t15' class="tela left-bottom" >
+    <div class="linhas linha-antihorario">
+        <div class="linha a1" ></div>
+        <div class="linha a4"></div>            
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t16' class="tela right-bottom" >
+    <div class="linhas linha-horario">
+        <div class="linha a1" ></div>
+        <div class="linha a2"></div>
+        <div class="linha a3"></div>        
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t17' class="tela right-top" >
+    <div class="linhas linha-antihorario">
+        <div class="linha a1" ></div>
+        <div class="linha a3"></div>
+        <div class="linha a4"></div>            
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+<div id='t18' class="tela right-top" >
+    <div class="linhas linha-horario">
+        <div class="linha a1" ></div>           
+    </div>
+    <div class="circulo">
+        <div class="foto"></div>
+        <div class="legenda"><span></span><p></p></div>
+    </div>
+</div>
+
+<div class="botoes">
+    <div class="btPlay" onclick="tooglePlayPause();" ></div>
+</div>
+
+<div class="barraProgresso"><div class="barra"></div></div>
+
 <script src="js/jquery.timer.js"></script>
 <script src="js/placaVirtual.js" ></script>
 <script>

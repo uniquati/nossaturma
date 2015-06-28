@@ -23,92 +23,92 @@
     <script src="js/modernizr.custom.js"></script>
 
     <script>
-        function detectarOrientacao(){
-            //não tem suporte no IE antigo
-            /*console.log('orientação');
-            if(window.matchMedia("(orientation:portrait)").matches ){
-                console.log("PORTRAIT - retrato");
-            }
-            if(window.matchMedia("(orientation:landscape)").matches){
-                console.log("LANDSCAPE - paisagem");
-            }
-            */
+    function detectarOrientacao(){
+        //não tem suporte no IE antigo
+        /*console.log('orientação');
+        if(window.matchMedia("(orientation:portrait)").matches ){
+            console.log("PORTRAIT - retrato");
         }
-        function detectarDimensoes(elemento){
-            console.log("dimensões do elemento");
-            console.log( elemento.width() + "x" + elemento.height() );
+        if(window.matchMedia("(orientation:landscape)").matches){
+            console.log("LANDSCAPE - paisagem");
         }
-        function detectarDimensoesComPadding(elemento){
-            console.log("dimensões + padding do elemento");
-            console.log( elemento.innerWidth() + "x" + elemento.innerHeight() );
-        }
-        function detectarDimensoesComBorder(elemento){
-            console.log("dimensões + border do elemento");
-            console.log( elemento.outerWidth() + "x" + elemento.outerHeight() );
-        }
-        function detectarDimensoesComMargin(elemento){
-            console.log("dimensões + margin do elemento");
-            console.log( elemento.outerWidth(true) + "x" + elemento.outerHeight(true) );
-        }
-        function detectarDimensoesBrowser(){
-            console.log('dimensões browser');
-            console.log( $(window).width() + "x" + $(window).height()   );
-        }
-        function getWidthBrowser(){
-            return $(window).width();
-        }
-        function getHeightBrowser(){
-            return $(window).height();
-        }
-        function detectarDimensoesDocumento(){
-            console.log('dimensões documento');
-            console.log($(document).width()  + "x" + $(document).height() );
-        }
-        function detectarDimensoesTela(){
-            //não tem suporte em mobile
-            /*screen.height;
-            screen.width;
-            console.log('dimensões tela');
-            console.log(screen.width + "x" + screen.height  );
-            */
-        }
+        */
+    }
+    function detectarDimensoes(elemento){
+        console.log("dimensões do elemento");
+        console.log( elemento.width() + "x" + elemento.height() );
+    }
+    function detectarDimensoesComPadding(elemento){
+        console.log("dimensões + padding do elemento");
+        console.log( elemento.innerWidth() + "x" + elemento.innerHeight() );
+    }
+    function detectarDimensoesComBorder(elemento){
+        console.log("dimensões + border do elemento");
+        console.log( elemento.outerWidth() + "x" + elemento.outerHeight() );
+    }
+    function detectarDimensoesComMargin(elemento){
+        console.log("dimensões + margin do elemento");
+        console.log( elemento.outerWidth(true) + "x" + elemento.outerHeight(true) );
+    }
+    function detectarDimensoesBrowser(){
+        console.log('dimensões browser');
+        console.log( $(window).width() + "x" + $(window).height()   );
+    }
+    function getWidthBrowser(){
+        return $(window).width();
+    }
+    function getHeightBrowser(){
+        return $(window).height();
+    }
+    function detectarDimensoesDocumento(){
+        console.log('dimensões documento');
+        console.log($(document).width()  + "x" + $(document).height() );
+    }
+    function detectarDimensoesTela(){
+        //não tem suporte em mobile
+        /*screen.height;
+        screen.width;
+        console.log('dimensões tela');
+        console.log(screen.width + "x" + screen.height  );
+        */
+    }
 
-        function ajustarDimensoesPlaca(){
-            $("#placaVirtual").height(getHeightBrowser());
+    function ajustarDimensoesPlaca(){
+        $("#placaVirtual").height(getHeightBrowser());
+    }
+    function loadPlacaVirtual(){
+        if ($('html').hasClass('cssanimations' )) {
+            console.log("Aceita cssanimation");
+            $("#placaVirtual").load("placaVirtual.html");
+        } else {
+            console.log("Não aceita cssanimation");
+            $("#placaVirtual").removeClass('carregando');
+            $("#placaVirtual").addClass('sem-suporte');
+            $("#placaVirtual").load("semSuporte.html");
         }
-        function loadPlacaVirtual(){
-            ajustarDimensoesPlaca();
-            if ($('html').hasClass('cssanimations' )) {
-                console.log("Aceita cssanimation");
-                $("#placaVirtual").load("placaVirtual.html");
-            } else {
-                console.log("Não aceita cssanimation");
-                 $("#placaVirtual").load("semSuporte.html");
-            }
-        }
+    }
 
     $(document).ready(function(){
         console.log("ready"); 
+        ajustarDimensoesPlaca();
         loadPlacaVirtual();
         $(window).on({
-                resize: function(){
-                    ajustarDimensoesPlaca();
-                    if($('#placaVirtual').hasClass('sucesso'))
-                        resizePlaca();
-                },
-                orientationchange: function(){
-                    ajustarDimensoesPlaca();
-                    if($('#placaVirtual').hasClass('sucesso'))
-                        resizePlaca();
-
-                },
-                scroll: function(){
-                    if($('#placaVirtual').hasClass('sucesso')){
-                        console.log('scroll');
-                        pause();
-                    }
-
+            resize: function(){
+                ajustarDimensoesPlaca();
+                if($('#placaVirtual').hasClass('sucesso'))
+                    resizePlaca();
+            },
+            orientationchange: function(){
+                ajustarDimensoesPlaca();
+                if($('#placaVirtual').hasClass('sucesso'))
+                    resizePlaca();
+            },
+            scroll: function(){
+                if($('#placaVirtual').hasClass('sucesso')){
+                    console.log('scroll');
+                    pause();
                 }
+            }
         });
     }); 
     </script>
@@ -122,13 +122,12 @@
             <span></span>
         </a>
 
-
         <div id="main">
-            <section id="placaVirtual">
+            <section id="placaVirtual" class="carregando">
                 <h1>calma</h1>
                 <h3>só mais um minuto...</h3>
             </section>
-            <div class="header">
+            <div id="containerPrincipal" class=" header">
                 <h1 id="tituloTeste">Page Title</h1>
                 <h2>A subtitle for your page goes here</h2>
             </div>
@@ -184,10 +183,6 @@
         </div>
 
     </div>
-
-
-
-
 
     <script src="js/side-menu.js"></script>                      
 </body>
