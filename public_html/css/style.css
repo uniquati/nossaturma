@@ -72,87 +72,94 @@ PLACA VIRTUAL
 /*
 CONTAINER
 */
+.container{
+    background: white;
+}
+.container.secundario{
+    background: rgb(20,9,88);
+}
 .box {
     padding: 30px 0;
-    background: white;
+    margin:0 auto;
+    max-width: 1024px;
 }
 .l-box{
     padding: 30px 30px;
-    background: white;
+    margin:0 auto;
+    max-width: 1024px;
 }
-.box.secundario, .l-box.secundario{
-    background: rgb(20,9,88);
+.margem{
+    margin-left:30px !important;
+    margin-right:30px !important;
 }
+
 /*
 TIPOLOGIA
 */
-.margem{
-    margin: 0 30px !important;
-}
-h1.primario{
+h1.titulo{
     font-family: bebasneueBold;
     font-size: 50px;
     font-weight: normal;
     color: rgb(20,9,88);
     margin:0;
 }
-h2.primario{
+h2.titulo{
     font-family: bebasneueBold;
     font-size: 35px;
     font-weight: normal;
     color: rgb(20,9,88);
     margin:0;
 }
-h3.primario{
+h3.titulo{
     font-family: bebasneueBold;
     font-size: 21px;
     font-weight: normal;
     color: rgb(20,9,88);
     margin:0;
 }
-h4.primario{
+h4.titulo{
     font-family: bebasneueBold;
     font-size: 14px;
     font-weight: normal;
     color: rgb(20,9,88);
     margin:0;
 }
-h5.primario{
+h5.titulo{
     font-family: bebasneue;
     font-size: 12px;
     font-weight: normal;
     color: rgb(20,9,88);
     margin:0;
 }
-h1.secundario{
+.container.secundario h1.titulo{
     font-family: bebasneueBold;
     font-size: 50px;
     font-weight: normal;
     color:  white;
     margin:0;
 }
-h2.secundario{
+.container.secundario h2.titulo{
     font-family: bebasneueBold;
     font-size: 35px;
     font-weight: normal;
     color:  white;
     margin:0;
 }
-h3.secundario{
+.container.secundario h3.titulo{
     font-family: bebasneueBold;
     font-size: 21px;
     font-weight: normal;
     color:  white;
     margin:0;
 }
-h4.secundario{
+.container.secundario h4.titulo{
     font-family: bebasneueBold;
     font-size: 14px;
     font-weight: normal;
     color:  white;
     margin:0;
 }
-h5.secundario{
+.container.secundario h5.titulo{
     font-family: bebasneue;
     font-size: 12px;
     font-weight: normal;
@@ -165,11 +172,9 @@ h5.secundario{
     font-size: 21px;
 }
 .texto.primario{
-    font-family: corbeli;
     color:rgb(20,9,88);
 }
-.texto.secundario{
-    font-family: corbeli;
+.container.secundario .texto.primario{
     color:white;
 }
 .texto.small{
@@ -187,10 +192,23 @@ h5.secundario{
     .l-box{
         padding: 60px 60px;
     }
-    /*
-    TIPOLOGIA
-    */
     .margem{
-        margin: 0 60px !important;
+        margin-left:60px !important;
+        margin-right:60px !important;
+    }
+    
+} 
+/*64em  = 1024px*/
+@media screen and (min-width : 64em){
+    .container{
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+    .l-box{
+        padding: 60px 0px;
+    }
+    .margem{
+        margin-left:0px !important;
+        margin-right:0px !important;
     }
 } 
