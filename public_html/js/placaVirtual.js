@@ -5,211 +5,97 @@ var ordem = new Array();
             estrutura[0]={
                     nome:"Ádila",
                     sobrenome:"Gabrielly",
-                    foto:"imagem1.jpg",
-                    tela:"right-top",
-                    linhas:"linha-horario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:0,
-                    linha4:0
+                    foto:"adila.jpg"
             };
             estrutura[1]={
                     nome:"Alison",
                     sobrenome:"Jhonas",
-                    foto:"imagem2.jpg",
-                    tela:"right-bottom",
-                    linhas:"linha-antihorario",
-                    linha1:1,
-                    linha2:1,
-                    linha3:0,
-                    linha4:0
+                    foto:"alison.jpg"
             };
             estrutura[2]={
                     nome:"Alyne",
                     sobrenome:"Érico",
-                    foto:"imagem3.jpg",
-                    tela:"left-top",
-                    linhas:"linha-horario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:1,
-                    linha4:0
+                    foto:"alyne.jpg"
             };
             estrutura[3]={
                     nome:"André",
                     sobrenome:"Carvalho",
-                    foto:"imagem4.jpg",
-                    tela:"left-bottom",
-                    linhas:"linha-antihorario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:0,
-                    linha4:1
+                    foto:"andre.jpg"
             };
             estrutura[4]={
                     nome:"Emerson",
                     sobrenome:"Freire",
-                    foto:"imagem1.jpg",
-                    tela:"right-bottom",
-                    linhas:"linha-horario",
-                    linha1:1,
-                    linha2:1,
-                    linha3:1,
-                    linha4:0
+                    foto:"emerson.jpg"
             };
             estrutura[5]={
                     nome:"Esau",
                     sobrenome:"Teodoro",
-                    foto:"imagem2.jpg",
-                    tela:"right-top",
-                    linhas:"linha-antihorario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:1,
-                    linha4:1
+                    foto:"esau.jpg"
             };
             estrutura[6]={
                     nome:"Felipe",
                     sobrenome:"Ramos",
-                    foto:"imagem3.jpg",
-                    tela:"right-top",
-                    linhas:"linha-horario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:0,
-                    linha4:0
+                    foto:"felipe.jpg"
             };
             estrutura[7]={
                     nome:"Fernando",
                     sobrenome:"Carlos",
-                    foto:"imagem4.jpg",
-                    tela:"right-bottom",
-                    linhas:"linha-antihorario",
-                    linha1:1,
-                    linha2:1,
-                    linha3:0,
-                    linha4:0
+                    foto:"fernando.jpg"
             };
             estrutura[8]={
                     nome:"Gilmar",
                     sobrenome:"Andrade",
-                    foto:"imagem1.jpg",
-                    tela:"left-top",
-                    linhas:"linha-horario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:1,
-                    linha4:0
+                    foto:"gilmar.jpg"
             };
             estrutura[9]={
                     nome:"Giovanni",
                     sobrenome:"Begossi",
-                    foto:"imagem2.jpg",
-                    tela:"left-bottom",
-                    linhas:"linha-antihorario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:0,
-                    linha4:1
+                    foto:"giovanni.jpg"
             };
             estrutura[10]={
                     nome:"Iana",
                     sobrenome:"Albuquerque",
-                    foto:"imagem3.jpg",
-                    tela:"right-bottom",
-                    linhas:"linha-horario",
-                    linha1:1,
-                    linha2:1,
-                    linha3:1,
-                    linha4:0
+                    foto:"iana.jpg"
             };
             estrutura[11]={
                     nome:"João Pedro",
                     sobrenome:"Lobo",
-                    foto:"imagem4.jpg",
-                    tela:"right-top",
-                    linhas:"linha-antihorario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:1,
-                    linha4:1
+                    foto:"joaopedro.jpg"
             };
             estrutura[12]={
                     nome:"Juarez",
                     sobrenome:"Augusto",
-                    foto:"imagem1.jpg",
-                    tela:"right-top",
-                    linhas:"linha-horario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:0,
-                    linha4:0
+                    foto:"juarez.jpg"
             };
             estrutura[13]={
                     nome:"Mateus",
                     sobrenome:"Patricio",
-                    foto:"imagem2.jpg",
-                    tela:"right-bottom",
-                    linhas:"linha-antihorario",
-                    linha1:1,
-                    linha2:1,
-                    linha3:0,
-                    linha4:0
+                    foto:"mateus.jpg"
             };
             estrutura[14]={
                     nome:"Mara",
                     sobrenome:"Oliveira",
-                    foto:"imagem3.jpg",
-                    tela:"left-top",
-                    linhas:"linha-horario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:1,
-                    linha4:0
+                    foto:"mara.jpg"
             };
             estrutura[15]={
                     nome:"Rafael",
                     sobrenome:"Ribeiro",
-                    foto:"imagem4.jpg",
-                    tela:"left-bottom",
-                    linhas:"linha-antihorario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:0,
-                    linha4:1
+                    foto:"rafael.jpg"
             };
             estrutura[16]={
                     nome:"Ruan",
                     sobrenome:"Garcia",
-                    foto:"imagem1.jpg",
-                    tela:"right-bottom",
-                    linhas:"linha-horario",
-                    linha1:1,
-                    linha2:1,
-                    linha3:1,
-                    linha4:0
+                    foto:"ruan.jpg"
             };
             estrutura[17]={
                     nome:"Sanderson",
                     sobrenome:"Douglas",
-                    foto:"imagem2.jpg",
-                    tela:"right-top",
-                    linhas:"linha-antihorario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:1,
-                    linha4:1
+                    foto:"sanderson.jpg"
             };
             estrutura[18]={
                     nome:"Wendel",
                     sobrenome:"Américo",
-                    foto:"imagem1.jpg",
-                    tela:"right-top",
-                    linhas:"linha-horario",
-                    linha1:1,
-                    linha2:0,
-                    linha3:0,
-                    linha4:0
+                    foto:"wendel.jpg"
             }; 
                 
             var i = 0;
@@ -246,6 +132,8 @@ var ordem = new Array();
                 diagonal = parseInt(Math.sqrt(innerWidth*innerWidth + innerHeight*innerHeight));
                 console.log(innerWidth+" x "+innerHeight + " diagonal:"+diagonal);
                 
+                var btRestart = $(".fim .btRestart");
+                btRestart.css('margin-top', (innerHeight - btRestart.height())/2+"px" );
                 
                 if(innerWidth>=1280){
                     tamanhoCirculo = 350;
@@ -350,9 +238,9 @@ var ordem = new Array();
                         
                         //reset
                         i=0;
-                        
+                        $('.btRestart').addClass('restart');
                         $('.botoes').slideUp('slow');
-                        //inicia a execução com a tela de restart
+                        //exibe a tela de restart
                         telaRestartSlide();
                         
                        timer.stop();
@@ -395,8 +283,8 @@ var ordem = new Array();
                $(".fim").fadeIn("slow");
             }
             function tooglePlayPause(){
-                
                 if(timer.isActive){
+                    $('.btPlay').addClass('pause');
                     timer.pause();
                     console.log('paused');
                     console.log("faltam: "+timer.remaining);
@@ -404,6 +292,7 @@ var ordem = new Array();
                     
                 } 
                 else{
+                    $('.btPlay').removeClass('pause');
                     console.log('running');
                     timer.play();
                     
@@ -418,6 +307,7 @@ var ordem = new Array();
             
             function play(){
                 if(!timer.isActive){
+                    $('.btPlay').removeClass('pause');
                     console.log('running');
                     timer.play();
                     $('#btPlay').removeClass('paused');
@@ -433,6 +323,7 @@ var ordem = new Array();
             
             function pause(){
                 if(timer.isActive){
+                    $('.btPlay').addClass('pause');
                     timer.pause();
                     console.log('paused');
                     console.log("faltam: "+timer.remaining);
