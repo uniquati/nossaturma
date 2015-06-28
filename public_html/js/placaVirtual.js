@@ -420,12 +420,14 @@ var ordem = new Array();
                 if(!timer.isActive){
                     console.log('running');
                     timer.play();
-                    $('#btPlay').addClass('paused');
-                    $('.barra').addClass('paused');
-                    $('.brasao').addClass('paused');
-                    $('.tela').addClass('paused');
-                    $('.circulo').addClass('paused');
-                    $('.legenda').addClass('paused');
+                    $('#btPlay').removeClass('paused');
+                    $('.barra').removeClass('paused');
+                    $('.brasao').removeClass('paused');
+                    $('.tela').removeClass('paused');
+                    $('.circulo').removeClass('paused');
+                    $('.legenda').removeClass('paused');
+                    
+                    
                 }
             }
             
@@ -434,12 +436,13 @@ var ordem = new Array();
                     timer.pause();
                     console.log('paused');
                     console.log("faltam: "+timer.remaining);
-                    $('#btPlay').removeClass('paused');
-                    $('.barra').removeClass('paused');
-                    $('.brasao').removeClass('paused');
-                    $('.tela').removeClass('paused');
-                    $('.circulo').removeClass('paused');
-                    $('.legenda').removeClass('paused');
+                    $('#btPlay').addClass('paused');
+                    $('.barra').addClass('paused');
+                    $('.brasao').addClass('paused');
+                    $('.tela').addClass('paused');
+                    $('.circulo').addClass('paused');
+                    $('.legenda').addClass('paused');
+                    
                 } 
             }
 
