@@ -86,6 +86,9 @@ CONTAINER
 /*
 TIPOLOGIA
 */
+.margem{
+    margin: 0 30px !important;
+}
 h1.primario{
     font-family: bebasneueBold;
     font-size: 50px;
@@ -172,3 +175,22 @@ h5.secundario{
 .texto.small{
     font-size: 14px;
 }
+
+/*48em = 768px*/
+@media screen and (min-width : 48em){
+    /*
+    CONTAINER
+    */
+    .box{
+        padding: 60px 0;
+    }
+    .l-box{
+        padding: 60px 60px;
+    }
+    /*
+    TIPOLOGIA
+    */
+    .margem{
+        margin: 0 60px !important;
+    }
+} 
