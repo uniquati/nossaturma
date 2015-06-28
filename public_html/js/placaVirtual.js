@@ -371,8 +371,24 @@ var ordem = new Array();
                timer = $.timer(function() {
                     
                     console.log('timer:'+i);
-                    proximoSlide();
-                    //timer.stop();
+                    if(i>=19){
+                        $('#t'+(i-1)).removeClass("animate");
+                        $('#t'+(i-1)+' .linhas').removeClass("animate");
+                        $('#t'+(i-1)+' .circulo').removeClass("animate");
+                        $('#t'+(i-1)+' .legenda').removeClass("animate");
+                        
+                        //reset
+                        i=0;
+                        $(".brasao").removeClass("animate");
+                        //inicia a execução com a tela de restart
+                        telaRestartSlide();
+                        
+                       timer.stop();
+                       console.log('timer stop');
+                    }else{
+                       proximoSlide(); 
+                    }
+                    
                 });
 
                 timer.set({ time : 10000, autostart : false });
@@ -381,13 +397,19 @@ var ordem = new Array();
                
             }
             function proximoSlide(){
-               console.log("Rodar elemento "+ordem[i] +' '+ estrutura[ordem[i]].legenda +  " i="+i );
+               console.log("Rodar elemento "+ordem[i] +' '+ estrutura[ordem[i]].nome +  " i="+i );
                
                $('#t'+i).addClass("animate");
                $('#t'+i+' .linhas').addClass("animate");
                $('#t'+i+' .circulo').addClass("animate");
                $('#t'+i+' .legenda').addClass("animate");
                
+               if(i!=0){
+                    $('#t'+(i-1)).removeClass("animate");
+                    $('#t'+(i-1)+' .linhas').removeClass("animate");
+                    $('#t'+(i-1)+' .circulo').removeClass("animate");
+                    $('#t'+(i-1)+' .legenda').removeClass("animate");
+               }
                i++;
             }
             function telaRestartSlide(){
