@@ -101,6 +101,12 @@
                     if($('#placaVirtual').hasClass('sucesso'))
                         resizePlaca();
 
+                },
+                scroll: function(){
+                    if($('#placaVirtual').hasClass('sucesso')){
+                        console.log('scroll');
+                    }
+
                 }
         });
     }); 

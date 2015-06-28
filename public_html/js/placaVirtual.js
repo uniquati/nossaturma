@@ -417,11 +417,30 @@ var ordem = new Array();
             }
             
             function play(){
-               
+                if(!timer.isActive){
+                    console.log('running');
+                    timer.play();
+                    $('#btPlay').addClass('paused');
+                    $('.barra').addClass('paused');
+                    $('.brasao').addClass('paused');
+                    $('.tela').addClass('paused');
+                    $('.circulo').addClass('paused');
+                    $('.legenda').addClass('paused');
+                }
             }
             
             function pause(){
-                
+                if(timer.isActive){
+                    timer.pause();
+                    console.log('paused');
+                    console.log("faltam: "+timer.remaining);
+                    $('#btPlay').removeClass('paused');
+                    $('.barra').removeClass('paused');
+                    $('.brasao').removeClass('paused');
+                    $('.tela').removeClass('paused');
+                    $('.circulo').removeClass('paused');
+                    $('.legenda').removeClass('paused');
+                } 
             }
 
 
