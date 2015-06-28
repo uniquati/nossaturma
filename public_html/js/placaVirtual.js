@@ -350,7 +350,7 @@ var ordem = new Array();
                         
                         //reset
                         i=0;
-                        $(".brasao").removeClass("animate");
+                        
                         $('.botoes').slideUp('slow');
                         //inicia a execução com a tela de restart
                         telaRestartSlide();
@@ -358,6 +358,7 @@ var ordem = new Array();
                        timer.stop();
                        console.log('timer stop');
                     }else{
+                       $(".brasao").removeClass("animate");
                        proximoSlide(); 
                     }
                     
