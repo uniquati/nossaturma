@@ -180,7 +180,17 @@ h5.titulo{
 .texto.small{
     font-size: 14px;
 }
-
+/*
+LINKS
+*/
+a:link, a:active, a:visited{
+  color: rgb(92, 126, 230); 
+  text-decoration: underline;
+}
+a:hover{
+  color: rgb(92, 126, 230); 
+  text-decoration: underline;
+}
 /*48em = 768px*/
 @media screen and (min-width : 48em){
     /*
@@ -200,6 +210,9 @@ h5.titulo{
 } 
 /*64em  = 1024px*/
 @media screen and (min-width : 64em){
+    /*
+    CONTAINER
+    */
     .container{
         padding-left: 60px;
         padding-right: 60px;
@@ -210,5 +223,16 @@ h5.titulo{
     .margem{
         margin-left:0px !important;
         margin-right:0px !important;
+    }
+    /*
+    LINKS
+    */
+    a:link, a:active, a:visited{
+        text-decoration: none;
+        color: rgb(92, 126, 230); 
+    }
+    a:hover{
+        color: rgb(92, 126, 230); 
+        text-decoration: underline;
     }
 } 
