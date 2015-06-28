@@ -3,7 +3,8 @@ var ordem = new Array();
             
             var estrutura = new Array();
             estrutura[0]={
-                    legenda:"Ádila Gabrielly",
+                    nome:"Ádila",
+                    sobrenome:"Gabrielly",
                     foto:"imagem1.jpg",
                     tela:"right-top",
                     linhas:"linha-horario",
@@ -11,9 +12,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:0,
                     linha4:0
-                };
+            };
             estrutura[1]={
-                    legenda:"Alison Jhonas",
+                    nome:"Alison",
+                    sobrenome:"Jhonas",
                     foto:"imagem2.jpg",
                     tela:"right-bottom",
                     linhas:"linha-antihorario",
@@ -21,9 +23,10 @@ var ordem = new Array();
                     linha2:1,
                     linha3:0,
                     linha4:0
-                };
+            };
             estrutura[2]={
-                    legenda:"Alyne Érico",
+                    nome:"Alyne",
+                    sobrenome:"Érico",
                     foto:"imagem3.jpg",
                     tela:"left-top",
                     linhas:"linha-horario",
@@ -31,9 +34,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:1,
                     linha4:0
-                };
+            };
             estrutura[3]={
-                    legenda:"André Carvalho",
+                    nome:"André",
+                    sobrenome:"Carvalho",
                     foto:"imagem4.jpg",
                     tela:"left-bottom",
                     linhas:"linha-antihorario",
@@ -41,9 +45,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:0,
                     linha4:1
-                };
+            };
             estrutura[4]={
-                    legenda:"Emerson Freire",
+                    nome:"Emerson",
+                    sobrenome:"Freire",
                     foto:"imagem1.jpg",
                     tela:"right-bottom",
                     linhas:"linha-horario",
@@ -51,9 +56,10 @@ var ordem = new Array();
                     linha2:1,
                     linha3:1,
                     linha4:0
-                };
+            };
             estrutura[5]={
-                    legenda:"Esau Teodoro",
+                    nome:"Esau",
+                    sobrenome:"Teodoro",
                     foto:"imagem2.jpg",
                     tela:"right-top",
                     linhas:"linha-antihorario",
@@ -61,11 +67,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:1,
                     linha4:1
-                };
-                
-           
-           estrutura[6]={
-                    legenda:"Felipe Oliveira",
+            };
+            estrutura[6]={
+                    nome:"Felipe",
+                    sobrenome:"Ramos",
                     foto:"imagem3.jpg",
                     tela:"right-top",
                     linhas:"linha-horario",
@@ -73,9 +78,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:0,
                     linha4:0
-                };
+            };
             estrutura[7]={
-                    legenda:"Fernando Carlos",
+                    nome:"Fernando",
+                    sobrenome:"Carlos",
                     foto:"imagem4.jpg",
                     tela:"right-bottom",
                     linhas:"linha-antihorario",
@@ -83,9 +89,10 @@ var ordem = new Array();
                     linha2:1,
                     linha3:0,
                     linha4:0
-                };
+            };
             estrutura[8]={
-                    legenda:"Gilmar Vitor",
+                    nome:"Gilmar",
+                    sobrenome:"Andrade",
                     foto:"imagem1.jpg",
                     tela:"left-top",
                     linhas:"linha-horario",
@@ -93,9 +100,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:1,
                     linha4:0
-                };
+            };
             estrutura[9]={
-                    legenda:"Giovanni Begossi",
+                    nome:"Giovanni",
+                    sobrenome:"Begossi",
                     foto:"imagem2.jpg",
                     tela:"left-bottom",
                     linhas:"linha-antihorario",
@@ -103,9 +111,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:0,
                     linha4:1
-                };
+            };
             estrutura[10]={
-                    legenda:"Iana Albuquerque",
+                    nome:"Iana",
+                    sobrenome:"Albuquerque",
                     foto:"imagem3.jpg",
                     tela:"right-bottom",
                     linhas:"linha-horario",
@@ -113,9 +122,10 @@ var ordem = new Array();
                     linha2:1,
                     linha3:1,
                     linha4:0
-                };
+            };
             estrutura[11]={
-                    legenda:"João Pedro",
+                    nome:"João Pedro",
+                    sobrenome:"Lobo",
                     foto:"imagem4.jpg",
                     tela:"right-top",
                     linhas:"linha-antihorario",
@@ -123,11 +133,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:1,
                     linha4:1
-                };
-                
-                
-             estrutura[12]={
-                    legenda:"Juarez Augusto",
+            };
+            estrutura[12]={
+                    nome:"Juarez",
+                    sobrenome:"Augusto",
                     foto:"imagem1.jpg",
                     tela:"right-top",
                     linhas:"linha-horario",
@@ -135,9 +144,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:0,
                     linha4:0
-                };
+            };
             estrutura[13]={
-                    legenda:"Matheus Patrício",
+                    nome:"Mateus",
+                    sobrenome:"Patricio",
                     foto:"imagem2.jpg",
                     tela:"right-bottom",
                     linhas:"linha-antihorario",
@@ -145,9 +155,10 @@ var ordem = new Array();
                     linha2:1,
                     linha3:0,
                     linha4:0
-                };
+            };
             estrutura[14]={
-                    legenda:"Mara Cristiane",
+                    nome:"Mara",
+                    sobrenome:"Oliveira",
                     foto:"imagem3.jpg",
                     tela:"left-top",
                     linhas:"linha-horario",
@@ -155,9 +166,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:1,
                     linha4:0
-                };
+            };
             estrutura[15]={
-                    legenda:"Rafael Ribeiro",
+                    nome:"Rafael",
+                    sobrenome:"Ribeiro",
                     foto:"imagem4.jpg",
                     tela:"left-bottom",
                     linhas:"linha-antihorario",
@@ -165,9 +177,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:0,
                     linha4:1
-                };
+            };
             estrutura[16]={
-                    legenda:"Ruan Garcia",
+                    nome:"Ruan",
+                    sobrenome:"Garcia",
                     foto:"imagem1.jpg",
                     tela:"right-bottom",
                     linhas:"linha-horario",
@@ -175,9 +188,10 @@ var ordem = new Array();
                     linha2:1,
                     linha3:1,
                     linha4:0
-                };
+            };
             estrutura[17]={
-                    legenda:"Sanderson Douglas",
+                    nome:"Sanderson",
+                    sobrenome:"Douglas",
                     foto:"imagem2.jpg",
                     tela:"right-top",
                     linhas:"linha-antihorario",
@@ -185,13 +199,10 @@ var ordem = new Array();
                     linha2:0,
                     linha3:1,
                     linha4:1
-                };
-               
-    
-      
-                
-             estrutura[18]={
-                    legenda:"Wendel Américo",
+            };
+            estrutura[18]={
+                    nome:"Wendel",
+                    sobrenome:"Américo",
                     foto:"imagem1.jpg",
                     tela:"right-top",
                     linhas:"linha-horario",
@@ -199,7 +210,7 @@ var ordem = new Array();
                     linha2:0,
                     linha3:0,
                     linha4:0
-                }; 
+            }; 
                 
             var i = 0;
             var tempo = 10000;
@@ -216,15 +227,13 @@ var ordem = new Array();
                resizePlaca();
               
                ordem = shuffle(ordem);
+               indice=0;
+               $("#placaVirtual").children(".tela").each(function(){
+                    $(this).find('.foto').css("background-image", "url('media/"+estrutura[ordem[indice]].foto+"')");
+                    $(this).find('.legenda p').html('<strong>'+estrutura[ordem[indice]].nome+'</strong> '+estrutura[ordem[indice]].sobrenome);
+                    indice++;
+               });
                
-               for(var indice = 0; indice<19; indice++){
-                    estrutura[ordem[indice]].legenda;
-                    estrutura[ordem[indice]].foto;
-                    var foto = $('#t'+i+' .foto');
-                    foto.css("background", "url('imagens/"+estrutura[ordem[indice]].foto+"')");
-                    var legenda = $('#t'+i+' .legenda strong');
-                    legenda.html(estrutura[ordem[indice]].legenda);
-               }
               
                /*
                 * trecho ainda não convertido para jQuery... 
@@ -351,22 +360,18 @@ var ordem = new Array();
                console.log('RESTART');
                console.log(ordem.join(" "));
                
-               var fim = $(".fim");
-               //fim.removeClass("animate");
                $(".fim").fadeOut("slow");
                
-               var barra = $(".barra");
-               barra.addClass("animate");
+               $(".barra").addClass("animate");
                
-               var brasao = $(".brasao");
-               brasao.addClass("animate");
+               $(".brasao").addClass("animate");
                
                
                //intervaloBrasao = window.setTimeout(function(){ proximoSlide();}, tempo);
                timer = $.timer(function() {
                     
-                    console.log('This message was sent by a timer:');
-                    //proximoSlide();
+                    console.log('timer:'+i);
+                    proximoSlide();
                     //timer.stop();
                 });
 
@@ -377,99 +382,16 @@ var ordem = new Array();
             }
             function proximoSlide(){
                console.log("Rodar elemento "+ordem[i] +' '+ estrutura[ordem[i]].legenda +  " i="+i );
-               var brasao = document.querySelectorAll(".brasao");
-               brasao[0].classList.remove("animate");
                
-               var tela = document.querySelectorAll(".tela");
-               var circulo = document.querySelectorAll(".circulo");
-               var foto = document.querySelectorAll(".foto");
-               var legenda = document.querySelectorAll(".legenda");
-               var strong = document.querySelectorAll(".legenda strong");
-               var linhas = document.querySelectorAll(".linhas");
-               var linha1 = document.querySelectorAll(".a1");
-               var linha2 = document.querySelectorAll(".a2");
-               var linha3 = document.querySelectorAll(".a3");
-               var linha4 = document.querySelectorAll(".a4");
-               
-               var a,b, indiceAnterior, indiceAtual = ordem[i], proximoIndice;
-               if(i%2 == 0){
-                   a=0;
-                   b=1;
-               }else{
-                   b=0;
-                   a=1;
-               }
-               if(i==0){
-                   indiceAnterior = ordem[ordem.length - 1];
-               }else{
-                   indiceAnterior = ordem[i - 1];
-               }
-               if(i>=ordem.length-1){
-                   proximoIndice = ordem[0];
-               }else{
-                   proximoIndice = ordem[i + 1];
-               }
-               
-               
-               tela[a].classList.remove(estrutura[indiceAnterior].tela);
-               tela[a].classList.remove("animate");
-               tela[a].classList.add(estrutura[proximoIndice].tela);
-               //tela[b].classList.add(estrutura[indiceAtual].tela);
-               tela[b].classList.add("animate");
-               
-               circulo[a].classList.remove("animate");
-               circulo[b].classList.add("animate");
-               
-               foto[a].style.backgroundImage = "url('imagens/"+estrutura[proximoIndice].foto+"')";
-               //foto[b].style.backgroundImage = "url('../imagens/"+estrutura[indiceAtual].foto+"')";
-               
-               legenda[a].classList.remove("animate");
-               legenda[b].classList.add("animate");
-               
-               strong[a].innerHTML = estrutura[proximoIndice].legenda;
-               //strong[b].innerHTML = estrutura[indiceAtual].legenda;
-               
-              
-               linhas[a].classList.remove(estrutura[indiceAnterior].linhas);
-               linhas[a].classList.remove("animate");
-               linhas[a].classList.add(estrutura[proximoIndice].linhas);
-               //linhas[b].classList.add(estrutura[indiceAtual].linhas);
-               linhas[b].classList.add("animate");
-               
-               if(estrutura[proximoIndice].linha1 == 1){
-                  linha1[a].style.display = "block"; 
-               }else{
-                  linha1[a].style.display = "none"; 
-               }
-               
-               if(estrutura[proximoIndice].linha2 == 1){
-                  linha2[a].style.display = "block"; 
-               }else{
-                  linha2[a].style.display = "none"; 
-               }
-              
-               if(estrutura[proximoIndice].linha3 == 1){
-                  linha3[a].style.display = "block";
-               }else{
-                  linha3[a].style.display = "none";  
-               }
-               
-               if(estrutura[proximoIndice].linha4 == 1){
-                  linha4[a].style.display = "block";
-               }else{
-                  linha4[a].style.display = "none"; 
-               }
-               
+               $('#t'+i).addClass("animate");
+               $('#t'+i+' .linhas').addClass("animate");
+               $('#t'+i+' .circulo').addClass("animate");
+               $('#t'+i+' .legenda').addClass("animate");
                
                i++;
-               if(i >= ordem.length){ 
-                   i=0;
-                   intervaloEntreSlides = window.setTimeout(function(){ telaRestartSlide();}, tempo);
-               }else{
-                   intervaloEntreSlides = window.setTimeout(function(){ proximoSlide();}, tempo);
-                } 
             }
             function telaRestartSlide(){
+               console.log("tela restartSlide");
                $(".tela").removeClass("animate");
                $(".circulo").removeClass("animate");
                $(".legenda").removeClass("animate");

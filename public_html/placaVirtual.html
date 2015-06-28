@@ -98,22 +98,16 @@
     
     @keyframes brasao{
         0%{
-            background-color: rgba(30,30,30, 1);
-             opacity:1;
+           
+             opacity:0;
         }
-        10%{
-            background-color: rgba(30,30,30, 1);
+        20%{
              opacity:1;
-        }
-        50%{
-           background-color: rgba(30,30,30, 0); 
         }
         80%{
-            background-color: rgba(30,30,30, 0);
             opacity:1;
         }
         100%{
-            background-color: rgba(30,30,30, 0);
             opacity:0;
         }
 
@@ -194,7 +188,6 @@
         animation-name: giroLinhaAntihorario;
     }
     .linha{
-        display: none;
         position: absolute;
         width: 13px;
         //height: 848px;/* Math.sqrt(600*600 + 600*600);*/
@@ -221,6 +214,7 @@
     }
     
     .circulo{
+        //background: blue;
         position: absolute;
         //width: 352px;/* 176*2 para permitir a expansão da legenda, e fazer girar como centro na foto*/
         //height: 176px;
@@ -247,9 +241,10 @@
         position: absolute;
         left: 20%;
         bottom: -5%;
-        height: 30px;
-        padding-top: 20px;
+        //height: 30px;
+        padding-top: 15px;
         overflow: hidden;
+       // background: purple;
     }
     .legenda.animate{
         transform-origin: left top; 
@@ -261,24 +256,41 @@
     .legenda span{
         position: absolute;
         display: block;
-        background: #0078e7;
+        background: rgb(20,9,88);
         width: 15px;
         height: 15px;
         transform: skew(45deg);
         left:-7px;
         top:0;
     }
-    .legenda strong{
-        font-size: 16px;
-        font-family: sans-serif;
+    .legenda p{
+        font-size: 20px;
+        font-family: bebasneueBook;
+        letter-spacing: 0.05em;
         color:white;
-        font-weight: bold;
+        font-weight: normal;
         text-align: left;
-        background: #0078e7;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 7px;
-        padding-bottom: 7px;
+        background: rgb(20,9,88);;
+        padding:7px 10px;
+        //padding-left: 10px;
+        //padding-right: 10px;
+        //padding-top: 7px;
+        //padding-bottom: 7px;
+        margin: 0;
+    }
+     .legenda p strong{
+         
+        font-size: 20px;
+        font-family: bebasneueBold;
+        color:white;
+        font-weight: normal;
+        text-align: left;
+        //background: green;
+        //padding-left: 10px;
+        //padding-right: 10px;
+        //padding-top: 7px;
+        //padding-bottom: 7px;
+        margin: 0;
     }
     .botoes{
         display: none;
@@ -314,7 +326,7 @@
         position: absolute;
         top:0;
         left:0;
-        background: rgba(30,30,30, 1) url('imagens/brasao.png') center center no-repeat;
+        background: url('imagens/brasao.png') center center no-repeat;
         background-size: 40%;
         opacity: 0;
     }
@@ -352,6 +364,13 @@
 
     <div class="raios">
     </div>
+    <div class="brasao">
+        <h1>brasão aqui</h1>
+    </div>
+    <div class="fim" >
+        dê play!
+        <div onclick="restart();" class="btRestart">clicando aqui</div>
+    </div>
 
     <div id='t0' class="tela right-top" >
         <div class="linhas linha-horario">
@@ -362,7 +381,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t1' class="tela right-bottom" >
@@ -374,7 +393,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t2' class="tela left-top" >
@@ -386,7 +405,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t3' class="tela left-bottom" >
@@ -398,7 +417,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t4' class="tela right-bottom" >
@@ -410,7 +429,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t5' class="tela right-top" >
@@ -422,7 +441,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t6' class="tela right-top" >
@@ -434,7 +453,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t7' class="tela right-bottom" >
@@ -446,7 +465,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t8' class="tela left-top" >
@@ -458,7 +477,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t9' class="tela left-bottom" >
@@ -470,7 +489,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t10' class="tela right-bottom" >
@@ -482,7 +501,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t11' class="tela right-top" >
@@ -494,7 +513,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t12' class="tela right-top" >
@@ -506,7 +525,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t13' class="tela right-bottom" >
@@ -518,7 +537,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='14' class="tela left-top" >
@@ -530,7 +549,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t15' class="tela left-bottom" >
@@ -542,7 +561,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t16' class="tela right-bottom" >
@@ -554,7 +573,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t17' class="tela right-top" >
@@ -566,7 +585,7 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
     <div id='t18' class="tela right-top" >
@@ -578,18 +597,15 @@
         </div>
         <div class="circulo">
             <div class="foto"></div>
-            <div class="legenda"><span></span><strong></strong></div>
+            <div class="legenda"><span></span><p></p></div>
         </div>
     </div>
 
     <div class="botoes">
         <button onclick="tooglePlayPause();" >play/pause</button>
     </div>
-<div class="fim" >
-    dê play!
-    <div onclick="restart();" class="btRestart">clicando aqui</div>
-</div>
-    <div class="brasao"></div>
+  
+    
     
     <div class="barraProgresso"><div class="barra"></div></div>
     
