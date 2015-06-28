@@ -234,34 +234,6 @@ var ordem = new Array();
                     indice++;
                });
                
-              
-               /*
-                * trecho ainda não convertido para jQuery... 
-                if(estrutura[ordem[0]].linha1 == 1){
-                  linha1[1].style.display = "block"; 
-               }else{
-                  linha1[1].style.display = "none"; 
-               }
-               
-               if(estrutura[ordem[0]].linha2 == 1){
-                  linha2[1].style.display = "block"; 
-               }else{
-                  linha2[1].style.display = "none"; 
-               }
-              
-               if(estrutura[ordem[0]].linha3 == 1){
-                  linha3[1].style.display = "block";
-               }else{
-                  linha3[1].style.display = "none";  
-               }
-               
-               if(estrutura[ordem[0]].linha4 == 1){
-                  linha4[1].style.display = "block";
-               }else{
-                  linha4[1].style.display = "none"; 
-               }
-               */
-              
               //inicia a execução com a tela de restart
               telaRestartSlide();
                
@@ -355,9 +327,9 @@ var ordem = new Array();
                 for(var j, x, i = v.length; i; j = parseInt(Math.random() *i), x = v[--i], v[i]=v[j], v[j]=x );
                 return v;
             }
-            
             function restart(){
                console.log('RESTART');
+               $('.botoes').slideDown('slow');
                console.log(ordem.join(" "));
                
                $(".fim").fadeOut("slow");
@@ -367,7 +339,6 @@ var ordem = new Array();
                $(".brasao").addClass("animate");
                
                
-               //intervaloBrasao = window.setTimeout(function(){ proximoSlide();}, tempo);
                timer = $.timer(function() {
                     
                     console.log('timer:'+i);
@@ -380,6 +351,7 @@ var ordem = new Array();
                         //reset
                         i=0;
                         $(".brasao").removeClass("animate");
+                        $('.botoes').slideUp('slow');
                         //inicia a execução com a tela de restart
                         telaRestartSlide();
                         
@@ -391,7 +363,7 @@ var ordem = new Array();
                     
                 });
 
-                timer.set({ time : 10000, autostart : false });
+                timer.set({ time : tempo, autostart : false });
                 
                 timer.play();
                
@@ -419,12 +391,36 @@ var ordem = new Array();
                $(".legenda").removeClass("animate");
                $(".linhas").removeClass("animate");
                $(".barra").removeClass("animate");
-               //$(".fim").addClass("animate");
                $(".fim").fadeIn("slow");
             }
-            
             function tooglePlayPause(){
-                console.log('play/pause');
+                
+                if(timer.isActive){
+                    timer.pause();
+                    console.log('paused');
+                    console.log("faltam: "+timer.remaining);
+                    
+                    
+                } 
+                else{
+                    console.log('running');
+                    timer.play();
+                    
+                }
+                $('#btPlay').toggleClass('paused');
+                $('.barra').toggleClass('paused');
+                $('.brasao').toggleClass('paused');
+                $('.tela').toggleClass('paused');
+                $('.circulo').toggleClass('paused');
+                $('.legenda').toggleClass('paused');
+            }
+            
+            function play(){
+               
+            }
+            
+            function pause(){
+                
             }
 
 

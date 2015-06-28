@@ -167,6 +167,10 @@
        animation-duration: 10s;
        animation-timing-function: cubic-bezier(.02, .94, .94, .02);
        animation-iteration-count: 1;
+       animation-play-state: running;
+    }
+    .tela.paused{
+       animation-play-state: paused;
     }
     .linhas{
         visibility: hidden;
@@ -227,7 +231,10 @@
         animation-duration: 10s;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
-        /*animation-play-state: paused;*/   
+        animation-play-state: running;
+    }
+    .circulo.paused{
+        animation-play-state: paused;
     }
     .foto{
         position: absolute;
@@ -252,6 +259,10 @@
         animation-duration: 10s;
         animation-timing-function: linear;
         animation-iteration-count: infinite;
+        animation-play-state: running;
+    }
+    .legenda.paused{
+        animation-play-state: paused;
     }
     .legenda span{
         position: absolute;
@@ -296,7 +307,14 @@
         display: none;
         z-index:100000;
         position: absolute;
-        top:0;
+        bottom:0;
+    }
+    .btPlay{
+        
+        
+    }
+    .btPlay.paused{
+        
     }
     .barraProgresso{
         background: rgba(0,0,0,.4);
@@ -314,6 +332,10 @@
         animation-duration: 200s;
         animation-fill-mode: backwards;
         animation-timing-function: linear;
+        animation-play-state: running;
+    }
+    .barra.paused{
+        animation-play-state: paused;
     }
     
     
@@ -334,6 +356,10 @@
         animation-name: brasao;
         animation-duration: 10s;
         animation-timing-function: linear;
+        animation-play-state: running;
+    }
+    .brasao.paused{
+        animation-play-state: paused;
     }
     .fim{
         width: 100%;
@@ -566,10 +592,8 @@
     </div>
 
     <div class="botoes">
-        <button onclick="tooglePlayPause();" >play/pause</button>
+        <div class="btPlay" onclick="tooglePlayPause();" >play/pause</div>
     </div>
-  
-    
     
     <div class="barraProgresso"><div class="barra"></div></div>
     
