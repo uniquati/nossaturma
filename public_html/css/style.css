@@ -38,7 +38,9 @@ FONTES
     font-style: normal;
 }
 
-/*PLACA VIRTUAL*/
+/*
+PLACA VIRTUAL
+*/
 .carregando{
     background: #333;
     width: 100%;  
@@ -64,4 +66,109 @@ FONTES
     font-size: 21px;
     font-weight: normal;
     color:white;
+}
+
+
+/*
+CONTAINER
+*/
+.box {
+    padding: 30px 0;
+    background: white;
+}
+.l-box{
+    padding: 30px 30px;
+    background: white;
+}
+.box.secundario, .l-box.secundario{
+    background: rgb(20,9,88);
+}
+/*
+TIPOLOGIA
+*/
+h1.primario{
+    font-family: bebasneueBold;
+    font-size: 50px;
+    font-weight: normal;
+    color: rgb(20,9,88);
+    margin:0;
+}
+h2.primario{
+    font-family: bebasneueBold;
+    font-size: 35px;
+    font-weight: normal;
+    color: rgb(20,9,88);
+    margin:0;
+}
+h3.primario{
+    font-family: bebasneueBold;
+    font-size: 21px;
+    font-weight: normal;
+    color: rgb(20,9,88);
+    margin:0;
+}
+h4.primario{
+    font-family: bebasneueBold;
+    font-size: 14px;
+    font-weight: normal;
+    color: rgb(20,9,88);
+    margin:0;
+}
+h5.primario{
+    font-family: bebasneue;
+    font-size: 12px;
+    font-weight: normal;
+    color: rgb(20,9,88);
+    margin:0;
+}
+h1.secundario{
+    font-family: bebasneueBold;
+    font-size: 50px;
+    font-weight: normal;
+    color:  white;
+    margin:0;
+}
+h2.secundario{
+    font-family: bebasneueBold;
+    font-size: 35px;
+    font-weight: normal;
+    color:  white;
+    margin:0;
+}
+h3.secundario{
+    font-family: bebasneueBold;
+    font-size: 21px;
+    font-weight: normal;
+    color:  white;
+    margin:0;
+}
+h4.secundario{
+    font-family: bebasneueBold;
+    font-size: 14px;
+    font-weight: normal;
+    color:  white;
+    margin:0;
+}
+h5.secundario{
+    font-family: bebasneue;
+    font-size: 12px;
+    font-weight: normal;
+    color:  white;
+    margin:0;
+}
+.texto{
+    font-family: corbeli;
+    color:black;
+    font-size: 21px;
+}
+.texto.primario{
+    font-family: corbeli;
+    color:rgb(20,9,88);
+}
+.texto.secundario{
+    font-family: corbeli;
+    color:white;
+}
+.texto.small{
+    font-size: 14px;
 }
