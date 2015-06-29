@@ -95,6 +95,13 @@ CONTAINER
 .center{
     margin: 0 auto;
 }
+section{
+    //background: red;
+}
+article{
+    //background: green;
+    margin-bottom: 30px;
+}
 
 /*
 TIPOLOGIA
@@ -193,6 +200,19 @@ a:link, a:active, a:visited{
 a:hover{
   color: rgb(92, 126, 230); 
   text-decoration: underline;
+}
+/*
+NOMES
+*/
+.nome{
+    margin: 0;
+    font-family: bebasneueBook;
+    font-size: 21px;
+    color:black;
+}
+.nome strong{
+    font-family: bebasneueBold;
+    font-weight: normal;
 }
 /*
 RODAPÉ
