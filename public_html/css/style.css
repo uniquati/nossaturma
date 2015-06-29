@@ -241,6 +241,31 @@ NOMES
     font-weight: normal;
 }
 /*
+LISTA DE PESSOAS
+*/
+.lista-pessoas article{
+    cursor: pointer;
+    position: relative;
+}
+.lista-pessoas article:hover, .lista-pessoas article:active{
+    background: rgb(92, 126,230);
+}
+.lista-pessoas article .minifoto{
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin: 5px 5px 0 5px;
+}
+.lista-pessoas article .nome{
+    padding: 15px;
+    position: absolute;
+    top:0px;
+    left:55px;
+}
+/*
+PESSOA
+*/
+/*
 RODAPÉ
 */
 #rodape{   
