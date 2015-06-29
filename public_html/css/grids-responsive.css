@@ -4,7 +4,26 @@ Copyright 2014 Yahoo! Inc. All rights reserved.
 Licensed under the BSD License.
 https://github.com/yahoo/pure/blob/master/LICENSE.md
 */
+
+.pure-visible-u-sm, .pure-visible-u-md, .pure-visible-u-lg, .pure-visible-u-xl{
+    /*torna um elemnto visível a partir da respectiva largura*/
+    display: none !important;
+}
+.pure-hidden-u{
+    /*esconde um elemento*/
+    display: none !important;
+}
+
 @media screen and (min-width: 20em) {
+    .pure-visible-u-sm{
+        /*torna visível um elemento, a partir dessa largura 320px*/
+        display: inline-block !important;
+    }   
+    .pure-hidden-u-sm{
+        /*esconde um elemento a partir dessa largura 320px*/
+        display: none !important;
+    }
+    
     .pure-u-sm-1,
     .pure-u-sm-1-1,
     .pure-u-sm-1-2,
@@ -219,6 +238,15 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
 }
 
 @media screen and (min-width: 30em) {
+    .pure-visible-u-md{
+        /*torna visível um elemento, a partir dessa largura 480px*/
+        display: inline-block !important;
+    } 
+    .pure-hidden-u-md{
+    /*esconde um elemento a partir dessa largura 480px*/
+        display: none !important;
+    }
+    
     .pure-u-md-1,
     .pure-u-md-1-1,
     .pure-u-md-1-2,
@@ -433,6 +461,15 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
 }
 
 @media screen and (min-width: 48em) {
+    .pure-visible-u-lg{
+        /*torna visível um elemento, a partir dessa largura 768px*/
+        display: inline-block !important;
+    }
+    .pure-hidden-u-lg{
+        /*esconde um elemento a partir dessa largura 768px*/
+        display: none !important;
+    }
+    
     .pure-u-lg-1,
     .pure-u-lg-1-1,
     .pure-u-lg-1-2,
@@ -647,6 +684,15 @@ https://github.com/yahoo/pure/blob/master/LICENSE.md
 }
 
 @media screen and (min-width: 64em) {
+    .pure-visible-u-xl{
+        /*torna visível um elemento, a partir dessa largura 1024px*/
+        display: inline-block !important;
+    }
+    .pure-hidden-u-xl{
+        /*esconde um elemento a partir dessa largura 1024px*/
+        display: none !important;
+    }
+    
     .pure-u-xl-1,
     .pure-u-xl-1-1,
     .pure-u-xl-1-2,

@@ -78,7 +78,7 @@ CONTAINER
 .container.secundario{
     background: rgb(20,9,88);
 }
-.box {
+.box{
     padding: 30px 0;
     margin:0 auto;
     max-width: 1024px;
@@ -228,59 +228,21 @@ RODAPÉ
     letter-spacing: 1px;
 }
 
-.pure-visible-u{
-    /*torna visivel um elemento*/
-    display: none !important;
-}
-.pure-visible-u-sm{
-    /*torna visível um elemento, a partir dessa largura 320px*/
-    display: none !important;
-}
-.pure-visible-u-md{
-    /*torna visível um elemento, a partir dessa largura 480px*/
-    display: none !important;
-}
-.pure-visible-u-lg{
-    /*torna visível um elemento, a partir dessa largura 768px*/
-    display: none !important;
-}
-.pure-visible-u-xl{
-    /*torna visível um elemento, a partir dessa largura 1024px*/
-    display: none !important;
-}
-
-.pure-hidden-u{
-    /*esconde um elemento*/
-    display: none !important;
-}
-
-
-
 /*
 a partir de 20em = 320px
 .pure-u-sm-*
 */
 @media screen and (min-width : 20em){
-    .pure-visible-u-sm{
-        display: inline-block !important;
-    }   
-    .pure-hidden-u-sm{
-        /*esconde um elemento a partir dessa largura 320px*/
-        display: none !important;
-    }
+    
 }
 /*
 a partir de 30em = 480px
 .pure-u-md-*
 */
 @media screen and (min-width : 30em){
-    .pure-visible-u-md{
-        display: inline-block !important;
-    } 
-    .pure-hidden-u-md{
-    /*esconde um elemento a partir dessa largura 480px*/
-        display: none !important;
-    }
+    /*
+    RODAPÉ
+    */
     #rodape nav{
         margin-top: 00px;
     }
@@ -296,13 +258,6 @@ a partir de 48em = 768px
 .pure-u-lg-*
 */
 @media screen and (min-width : 48em){
-    .pure-visible-u-lg{
-        display: inline-block !important;
-    }
-    .pure-hidden-u-lg{
-        /*esconde um elemento a partir dessa largura 768px*/
-        display: none !important;
-    }
     /*
     CONTAINER
     */
@@ -323,13 +278,6 @@ a partir de 64em  = 1024px
 .pure-u-xl-*
 */
 @media screen and (min-width : 64em){
-    .pure-visible-u-xl{
-        display: inline-block !important;
-    }
-    .pure-hidden-u-xl{
-        /*esconde um elemento a partir dessa largura 1024px*/
-        display: none !important;
-    }
     /*
     CONTAINER
     */
