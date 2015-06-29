@@ -74,33 +74,33 @@ CONTAINER
 */
 .container{
     background: white;
+    padding:30px 0px;
 }
 .container.secundario{
     background: rgb(20,9,88);
 }
-.box{
-    padding: 30px 0;
+.conteudo{
     margin:0 auto;
     max-width: 1024px;
 }
-.l-box{
-    padding: 30px 30px;
-    margin:0 auto;
-    max-width: 1024px;
-}
-.margem{
-    margin-left:30px !important;
-    margin-right:30px !important;
-}
-.center{
+.alinhar-centro{
     margin: 0 auto;
 }
+.margem-horizontal{
+    padding-left:30px;
+    padding-right:30px;
+}
+.margem-vertical{
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
 section{
     //background: red;
 }
 article{
     //background: green;
-    margin-bottom: 30px;
+    //margin-bottom: 30px;
 }
 
 /*
@@ -180,6 +180,7 @@ h5.titulo{
     font-family: corbeli;
     color:black;
     font-size: 21px;
+    margin: 0;
 }
 .texto.primario{
     color:rgb(20,9,88);
@@ -281,15 +282,8 @@ a partir de 48em = 768px
     /*
     CONTAINER
     */
-    .box{
-        padding: 60px 0;
-    }
-    .l-box{
-        padding: 60px 60px;
-    }
-    .margem{
-        margin-left:60px !important;
-        margin-right:60px !important;
+    .container{
+        padding:60px 0px;
     }
     
 } 
@@ -298,20 +292,7 @@ a partir de 64em  = 1024px
 .pure-u-xl-*
 */
 @media screen and (min-width : 64em){
-    /*
-    CONTAINER
-    */
-    .container{
-        padding-left: 60px;
-        padding-right: 60px;
-    }
-    .l-box{
-        padding: 60px 0px;
-    }
-    .margem{
-        margin-left:0px !important;
-        margin-right:0px !important;
-    }
+    
     /*
     LINKS
     */
