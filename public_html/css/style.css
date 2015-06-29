@@ -92,6 +92,9 @@ CONTAINER
     margin-left:30px !important;
     margin-right:30px !important;
 }
+.center{
+    margin: 0 auto;
+}
 
 /*
 TIPOLOGIA
@@ -191,8 +194,115 @@ a:hover{
   color: rgb(92, 126, 230); 
   text-decoration: underline;
 }
-/*48em = 768px*/
+/*
+RODAPÉ
+*/
+#rodape{   
+}
+#rodape nav{
+    margin-top: 10px;
+}
+#rodape nav ul{
+    list-style-type: none;
+    font-family: bebasneue;
+    font-size: 14px;
+    letter-spacing: 1px;
+    padding: 0;
+    margin: 0;
+   
+}
+#rodape nav li{
+    padding-bottom: 7px;
+}
+#rodape nav li:last-child{
+    padding-bottom: 0px;
+}
+#rodape a{
+    text-decoration: none;
+}
+#rodape .copyright{
+    margin-top:30px;
+    font-family: bebasneue;
+    font-size: 12px;
+    color:white;
+    letter-spacing: 1px;
+}
+
+.pure-visible-u{
+    /*torna visivel um elemento*/
+    display: none !important;
+}
+.pure-visible-u-sm{
+    /*torna visível um elemento, a partir dessa largura 320px*/
+    display: none !important;
+}
+.pure-visible-u-md{
+    /*torna visível um elemento, a partir dessa largura 480px*/
+    display: none !important;
+}
+.pure-visible-u-lg{
+    /*torna visível um elemento, a partir dessa largura 768px*/
+    display: none !important;
+}
+.pure-visible-u-xl{
+    /*torna visível um elemento, a partir dessa largura 1024px*/
+    display: none !important;
+}
+
+.pure-hidden-u{
+    /*esconde um elemento*/
+    display: none !important;
+}
+
+
+
+/*
+a partir de 20em = 320px
+.pure-u-sm-*
+*/
+@media screen and (min-width : 20em){
+    .pure-visible-u-sm{
+        display: inline-block !important;
+    }   
+    .pure-hidden-u-sm{
+        /*esconde um elemento a partir dessa largura 320px*/
+        display: none !important;
+    }
+}
+/*
+a partir de 30em = 480px
+.pure-u-md-*
+*/
+@media screen and (min-width : 30em){
+    .pure-visible-u-md{
+        display: inline-block !important;
+    } 
+    .pure-hidden-u-md{
+    /*esconde um elemento a partir dessa largura 480px*/
+        display: none !important;
+    }
+    #rodape nav{
+        margin-top: 00px;
+    }
+    #rodape nav li{
+        padding-bottom: 19px;
+    }
+    #rodape nav li:last-child{
+        padding-bottom: 0px;
+    }
+}
+/*
+a partir de 48em = 768px
+.pure-u-lg-*
+*/
 @media screen and (min-width : 48em){
+    .pure-visible-u-lg{
+        display: inline-block !important;
+    }
+    .pure-hidden-u-lg{
+        /*esconde um elemento a partir dessa largura 768px*/
+        display: none !important;
+    }
     /*
     CONTAINER
     */
@@ -208,8 +318,18 @@ a:hover{
     }
     
 } 
-/*64em  = 1024px*/
+/*
+a partir de 64em  = 1024px
+.pure-u-xl-*
+*/
 @media screen and (min-width : 64em){
+    .pure-visible-u-xl{
+        display: inline-block !important;
+    }
+    .pure-hidden-u-xl{
+        /*esconde um elemento a partir dessa largura 1024px*/
+        display: none !important;
+    }
     /*
     CONTAINER
     */
