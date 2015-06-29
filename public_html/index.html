@@ -110,6 +110,13 @@
                 }
             }
         });
+        
+        
+        $('.acordeao button').click(function(){
+                $(this).toggleClass('aberto');
+                $(this).parents('.acordeao').children('.acordeao-conteudo').slideToggle('slow');
+               // $("#"+  $(this).attr('data-acordeao-conteudo-id') ).slideToggle('slow');
+        });
     }); 
     </script>
 
@@ -173,48 +180,141 @@
             </div>
             <div class="container">
                 <div class="conteudo">
-                    <div>
-                        <h1 class="titulo margem-horizontal">Nossa Turma</h1>
+                    <div class="acordeao" >
+                        <div class="acordeao-titulo margem-horizontal">    
+                            <h1 class="titulo">Nossa Turma</h1>
+                            <button class="pure-hidden-u-lg" ></button>
+                        </div>
+                        <section class="pure-g acordeao-conteudo">
+                            <div class="pure-u-1">
+                                <article class="margem-horizontal margem-vertical">
+                                    <p class="texto">
+                                     Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </article>
+                            </div>
+                            <div class="pure-u-1 pure-u-lg-1-2">
+                                <article class="margem-horizontal margem-vertical">
+                                    <h2 class="titulo">Patrono</h2>
+                                    <p class="nome"><strong>Givanaldo</strong> Rocha de Souza</p>
+                                </article>
+                                <article class="margem-horizontal margem-vertical">
+                                    <h2 class="titulo">Paraninfo</h2>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="texto primario pure-visible-u-lg margem-vertical">Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </article>
+                            </div>
+                            <div class="pure-u-1 pure-u-lg-1-2 ">
+                                <article class="margem-horizontal margem-vertical">
+                                    <h2 class="titulo">Homenageados</h2>
+                                    <p class="nome"><strong>Andreza</strong> dos Santos Sousa</p>
+                                    <p class="nome"><strong>Eliene</strong> Régia Chagas de Melo Tabosa</p>
+                                    <p class="nome"><strong>Fábio</strong> Alexandre Gonçalves Silva</p>
+                                    <p class="nome"><strong>Guilherme</strong> Afonso</p>
+                                    <p class="nome"><strong>João</strong> Teixeira de Carvalho Neto</p>
+                                    <p class="nome"><strong>Liviane</strong> Catarine Almeida Melo</p>
+                                    <p class="nome"><strong>Neyvan</strong> Renato Rodrigues da Silva</p>
+                                    <p class="nome"><strong>Rodolfo</strong> da Silva Costa</p>
+                                    <p class="nome"><strong>Suély</strong> Gleide Pereira de Souza</p>
+                                    <p class="nome"><strong>Vaneska</strong> Tatiana Silva Santos</p>
+                                    <p class="nome"><strong>Vergas</strong> Vitória de Andrade da Silva</p>
+                                    <p class="texto primario pure-hidden-u-lg margem-vertical">
+                                     Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </article>
+                            </div>
+                        </section>
                     </div>
-                    <section class="pure-g">
-                        <div class="pure-u-1">
-                            <article class="margem-horizontal margem-vertical">
-                                <p class="texto">
-                                 Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                            </article>
+                    <div class="acordeao" >
+                        <div class="acordeao-titulo margem-horizontal">    
+                            <h1 class="titulo">Componentes</h1>
+                            <button class="pure-hidden-u-lg" ></button>
                         </div>
-                        <div class="pure-u-1 pure-u-lg-1-2">
-                            <article class="margem-horizontal margem-vertical">
-                                <h2 class="titulo">Patrono</h2>
-                                <p class="nome"><strong>Givanaldo</strong> Rocha de Souza</p>
-                            </article>
-                            <article class="margem-horizontal margem-vertical">
-                                <h2 class="titulo">Paraninfo</h2>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="texto primario pure-visible-u-lg margem-vertical">Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                            </article>
+                        <section class="pure-g acordeao-conteudo">
+                            <div class="pure-u-1">
+                                <article class="margem-horizontal margem-vertical">
+                                    <p class="texto">
+                                     Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </article>
+                            </div>
+                            <div class="pure-u-1 pure-u-lg-1-2">
+                                <article class="margem-horizontal margem-vertical">
+                                    <h2 class="titulo">Patrono</h2>
+                                    <p class="nome"><strong>Givanaldo</strong> Rocha de Souza</p>
+                                </article>
+                                <article class="margem-horizontal margem-vertical">
+                                    <h2 class="titulo">Paraninfo</h2>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="texto primario pure-visible-u-lg margem-vertical">Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </article>
+                            </div>
+                            <div class="pure-u-1 pure-u-lg-1-2 ">
+                                <article class="margem-horizontal margem-vertical">
+                                    <h2 class="titulo">Homenageados</h2>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="texto primario pure-hidden-u-lg margem-vertical">
+                                     Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </article>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="acordeao" >
+                        <div class="acordeao-titulo margem-horizontal">    
+                            <h1 class="titulo">Galeria</h1>
+                            <button class="pure-hidden-u-lg" ></button>
                         </div>
-                        <div class="pure-u-1 pure-u-lg-1-2 ">
-                            <article class="margem-horizontal margem-vertical">
-                                <h2 class="titulo">Homenageados</h2>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
-                                <p class="texto primario pure-hidden-u-lg margem-vertical">
-                                 Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                                </p>
-                            </article>
-                        </div>
-                    </section>
+                        <section class="pure-g acordeao-conteudo">
+                            <div class="pure-u-1">
+                                <article class="margem-horizontal margem-vertical">
+                                    <p class="texto">
+                                     Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </article>
+                            </div>
+                            <div class="pure-u-1 pure-u-lg-1-2">
+                                <article class="margem-horizontal margem-vertical">
+                                    <h2 class="titulo">Patrono</h2>
+                                    <p class="nome"><strong>Givanaldo</strong> Rocha de Souza</p>
+                                </article>
+                                <article class="margem-horizontal margem-vertical">
+                                    <h2 class="titulo">Paraninfo</h2>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="texto primario pure-visible-u-lg margem-vertical">Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                </article>
+                            </div>
+                            <div class="pure-u-1 pure-u-lg-1-2 ">
+                                <article class="margem-horizontal margem-vertical">
+                                    <h2 class="titulo">Homenageados</h2>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="nome"><strong>Geraldo</strong> Felipe de Souza Filho</p>
+                                    <p class="texto primario pure-hidden-u-lg margem-vertical">
+                                     Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                    </p>
+                                </article>
+                            </div>
+                        </section>
+                    </div>
                 </div>
             </div>
             <div id="rodape" class="container secundario">

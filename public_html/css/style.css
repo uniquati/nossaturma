@@ -95,6 +95,31 @@ CONTAINER
     padding-bottom:15px;
 }
 
+/*
+ACORDEÃO
+*/
+.acordeao-titulo{
+    position: relative;
+}
+.acordeao-titulo button{
+    width: 40px;
+    border: none;
+    position: absolute;
+    right: 30px;
+    top:0;
+    bottom: 0;
+    background-color: white;
+    background-image: url(../media/seta-fechado.png);
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.acordeao button.aberto{
+    background-image: url(../media/seta-aberto.png);
+}
+.acordeao-conteudo{
+    display: none;
+}
 section{
     //background: red;
 }
@@ -284,6 +309,12 @@ a partir de 48em = 768px
     */
     .container{
         padding:60px 0px;
+    }
+    /*
+    ACORDEÃO
+    */
+    .acordeao-conteudo{
+        display: block !important;
     }
     
 } 
