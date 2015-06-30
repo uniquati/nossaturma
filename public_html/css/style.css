@@ -118,6 +118,7 @@ ACORDEÃO
     background-image: url(../media/seta-aberto.png);
 }
 .acordeao-conteudo{
+    margin-bottom: 30px;
     display: none;
 }
 section{
@@ -263,10 +264,7 @@ LISTA DE PESSOAS
     position: absolute;
     top:0px;
     left:55px;
-    
     white-space: nowrap;
-    //background: red;
-    //overflow: hidden;
 }
 /*
 PESSOA
