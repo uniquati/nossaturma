@@ -87,7 +87,22 @@
                 $("#placaVirtual").load("semSuporte.html");
             }
         }
-
+        function abrirAcordeao(id){
+            var button = $(id).find('.acordeao-titulo button');
+            if( !button.hasClass('aberto') ){
+                $(id).find('.acordeao-titulo button').addClass('aberto');
+                $(id).children('.acordeao-conteudo').slideDown('slow');
+            }
+        }
+        function fecharAcordeao(id){
+            $(id).find('.acordeao-titulo button').removeClass('aberto');
+            $(id).children('.acordeao-conteudo').slideUp('slow');
+        }
+        function linkPara(destino){
+            $(window).scrollTop( $(destino).offset().top);
+            abrirAcordeao(destino);
+        }
+        
         $(document).ready(function(){
             console.log("ready"); 
             //carregar placa virtual
@@ -116,9 +131,14 @@
 
             //lógica do acordeão
             $('.acordeao button').click(function(){
-                $(this).toggleClass('aberto');
-                $(this).parents('.acordeao').children('.acordeao-conteudo').slideToggle('slow');
-            });
+                if( $(this).hasClass('aberto') ){
+                    $(this).removeClass('aberto');
+                    $(this).parents('.acordeao').children('.acordeao-conteudo').slideUp('slow');
+                }else{
+                    $(this).addClass('aberto');
+                    $(this).parents('.acordeao').children('.acordeao-conteudo').slideDown('slow');
+                }
+            });                           
         }); 
     </script>
 
@@ -138,7 +158,7 @@
             </div>
             <div class="container">
                 <div class="conteudo">
-                    <div class="acordeao" >
+                    <div class="acordeao" id="nossaturma" >
                         <div class="acordeao-titulo margem-horizontal">    
                             <h1 class="titulo">Nossa Turma</h1>
                             <button class="pure-hidden-u-lg" ></button>
@@ -183,7 +203,7 @@
                             </div>
                         </section>
                     </div>
-                    <div class="acordeao" >
+                    <div class="acordeao" id="componentes" >
                         <div class="acordeao-titulo margem-horizontal">    
                             <h1 class="titulo">Componentes</h1>
                             <button class="pure-hidden-u-lg" ></button>
@@ -307,7 +327,7 @@
                             </div>
                         </section>
                     </div>
-                    <div class="acordeao" >
+                    <div class="acordeao" id="galeria" >
                         <div class="acordeao-titulo margem-horizontal">    
                             <h1 class="titulo">Galeria</h1>
                             <button class="pure-hidden-u-lg" ></button>
@@ -353,12 +373,16 @@
                             <img class="pure-hidden-u-md" src="media/geracaoKekule.png" alt="Geração Kekulé"/>
                             <nav>
                                 <ul>
-                                    <li><a href="#">Nossa Turma</a></li>
-                                    <li><a href="#">Componentes</a></li>
-                                    <li><a href="#">Galeria</a></li>
-                                    <li><a href="#">Trilha Sonora</a></li>
-                                    <li><a href="#">Uniquati</a></li>
+                                    <li><span data-destino-id="nossaturma" class="link" onclick="linkPara('#nossaturma')">Nossa Turma</span></li>
+                                    <li><span data-destino-id="componentes" class="link" onclick="linkPara('#componentes')">Componentes</span></li>
+                                    <li><a href="#" data-destino-id="nossaturma">Galeria</a></li>
+                                    <li><span class="link">Trilha Sonora</span></li>
+                                    <li><a href="#" data-destino-id="nossaturma">Uniquati</a></li>
+                                    
                                 </ul>
+                                <script>
+                                        
+                                </script>
                             </nav>
                         </div>
                     </div>

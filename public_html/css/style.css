@@ -220,13 +220,14 @@ h5.titulo{
 /*
 LINKS
 */
-a:link, a:active, a:visited{
-  color: rgb(92, 126, 230); 
-  text-decoration: underline;
+a:link, a:active, a:visited, .link{
+    cursor: pointer;
+    color: rgb(92, 126, 230); 
+    text-decoration: underline;
 }
-a:hover{
-  color: rgb(92, 126, 230); 
-  text-decoration: underline;
+a:hover, .link:hover{
+    color: rgb(92, 126, 230); 
+    text-decoration: underline;
 }
 /*
 NOMES
@@ -306,7 +307,7 @@ RODAPÉ
 #rodape nav li:last-child{
     padding-bottom: 0px;
 }
-#rodape a{
+#rodape a, #rodape .link{
     text-decoration: none;
 }
 #rodape .copyright{
@@ -383,11 +384,11 @@ a partir de 64em  = 1024px
     /*
     LINKS
     */
-    a:link, a:active, a:visited{
+    a:link, a:active, a:visited, .link{
         text-decoration: none;
         color: rgb(92, 126, 230); 
     }
-    a:hover{
+    a:hover, .link:hover{
         color: rgb(92, 126, 230); 
         text-decoration: underline;
     }
