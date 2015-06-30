@@ -10,13 +10,8 @@
     <!--<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">-->
     <link rel="stylesheet" href="css/pure-min.css">
 
-    <!--[if lte IE 8]>
-        <link rel="stylesheet" href="css/grids-responsive-old-ie.css">
-    <![endif]-->
-    <!--[if gt IE 8]><!-->
-        <link rel="stylesheet" href="css/grids-responsive.css">
-    <!--<![endif]-->
-
+    <link rel="stylesheet" href="css/grids-responsive.css">
+    
     <link rel="stylesheet" href="css/side-menu.css">
     
     <link rel="stylesheet" href="css/lightview/lightview.css"/>
@@ -27,103 +22,104 @@
     <script type="text/javascript" src="js/spinners.min.js"></script>
     <script type="text/javascript" src="js/lightview.js"></script>
 
-
     <script>
-    function detectarOrientacao(){
-        //não tem suporte no IE antigo
-        /*console.log('orientação');
-        if(window.matchMedia("(orientation:portrait)").matches ){
-            console.log("PORTRAIT - retrato");
-        }
-        if(window.matchMedia("(orientation:landscape)").matches){
-            console.log("LANDSCAPE - paisagem");
-        }
-        */
-    }
-    function detectarDimensoes(elemento){
-        console.log("dimensões do elemento");
-        console.log( elemento.width() + "x" + elemento.height() );
-    }
-    function detectarDimensoesComPadding(elemento){
-        console.log("dimensões + padding do elemento");
-        console.log( elemento.innerWidth() + "x" + elemento.innerHeight() );
-    }
-    function detectarDimensoesComBorder(elemento){
-        console.log("dimensões + border do elemento");
-        console.log( elemento.outerWidth() + "x" + elemento.outerHeight() );
-    }
-    function detectarDimensoesComMargin(elemento){
-        console.log("dimensões + margin do elemento");
-        console.log( elemento.outerWidth(true) + "x" + elemento.outerHeight(true) );
-    }
-    function detectarDimensoesBrowser(){
-        console.log('dimensões browser');
-        console.log( $(window).width() + "x" + $(window).height()   );
-    }
-    function getWidthBrowser(){
-        return $(window).width();
-    }
-    function getHeightBrowser(){
-        return $(window).height();
-    }
-    function detectarDimensoesDocumento(){
-        console.log('dimensões documento');
-        console.log($(document).width()  + "x" + $(document).height() );
-    }
-    function detectarDimensoesTela(){
-        //não tem suporte em mobile
-        /*screen.height;
-        screen.width;
-        console.log('dimensões tela');
-        console.log(screen.width + "x" + screen.height  );
-        */
-    }
-
-    function ajustarDimensoesPlaca(){
-        $("#placaVirtual").height(getHeightBrowser());
-    }
-    function loadPlacaVirtual(){
-        if ($('html').hasClass('cssanimations' )) {
-            console.log("Aceita cssanimation");
-            $("#placaVirtual").load("placaVirtual.html");
-        } else {
-            console.log("Não aceita cssanimation");
-            $("#placaVirtual").removeClass('carregando');
-            $("#placaVirtual").addClass('sem-suporte');
-            $("#placaVirtual").load("semSuporte.html");
-        }
-    }
-
-    $(document).ready(function(){
-        console.log("ready"); 
-        ajustarDimensoesPlaca();
-        loadPlacaVirtual();
-        $(window).on({
-            resize: function(){
-                ajustarDimensoesPlaca();
-                if($('#placaVirtual').hasClass('sucesso'))
-                    resizePlaca();
-            },
-            orientationchange: function(){
-                ajustarDimensoesPlaca();
-                if($('#placaVirtual').hasClass('sucesso'))
-                    resizePlaca();
-            },
-            scroll: function(){
-                if($('#placaVirtual').hasClass('sucesso')){
-                    console.log('scroll');
-                    pause();
-                }
+        function detectarOrientacao(){
+            //não tem suporte no IE antigo
+            /*console.log('orientação');
+            if(window.matchMedia("(orientation:portrait)").matches ){
+                console.log("PORTRAIT - retrato");
             }
-        });
-        
-        
-        $('.acordeao button').click(function(){
+            if(window.matchMedia("(orientation:landscape)").matches){
+                console.log("LANDSCAPE - paisagem");
+            }
+            */
+        }
+        function detectarDimensoes(elemento){
+            console.log("dimensões do elemento");
+            console.log( elemento.width() + "x" + elemento.height() );
+        }
+        function detectarDimensoesComPadding(elemento){
+            console.log("dimensões + padding do elemento");
+            console.log( elemento.innerWidth() + "x" + elemento.innerHeight() );
+        }
+        function detectarDimensoesComBorder(elemento){
+            console.log("dimensões + border do elemento");
+            console.log( elemento.outerWidth() + "x" + elemento.outerHeight() );
+        }
+        function detectarDimensoesComMargin(elemento){
+            console.log("dimensões + margin do elemento");
+            console.log( elemento.outerWidth(true) + "x" + elemento.outerHeight(true) );
+        }
+        function detectarDimensoesBrowser(){
+            console.log('dimensões browser');
+            console.log( $(window).width() + "x" + $(window).height()   );
+        }
+        function getWidthBrowser(){
+            return $(window).width();
+        }
+        function getHeightBrowser(){
+            return $(window).height();
+        }
+        function detectarDimensoesDocumento(){
+            console.log('dimensões documento');
+            console.log($(document).width()  + "x" + $(document).height() );
+        }
+        function detectarDimensoesTela(){
+            //não tem suporte em mobile
+            /*screen.height;
+            screen.width;
+            console.log('dimensões tela');
+            console.log(screen.width + "x" + screen.height  );
+            */
+        }
+
+        function ajustarDimensoesPlaca(){
+            $("#placaVirtual").height(getHeightBrowser());
+        }
+        function loadPlacaVirtual(){
+            if ($('html').hasClass('cssanimations' )) {
+                console.log("Aceita cssanimation");
+                $("#placaVirtual").load("placaVirtual.html");
+            } else {
+                console.log("Não aceita cssanimation");
+                $("#placaVirtual").removeClass('carregando');
+                $("#placaVirtual").addClass('sem-suporte');
+                $("#placaVirtual").load("semSuporte.html");
+            }
+        }
+
+        $(document).ready(function(){
+            console.log("ready"); 
+            //carregar placa virtual
+            ajustarDimensoesPlaca();
+            loadPlacaVirtual();
+            
+            //ouvir eventos
+            $(window).on({
+                resize: function(){
+                    ajustarDimensoesPlaca();
+                    if($('#placaVirtual').hasClass('sucesso'))
+                        resizePlaca();
+                },
+                orientationchange: function(){
+                    ajustarDimensoesPlaca();
+                    if($('#placaVirtual').hasClass('sucesso'))
+                        resizePlaca();
+                },
+                scroll: function(){
+                    if($('#placaVirtual').hasClass('sucesso')){
+                        console.log('scroll');
+                        pause();
+                    }
+                }
+            });
+
+            //lógica do acordeão
+            $('.acordeao button').click(function(){
                 $(this).toggleClass('aberto');
                 $(this).parents('.acordeao').children('.acordeao-conteudo').slideToggle('slow');
-               // $("#"+  $(this).attr('data-acordeao-conteudo-id') ).slideToggle('slow');
-        });
-    }); 
+            });
+        }); 
     </script>
 
 </head>
@@ -139,79 +135,6 @@
             <div id="placaVirtual" class="carregando">
                 <h1>calma,</h1>
                 <h3>só mais um minuto...</h3>
-            </div>
-            <div class="container">
-                <div class="conteudo margem-horizontal">
-                    <a href="media/gilmar.jpg" class="lightview"
-                       data-lightview-title="The title goes above the caption" 
-                       data-lightview-caption="Use a caption to give your visitors some more information"
-                       data-lightview-options="skin: 'mac'"
-                       ></a>
-                    
-<a href="media/adila.jpg" 
-   class="lightview" data-lightview-title="The title goes above the caption"
-   data-lightview-group="mixed"
-   data-lightview-group-options="controls: { type: 'relative', slider: { items: 5 } }"
-   >Image 1</a>
-<a href="media/alyne.jpg" 
-   class="lightview" data-lightview-title="The title goes above the caption"
-   data-lightview-group="mixed">Image 2</a>
-<a href="media/alison.jpg" 
-   class="lightview" data-lightview-title="The title goes above the caption"
-   data-lightview-group="mixed" >Video</a>
-                    
-                    
- <a href="semSuporte.html" 
-   class="lightview" 
-   data-lightview-type="ajax" 
-   data-lightview-options="
-     ajax: { 
-       type: 'get',
-       data: { string: 'Hello world' } 
-     }
-   ">Ajax</a>
-                    
-                    <h1 class="titulo margem-vertical">A subtitle for your page goes here</h1>
-                    <h2 class="titulo margem-vertical">A subtitle for your page goes here</h2>
-                    <h3 class="titulo margem-vertical">A subtitle for your page goes here</h3>
-                    <h4 class="titulo margem-vertical">A subtitle for your page goes here</h4>
-                    <h5 class="titulo margem-vertical">A subtitle for your page goes here</h5>
-
-                    <p class="texto margem-vertical">
-                        Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p class="texto primario margem-vertical">
-                        Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p class="texto small margem-vertical">
-                        Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p class="texto primario small margem-vertical">
-                        Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
-            </div>
-            <div class="container secundario">
-                <div class="conteudo margem-horizontal">
-                    <h1 class="titulo margem-vertical">A subtitle for your page goes here</h1>
-                    <h2 class="titulo margem-vertical">A subtitle for your page goes here</h2>
-                    <h3 class="titulo margem-vertical">A subtitle for your page goes here</h3>
-                    <h4 class="titulo margem-vertical">A subtitle for your page goes here</h4>
-                    <h5 class="titulo margem-vertical">A subtitle for your page goes here</h5>
-
-                    <p class="texto margem-vertical">
-                        Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p class="texto primario margem-vertical">
-                        Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p class="texto small margem-vertical">
-                        Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                    <p class="texto primario small margem-vertical">
-                        Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-                    </p>
-                </div>
             </div>
             <div class="container">
                 <div class="conteudo">
@@ -425,37 +348,33 @@
             </div>
             <div id="rodape" class="container secundario">
                 <div class="conteudo pure-g">
-                   
-                        <div class="pure-u-1-2 pure-u-md-1-3">
-                            <div class="margem-horizontal">
-                                <img class="pure-hidden-u-md" src="media/geracaoKekule.png" alt="Geração Kekulé"/>
-                                <nav>
-                                    <ul>
-                                        <li><a href="#">Nossa Turma</a></li>
-                                        <li><a href="#">Componentes</a></li>
-                                        <li><a href="#">Galeria</a></li>
-                                        <li><a href="#">Trilha Sonora</a></li>
-                                        <li><a href="#">Uniquati</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
+                    <div class="pure-u-1-2 pure-u-md-1-3">
+                        <div class="margem-horizontal">
+                            <img class="pure-hidden-u-md" src="media/geracaoKekule.png" alt="Geração Kekulé"/>
+                            <nav>
+                                <ul>
+                                    <li><a href="#">Nossa Turma</a></li>
+                                    <li><a href="#">Componentes</a></li>
+                                    <li><a href="#">Galeria</a></li>
+                                    <li><a href="#">Trilha Sonora</a></li>
+                                    <li><a href="#">Uniquati</a></li>
+                                </ul>
+                            </nav>
                         </div>
-                        <div class="pure-u-1-2 pure-u-md-1-3 pure-visible-u-md">
-                            <img class="pure-img alinhar-centro" src="media/brasaorodape.png" alt="Geração Kekulé"/>
+                    </div>
+                    <div class="pure-u-1-2 pure-u-md-1-3 pure-visible-u-md">
+                        <img class="pure-img alinhar-centro" src="media/brasaorodape.png" alt="Geração Kekulé"/>
+                    </div>
+                    <div class="pure-u-1-2 pure-u-md-1-3">
+                        <div class="margem-horizontal">
+                            <img class="pure-img alinhar-centro" src="media/logoif.png" alt="logo IFRN"/>
                         </div>
-                        <div class="pure-u-1-2 pure-u-md-1-3">
-                            <div class="margem-horizontal">
-                                <img class="pure-img alinhar-centro" src="media/logoif.png" alt="logo IFRN"/>
-                            </div>
-                        </div>
-                        <div class="pure-u-1">
-                            <div class="copyright margem-horizontal">2010 - 2013 &COPY; Nos reservamos ao direito de ser memoráveis.</div>
-                        </div>
-                        
-                    
+                    </div>
+                    <div class="pure-u-1">
+                        <div class="copyright margem-horizontal">2010 - 2013 &COPY; Nos reservamos ao direito de ser memoráveis.</div>
+                    </div>
                 </div>   
             </div>
-            
         </div>
 
           <div id="menu">

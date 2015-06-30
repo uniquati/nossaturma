@@ -3,6 +3,7 @@ Pure v0.6.0
 Copyright 2014 Yahoo! Inc. All rights reserved.
 Licensed under the BSD License.
 https://github.com/yahoo/pure/blob/master/LICENSE.md
+Com adição das classes .pure-visible-u* e .pure-hidden-u, para exibir ou esconder elementos de forma responsiva 
 */
 
 .pure-visible-u-sm, .pure-visible-u-md, .pure-visible-u-lg, .pure-visible-u-xl{
