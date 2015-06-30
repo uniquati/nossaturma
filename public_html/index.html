@@ -18,9 +18,15 @@
     <!--<![endif]-->
 
     <link rel="stylesheet" href="css/side-menu.css">
+    
+    <link rel="stylesheet" href="css/lightview/lightview.css"/>
 
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
+    
+    <script type="text/javascript" src="js/spinners.min.js"></script>
+    <script type="text/javascript" src="js/lightview.js"></script>
+
 
     <script>
     function detectarOrientacao(){
@@ -136,6 +142,35 @@
             </div>
             <div class="container">
                 <div class="conteudo margem-horizontal">
+                    <a href="media/gilmar.jpg" class="lightview"
+                       data-lightview-title="The title goes above the caption" 
+                       data-lightview-caption="Use a caption to give your visitors some more information"
+                       data-lightview-options="skin: 'mac'"
+                       ></a>
+                    
+<a href="media/adila.jpg" 
+   class="lightview" data-lightview-title="The title goes above the caption"
+   data-lightview-group="mixed"
+   data-lightview-group-options="controls: { type: 'relative', slider: { items: 5 } }"
+   >Image 1</a>
+<a href="media/alyne.jpg" 
+   class="lightview" data-lightview-title="The title goes above the caption"
+   data-lightview-group="mixed">Image 2</a>
+<a href="media/alison.jpg" 
+   class="lightview" data-lightview-title="The title goes above the caption"
+   data-lightview-group="mixed" >Video</a>
+                    
+                    
+ <a href="semSuporte.html" 
+   class="lightview" 
+   data-lightview-type="ajax" 
+   data-lightview-options="
+     ajax: { 
+       type: 'get',
+       data: { string: 'Hello world' } 
+     }
+   ">Ajax</a>
+                    
                     <h1 class="titulo margem-vertical">A subtitle for your page goes here</h1>
                     <h2 class="titulo margem-vertical">A subtitle for your page goes here</h2>
                     <h3 class="titulo margem-vertical">A subtitle for your page goes here</h3>
