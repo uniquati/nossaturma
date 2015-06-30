@@ -270,6 +270,22 @@ LISTA DE PESSOAS
 PESSOA
 */
 /*
+
+/*
+GALERIA
+*/
+.galeria{
+    //background: purple;
+}
+.galeria a{
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+.galeria a.pure-u-1{
+        height: 250px;
+}
+/*
 RODAPÉ
 */
 #rodape{   
@@ -327,6 +343,12 @@ a partir de 30em = 480px
     #rodape nav li:last-child{
         padding-bottom: 0px;
     }
+    /*
+    GALERIA
+    */
+    .galeria a.pure-u-1{
+        height: 300px;
+    }
 }
 /*
 a partir de 48em = 768px
@@ -344,6 +366,15 @@ a partir de 48em = 768px
     */
     .acordeao-conteudo{
         display: block !important;
+    }
+    /*
+    GALERIA
+    */
+    .galeria a.pure-u-1-2{
+        height: 300px;
+    }
+    .galeria a.pure-u-1{
+        height: 500px;
     }
     
 } 
@@ -363,5 +394,14 @@ a partir de 64em  = 1024px
     a:hover{
         color: rgb(92, 126, 230); 
         text-decoration: underline;
+    }
+    /*
+    GALERIA
+    */
+    .galeria a.pure-u-xl-1-3{
+        height: 300px;
+    }
+    .galeria a.pure-u-xl-1-2{
+        height: 450px;
     }
 } 
