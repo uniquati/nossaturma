@@ -246,6 +246,7 @@ LISTA DE PESSOAS
 .lista-pessoas article{
     cursor: pointer;
     position: relative;
+    overflow: hidden;
 }
 .lista-pessoas article:hover, .lista-pessoas article:active{
     background: rgb(92, 126,230);
@@ -258,9 +259,14 @@ LISTA DE PESSOAS
 }
 .lista-pessoas article .nome{
     padding: 15px;
+    height: 30px;
     position: absolute;
     top:0px;
     left:55px;
+    
+    white-space: nowrap;
+    //background: red;
+    //overflow: hidden;
 }
 /*
 PESSOA
