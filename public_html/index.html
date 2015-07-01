@@ -14,13 +14,12 @@
     
     <link rel="stylesheet" href="css/side-menu.css">
     
-    <link rel="stylesheet" href="css/lightview/lightview.css"/>
+    <link rel="stylesheet" href="css/slide-show.css"/>
 
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
     
-    <script type="text/javascript" src="js/spinners.min.js"></script>
-    <script type="text/javascript" src="js/lightview.js"></script>
+    <script src="js/slide-show.js"></script>
 
     <script>
         function detectarOrientacao(){
@@ -139,7 +138,10 @@
                     $(this).addClass('aberto');
                     $(this).parents('.acordeao').children('.acordeao-conteudo').slideDown('slow');
                 }
-            });                           
+            });  
+            
+            //carrega slide show
+            //initSlideShow();
         }); 
     </script>
 
@@ -337,7 +339,6 @@
                             <a href="media/_MG_7970essa[web].jpg"  class="lightview pure-u-1-2 pure-u-xl-1-3" 
                                 data-lightview-title="The title goes above the caption"
                                 data-lightview-group="mixed"
-                                data-lightview-group-options="controls: { type: 'relative', slider: { items: 5 } }" 
                                 style="background-image: url('media/_MG_7970essa[web].jpg')">
                             </a>
                             <a href="media/_MG_7925essa[web].jpg"  class="lightview pure-u-1-2 pure-u-xl-1-3" 
@@ -421,6 +422,6 @@
 
     </div>
 
-    <script src="js/side-menu.js"></script>                      
+    <script src="js/side-menu.js"></script>
 </body>
 </html>

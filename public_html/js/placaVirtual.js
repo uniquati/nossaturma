@@ -105,8 +105,8 @@ var innerHeight;
 var diagonal;
 var tamanhoCirculo;
 
-function initSlide(){
-   console.log('INIT SLIDE');
+function initPlacaVirtual(){
+   console.log('INIT PLACA VIRTUAL');
    $("#placaVirtual").addClass('sucesso');
    resizePlaca();
 
