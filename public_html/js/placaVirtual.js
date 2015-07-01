@@ -219,9 +219,15 @@ function restart(){
 
             //reset
             i=0;
+            timer.stop();
+            
+            //configura tela para exibição a partir da segunda exibição
+            $('#mensagem').slideDown('fast');
+            //$('#mensagem').addClass('desaparecer');
+            $(window).scrollTop( $('#placaVirtual').offset().top + 300 );
             $('.btRestart').addClass('restart');
             $('.botoes').slideUp('slow');
-            timer.stop();
+            
             //exibe a tela de restart
             telaRestartSlide();
          }else{

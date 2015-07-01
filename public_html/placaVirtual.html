@@ -333,6 +333,20 @@
         top:0;
         left:0;
     }
+    .fim #mensagem{
+        position: absolute;
+        bottom:20px;
+        display: none;
+        opacity: 1;
+        transition-property: opacity;
+        transition-duration: 3s;
+        transition-delay: 15s;
+        transition-timing-function: ease-in-out;
+    }
+    .fim #mensagem.desaparecer{
+        opacity: 0;
+    }
+
     .fim .btRestart{
         width: 100px;
         height: 100px;
@@ -363,7 +377,9 @@
 <div class="raios"></div>
 <div class="brasao"></div>
 <div class="fim" >
+    <h3 id="mensagem">Tem mais coisa aqui em baixo, viu?</h3>
     <div onclick="restart();" class="btRestart"></div>
+    
 </div>
 
 <div id='t0' class="tela right-top" >

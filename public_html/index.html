@@ -87,6 +87,7 @@
                 $("#placaVirtual").load("semSuporte.html");
             }
         }
+        
         function abrirAcordeao(id){
             var button = $(id).find('.acordeao-titulo button');
             if( !button.hasClass('aberto') ){
@@ -156,7 +157,7 @@
                 <h1>calma,</h1>
                 <h3>só mais um minuto...</h3>
             </div>
-            <div class="container">
+            <div id="conteudoPrincipal" class="container">
                 <div class="conteudo">
                     <div class="acordeao" id="nossaturma" >
                         <div class="acordeao-titulo margem-horizontal">    
