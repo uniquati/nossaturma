@@ -1,4 +1,45 @@
 /* 
 CSS do SLIDE SHOW
 */
+.slideshow{
+    
+}
+.slideshow-cortina{
+    position: fixed;
+    background: rgba(0,0,0,0.8);
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color:white;
+    overflow: hidden;
+    //overflow: scroll;
+}
+.slideshow-legenda{
+    background: rgba(0,0,0,0.8);
+    position: absolute;
+    bottom: 0;
+    max-height: 270px;
+    overflow: auto;
+    
+}
+.slideshow-legenda button{
+    position: absolute;
+    top: 0;
+    right: 30px;
+    background: url('../media/fechar.png');
+    width: 18px;
+    height: 18px;
+    
+}
+.slideshow img{
+   position: absolute;
+   top:0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+   
+}
+
 
