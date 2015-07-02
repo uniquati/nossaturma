@@ -4,6 +4,9 @@ CSS do SLIDE SHOW
 body.no-scroll{
     overflow: hidden;
 }
+.slide-show{
+    cursor: pointer;
+}
 #slideshow{
     position: fixed;
     top:0;
@@ -11,6 +14,7 @@ body.no-scroll{
     left: 0;
     right: 0;
     overflow: hidden;
+    display: none;
 }
 #slideshow .fechar{
     background: url('../media/fechar.png');
