@@ -115,6 +115,8 @@
                     ajustarDimensoesPlaca();
                     if($('#placaVirtual').hasClass('sucesso'))
                         resizePlaca();
+                    if($('#slideshow').hasClass('aberto'))
+                        resizeSlideShow();
                 },
                 orientationchange: function(){
                     ajustarDimensoesPlaca();
@@ -142,11 +144,13 @@
             
             //carrega slide show
             initSlideShow();
+            
+            
         }); 
     </script>
 
 </head>
-<body style="overflow:hidden;">
+<body class="no-scroll">
     <div id="layout" >
         <!-- Menu toggle -->
         <a href="#menu" id="menuLink" class="menu-link">
