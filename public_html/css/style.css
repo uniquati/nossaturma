@@ -277,12 +277,12 @@ GALERIA
 */
 .galeria{
 }
-.galeria a{
+.galeria .slide-show{
     height: 200px;
     background-size: cover;
     background-position: center;
 }
-.galeria a.pure-u-1{
+.galeria .slide-show.pure-u-1{
         height: 250px;
 }
 /*
@@ -345,7 +345,7 @@ a partir de 30em = 480px
     /*
     GALERIA
     */
-    .galeria a.pure-u-1{
+    .galeria .slide-show.pure-u-1{
         height: 300px;
     }
 }
@@ -369,10 +369,10 @@ a partir de 48em = 768px
     /*
     GALERIA
     */
-    .galeria a.pure-u-1-2{
+    .galeria .slide-show.pure-u-1-2{
         height: 300px;
     }
-    .galeria a.pure-u-1{
+    .galeria .slide-show.pure-u-1{
         height: 500px;
     } 
 } 
@@ -395,10 +395,10 @@ a partir de 64em  = 1024px
     /*
     GALERIA
     */
-    .galeria a.pure-u-xl-1-3{
+    .galeria .slide-show.pure-u-xl-1-3{
         height: 300px;
     }
-    .galeria a.pure-u-xl-1-2{
+    .galeria .slide-show.pure-u-xl-1-2{
         height: 450px;
     }
 } 

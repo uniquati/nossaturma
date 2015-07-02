@@ -1,20 +1,73 @@
 /* 
 Javascript do SLIDE SHOW
  */
-function toggleLegenda(){
+function toggleTela(){
     $('#slideshow .slideshow-legenda').slideToggle('fast');
+    $('#slideshow .fechar').fadeToggle('fast');
+    $('#slideshow .prev').fadeToggle('fast');
+    $('#slideshow .next').fadeToggle('fast');
 }
 function abrirSlideShow(){
-    $('#slideshow .slideshow-legenda div').html( $(this).attr('data-legenda') );
+    if($(this).attr('data-legenda'))
+        $('#slideshow .slideshow-legenda').html( '<div>'+$(this).attr('data-legenda')+'</div>' );
+    else
+        $('#slideshow .slideshow-legenda').empty();
+    
     $('#slideshow .slideshow-imagem').attr('src', $(this).attr('data-imagem') );
+    $(this).addClass('ativo');
     $('body').addClass('no-scroll');
     $('#slideshow').fadeIn('slow');
     $('#slideshow').addClass('aberto');
+    
+    checarLimites();
+}
+function checarLimites(){
+     if($('.slide-show.ativo').prev('.slide-show').length == 0){
+        $('#slideshow .prev').addClass('off');
+        //$('#slideshow .prev').fadeOut();
+    }else{
+        $('#slideshow .prev').removeClass('off');
+        //$('#slideshow .prev').fadeIn();
+    }
+    if($('.slide-show.ativo').next('.slide-show').length == 0){
+        $('#slideshow .next').addClass('off');
+        //$('#slideshow .next').fadeOut();
+    }else{
+        $('#slideshow .next').removeClass('off');
+        //$('#slideshow .next').fadeIn();
+    }
 }
 function fecharSlideShow(){
+    $('.slide-show').removeClass('ativo');
     $('body').removeClass('no-scroll');
     $('#slideshow').fadeOut('slow');
     $('#slideshow').removeClass('aberto');
+}
+function prevSlideShow(){
+    var prev = $('.slide-show.ativo').prev('.slide-show');
+    console.log(prev);
+    $('.slide-show.ativo').removeClass('ativo');
+    prev.addClass('ativo');
+    if(prev.attr('data-legenda'))
+        $('#slideshow .slideshow-legenda').html( '<div>'+prev.attr('data-legenda')+'</div>' );
+    else
+        $('#slideshow .slideshow-legenda').empty();
+    $('#slideshow .slideshow-imagem').attr('src', prev.attr('data-imagem') ); 
+    
+    checarLimites();
+}
+function nextSlideShow(){
+    var next = $('.slide-show.ativo').next('.slide-show');
+    console.log(next);
+    $('.slide-show.ativo').removeClass('ativo');
+    next.addClass('ativo');
+    if(next.attr('data-legenda'))
+        $('#slideshow .slideshow-legenda').html('<div>'+ next.attr('data-legenda')+'</div>' );
+    else
+        $('#slideshow .slideshow-legenda').empty();
+    $('#slideshow .slideshow-imagem').attr('src', next.attr('data-imagem') );
+    
+    checarLimites();
 }
 function resizeSlideShow(){
     console.log('resize slideshow');
@@ -27,9 +80,7 @@ function resizeSlideShow(){
 }
 function initSlideShow(){
     console.log('INIT SLIDESHOW');
-    $('body').append("<div id='slideshow' class='aberto'><div class='slideshow-cortina' onclick='toggleLegenda();'><img class='slideshow-imagem pure-img'  src='' /><div class='slideshow-legenda'><div></div></div></div><button onclick='fecharSlideShow();' class='fechar'></button><div class='prev'></div><div class='next'></div></div>");
-    //$('body').append("<div id='slideshow' class='aberto'><div class='slideshow-cortina' onclick='toggleLegenda();'><img class='pure-img'  src='media/imagem1.jpg' /><div class='slideshow-legenda'><div>Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,  ut labore et dolore magna aliqua. Ut enim ad minim veniam, ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet,consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,  ut labore et dolore magna aliqua. Ut enim ad minim veniam, ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</div></div></div><button onclick='fecharSlideShow();' class='fechar'></button><div class='prev'></div><div class='next'></div></div>");
-    
+    $('body').append("<div id='slideshow' class='aberto'><div class='slideshow-cortina' onclick='toggleTela();'><img class='slideshow-imagem pure-img'  src='' /><div class='slideshow-legenda'></div></div><button onclick='fecharSlideShow();' class='fechar'></button><div class='prev' onclick='prevSlideShow()'></div><div class='next' onclick='nextSlideShow();'></div></div>");
     resizeSlideShow();
     
     $('.slide-show').click(abrirSlideShow);

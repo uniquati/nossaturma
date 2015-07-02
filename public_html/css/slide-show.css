@@ -25,22 +25,29 @@ body.no-scroll{
     position: absolute;
 }
 #slideshow .prev{
+    cursor: pointer;
     background: url('../media/fechar.png');
     width: 50px;
     height: 50px;
     position: absolute;
     left: 0;
+    visibility: visible;
 }
 #slideshow .next{
+    cursor: pointer;
     background: url('../media/fechar.png');
     width: 50px;
     height: 50px;
     position: absolute;
     right: 0;
+    visibility: visible;
+}
+#slideshow .prev.off, #slideshow .next.off{
+    visibility: hidden;
 }
 .slideshow-cortina{
     position: fixed;
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.9);
     top:0;
     bottom: 0;
     left: 0;
