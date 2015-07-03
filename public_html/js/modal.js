@@ -21,8 +21,9 @@ function abrirModal(){
         }
     } );
     
-    $('#modal .modal-container').removeClass('aberto');
-    $('#modal #'+ $(this).attr('data-modal-id') ).addClass('aberto');
+    $('#modal .modal-titulo h3').html($(this).attr('data-modal-titulo'));
+    $("#modal .modal-conteudo").load($(this).attr('data-modal-src'));
+    $('#modal').addClass('aberto');
     $('body').addClass('no-scroll');
     $('#modal').fadeIn('fast');
     

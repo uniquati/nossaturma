@@ -35,10 +35,7 @@ body.no-scroll{
     left: 0;
     right: 0;
     margin: auto;
-    display: none;
-}
-#modal .modal-container.aberto{
-    display: block;
+    //display: none;
 }
 #modal .modal-caixa{
     background: white;
