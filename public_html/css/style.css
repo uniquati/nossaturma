@@ -271,14 +271,16 @@ LISTA DE PESSOAS
 PESSOA
 */
 .modal-conteudo .circulo{
-    background: purple;
+    position: relative;
+    width: 200px;
+    height: 200px;
 }
 .modal-conteudo .foto{
-    position: absolute;
-    border:13px solid white;
     border-radius: 50%;
     background-color: white;
     background-size: cover;
+    width: 200px;
+    height: 200px;
 }
 .modal-conteudo .legenda{
     position: absolute;
@@ -295,7 +297,7 @@ PESSOA
     height: 15px;
     transform: skew(45deg);
     left:-7px;
-    top:0;
+    top:2px;
 }
 .modal-conteudo .legenda p{
     font-size: 20px;
@@ -304,9 +306,10 @@ PESSOA
     color:white;
     font-weight: normal;
     text-align: left;
-    background: rgb(20,9,88);;
+    background: rgb(20,9,88);
     padding:7px 10px;
     margin: 0;
+    white-space: nowrap;
 }
 .modal-conteudo .legenda p strong{
     font-size: 20px;
@@ -315,6 +318,9 @@ PESSOA
     font-weight: normal;
     text-align: left;
     margin: 0;
+}
+.modal-conteudo h4{
+    margin-top: 15px;
 }
 
 /*

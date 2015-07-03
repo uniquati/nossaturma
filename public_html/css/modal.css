@@ -13,10 +13,10 @@ body.no-scroll{
     overflow: hidden;
     background: rgba(0,0,0,0.8);
     z-index: 20;
-    display: none;
+    //display: none;
 }
 #modal .modal-container{
-    max-width: 500px;
+    max-width: 550px;
     max-height: 700px;
     position: absolute;
     top:0;
@@ -32,7 +32,8 @@ body.no-scroll{
     left: 15px;
     right: 15px;
     bottom: 15px;
-    overflow: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
@@ -47,16 +48,14 @@ body.no-scroll{
     border-top-right-radius: 5px;
     height: 35px;
     overflow: hidden;
-    
 }
 #modal .modal-titulo h3{
     font-family: bebasneue;
     font-weight: normal;
     line-height: 35px;
-    //background: orange;
     margin: 0 30px;
     white-space: nowrap;
-    color:black;
+    color:rgb(20,9,88);
 }
 #modal .fechar{
     background: white url('../media/fechar.png') center no-repeat;
