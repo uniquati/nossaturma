@@ -4,6 +4,9 @@ CSS do MODAL
 body.no-scroll{
     overflow: hidden;
 }
+.modal{
+    cursor: pointer;
+}
 #modal{
     position: fixed;
     top:0;
@@ -11,9 +14,17 @@ body.no-scroll{
     left: 0;
     right: 0;
     overflow: hidden;
-    background: rgba(0,0,0,0.8);
     z-index: 20;
-    //display: none;
+    display: none;
+}
+#modal .modal-cortina{
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    background: rgba(0,0,0,0.8);
 }
 #modal .modal-container{
     max-width: 550px;
@@ -24,6 +35,10 @@ body.no-scroll{
     left: 0;
     right: 0;
     margin: auto;
+    display: none;
+}
+#modal .modal-container.aberto{
+    display: block;
 }
 #modal .modal-caixa{
     background: white;
@@ -36,7 +51,9 @@ body.no-scroll{
     overflow-x: hidden;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
+    
 }
+
 #modal .modal-titulo{
     position: absolute;
     left: 15px;
@@ -65,7 +82,4 @@ body.no-scroll{
     position: absolute;
     right: 0;
     cursor:  pointer;
-}
-#modal .modal-conteudo{
-    //background: purple;
 }
