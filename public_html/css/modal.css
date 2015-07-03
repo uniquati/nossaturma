@@ -1,0 +1,72 @@
+/*
+CSS do MODAL
+*/
+body.no-scroll{
+    overflow: hidden;
+}
+#modal{
+    position: fixed;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    background: rgba(0,0,0,0.8);
+    z-index: 20;
+    display: none;
+}
+#modal .modal-container{
+    max-width: 500px;
+    max-height: 700px;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+}
+#modal .modal-caixa{
+    background: white;
+    position: absolute;
+    top:50px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    overflow: auto;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#modal .modal-titulo{
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top:15px;
+    z-index: 21;
+    background: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 35px;
+    overflow: hidden;
+    
+}
+#modal .modal-titulo h3{
+    font-family: bebasneue;
+    font-weight: normal;
+    line-height: 35px;
+    //background: orange;
+    margin: 0 30px;
+    white-space: nowrap;
+    color:black;
+}
+#modal .fechar{
+    background: white url('../media/fechar.png') center no-repeat;
+    border: none;
+    width: 35px;
+    height: 35px;
+    position: absolute;
+    right: 0;
+    cursor:  pointer;
+}
+#modal .modal-conteudo{
+    //background: purple;
+}

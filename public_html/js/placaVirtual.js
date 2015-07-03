@@ -142,37 +142,37 @@ function resizePlaca(){
         tamanhoCirculo = 150;
     }
 
-    $(".brasao").height(innerHeight);
-    $(".fim").height(innerHeight);
+    $("#placaVirtual .brasao").height(innerHeight);
+    $("#placaVirtual .fim").height(innerHeight);
 
-    $(".palco").height(innerHeight);
+    $("#placaVirtual .palco").height(innerHeight);
 
-    var raios = $(".raios");
+    var raios = $("#placaVirtual .raios");
     raios.height(diagonal);
     raios.width(diagonal);
     raios.css("left", ((innerWidth-diagonal)/2) + "px");
     raios.css("top", ((innerHeight-diagonal )/2) + "px");
 
-    var tela = $(".tela");
+    var tela = $("#placaVirtual .tela");
     tela.width( innerWidth);
     tela.height(innerHeight);
 
-    var linhas = $(".linhas");
+    var linhas = $("#placaVirtual .linhas");
     linhas.width( innerWidth);
     linhas.height( innerHeight);
 
-    var linha = $(".linha");
+    var linha = $("#placaVirtual .linha");
     linha.height(diagonal);
     linha.css( "margin-left",((innerWidth - 13)/2)+"px" );
     linha.css( "margin-top",(innerHeight/2)+"px" );
 
-    var circulo = $(".circulo");
+    var circulo = $("#placaVirtual .circulo");
     circulo.height( (tamanhoCirculo + 13*2) );
     circulo.width( (tamanhoCirculo + 13*2)*2 );
     circulo.css( "margin-left", (innerWidth - (tamanhoCirculo + 2*13))/2 + "px" );
     circulo.css( "margin-top", (innerHeight - (tamanhoCirculo + 2*13))/2 + "px" );
 
-    var foto = $(".foto");
+    var foto = $("#placaVirtual .foto");
     foto.height( tamanhoCirculo );
     foto.width( tamanhoCirculo );
 
@@ -204,10 +204,10 @@ function restart(){
    console.log('RESTART');
    console.log(ordem.join(" "));
    
-   $('.botoes').slideDown('slow');
-   $(".fim").fadeOut("slow");
-   $(".barra").addClass("animate");
-   $(".brasao").addClass("animate");
+   $('#placaVirtual .botoes').slideDown('slow');
+   $("#placaVirtual .fim").fadeOut("slow");
+   $("#placaVirtual .barra").addClass("animate");
+   $("#placaVirtual .brasao").addClass("animate");
 
    timer = $.timer(function() {
         console.log('timer:'+i);
@@ -222,16 +222,15 @@ function restart(){
             timer.stop();
             
             //configura tela para exibição a partir da segunda exibição
-            $('#mensagem').slideDown('fast');
-            //$('#mensagem').addClass('desaparecer');
-            $(window).scrollTop( $('#placaVirtual').offset().top + 300 );
-            $('.btRestart').addClass('restart');
-            $('.botoes').slideUp('slow');
+            $('#placaVirtual #mensagem').slideDown('fast');
+            $(window).scrollTop( $('#placaVirtual #mensagem').offset().top + 70 );
+            $('#placaVirtual .btRestart').addClass('restart');
+            $('#placaVirtual .botoes').slideUp('slow');
             
             //exibe a tela de restart
             telaRestartSlide();
          }else{
-            $(".brasao").removeClass("animate");
+            $("#placaVirtual .brasao").removeClass("animate");
             proximoSlide(); 
          }
     });
@@ -257,43 +256,41 @@ function proximoSlide(){
 }
 function telaRestartSlide(){
    console.log("tela restartSlide");
-   $(".tela").removeClass("animate");
-   $(".circulo").removeClass("animate");
-   $(".legenda").removeClass("animate");
-   $(".linhas").removeClass("animate");
-   $(".barra").removeClass("animate");
-   $(".fim").fadeIn("slow");
+   $("#placaVirtual .tela").removeClass("animate");
+   $("#placaVirtual .circulo").removeClass("animate");
+   $("#placaVirtual .legenda").removeClass("animate");
+   $("#placaVirtual .linhas").removeClass("animate");
+   $("#placaVirtual .barra").removeClass("animate");
+   $("#placaVirtual .fim").fadeIn("slow");
 }
 function tooglePlayPause(){
     if(timer.isActive){
         console.log('paused');
         console.log("faltam: "+timer.remaining);
-        $('.btPlay').addClass('pause');
+        $('#placaVirtual .btPlay').addClass('pause');
         timer.pause();
     } 
     else{
         console.log('running');
-        $('.btPlay').removeClass('pause');
+        $('#placaVirtual .btPlay').removeClass('pause');
         timer.play();
     }
-    $('#btPlay').toggleClass('paused');
-    $('.barra').toggleClass('paused');
-    $('.brasao').toggleClass('paused');
-    $('.tela').toggleClass('paused');
-    $('.circulo').toggleClass('paused');
-    $('.legenda').toggleClass('paused');
+    $('#placaVirtual .barra').toggleClass('paused');
+    $('#placaVirtual .brasao').toggleClass('paused');
+    $('#placaVirtual .tela').toggleClass('paused');
+    $('#placaVirtual .circulo').toggleClass('paused');
+    $('#placaVirtual .legenda').toggleClass('paused');
 }
 function play(){
     if(!timer.isActive){
         console.log('running');
         timer.play();
-        $('.btPlay').removeClass('pause');
-        $('#btPlay').removeClass('paused');
-        $('.barra').removeClass('paused');
-        $('.brasao').removeClass('paused');
-        $('.tela').removeClass('paused');
-        $('.circulo').removeClass('paused');
-        $('.legenda').removeClass('paused');
+        $('#placaVirtual .btPlay').removeClass('pause');
+        $('#placaVirtual .barra').removeClass('paused');
+        $('#placaVirtual .brasao').removeClass('paused');
+        $('#placaVirtual .tela').removeClass('paused');
+        $('#placaVirtual .circulo').removeClass('paused');
+        $('#placaVirtual .legenda').removeClass('paused');
     }
 }
 function pause(){
@@ -301,12 +298,11 @@ function pause(){
         console.log('paused');
         console.log("faltam: "+timer.remaining);
         timer.pause();
-        $('.btPlay').addClass('pause');
-        $('#btPlay').addClass('paused');
-        $('.barra').addClass('paused');
-        $('.brasao').addClass('paused');
-        $('.tela').addClass('paused');
-        $('.circulo').addClass('paused');
-        $('.legenda').addClass('paused');
+        $('#placaVirtual .btPlay').addClass('pause');
+        $('#placaVirtual .barra').addClass('paused');
+        $('#placaVirtual .brasao').addClass('paused');
+        $('#placaVirtual .tela').addClass('paused');
+        $('#placaVirtual .circulo').addClass('paused');
+        $('#placaVirtual .legenda').addClass('paused');
     } 
 }

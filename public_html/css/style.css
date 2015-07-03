@@ -270,7 +270,52 @@ LISTA DE PESSOAS
 /*
 PESSOA
 */
-/*
+.modal-conteudo .circulo{
+    background: purple;
+}
+.modal-conteudo .foto{
+    position: absolute;
+    border:13px solid white;
+    border-radius: 50%;
+    background-color: white;
+    background-size: cover;
+}
+.modal-conteudo .legenda{
+    position: absolute;
+    left: 20%;
+    bottom: -5%;
+    padding-top: 15px;
+    overflow: hidden;
+}
+.modal-conteudo .legenda span{
+    position: absolute;
+    display: block;
+    background: rgb(20,9,88);
+    width: 15px;
+    height: 15px;
+    transform: skew(45deg);
+    left:-7px;
+    top:0;
+}
+.modal-conteudo .legenda p{
+    font-size: 20px;
+    font-family: bebasneueBook;
+    letter-spacing: 0.05em;
+    color:white;
+    font-weight: normal;
+    text-align: left;
+    background: rgb(20,9,88);;
+    padding:7px 10px;
+    margin: 0;
+}
+.modal-conteudo .legenda p strong{
+    font-size: 20px;
+    font-family: bebasneueBold;
+    color:white;
+    font-weight: normal;
+    text-align: left;
+    margin: 0;
+}
 
 /*
 GALERIA
@@ -316,77 +361,6 @@ RODAPÉ
     font-size: 12px;
     color:white;
     letter-spacing: 1px;
-}
-/*
-MODAL
-*/
-#modal{
-    position: fixed;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow: hidden;
-    background: rgba(0,0,0,0.8);
-    cursor: pointer;
-    z-index: 20;
-    //display: none;
-}
-#modal .modal-container{
-    background: red;
-    max-width: 500px;
-    max-height: 700px;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
-#modal .modal-caixa{
-    background: green;
-    position: absolute;
-    top:50px;
-    left: 15px;
-    right: 15px;
-    bottom: 15px;
-    overflow: auto;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    cursor: help;
-}
-#modal .fechar{
-    background: white url('../media/fechar.png') center no-repeat;
-    border: none;
-    width: 35px;
-    height: 35px;
-    position: absolute;
-    right: 0;
-    //left: 15px;
-    //top:15px;
-    //z-index: 21;
-    cursor:  crosshair;
-}
-#modal .modal-titulo{
-    position: absolute;
-    left: 15px;
-    right: 15px;
-    top:15px;
-    z-index: 21;
-    background: yellow;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-    height: 35px;
-    overflow: hidden;
-    
-}
-#modal .modal-titulo h3{
-    background: orange;
-    margin: 0 35px;
-    white-space: nowrap;
-}
-#modal .modal-conteudo{
-    background: purple;
 }
 
 /*
