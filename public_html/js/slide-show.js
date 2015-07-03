@@ -105,7 +105,7 @@ function resizeSlideShow(){
 }
 function initSlideShow(){
     console.log('INIT SLIDESHOW');
-    $('body').append("<div id='slideshow' class='aberto'><div class='slideshow-cortina' onclick='toggleTela();'><img class='slideshow-imagem pure-img'  src='' /><div class='slideshow-legenda'></div></div><button onclick='fecharSlideShow();' class='fechar'></button><div class='prev' onclick='prevSlideShow()'></div><div class='next' onclick='nextSlideShow();'></div></div>");
+    $('body').append("<div id='slideshow' class=''><div class='slideshow-cortina' onclick='toggleTela();'><img class='slideshow-imagem pure-img'  src='' /><div class='slideshow-legenda'></div></div><button onclick='fecharSlideShow();' class='fechar'></button><div class='prev' onclick='prevSlideShow()'></div><div class='next' onclick='nextSlideShow();'></div></div>");
     resizeSlideShow();
     
     $('.slide-show').click(abrirSlideShow);
