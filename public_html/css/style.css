@@ -167,7 +167,7 @@ h5.titulo{
     color: rgb(20,9,88);
     margin:0;
 }
-.container.secundario h1.titulo{
+.container.secundario h1.titulo, h1.titulo.secundario{
     font-family: bebasneueBold;
     font-size: 50px;
     font-weight: normal;
@@ -181,7 +181,7 @@ h5.titulo{
     color:  white;
     margin:0;
 }
-.container.secundario h3.titulo{
+.container.secundario h3.titulo, h3.titulo.secundario{
     font-family: bebasneueBold;
     font-size: 21px;
     font-weight: normal;
@@ -211,7 +211,7 @@ h5.titulo{
 .texto.primario{
     color:rgb(20,9,88);
 }
-.container.secundario .texto.primario{
+.container.secundario .texto.primario, .texto.secundario{
     color:white;
 }
 .texto.small{
