@@ -223,7 +223,7 @@ function restart(){
             
             //configura tela para exibição a partir da segunda exibição
             $('#placaVirtual #mensagem').slideDown('fast');
-            $(window).scrollTop( $('#placaVirtual #mensagem').offset().top + 70 );
+            $(window).scrollTop( $('#placaVirtual #mensagem').offset().top + 150 );
             $('#placaVirtual .btRestart').addClass('restart');
             $('#placaVirtual .botoes').slideUp('slow');
             
