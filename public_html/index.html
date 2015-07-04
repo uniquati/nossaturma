@@ -14,11 +14,13 @@
     
     <link rel="stylesheet" href="css/side-menu.css">
     
+    <link rel="stylesheet" href="css/modal.css"/>
     <link rel="stylesheet" href="css/slide-show.css"/>
 
     <script src="js/jquery-2.1.4.min.js"></script>
     <script src="js/modernizr.custom.js"></script>
     
+    <script src="js/modal.js"></script>
     <script src="js/slide-show.js"></script>
 
     <script>
@@ -145,6 +147,9 @@
             //carrega slide show
             initSlideShow();
             
+            //carregar modal
+            initModal();
+            
             
         }); 
     </script>
@@ -217,115 +222,115 @@
                         </div>
                         <section class="acordeao-conteudo margem-vertical margem-horizontal">
                             <div class="pure-g" >
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-1">
                                     <article>
                                         <img class="minifoto" src="media/adila.jpg" alt="Ádila"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Ádila</strong>&nbsp;Gabrielly</span><span class="pure-visible-u-md"><strong>Ádila</strong>&nbsp;Gabrielly Julião Cunha</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-2">
                                     <article>
                                         <img class="minifoto" src="media/alison.jpg" alt="Alison"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Alison</strong>&nbsp;Jhonas</span><span class="pure-visible-u-md"><strong>Alison</strong>&nbsp;Jhonas de Sousa Silva</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-3">
                                     <article>
                                         <img class="minifoto" src="media/alyne.jpg" alt="Alyne"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Alyne</strong>&nbsp;Érica</span><span class="pure-visible-u-md"><strong>Alyne</strong>&nbsp;Érica dos Santos</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-4">
                                     <article>
                                         <img class="minifoto" src="media/andre.jpg" alt="André"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>André</strong>&nbsp;Carvalho</span><span class="pure-visible-u-md"><strong>André</strong>&nbsp;Victor Ribeiro de Carvalho</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-5">
                                     <article>
                                         <img class="minifoto" src="media/emerson.jpg" alt="Emerson"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Emerson</strong>&nbsp;Freire</span><span class="pure-visible-u-md"><strong>Emerson</strong>&nbsp;Irineu Freire de Lima</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-6">
                                     <article>
                                         <img class="minifoto" src="media/esau.jpg" alt="Esau"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Esau</strong>&nbsp;Teodoro</span><span class="pure-visible-u-md"><strong>Esau</strong>&nbsp;Teodoro da Silva</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-7">
                                     <article>
                                         <img class="minifoto" src="media/felipe.jpg" alt="Felipe"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Felipe</strong>&nbsp;Ramos</span><span class="pure-visible-u-md"><strong>Felipe</strong>&nbsp;de Oliveira Ramos</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-8">
                                     <article>
                                         <img class="minifoto" src="media/fernando.jpg" alt="Fernando"/>
-                                        <div class="nome"><span class="pure-hidden-u-md"><strong>Fernando</strong>&nbsp;Carlos</span><span class="pure-visible-u-md"><strong>Fernado</strong>&nbsp;Carlos Gurgel Filho</span></div>
+                                        <div class="nome"><span class="pure-hidden-u-md"><strong>Fernando</strong>&nbsp;Carlos</span><span class="pure-visible-u-md"><strong>Fernando</strong>&nbsp;Carlos Gurgel Filho</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-9">
                                     <article>
                                         <img class="minifoto" src="media/gilmar.jpg" alt="Gilmar"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Gilmar</strong>&nbsp;Andrade</span><span class="pure-visible-u-md"><strong>Gilmar</strong>&nbsp;Vitor da Silva Andrade</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-10">
                                     <article>
                                         <img class="minifoto" src="media/giovanni.jpg" alt="Giovanni"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Giovanni</strong>&nbsp;Begossi</span><span class="pure-visible-u-md"><strong>Giovanni</strong>&nbsp;Alessandro Begossi</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-11">
                                     <article>
                                         <img class="minifoto" src="media/iana.jpg" alt="Iana"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Iana</strong>&nbsp;Albuquerque</span><span class="pure-visible-u-md"><strong>Iana</strong>&nbsp;Ciara Santos de Albuquerque</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-12">
                                     <article>
                                         <img class="minifoto" src="media/joaopedro.jpg" alt="João Pedro"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>João Pedro</strong>&nbsp;Lobo</span><span class="pure-visible-u-md"><strong>João Pedro</strong>&nbsp;Lobo Antunes</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-13">
                                     <article>
                                         <img class="minifoto" src="media/juarez.jpg" alt="Juarez"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Juarez</strong>&nbsp;Augusto</span><span class="pure-visible-u-md"><strong>Juarez</strong>&nbsp;Augusto Silveira França</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-14">
                                     <article>
                                         <img class="minifoto" src="media/mara.jpg" alt="Mara"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Mara</strong>&nbsp;Oliveira</span><span class="pure-visible-u-md"><strong>Mara</strong>&nbsp;Cristiane Ferreira de Oliveira</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-15">
                                     <article>
                                         <img class="minifoto" src="media/mateus.jpg" alt="Mateus"/>
-                                        <div class="nome"><span class="pure-hidden-u-md"><strong>Mateus</strong>&nbsp;Patrício</span><span class="pure-visible-u-md"><strong>Mateus</strong>&nbsp;Patricio de Souza Santos</span></div>
+                                        <div class="nome"><span class="pure-hidden-u-md"><strong>Mateus</strong>&nbsp;Patricio</span><span class="pure-visible-u-md"><strong>Mateus</strong>&nbsp;Patricio de Souza Santos</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-16">
                                     <article>
                                         <img class="minifoto" src="media/rafael.jpg" alt="Rafael"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Rafael</strong>&nbsp;Ribeiro</span><span class="pure-visible-u-md"><strong>Rafael</strong>&nbsp;do Nascimento Ribeiro</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-17">
                                     <article>
                                         <img class="minifoto" src="media/ruan.jpg" alt="Ruan"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Ruan</strong>&nbsp;Garcia</span><span class="pure-visible-u-md"><strong>Ruan</strong>&nbsp;Garcia de Medeiros</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-18">
                                     <article>
                                         <img class="minifoto" src="media/sanderson.jpg" alt="Sanderson"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Sanderson</strong>&nbsp;Douglas</span><span class="pure-visible-u-md"><strong>Sanderson</strong>&nbsp;Douglas de Macedo Adelino</span></div>
                                     </article>
                                 </div>
-                                <div class="lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3">
+                                <div class="modal lista-pessoas pure-u-1 pure-u-lg-1-2 pure-u-xl-1-3" data-modal-id="c-19">
                                     <article>
                                         <img class="minifoto" src="media/wendel.jpg" alt="Wendel"/>
                                         <div class="nome"><span class="pure-hidden-u-md"><strong>Wendel</strong>&nbsp;Américo</span><span class="pure-visible-u-md"><strong>Wendel</strong>&nbsp;Américo de Lima Junior</span></div>
@@ -343,27 +348,27 @@
                              
                             <div  class="slide-show pure-u-1-2 pure-u-xl-1-3" 
                                 data-imagem="media/_MG_7970essa[web].jpg"
-                                data-legenda="Legenda da foto da turma toda numa escada, impedindo a passagem"
+                                data-legenda="Nossa Turma numa escada, como sempre, causando transtorno onde passa..."
                                 style="background-image: url('media/_MG_7970essa[web].jpg')">
                             </div>
                             <div  class="slide-show pure-u-1-2 pure-u-xl-1-3"  
                                 data-imagem="media/_MG_7925essa[web].jpg"
-                                data-legenda="Legenda da foto de Ruan, como um burrinho"
+                                data-legenda="Ruan e as semelhanças genéticas"
                                 style="background-image: url('media/_MG_7925essa[web].jpg')"> 
                             </div>
                             <div  class="slide-show pure-u-1 pure-u-xl-1-3" 
                                 data-imagem="media/_MG_7948essa[web].jpg"
-                                data-legenda="Legenda da 3ª foto"
+                                data-legenda="Mais uma vez, Nossa Turma numa escada."
                                 style="background-image: url('media/_MG_7948essa[web].jpg')"> 
                             </div>
                             <div  class="slide-show pure-u-1-2 pure-u-xl-1-2" 
                                 data-imagem="media/_MG_7912[web].jpg"
-                                data-legenda="Legenda da 4ª foto"
+                                data-legenda="Um momento de deslumbramento cultural!"
                                 style="background-image: url('media/_MG_7912[web].jpg')"> 
                             </div>
                             <div  class="slide-show pure-u-1-2 pure-u-xl-1-2" 
                                 data-imagem="media/_MG_7973essa[web].jpg"
-                                data-legenda="Legenda da 5ª foto"
+                                data-legenda="Você encontra estas lindas camisas em diversas lojas da cidade [sim, todos receberam cachê]"
                                 style="background-image: url('media/_MG_7973essa[web].jpg')"> 
                             </div>
                             
@@ -428,6 +433,695 @@
 
     </div>
 
+    <div id="modal">
+        <div class="modal-cortina"></div>
+        
+        <div class="modal-container" id="c-1">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa" >
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/adila.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Ádila</strong>&nbsp;Gabrielly</p>
+                                    <p class="pure-visible-u-lg"><strong>Ádila</strong>&nbsp;Gabrielly Julião Cunha</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-2">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/alison.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Alison</strong>&nbsp;Jhonas</p>
+                                    <p class="pure-visible-u-lg"><strong>Alison</strong>&nbsp;Jhonas de Sousa Silva</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-3">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/alyne.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Alyne</strong>&nbsp;Érica</p>
+                                    <p class="pure-visible-u-lg"><strong>Alyne</strong>&nbsp;Érica dos Santos</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-4">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/andre.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>André</strong>&nbsp;Carvalho</p>
+                                    <p class="pure-visible-u-lg"><strong>André</strong>&nbsp;Victor Ribeiro de Carvalho</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-5">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/emerson.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Emerson</strong>&nbsp;Freire</p>
+                                    <p class="pure-visible-u-lg"><strong>Emerson</strong>&nbsp;Irineu Freire de Lima</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-6">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/esau.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Esau</strong>&nbsp;Teodoro</p>
+                                    <p class="pure-visible-u-lg"><strong>Esau</strong>&nbsp;Teodoro da Silva</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-7">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/felipe.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Felipe</strong>&nbsp;Ramos</p>
+                                    <p class="pure-visible-u-lg"><strong>Felipe</strong>&nbsp;de Oliveira Ramos</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-8">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/fernando.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Fernando</strong>&nbsp;Carlos</p>
+                                    <p class="pure-visible-u-lg"><strong>Fernando</strong>&nbsp;Carlos Gurgel Filho</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-9">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/gilmar.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Gilmar</strong>&nbsp;Andrade</p>
+                                    <p class="pure-visible-u-lg"><strong>Gilmar</strong>&nbsp;Vitor da Silva Andrade</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-10">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/giovanni.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Giovanni</strong>&nbsp;Begossi</p>
+                                    <p class="pure-visible-u-lg"><strong>Giovanni</strong>&nbsp;Alessandro Begossi</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-11">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/iana.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Iana</strong>&nbsp;Albuquerque</p>
+                                    <p class="pure-visible-u-lg"><strong>Iana</strong>&nbsp;Ciara Santos de Albuquerque</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-12">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/joaopedro.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>João Pedro</strong>&nbsp;Lobo</p>
+                                    <p class="pure-visible-u-lg"><strong>João Pedro</strong>&nbsp;Lobo Antunes</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-13">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/juarez.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Juarez</strong>&nbsp;Augusto</p>
+                                    <p class="pure-visible-u-lg"><strong>Juarez</strong>&nbsp;Augusto Silveira França</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-14">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/mara.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Mara</strong>&nbsp;Oliveira</p>
+                                    <p class="pure-visible-u-lg"><strong>Mara</strong>&nbsp;Cristiane Ferreira de Oliveira</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-15">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/mateus.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Mateus</strong>&nbsp;Patricio</p>
+                                    <p class="pure-visible-u-lg"><strong>Mateus</strong>&nbsp;Patricio de Souza Santos</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-16">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/rafael.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Rafael</strong>&nbsp;Ribeiro</p>
+                                    <p class="pure-visible-u-lg"><strong>Rafael</strong>&nbsp;do Nascimento Ribeiro</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-17">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/ruan.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Ruan</strong>&nbsp;Garcia</p>
+                                    <p class="pure-visible-u-lg"><strong>Ruan</strong>&nbsp;Garcia de Medeiros</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-18">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/sanderson.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Sanderson</strong>&nbsp;Douglas</p>
+                                    <p class="pure-visible-u-lg"><strong>Sanderson</strong>&nbsp;Douglas de Macedo Adelino</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-container" id="c-19">
+            <div class="modal-titulo"> 
+                <button class="fechar"></button>
+                <h3>Componentes</h3>
+            </div>
+            <div class="modal-caixa">
+                <div class="margem-horizontal margem-vertical">
+                    <div class="modal-conteudo" >
+                            <div class="circulo alinhar-centro">
+                                <div class="foto" style="background-image: url('media/wendel.jpg');"></div>
+                                <div class="legenda">
+                                    <span></span>
+                                    <p class="pure-hidden-u-lg"><strong>Wendel</strong>&nbsp;Américo</p>
+                                    <p class="pure-visible-u-lg"><strong>Wendel</strong>&nbsp;Américo de Lima Junior</p>
+                                </div>
+                            </div>
+                            <p class="texto  margem-vertical">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                            Lorem ipsum dolor sit amet, <a href="#">consectetur adipisicing elit</a>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                            </p>
+                            <h4 class="titulo">label</h4>
+                            <p class="texto  small">
+                                <a href="#">Lorem ipsum dolor sit amet</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
     <script src="js/side-menu.js"></script>
     
     

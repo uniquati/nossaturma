@@ -52,7 +52,7 @@ body.no-scroll{
 #slideshow .prev.off, #slideshow .next.off{
     visibility: hidden;
 }
-.slideshow-cortina{
+#slideshow .slideshow-cortina{
     position: fixed;
     background: rgba(0,0,0,0.9);
     top:0;
@@ -61,7 +61,7 @@ body.no-scroll{
     right: 0;
     overflow: hidden;
 }
-.slideshow-legenda{
+#slideshow .slideshow-legenda{
     background: rgba(0,0,0,0.8);
     position: absolute;
     bottom: 0;
@@ -69,10 +69,10 @@ body.no-scroll{
     color: white;
     overflow: auto;
 }
-.slideshow-legenda div{
+#slideshow .slideshow-legenda div{
     padding: 30px;
 }
-.slideshow-legenda button{
+#slideshow .slideshow-legenda button{
     position: absolute;
     top: 0;
     right: 30px;
@@ -80,7 +80,7 @@ body.no-scroll{
     width: 18px;
     height: 18px;
 }
-.slideshow-imagem{
+#slideshow .slideshow-imagem{
    position: absolute;
    top:0;
    bottom: 0;
