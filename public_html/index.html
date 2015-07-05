@@ -150,18 +150,17 @@
             //carregar modal
             initModal();
             
+            //carregar trilha sonora
+            initTrilhaSonora();
+            
             
         }); 
     </script>
 
 </head>
-<body class="no-scroll">
+<body class="">
     <div id="layout">
-        <!-- Menu toggle -->
-        <a href="#menu" id="menuLink" class="menu-link">
-            <!-- Hamburger icon -->
-            <span></span>
-        </a>
+        
 
         <div id="main" >
             <div id="placaVirtual" class="carregando">
@@ -389,7 +388,7 @@
                                     <li><span data-destino-id="nossaturma" class="link" onclick="linkPara('#nossaturma')">Nossa Turma</span></li>
                                     <li><span data-destino-id="componentes" class="link" onclick="linkPara('#componentes')">Componentes</span></li>
                                     <li><a href="#" data-destino-id="nossaturma">Galeria</a></li>
-                                    <li><span class="link">Trilha Sonora</span></li>
+                                    <li><span class="link" onclick="abrirTrilhaSonora();">Trilha Sonora</span></li>
                                     <li><a href="#" data-destino-id="nossaturma">Uniquati</a></li>
                                     
                                 </ul>
@@ -413,12 +412,14 @@
                 </div>   
             </div>
         </div>
-
+        <!-- toggle Trilha Sonora-->
+        <span id="trilhasonora-toggle" ></span>
+        
         <div id="trilhasonora">
             <div class="trilhasonora-cortina"></div>
             <div class="trilhasonora-container">
                 <div class="trilhasonora-cabecalho">
-                    <h1 class="titulo secundario">Trilha Sonora</h1><button></button>
+                    <h1 class="titulo secundario">Trilha Sonora</h1><button id="btFecharTrilhaSonora"></button>
                     <div class="margem-horizontal"><audio id="audio"  tabindex="0" controls="" >
                     <source src="media/audio/technologic.mp3" type="audio/mp3" />
                         Caaara, você não suporta áudio?

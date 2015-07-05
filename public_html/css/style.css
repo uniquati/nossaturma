@@ -253,6 +253,10 @@ LISTA DE PESSOAS
 .lista-pessoas article:hover, .lista-pessoas article:active{
     background: rgb(92, 126,230);
 }
+.lista-pessoas article:hover .nome, .lista-pessoas article:active .nome{
+    background: rgb(92, 126,230);
+    color: white !important;
+}
 .lista-pessoas article .minifoto{
     border-radius: 50%;
     width: 50px;
