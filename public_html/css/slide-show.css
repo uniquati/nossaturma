@@ -68,6 +68,7 @@ body.no-scroll{
     width: 100%;
     color: white;
     overflow: auto;
+    font-family: corbeli, sans-serif;
 }
 #slideshow .slideshow-legenda div{
     padding: 30px;

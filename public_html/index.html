@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="css/grids-responsive.css">
     
-    <link rel="stylesheet" href="css/side-menu.css">
+    <link rel="stylesheet" href="css/trilhasonora.css">
     
     <link rel="stylesheet" href="css/modal.css"/>
     <link rel="stylesheet" href="css/slide-show.css"/>
@@ -24,6 +24,11 @@
     <script src="js/slide-show.js"></script>
 
     <script>
+        //ordena aleatoriamente qulaquer vetor
+        function shuffle(v){
+            for(var j, x, i = v.length; i; j = parseInt(Math.random() *i), x = v[--i], v[i]=v[j], v[j]=x );
+            return v;
+        }
         function detectarOrientacao(){
             //não tem suporte no IE antigo
             /*console.log('orientação');
@@ -431,21 +436,15 @@
                         <button id="btPlayTrilhaSonora" title="play/pause música"></button>
                         <button id="btNextTrilhaSonora" title="próxima música"></button>
                     </div>
-                    <div class="margem-horizontal"><audio id="audio"  tabindex="0" controls="" >
-                    <source src="media/audio/technologic.mp3" type="audio/mp3" />
-                        Caaara, você não suporta áudio?
-                    </audio></div>
+                    <div class="margem-horizontal">
+                        <audio id="audio"  tabindex="0" controls="" >
+                            <source id="audiosource" src="media/audio/technologic.mp3" type="audio/mp3" />
+                            Caaara, você não tem suporte para áudio?
+                        </audio>
+                    </div>
                 </div>
                 <div class="trilhasonora-conteudo">
-                    <ul >
-                        <li class="selected"><h3>Paradise</h3><p>Cold Play</p></li>
-                        <li><h3>Paradise e Música Extremamente Longa Aqui</h3><p>Cold Play & Legenda</p></li>
-                        <li><h3>Paradise</h3><p>Cold Play & Legenda</p></li>
-                        <li><h3>Paradise</h3><p>Cold Play</p></li>
-                        <li><h3>Paradise</h3><p>Cold Play</p></li>
-                        <li><h3>Paradise</h3><p>Cold Play</p></li>
-                        <li><h3>Paradise e Música</h3><p>Cold Play & Legenda Extremamamente Longa Aqui</p></li>
-                        <li><h3>Paradise e Música</h3><p>Cold Play & Legenda Extremamamente Longa Aqui</p></li>
+                    <ul id="trilhasonora-lista" >
                     </ul>
                 </div>
             </div>
@@ -1142,7 +1141,7 @@
         
     </div>
     
-    <script src="js/side-menu.js"></script>
+    <script src="js/trilhasonora.js"></script>
     
 </body>
 </html>

@@ -203,7 +203,7 @@ h5.titulo{
     margin:0;
 }
 .texto{
-    font-family: corbeli;
+    font-family: corbeli, sans-serif;
     color:black;
     font-size: 21px;
     margin: 0;
@@ -234,7 +234,7 @@ NOMES
 */
 .nome{
     margin: 0;
-    font-family: bebasneueBook;
+    font-family: bebasneueBook, bebasneue;
     font-size: 21px;
     color:black;
 }
@@ -305,7 +305,7 @@ PESSOA
 }
 .modal-conteudo .legenda p{
     font-size: 20px;
-    font-family: bebasneueBook;
+    font-family: bebasneueBook, bebasneue;
     letter-spacing: 0.05em;
     color:white;
     font-weight: normal;
