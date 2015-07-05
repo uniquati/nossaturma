@@ -175,32 +175,24 @@ function resizePlaca(){
     var foto = $("#placaVirtual .foto");
     foto.height( tamanhoCirculo );
     foto.width( tamanhoCirculo );
-
-    /*
-     * container da playlist 
-     * esse treçho de código ainda não foi convertido para jQuery...
-     * 
-    var containerPlaylist = document.getElementById("container-playlist");
-    containerPlaylist.style.height = innerHeight+"px";
-    if(innerWidth>=600){
-        containerPlaylist.style.width = 600+"px";
-    }else{
-        containerPlaylist.style.width = innerWidth+"px";
-    }
-
-    var audio = document.querySelectorAll("#container-playlist audio");
-    audio[0].style.width = (parseInt(containerPlaylist.style.width)-20) + "px";
-
-    var playlist = document.querySelectorAll("#container-playlist #playlist");
-    playlist[0].style.height = (innerHeight-150) + "px";
-
-    */
 }
 
 function restart(){
    console.log('RESTART');
    console.log(ordem.join(" "));
    
+   //toca música quando a placa virtual é executada, se ja tiver tocando nao faz nada, se tiver pausado da play, se não tiver iniciado inicia
+   if($('#audio').hasClass('primeira-vez')){
+        $('#trilhasonora-lista li:first-child').trigger('click');   
+        $('#audio').removeClass('primeira-vez');
+   }
+   else if(!$('#audio').hasClass('play')){
+       document.getElementById('audio').play();
+   }
+   
+   $('#placaVirtual').addClass('play');
+   $('#placaVirtual').removeClass('pause');
+   //inicia animações
    $('#placaVirtual .botoes').slideDown('slow');
    $("#placaVirtual .fim").fadeOut("slow");
    $("#placaVirtual .barra").addClass("animate");
@@ -224,6 +216,8 @@ function restart(){
             $('#placaVirtual .btRestart').addClass('restart');
             $('#placaVirtual .botoes').slideUp('slow');
             
+            $('#placaVirtual').removeClass('play');
+            $('#placaVirtual').addClass('pause');
             //exibe a tela de restart
             telaRestartSlide();
          }else{
@@ -264,11 +258,15 @@ function tooglePlayPause(){
     if(timer.isActive){
         console.log('paused');
         console.log("faltam: "+timer.remaining);
+        $('#placaVirtual').addClass('pause');
+        $('#placaVirtual').removeClass('play');
         $('#placaVirtual .btPlay').addClass('pause');
         timer.pause();
     } 
     else{
         console.log('running');
+        $('#placaVirtual').removeClass('pause');
+        $('#placaVirtual').addClass('play');
         $('#placaVirtual .btPlay').removeClass('pause');
         timer.play();
     }
@@ -282,6 +280,8 @@ function play(){
     if(!timer.isActive){
         console.log('running');
         timer.play();
+        $('#placaVirtual').addClass('play');
+        $('#placaVirtual').removeClass('pause');
         $('#placaVirtual .btPlay').removeClass('pause');
         $('#placaVirtual .barra').removeClass('paused');
         $('#placaVirtual .brasao').removeClass('paused');
@@ -295,6 +295,8 @@ function pause(){
         console.log('paused');
         console.log("faltam: "+timer.remaining);
         timer.pause();
+        $('#placaVirtual').addClass('pause');
+        $('#placaVirtual').removeClass('play');
         $('#placaVirtual .btPlay').addClass('pause');
         $('#placaVirtual .barra').addClass('paused');
         $('#placaVirtual .brasao').addClass('paused');

@@ -55,6 +55,16 @@ for(var i=0; i<estruturaPlaylist.length; i++ ){
 
 function abrirTrilhaSonora(){
     if( !$('#trilhasonora').hasClass('aberto') ){
+        
+        //pausa placa virtual
+        if( $('#placaVirtual').hasClass('sucesso') ){
+            if($('#placaVirtual').hasClass('play')){
+                console.log('A placa esta play');
+                $('#placaVirtual').addClass('estado-play');
+                pause();
+            }
+        }
+        
         console.log('abrir trilha sonora');
         //ouvir eventos do teclado
         $(document).keydown(function(ev){
@@ -77,6 +87,14 @@ function abrirTrilhaSonora(){
 }
 function fecharTrilhaSonora(){
     if( $('#trilhasonora').hasClass('aberto') ){
+        //play placa virtual, se estado anterior era play
+        if( $('#placaVirtual').hasClass('sucesso') ){
+            if($('#placaVirtual').hasClass('estado-play')){
+                $('#placaVirtual').removeClass('estado-play');
+                play();
+            }
+        }
+        
         console.log('fechar trilha sonora');
         $(document).off('keydown');
         $('body').removeClass('no-scroll');
@@ -149,20 +167,12 @@ function initTrilhaSonora(){
     });
     $('#trilhasonora-prev').click(prevMusica);
     $('#btPrevTrilhaSonora').click(prevMusica);
-    
     $('#trilhasonora-next').click(nextMusica);
-    $('#btNextTrilhaSonora').click(nextMusica);
-    
-    
-    
-    
+    $('#btNextTrilhaSonora').click(nextMusica);  
     document.getElementById('audio').addEventListener('ended',nextMusica);
     
     
     document.getElementById('audio').volume = .50;
-    
-   // tocar primeira música
-    $('#trilhasonora-lista li:first-child').trigger('click');
 }
 function toggleMusica(){
     if($('#audio').hasClass('play') ){

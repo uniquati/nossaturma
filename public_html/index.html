@@ -168,7 +168,7 @@
         
 
         <div id="main" >
-            <div id="placaVirtual" class="carregando">
+            <div id="placaVirtual" class="carregando pause">
                 <h1>calma,</h1>
                 <h3>só mais um minuto...</h3>
             </div>
@@ -392,9 +392,9 @@
                                 <ul>
                                     <li><span data-destino-id="nossaturma" class="link" onclick="linkPara('#nossaturma')">Nossa Turma</span></li>
                                     <li><span data-destino-id="componentes" class="link" onclick="linkPara('#componentes')">Componentes</span></li>
-                                    <li><a href="#" data-destino-id="nossaturma">Galeria</a></li>
+                                    <li><a href="galeria.html" >Galeria</a></li>
                                     <li><span class="link" onclick="abrirTrilhaSonora();">Trilha Sonora</span></li>
-                                    <li><a href="#" data-destino-id="nossaturma">Uniquati</a></li>
+                                    <li><a href="http://uniquati.com" >Uniquati</a></li>
                                     
                                 </ul>
                                 <script>
@@ -437,7 +437,7 @@
                         <button id="btNextTrilhaSonora" title="próxima música"></button>
                     </div>
                     <div class="margem-horizontal">
-                        <audio id="audio"  tabindex="0" controls="" >
+                        <audio id="audio"  class="primeira-vez" tabindex="0" controls="" preload="none">
                             <source id="audiosource" src="media/audio/technologic.mp3" type="audio/mp3" />
                             Caaara, você não tem suporte para áudio?
                         </audio>
