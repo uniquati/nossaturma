@@ -413,13 +413,24 @@
             </div>
         </div>
         <!-- toggle Trilha Sonora-->
-        <span id="trilhasonora-toggle" ></span>
+        <div class="trilhasonora-botoes">
+            <span id="trilhasonora-prev" title="música anterior"></span>
+            <span id="trilhasonora-play" title="play/pause música"></span>
+            <span id="trilhasonora-next" title="próxima música"></span>
+            <span id="trilhasonora-toggle" title="exibir playlist"></span>
+        </div>
         
         <div id="trilhasonora">
             <div class="trilhasonora-cortina"></div>
             <div class="trilhasonora-container">
                 <div class="trilhasonora-cabecalho">
-                    <h1 class="titulo secundario">Trilha Sonora</h1><button id="btFecharTrilhaSonora"></button>
+                    <h1 class="titulo secundario">Trilha Sonora</h1>
+                    <div id="botoesTrilhaSonora">
+                        <button id="btFecharTrilhaSonora" title="fechar playlist"></button>
+                        <button id="btPrevTrilhaSonora" title="música anterior"></button>
+                        <button id="btPlayTrilhaSonora" title="play/pause música"></button>
+                        <button id="btNextTrilhaSonora" title="próxima música"></button>
+                    </div>
                     <div class="margem-horizontal"><audio id="audio"  tabindex="0" controls="" >
                     <source src="media/audio/technologic.mp3" type="audio/mp3" />
                         Caaara, você não suporta áudio?

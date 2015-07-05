@@ -31,16 +31,45 @@ This is the parent `<div>` that contains the menu and the content area.
 body.no-scroll{
     overflow: hidden;
 }
-#trilhasonora-toggle{
+.trilhasonora-botoes{
     position: fixed;
+    //background: red;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+.trilhasonora-botoes span{
+    display: inline-block;
+    background: blue;
+    width: 40px;
+    height: 40px;
+    margin:2px;
+    cursor: pointer;
+}
+.trilhasonora-botoes #trilhasonora-prev{
+    background: url('../media/trilhasonora-prev.png') center no-repeat;
+}
+.trilhasonora-botoes #trilhasonora-play{
+    background: url('../media/trilhasonora-play.png') center no-repeat;
+}
+.trilhasonora-botoes #trilhasonora-play.pause{
+    background: url('../media/trilhasonora-pause.png') center no-repeat;
+}
+.trilhasonora-botoes #trilhasonora-next{
+    background: url('../media/trilhasonora-next.png') center no-repeat;
+}
+.trilhasonora-botoes #trilhasonora-toggle{
+    background: url('../media/trilhasonora-playlist.png') center no-repeat;
+   /* position: fixed;
     display: block;
     top: 0;
     right: 0;
-    background: url('../media/music.png') center no-repeat;
+    
     width: 40px;
     height: 40px;
-    cursor: pointer;
+    
     margin:10px;
+    */
 }
 #trilhasonora{
     position: fixed;
@@ -75,15 +104,34 @@ body.no-scroll{
     top:0;  
     z-index: 21;
 }
-.trilhasonora-cabecalho button{
-    width: 35px;
-    height: 35px;
-    background: url('../media/fechar-branco.png') center no-repeat;
-    border:none;
-    cursor: pointer;
+.trilhasonora-cabecalho #botoesTrilhaSonora{
     position: absolute;
     top:0;
-    left: 0px;
+    left:0;
+}
+.trilhasonora-cabecalho #botoesTrilhaSonora button{
+    width: 35px;
+    height: 35px;
+    border:none;
+    cursor: pointer;
+    display: inline-block;
+    margin:2px;
+}
+.trilhasonora-cabecalho #btFecharTrilhaSonora{
+    background: url('../media/fechar-branco.png') center no-repeat;
+}
+.trilhasonora-cabecalho #btPrevTrilhaSonora{
+    margin-left: 10px !important;
+    background: url('../media/trilhasonora-prev.png') center no-repeat;
+}
+.trilhasonora-cabecalho #btPlayTrilhaSonora{
+    background: url('../media/trilhasonora-play.png') center no-repeat;
+}
+.trilhasonora-cabecalho #btPlayTrilhaSonora.pause{
+    background: url('../media/trilhasonora-pause.png') center no-repeat;
+}
+.trilhasonora-cabecalho #btNextTrilhaSonora{
+    background: url('../media/trilhasonora-next.png') center no-repeat;
 }
 .trilhasonora-cabecalho audio{
     max-width: 100%;
@@ -131,5 +179,6 @@ body.no-scroll{
     color:rgb(92, 126, 230);
 }
 .trilhasonora-conteudo li.selected:hover{
-    color: white;
+    background: white;
+    color:rgb(92, 126, 230);
 }
