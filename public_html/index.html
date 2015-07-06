@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/estilo-basico.css">
 
     <!--<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">-->
     <link rel="stylesheet" href="css/pure-min.css">
@@ -121,19 +121,19 @@
                 resize: function(){
                     ajustarDimensoesPlaca();
                     if($('#placaVirtual').hasClass('sucesso'))
-                        resizePlaca();
+                        resizePlacaVirtual();
                     if($('#slideshow').hasClass('aberto'))
                         resizeSlideShow();
                 },
                 orientationchange: function(){
                     ajustarDimensoesPlaca();
                     if($('#placaVirtual').hasClass('sucesso'))
-                        resizePlaca();
+                        resizePlacaVirtual();
                 },
                 scroll: function(){
                     if($('#placaVirtual').hasClass('sucesso')){
                         console.log('scroll');
-                        pause();
+                        pausePlacaVirtual();
                     }
                 }
             });
@@ -420,7 +420,7 @@
         <!-- toggle Trilha Sonora-->
         <div class="trilhasonora-botoes">
             <span id="trilhasonora-prev" title="música anterior"></span>
-            <span id="trilhasonora-play" title="play/pause música"></span>
+            <span id="trilhasonora-play" class="pause" title="play/pause música"></span>
             <span id="trilhasonora-next" title="próxima música"></span>
             <span id="trilhasonora-toggle" title="exibir playlist"></span>
         </div>
@@ -433,7 +433,7 @@
                     <div id="botoesTrilhaSonora">
                         <button id="btFecharTrilhaSonora" title="fechar playlist"></button>
                         <button id="btPrevTrilhaSonora" title="música anterior"></button>
-                        <button id="btPlayTrilhaSonora" title="play/pause música"></button>
+                        <button id="btPlayTrilhaSonora" class="pause" title="play/pause música"></button>
                         <button id="btNextTrilhaSonora" title="próxima música"></button>
                     </div>
                     <div class="margem-horizontal">

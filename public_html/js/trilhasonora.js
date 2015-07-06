@@ -61,7 +61,7 @@ function abrirTrilhaSonora(){
             if($('#placaVirtual').hasClass('play')){
                 console.log('A placa esta play');
                 $('#placaVirtual').addClass('estado-play');
-                pause();
+                pausePlacaVirtual();
             }
         }
         
@@ -91,7 +91,7 @@ function fecharTrilhaSonora(){
         if( $('#placaVirtual').hasClass('sucesso') ){
             if($('#placaVirtual').hasClass('estado-play')){
                 $('#placaVirtual').removeClass('estado-play');
-                play();
+                playPlacaVirtual();
             }
         }
         
@@ -119,6 +119,7 @@ function prevMusica(){
 }
 function tocarMusica(elemento){
     $('#audio').addClass('play');
+    $('#audio').removeClass('primeira-vez');
     console.log( "tocar musica: "+ estruturaPlaylist[elemento.attr('data-indice')].nome);
     $('#trilhasonora-lista li').removeClass('selected');
     elemento.addClass('selected');
@@ -179,5 +180,6 @@ function toggleMusica(){
         document.getElementById('audio').pause();
     }else{
         document.getElementById('audio').play(); 
+        $('#audio').removeClass('primeira-vez');
     }
 }

@@ -108,7 +108,7 @@ var tamanhoCirculo;
 function initPlacaVirtual(){
    console.log('INIT PLACA VIRTUAL');
    $("#placaVirtual").addClass('sucesso');
-   resizePlaca();
+   resizePlacaVirtual();
 
    ordem = shuffle(ordem);
    
@@ -120,9 +120,9 @@ function initPlacaVirtual(){
    });
 
   //inicia a execução com a tela de restart
-  telaRestartSlide();
+  telaRestartSlidePlacaVirtual();
 }
-function resizePlaca(){
+function resizePlacaVirtual(){
     console.log('resize Placa');
 
     innerWidth = getWidthBrowser();
@@ -176,8 +176,7 @@ function resizePlaca(){
     foto.height( tamanhoCirculo );
     foto.width( tamanhoCirculo );
 }
-
-function restart(){
+function restartPlacaVirtual(){
    console.log('RESTART');
    console.log(ordem.join(" "));
    
@@ -219,17 +218,17 @@ function restart(){
             $('#placaVirtual').removeClass('play');
             $('#placaVirtual').addClass('pause');
             //exibe a tela de restart
-            telaRestartSlide();
+            telaRestartSlidePlacaVirtual();
          }else{
             $("#placaVirtual .brasao").removeClass("animate");
-            proximoSlide(); 
+            proximoSlidePlacaVirtual(); 
          }
     });
 
     timer.set({ time : tempo, autostart : false });
     timer.play();
 }
-function proximoSlide(){
+function proximoSlidePlacaVirtual(){
    console.log("Rodar elemento "+ordem[i] +' '+ estrutura[ordem[i]].nome +  " i="+i );
 
    $('#t'+i).addClass("animate");
@@ -245,7 +244,7 @@ function proximoSlide(){
    }
    i++;
 }
-function telaRestartSlide(){
+function telaRestartSlidePlacaVirtual(){
    console.log("tela restartSlide");
    $("#placaVirtual .tela").removeClass("animate");
    $("#placaVirtual .circulo").removeClass("animate");
@@ -254,7 +253,7 @@ function telaRestartSlide(){
    $("#placaVirtual .barra").removeClass("animate");
    $("#placaVirtual .fim").fadeIn("slow");
 }
-function tooglePlayPause(){
+function tooglePlayPausePlacaVirtual(){
     if(timer.isActive){
         console.log('paused');
         console.log("faltam: "+timer.remaining);
@@ -276,7 +275,7 @@ function tooglePlayPause(){
     $('#placaVirtual .circulo').toggleClass('paused');
     $('#placaVirtual .legenda').toggleClass('paused');
 }
-function play(){
+function playPlacaVirtual(){
     if(!timer.isActive){
         console.log('running');
         timer.play();
@@ -290,7 +289,7 @@ function play(){
         $('#placaVirtual .legenda').removeClass('paused');
     }
 }
-function pause(){
+function pausePlacaVirtual(){
     if(timer.isActive){
         console.log('paused');
         console.log("faltam: "+timer.remaining);
