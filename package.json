@@ -1,0 +1,32 @@
+{
+  "name": "nossaturma",
+  "version": "2.0.0",
+  "description": "site da turma versão 2",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gilmarandrade/nossaturma.git"
+  },
+  "author": "Gilmar Andrade",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gilmarandrade/nossaturma/issues"
+  },
+  "homepage": "https://github.com/gilmarandrade/nossaturma#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "@babel/register": "^7.7.7",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0"
+  }
+}

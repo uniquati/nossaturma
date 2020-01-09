@@ -1,0 +1,69 @@
+@import url('../ciklo/css/digitalClock.css');
+
+/*
+FONTES
+*/
+@font-face {
+    font-family: bebasneueBold;
+    src: url("font/BebasNeue Bold.otf");
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: bebasneue;
+    src: url("font/BebasNeue Regular.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: bebasneueBook;
+    src: url("font/BebasNeue Book.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: bebasneueLight;
+    src: url("font/BebasNeue Light.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: bebasneueThin;
+    src: url("font/BebasNeue Thin.otf");
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: corbeli;
+    src: url("font/corbeli.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@keyframes giroRaioHorario{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }         
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: bebasneue;
+    color: white;
+    height: 100%;
+    background-image:  url('../assets/triangulos.png') ;
+    background-size: cover;
+    /* background-position: center center;  */
+}
+
+#regressive {
+    margin: 2em;
+}
