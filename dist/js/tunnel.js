@@ -224,15 +224,23 @@ Tunnel.prototype.render = function() {
   window.requestAnimationFrame(this.render.bind(this));
 };
 
-window.onload = function() {
-  var loader = new THREE.TextureLoader();
-  loader.crossOrigin = "Anonymous";
+if ( WEBGL.isWebGLAvailable() ) {
 
-  loader.load(
-    "../../assets/estrelasBIG.jpg",
-    function(texture) {
-      document.body.classList.remove("loading");
-      window.tunnel = new Tunnel(texture);
-    }
-  );
-};
+  window.onload = function() {
+    var loader = new THREE.TextureLoader();
+    loader.crossOrigin = "Anonymous";
+  
+    loader.load(
+      "../../assets/estrelasBIG.jpg",
+      function(texture) {
+        document.body.classList.remove("loading");
+        document.body.classList.add("loaded");
+        window.tunnel = new Tunnel(texture);
+      }
+    );
+  };
+
+} else {
+	var warning = WEBGL.getWebGLErrorMessage();
+	document.querySelector('#suportAlert').appendChild( warning );
+}

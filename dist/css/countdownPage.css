@@ -65,7 +65,17 @@ body {
     background-image:  url('../../assets/estrelasBIG.jpg') ;
     background-size: cover;
     /* background-position: center center;  */
+
 }
+
+.loading {
+  filter: blur(20px) grayscale(100%);
+}
+
+.loaded {
+    transition: filter 2s ease-out;
+    filter: blur(0px) grayscale(0%);
+  }
 
 .content {
     position: absolute;
