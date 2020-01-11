@@ -77,10 +77,35 @@ body {
     filter: blur(0px) grayscale(0%);
   }
 
-.content {
-    position: absolute;
+  main {
+    position: fixed;
     top: 0;
     bottom: 0;
-    margin: 2em;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+  }
+
+.content {
+    /* position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+    /* padding: 2em; */
 }
 
+#regressive {
+    padding: 2em;
+}
+
+#elapsed {
+    padding: 2em;
+    text-align: right;
+}
+
+#elapsedDays {
+    font-size: 2em;
+}

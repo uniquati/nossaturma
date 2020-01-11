@@ -231,7 +231,8 @@ if ( WEBGL.isWebGLAvailable() ) {
     loader.crossOrigin = "Anonymous";
   
     loader.load(
-      "http://nossaturma.uniquati.com/v2/assets/estrelasBIG.jpg",
+      "http://nossaturma.uniquati.com/v2/assets/estrelasBIG.jpg",//essa url funciona no servidor
+      // "../../assets/estrelasBIG.jpg",//essa url funciona no localhost
       function(texture) {
         document.body.classList.remove("loading");
         document.body.classList.add("loaded");
