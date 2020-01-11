@@ -1,16 +1,24 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Geração Kekulé</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="css/style.css">
-
-</head>
-<body>
-    <!-- <img class="logo" src="assets/brasaorodape.png" /> -->
-    <div id="regressive"></div>
-    <script src="dist/main.js"></script>
-</body>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Geração Kekulé</title>
+		<link rel="stylesheet" href="ciklo/css/digitalClock.css">
+        <link rel="stylesheet" href="dist/css/countdownPage.css">
+        <script>document.documentElement.className = 'js';</script>
+	</head>
+	<body class="loading">
+		<main>
+			<!-- The canvas where ThreeJs renders the WebGL -->
+			<canvas id="scene"></canvas>
+            <div class="content">
+                <div id="regressive"></div>
+            </div>
+		</main>
+		<script src="dist/js/vendors/three.min.js"></script>
+		<script src="dist/js/vendors/TweenMax.min.js"></script>
+        <script src="dist/js/tunnel.js"></script>
+        <script src="dist/js/main.js"></script>
+	</body>
 </html>

@@ -1,5 +1,3 @@
-@import url('../ciklo/css/digitalClock.css');
-
 /*
 FONTES
 */
@@ -49,7 +47,10 @@ FONTES
     }         
 }
 
-* {
+*,
+*::after,
+*::before {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
     padding: 0;
     margin: 0;
@@ -58,12 +59,18 @@ FONTES
 body {
     font-family: bebasneue;
     color: white;
-    height: 100%;
-    background-image:  url('../assets/triangulos.png') ;
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    background-image:  url('../../assets/estrelasBIG.jpg') ;
     background-size: cover;
     /* background-position: center center;  */
 }
 
-#regressive {
+.content {
+    position: absolute;
+    top: 0;
+    bottom: 0;
     margin: 2em;
 }
+
