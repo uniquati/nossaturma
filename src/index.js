@@ -11,6 +11,6 @@ countdown.init();
 
 const diasJuntos = new Ciklo({ startDate: '08 March 2010 00:00:00 GMT-0300', endDate: '08 March 2020 00:00:00 GMT-0300' });
 
-window.onload = function() {
-  document.querySelector('#elapsedDays').innerHTML = ''+diasJuntos.elapsed.days;
-};
+document.querySelector('#elapsedDays').innerHTML = ''+diasJuntos.elapsed.days;
+// window.onload = function() {
+// };
