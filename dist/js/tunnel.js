@@ -1,3 +1,6 @@
+// Baseado em:
+// https://tympanus.net/codrops/?p=30954
+
 var ww = window.innerWidth;
 var wh = window.innerHeight;
 
