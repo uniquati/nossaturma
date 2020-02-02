@@ -19,7 +19,7 @@
     <!--
         Baseado no tutorial em:
         https://www.youtube.com/watch?v=Bed1z7f1EI4 -->
-    <script src="dist/js/vendors/three.min.js"></script>
+    <script src="../dist/js/vendors/three.min.js"></script>
     <script>
         let scene, camera, renderer, starGeo, stars;
 
@@ -45,7 +45,7 @@
                 starGeo.vertices.push(star);
             }
 
-            let sprite = new THREE.TextureLoader().load('assets/star.png');
+            let sprite = new THREE.TextureLoader().load('../assets/star.png');
             let starMaterial = new THREE.PointsMaterial({
                 color: 0xaaaaaa,
                 size: 0.7,
