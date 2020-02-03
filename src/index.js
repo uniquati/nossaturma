@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         },
         links: {
             maxDistance: 250,
-            opacity: 0.7,
+            opacity: 1, /* máxima opacidade */
             width: 4,
         },
     };

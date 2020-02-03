@@ -34,12 +34,13 @@ export default class Particles {
     init() {
         console.log('[PARTICLES] init');
         if(this.canvas.getContext) {
-            this.openFullscreen();
+            // this.openFullscreen();
             this.addEventListeners();
             this.resize();
 
             for(let i=0; i< this.options.particles.number; i++) {
-                let p = new Particle(Math.random() * this.canvas.width, Math.random() * this.canvas.height, (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius, "rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")");
+                // let p = new Particle('img'+i, Math.random() * this.canvas.width, Math.random() * this.canvas.height, (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius, "rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")");
+                let p = new Particle('img'+i, Math.random() * this.canvas.width, Math.random() * this.canvas.height, (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius, "rgba(255,255,255, .9)");
                 this.particlesArray.push(p);
             }
 
@@ -84,6 +85,7 @@ export default class Particles {
             this.selected = particle;
             this.isDragging = true;
             this.dragStart = { x: e.offsetX, y: e.offsetY };
+            this.showImage(particle.id);
         }
     }
 
@@ -143,7 +145,7 @@ export default class Particles {
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
 
-        console.log('vx:' + this.particlesArray[0].vx, 'vy:'+ this.particlesArray[0].vy, 'dx:' + this.particlesArray[0].direction.x,  'dy:' + this.particlesArray[0].direction.y);
+        // console.log('vx:' + this.particlesArray[0].vx, 'vy:'+ this.particlesArray[0].vy, 'dx:' + this.particlesArray[0].direction.x,  'dy:' + this.particlesArray[0].direction.y);
         this.particlesArray.forEach((particle, i) => {
             /* move particle */
             const velFactor = 5;
@@ -189,11 +191,11 @@ export default class Particles {
             /* interactions between particles */
             for(let j = i + 1; j < this.particlesArray.length; j++) {
                 this.linkParticles(particle, this.particlesArray[j]);
-                this.attractParticles(particle, this.particlesArray[j]);
+                // this.attractParticles(particle, this.particlesArray[j]);
             }
 
             if(particle == this.selected){
-                this.ctx.fillStyle = 'red';
+                this.ctx.fillStyle = 'rgb(0, 0, 200)';
             } else {
                 this.ctx.fillStyle = particle.color;
             }
@@ -265,5 +267,13 @@ export default class Particles {
             this.ctx.closePath();
             this.ctx.stroke();
         }
+    }
+
+    showImage(id) {
+        console.log('show image ' + id);
+        document.querySelectorAll('.album_img').forEach(img => {
+            img.classList.remove('album_img--active');
+        });
+        document.querySelector('#'+id).classList.add('album_img--active');
     }
 }
