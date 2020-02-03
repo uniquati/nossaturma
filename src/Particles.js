@@ -1,3 +1,5 @@
+import Particle from './Particle';
+
 export default class Particles {
     constructor(canvas) {
         this.canvas = canvas;
@@ -10,7 +12,8 @@ export default class Particles {
         console.log('[PARTICLES] init');
         if(this.canvas.getContext) {
             for(let i=0; i< this.size; i++) {
-                this.particlesArray.push({x:i*30, y:i*50});
+                let p = new Particle(Math.random() * this.canvas.width, Math.random() * this.canvas.height, (Math.random() * 10)+5);
+                this.particlesArray.push(p);
             }
             this.draw();
         } else {
@@ -19,14 +22,22 @@ export default class Particles {
     }
 
     draw(){
-        this.ctx.clearRect(0, 0, 800, 800); // clear canvas
+        this.ctx.clearRect(0, 0, 800, 600); // clear canvas
 
         this.particlesArray.forEach(particle => {
-            particle.x++;
-            particle.y++;
-            this.ctx.fillStyle = "rgb(200,0,0)";
+            // console.log(particle.direction.x * particle.speed/100);
+            particle.x += particle.direction.x * particle.speed/100;
+            particle.y += particle.direction.y * particle.speed/100;
+
+            /* check position  - into the canvas ao chegar num extremo é teletrasnportada para o outro extremo continuando na mesma direção*/
+            if(particle.x > this.canvas.width + particle.radius*4) particle.x = -particle.radius*2;
+            else if(particle.x < 0 - particle.radius*4) particle.x = this.canvas.width + particle.radius*2;
+            if(particle.y > this.canvas.height + particle.radius*4) particle.y = -particle.radius*2;
+            else if(particle.y < 0 - particle.radius*4) particle.y = this.canvas.height + particle.radius*2;
+
+            this.ctx.fillStyle = particle.color;
             this.ctx.beginPath();
-            this.ctx.arc(particle.x, particle.y, 10, 0, Math.PI * 2, false);
+            this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2, false);
             this.ctx.fill();
             
         });
