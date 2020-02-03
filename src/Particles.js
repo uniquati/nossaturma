@@ -130,8 +130,9 @@ export default class Particles {
         console.log('vx:' + this.particlesArray[0].vx, 'vy:'+ this.particlesArray[0].vy, 'dx:' + this.particlesArray[0].direction.x,  'dy:' + this.particlesArray[0].direction.y);
         this.particlesArray.forEach((particle, i) => {
             /* move particle */
-            particle.x += particle.direction.x * particle.vx/3;
-            particle.y += particle.direction.y * particle.vy/3;
+            const velFactor = 5;
+            particle.x += particle.direction.x * particle.vx/velFactor;
+            particle.y += particle.direction.y * particle.vy/velFactor;
 
             /* faz a velocidade sempre cair para 1, mas nunca abaixo de 1*/
             if(particle.vx > 1) {
@@ -143,6 +144,26 @@ export default class Particles {
             if(particle.vx < 1) particle.vx = 1;
             if(particle.vy < 1) particle.vy = 1;
 
+            /*limita a velocidade máxima das particulas */
+            if(particle.vx > 5) {
+                particle.vx = 5;
+            }
+            if(particle.vy > 5) {
+                particle.vy = 5;
+            }
+
+            /* faz a direção ficar sempre em torno de (-1,-1) (1,1) */
+            if(particle.direction.x > 1) {
+                particle.direction.x = 1;
+            } else if(particle.direction.x < -1) {
+                particle.direction.x = -1;
+            }
+            if(particle.direction.y > 1) {
+                particle.direction.y = 1;
+            } else if(particle.direction.y < -1) {
+                particle.direction.y = -1;
+            }
+
             /* check position  - into the canvas ao chegar num extremo é teletransportada para o outro extremo continuando na mesma direção*/
             if(particle.x > this.canvas.width + this.options.links.maxDistance) particle.x = -this.options.links.maxDistance/2;
             else if(particle.x < 0 - this.options.links.maxDistance) particle.x = this.canvas.width + this.options.links.maxDistance/2;
@@ -152,7 +173,7 @@ export default class Particles {
             /* interactions between particles */
             for(let j = i + 1; j < this.particlesArray.length; j++) {
                 this.linkParticles(particle, this.particlesArray[j]);
-                // this.attractParticles(particle, this.particlesArray[j]);
+                this.attractParticles(particle, this.particlesArray[j]);
             }
 
             if(particle == this.selected){
@@ -176,20 +197,39 @@ export default class Particles {
      */
     attractParticles(p1, p2) {
         /* condensed particles */
-        const dx = p1.x - p2.x,
-        dy = p1.y - p2.y,
-        dist = Math.sqrt(dx*dx + dy*dy);
+        const posRelative = {
+            x: p1.x - p2.x,
+            y: p1.y - p2.y
+        };
 
-        if(dist <= this.options.links.maxDistance){
+        var distance = Math.sqrt(
+            posRelative.x * posRelative.x +
+            posRelative.y * posRelative.y
+        );
+
+        if(distance <= this.options.links.maxDistance) {
             // console.log(dist);
-            const ax = dx/(30000),
-            ay = dy/(30000);
+            const ax = distance/(30000),
+            ay = distance/(30000);
             
-            p1.vx -= ax;
-            p1.vy -= ay;
+            p1.vx += ax;
+            p1.vy += ay;
 
             p2.vx += ax;
             p2.vy += ay;
+
+            var forceDirection = {
+                x: posRelative.x / distance,
+                y: posRelative.y / distance,
+            };
+
+            var factor = 1000;
+            // console.log(forceDirection);
+            p1.direction.x += forceDirection.x/factor;
+            p1.direction.y += forceDirection.y/factor;
+
+            p2.direction.x -= forceDirection.x/factor;
+            p2.direction.y -= forceDirection.y/factor;
 
         }
     }
@@ -199,7 +239,7 @@ export default class Particles {
         dy = p1.y - p2.y,
         dist = Math.sqrt(dx*dx + dy*dy);
 
-        if(dist <= this.options.links.maxDistance) {
+        if(dist <= this.options.links.maxDistance + 50) {
             const opacity = this.options.links.opacity - (dist / (1/this.options.links.opacity)) / this.options.links.maxDistance;
             this.ctx.lineWidth = this.options.links.width;
             this.ctx.strokeStyle = 'rgba(255,255,255, ' + opacity + ')';
