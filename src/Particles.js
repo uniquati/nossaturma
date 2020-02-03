@@ -8,17 +8,18 @@ export default class Particles {
     constructor(canvas) {
         this.canvas = canvas;
         this.ctx = this.canvas.getContext('2d');
-        this.size = 10;
+        this.size = 20;
         this.particlesArray = [];
         this.linkedDistance = 250;
         this.linkBaseOpacity = 0.7;
         this.linkWidth = 4;
+        this.selected = null;
     }
 
     init() {
         console.log('[PARTICLES] init');
         if(this.canvas.getContext) {
-            window.addEventListener('resize', this.resize);
+            this.addEventListeners();
             this.resize();
 
             for(let i=0; i< this.size; i++) {
@@ -32,6 +33,24 @@ export default class Particles {
         }
     }
 
+    addEventListeners() {
+        window.addEventListener('resize', this.resize.bind(this));
+        this.canvas.addEventListener('click', this.click.bind(this));
+    }
+
+    click(e) {
+        this.particlesArray.forEach(p => {
+            // console.log(e.offsetX, e.offsetY, p.x, p.y);
+            if(e.offsetX >= p.x - p.radius*2 && e.offsetX <= p.x + p.radius*2) {
+                if(e.offsetY >= p.y - p.radius*2 && e.offsetY <= p.y + p.radius*2){
+                    this.selected = p;
+                    console.log(p);
+                    return;
+                }
+            }
+        });
+    }
+
     resize() {
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
@@ -43,8 +62,8 @@ export default class Particles {
         this.particlesArray.forEach((particle, i) => {
             // console.log(particle.direction.x * particle.speed/100);
             /* move particle */
-            particle.x += particle.direction.x * particle.speed/100;
-            particle.y += particle.direction.y * particle.speed/100;
+            particle.x += particle.direction.x * particle.vx/4000;
+            particle.y += particle.direction.y * particle.vy/4000;
 
             /* check position  - into the canvas ao chegar num extremo é teletransportada para o outro extremo continuando na mesma direção*/
             if(particle.x > this.canvas.width + this.linkedDistance) particle.x = -this.linkedDistance/2;
@@ -57,7 +76,12 @@ export default class Particles {
                 this.linkParticles(particle, this.particlesArray[j]);
                 this.attractParticles(particle, this.particlesArray[j]);
             }
-            this.ctx.fillStyle = particle.color;
+
+            if(particle == this.selected){
+                this.ctx.fillStyle = 'red';
+            } else {
+                this.ctx.fillStyle = particle.color;
+            }
             this.ctx.beginPath();
             this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2, false);
             this.ctx.fill();
@@ -80,14 +104,14 @@ export default class Particles {
 
         if(dist <= this.linkedDistance){
             // console.log(dist);
-            const ax = dx/(3*1000),
-            ay = dy/(3*1000);
+            const ax = dx/(30),
+            ay = dy/(30);
             
-            p1.x -= ax;
-            p1.y -= ay;
+            p1.vx -= ax;
+            p1.vy -= ay;
 
-            p2.x += ax;
-            p2.y += ay;
+            p2.vx += ax;
+            p2.vy += ay;
 
         }
     }
