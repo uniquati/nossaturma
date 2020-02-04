@@ -38,15 +38,22 @@ export default class Album {
         const promisse = new Promise( (resolve, reject) => {
             const image = new Image();
             image.src = url;
+            image.style.display = 'none';
             image.onload = () => resolve(image);
             image.onerror = () => reject(new Error('[ALBUM] could not load image: ' + url));
         });
 
         promisse.then( image => {
+            /* é preciso adicionar uma img com a url e escondê-la com display:none; 
+            para conseguir utilizar a url da imagem em outros lugares e obter o efeito desejado de assync load */
+            document.body.appendChild(image);
+
+            const photo_div = document.createElement('div');
             const id = 'img'+Math.floor((Math.random()*1000));
-            image.classList.add('album_img');
-            image.id = id;
-            document.querySelector('#album1').appendChild(image);
+            photo_div.id = id;
+            photo_div.classList.add('album_img');
+            photo_div.style.backgroundImage = `url('${url}')`;
+            document.querySelector('#album1').appendChild(photo_div);
             this.particlesController.addInteractiveParticle(id, url);
         }).catch((err) => {
             console.log(err);

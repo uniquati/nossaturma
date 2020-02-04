@@ -93,10 +93,13 @@ export default class Particles {
         if(particleHover !== null) {
             this.selected = particleHover;
             focus.classList.add('is-particle');
-
+            console.log(this.selected.data.id, this.selected.data.img);
+            focus.style.backgroundImage = `url('${this.selected.data.img}')`;
+            
             // console.log(this.mousePos.offsetX, this.mousePos.offsetY, particleHover);
         } else {
             focus.classList.remove('is-particle');
+            focus.style.backgroundImage = '';
         }
     }
 
