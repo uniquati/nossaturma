@@ -3,14 +3,15 @@ import Particles from './Particles';
 document.addEventListener("DOMContentLoaded", function(event) {
     const options = {
         particles: {
-            number: 30,
-            minRadius: 5,
+            totalNumber: 30,
+            numberInteractiveParticles: 20,
+            minRadius: 7,
             maxRadius: 15,
         },
         links: {
             maxDistance: 250,
-            opacity: 1, /* máxima opacidade */
-            width: 4,
+            opacity: .7, /* máxima opacidade */
+            width: 1,
         },
     };
 

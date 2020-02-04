@@ -10,6 +10,7 @@ export default class Particles {
         this.ctx = this.canvas.getContext('2d');
         this.options = options;
         this.particlesArray = [];
+        this.interactiveParticlesArray = [];
         this.selected = null;
         this.isDragging = false;
         this.dragStart = {};
@@ -39,9 +40,16 @@ export default class Particles {
             this.addEventListeners();
             this.resize();
 
-            for(let i=0; i< this.options.particles.number; i++) {
+            for(let i=0; i< this.options.particles.numberInteractiveParticles; i++) {
                 // let p = new Particle('img'+i, Math.random() * this.canvas.width, Math.random() * this.canvas.height, (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius, "rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")");
-                let p = new Particle('img'+i, Math.random() * this.canvas.width, Math.random() * this.canvas.height, (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius, "rgba(255,255,255, .9)");
+                let p = new Particle('img'+i, Math.random() * this.canvas.width, Math.random() * this.canvas.height, (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius, "rgba(255,255,255, .9)", true);
+                this.particlesArray.push(p);
+                this.interactiveParticlesArray.push(p);
+            }
+
+
+            for(let i=0; i< this.options.particles.totalNumber - this.options.particles.numberInteractiveParticles; i++) {
+                let p = new Particle('inactive'+i, Math.random() * this.canvas.width, Math.random() * this.canvas.height, 3, "rgba(255,255,255, .8)",false);
                 this.particlesArray.push(p);
             }
 
@@ -76,8 +84,8 @@ export default class Particles {
     }
 
     isParticleInCoordinate(x, y) {
-        for(let i=0; i< this.particlesArray.length; i++){
-            let p = this.particlesArray[i];
+        for(let i=0; i< this.interactiveParticlesArray.length; i++){
+            let p = this.interactiveParticlesArray[i];
             if(x >= p.x - p.radius*2 && x <= p.x + p.radius*2) {
                 if(y >= p.y - p.radius*2 && y <= p.y + p.radius*2){
                     return p;
@@ -102,6 +110,9 @@ export default class Particles {
             this.selected = particle;
             this.isDragging = true;
             this.dragStart = { x: e.offsetX, y: e.offsetY };
+
+            this.selected.vx += 10;
+            this.selected.vy += 10;
             this.showImage(particle.id);
         }
     }
@@ -209,9 +220,7 @@ export default class Particles {
         this.canvas.height = window.innerHeight;
     }
 
-    draw(){
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
-
+    moveParticles() {
         // console.log('vx:' + this.particlesArray[0].vx, 'vy:'+ this.particlesArray[0].vy, 'dx:' + this.particlesArray[0].direction.x,  'dy:' + this.particlesArray[0].direction.y);
         this.particlesArray.forEach((particle, i) => {
             /* move particle */
@@ -273,6 +282,12 @@ export default class Particles {
             this.checkHover();
             
         });
+    }
+
+    draw(){
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
+
+        this.moveParticles();
 
         window.requestAnimationFrame(this.draw.bind(this));
     }
