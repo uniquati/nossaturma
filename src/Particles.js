@@ -34,11 +34,13 @@ export default class Particles {
     }
 
     init() {
+
         console.log('[PARTICLES] init');
         if(this.canvas.getContext) {
             // this.openFullscreen();
             this.addEventListeners();
             this.resize();
+            this.isDragging = true;
 
             for(let i=0; i< this.options.particles.numberInteractiveParticles; i++) {
                 // let p = new Particle('img'+i, Math.random() * this.canvas.width, Math.random() * this.canvas.height, (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius, "rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")");
@@ -98,7 +100,6 @@ export default class Particles {
     click(e) {
         const particle = this.isParticleInCoordinate(e.offsetX, e.offsetY);
         if(particle !== null){
-            // console.log(particle);
             this.selected = particle;
         }
     }
@@ -106,7 +107,6 @@ export default class Particles {
     mousedown(e) {
         const particle = this.isParticleInCoordinate(e.offsetX, e.offsetY);
         if(particle !== null){
-            // console.log(particle);
             this.selected = particle;
             this.isDragging = true;
             this.dragStart = { x: e.offsetX, y: e.offsetY };
@@ -121,11 +121,10 @@ export default class Particles {
         this.mousePos = e;
 
         if(e.offsetX == this.dragStart.x && e.offsetY == this.dragStart.y) {
-            this.isDragging = false;
+            // this.isDragging = false;
         }
 
         if(this.isDragging) {
-            // console.log(e);
             const posRelativeToMouse = {
                 x: e.movementX,
                 y: e.movementY
@@ -153,65 +152,15 @@ export default class Particles {
                 if(this.selected.vx < 1) this.selected.vx = 1;
                 if(this.selected.vy < 1) this.selected.vy = 1;
             }
-            // this.selected.x += e.movementX;
-            // this.selected.y += e.movementY;
-            // console.log(this.selected)
         }
 
-        // console.log(e.offsetX, e.offsetY);
-        // const focus = document.querySelector('#focus');
-        // focus.style.top = e.offsetY + 'px';
-        // focus.style.left = e.offsetX + 'px';
-        // const particleHover = this.isParticleInCoordinate(e.offsetX, e.offsetX);
-        // if(particleHover !== null) {
-        //     this.selected = particleHover;
-        //     focus.classList.add('is-particle');
-
-        //     console.log(e.offsetX, e.offsetY, particleHover);
-        // } else {
-        //     focus.classList.remove('is-particle');
-        // }
     }
 
     mouseup(e) {
         this.dragEnd = { x: e.offsetX, y: e.offsetY };
 
         if(this.dragEnd.x == this.dragStart.x && this.dragEnd.y == this.dragStart.y) {
-            this.isDragging = false;
-        }
-
-        if(this.isDragging){
-            this.isDragging = false;
-
-            // const posRelativeToMouse = {
-            //     x: this.dragEnd.x - this.dragStart.x,
-            //     y: this.dragEnd.y - this.dragStart.y
-            // };
-
-            // var distance = Math.sqrt(
-            //     posRelativeToMouse.x * posRelativeToMouse.x +
-            //     posRelativeToMouse.y * posRelativeToMouse.y
-            // );
-
-            // var forceDirection = {
-            //     x: posRelativeToMouse.x / distance,
-            //     y: posRelativeToMouse.y / distance,
-            // };
-
-            // // distance past which the force is zero
-            // var force = (distance) * 0.015;
-
-            // // if we went below zero, set it to zero.
-            // if (force > 0){
-            //     this.selected.vx += force;
-            //     this.selected.vy += force;
-            //     this.selected.direction.x = forceDirection.x;
-            //     this.selected.direction.y = forceDirection.y;
-    
-            //     if(this.selected.vx < 1) this.selected.vx = 1;
-            //     if(this.selected.vy < 1) this.selected.vy = 1;
-            // }
-
+            // this.isDragging = false;
         }
     }
 
@@ -237,14 +186,6 @@ export default class Particles {
             }
             if(particle.vx < 1) particle.vx = 1;
             if(particle.vy < 1) particle.vy = 1;
-
-            /*limita a velocidade máxima das particulas */
-            // if(particle.vx > 5) {
-            //     particle.vx = 5;
-            // }
-            // if(particle.vy > 5) {
-            //     particle.vy = 5;
-            // }
 
             /* faz a direção ficar sempre em torno de (-1,-1) (1,1) */
             if(particle.direction.x > 1) {
@@ -310,7 +251,6 @@ export default class Particles {
         );
 
         if(distance <= this.options.links.maxDistance) {
-            // console.log(dist);
             var factor = 0.0001;
             const ax = distance*factor,
             ay = distance*factor;
@@ -326,13 +266,11 @@ export default class Particles {
                 y: posRelative.y / distance,
             };
 
-            // console.log(forceDirection);
             p1.direction.x += forceDirection.x*factor;
             p1.direction.y += forceDirection.y*factor;
 
             p2.direction.x -= forceDirection.x*factor;
             p2.direction.y -= forceDirection.y*factor;
-
         }
     }
 
