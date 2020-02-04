@@ -14,6 +14,7 @@ export default class Particles {
         this.isDragging = false;
         this.dragStart = {};
         this.dragEnd = {};
+        this.mousePos = {offsetX:0,offsetY:0};
     }
 
     openFullscreen() {
@@ -59,6 +60,21 @@ export default class Particles {
         this.canvas.addEventListener('mousemove', this.mousemove.bind(this));
     }
 
+    checkHover(){
+        const focus = document.querySelector('#focus');
+        focus.style.left = this.mousePos.offsetX + 'px';
+        focus.style.top = this.mousePos.offsetY + 'px';
+        const particleHover = this.isParticleInCoordinate(this.mousePos.offsetX, this.mousePos.offsetY);
+        if(particleHover !== null) {
+            this.selected = particleHover;
+            focus.classList.add('is-particle');
+
+            // console.log(this.mousePos.offsetX, this.mousePos.offsetY, particleHover);
+        } else {
+            focus.classList.remove('is-particle');
+        }
+    }
+
     isParticleInCoordinate(x, y) {
         for(let i=0; i< this.particlesArray.length; i++){
             let p = this.particlesArray[i];
@@ -91,6 +107,8 @@ export default class Particles {
     }
 
     mousemove(e) {
+        this.mousePos = e;
+
         if(e.offsetX == this.dragStart.x && e.offsetY == this.dragStart.y) {
             this.isDragging = false;
         }
@@ -128,6 +146,20 @@ export default class Particles {
             // this.selected.y += e.movementY;
             // console.log(this.selected)
         }
+
+        // console.log(e.offsetX, e.offsetY);
+        // const focus = document.querySelector('#focus');
+        // focus.style.top = e.offsetY + 'px';
+        // focus.style.left = e.offsetX + 'px';
+        // const particleHover = this.isParticleInCoordinate(e.offsetX, e.offsetX);
+        // if(particleHover !== null) {
+        //     this.selected = particleHover;
+        //     focus.classList.add('is-particle');
+
+        //     console.log(e.offsetX, e.offsetY, particleHover);
+        // } else {
+        //     focus.classList.remove('is-particle');
+        // }
     }
 
     mouseup(e) {
@@ -180,7 +212,7 @@ export default class Particles {
     draw(){
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
 
-        console.log('vx:' + this.particlesArray[0].vx, 'vy:'+ this.particlesArray[0].vy, 'dx:' + this.particlesArray[0].direction.x,  'dy:' + this.particlesArray[0].direction.y);
+        // console.log('vx:' + this.particlesArray[0].vx, 'vy:'+ this.particlesArray[0].vy, 'dx:' + this.particlesArray[0].direction.x,  'dy:' + this.particlesArray[0].direction.y);
         this.particlesArray.forEach((particle, i) => {
             /* move particle */
             const velFactor = 5;
@@ -237,6 +269,8 @@ export default class Particles {
             this.ctx.beginPath();
             this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2, false);
             this.ctx.fill();
+
+            this.checkHover();
             
         });
 
@@ -262,8 +296,9 @@ export default class Particles {
 
         if(distance <= this.options.links.maxDistance) {
             // console.log(dist);
-            const ax = distance/(30000),
-            ay = distance/(30000);
+            var factor = 0.0001;
+            const ax = distance*factor,
+            ay = distance*factor;
             
             p1.vx += ax;
             p1.vy += ay;
@@ -276,13 +311,12 @@ export default class Particles {
                 y: posRelative.y / distance,
             };
 
-            var factor = 1000;
             // console.log(forceDirection);
-            p1.direction.x += forceDirection.x/factor;
-            p1.direction.y += forceDirection.y/factor;
+            p1.direction.x += forceDirection.x*factor;
+            p1.direction.y += forceDirection.y*factor;
 
-            p2.direction.x -= forceDirection.x/factor;
-            p2.direction.y -= forceDirection.y/factor;
+            p2.direction.x -= forceDirection.x*factor;
+            p2.direction.y -= forceDirection.y*factor;
 
         }
     }
@@ -292,7 +326,7 @@ export default class Particles {
         dy = p1.y - p2.y,
         dist = Math.sqrt(dx*dx + dy*dy);
 
-        if(dist <= this.options.links.maxDistance + 50) {
+        if(dist <= this.options.links.maxDistance + 100) {
             const opacity = this.options.links.opacity - (dist / (1/this.options.links.opacity)) / this.options.links.maxDistance;
             this.ctx.lineWidth = this.options.links.width;
             this.ctx.strokeStyle = 'rgba(255,255,255, ' + opacity + ')';

@@ -3,8 +3,8 @@ import Particles from './Particles';
 document.addEventListener("DOMContentLoaded", function(event) {
     const options = {
         particles: {
-            number: 20,
-            minRadius: 10,
+            number: 30,
+            minRadius: 5,
             maxRadius: 15,
         },
         links: {
