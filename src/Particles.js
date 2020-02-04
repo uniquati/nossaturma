@@ -42,20 +42,12 @@ export default class Particles {
             this.resize();
             this.isDragging = true;
 
-            for(let i=0; i< this.options.particles.numberInteractiveParticles; i++) {
-                // let p = new Particle('img'+i, Math.random() * this.canvas.width, Math.random() * this.canvas.height, (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius, "rgb("+Math.random()*255+","+Math.random()*255+","+Math.random()*255+")");
-                let p = new Particle('img'+i, Math.random() * this.canvas.width, Math.random() * this.canvas.height, (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius, "rgba(255,255,255, .9)", true);
-                this.particlesArray.push(p);
-                this.interactiveParticlesArray.push(p);
-            }
-
-
             for(let i=0; i< this.options.particles.totalNumber - this.options.particles.numberInteractiveParticles; i++) {
-                let p = new Particle('inactive'+i, Math.random() * this.canvas.width, Math.random() * this.canvas.height, 3, "rgba(255,255,255, .8)",false);
+                let p = new Particle(Math.random() * this.canvas.width, Math.random() * this.canvas.height, 3, "rgb(255,255,255)", 0.8,false);
                 this.particlesArray.push(p);
             }
 
-            this.selected = this.particlesArray[0];
+            //this.selected = this.particlesArray[0];
             this.draw();
         } else {
             //canvas não suportado
@@ -68,6 +60,29 @@ export default class Particles {
         this.canvas.addEventListener('mousedown', this.mousedown.bind(this));
         this.canvas.addEventListener('mouseup', this.mouseup.bind(this));
         this.canvas.addEventListener('mousemove', this.mousemove.bind(this));
+    }
+
+    /**
+     * Adiciona uma particula interativa
+     * @param {*} id 
+     * @param {*} url 
+     */
+    addInteractiveParticle(id, url) {
+        let p = new Particle(
+            Math.random() * this.canvas.width,
+            Math.random() * this.canvas.height,
+            (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius,
+            this.options.particles.color,
+            this.options.particles.opacity,
+            true,
+            { 
+                id: id,
+                img: url,
+            }
+        );
+        this.particlesArray.push(p);
+        this.interactiveParticlesArray.push(p);
+        // console.log(p);
     }
 
     checkHover(){
@@ -113,18 +128,19 @@ export default class Particles {
 
             this.selected.vx += 10;
             this.selected.vy += 10;
-            this.showImage(particle.id);
+            this.showImage(particle.data.id);
         }
     }
 
     mousemove(e) {
+        //FIXIT quando só existe uma particula interativa é ipossível clicar nela porque ela foge muito rápido
         this.mousePos = e;
 
         if(e.offsetX == this.dragStart.x && e.offsetY == this.dragStart.y) {
             // this.isDragging = false;
         }
 
-        if(this.isDragging) {
+        if(this.isDragging && this.selected) {
             const posRelativeToMouse = {
                 x: e.movementX,
                 y: e.movementY
@@ -214,10 +230,20 @@ export default class Particles {
             if(particle == this.selected){
                 this.ctx.fillStyle = 'rgb(0, 0, 200)';
             } else {
+                // console.log(particle.animation.state);
+                if(particle.animation.state === 'adding') {
+                    if(particle.animation.radius<particle.radius){
+                        particle.animation.radius+=0.05;
+                    } else {
+                        particle.animation.state === 'added';
+                    }
+                } else {
+                    // this.ctx.globalAlpha = 1;
+                }
                 this.ctx.fillStyle = particle.color;
             }
             this.ctx.beginPath();
-            this.ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2, false);
+            this.ctx.arc(particle.x, particle.y, particle.animation.radius, 0, Math.PI * 2, false);
             this.ctx.fill();
 
             this.checkHover();
