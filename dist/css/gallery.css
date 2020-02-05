@@ -53,7 +53,7 @@ body {
     /* border: 6px solid white; */
 }
 
-.focus-radius {
+.cursor {
     position: absolute;
     width: 40px;
     height: 40px;
@@ -73,7 +73,7 @@ body {
     transition: transform .3s ease-out;
 }
 
-/* .focus-radius::before {
+/* .cursor::before {
     content: '';
     position: absolute;
     top: 0%;
@@ -86,7 +86,7 @@ body {
     transition: transform .3s ease-out;
 } */
 
-.focus-radius.is-particle {
+.cursor.cursor--thumbnail-active {
     transform: scale(4);
 }
 
@@ -122,7 +122,7 @@ body {
     }
 }
 
-.ripple.is-particle {
+.ripple.ripple--active {
     /*FIXIT só cobre a tela inteira em movo landscape, mas não funciona em modo portrait*/
     /* width: 200vw;
     height: 200vw;

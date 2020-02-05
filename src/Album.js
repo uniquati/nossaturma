@@ -34,9 +34,16 @@ export default class Album {
         this.particlesController = new Particles(this.slideController, this.canvasEl, options);
     }
 
+    resize() {
+        this.canvasEl.width = window.innerWidth;
+        this.canvasEl.height = window.innerHeight;
+    }
+
     init(){
         console.log('[ALBUM] init');
         // this.openFullscreen();
+        window.addEventListener('resize', this.resize.bind(this));
+        this.resize();
         this.particlesController.init();
     }
 

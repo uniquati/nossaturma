@@ -1,4 +1,18 @@
+/**
+ * Representa uma partícula
+ */
 export default class Particle {
+
+    /**
+     * 
+     * @param {number} x coordenada x
+     * @param {number} y coordenada y
+     * @param {number} r raio
+     * @param {string} color cor
+     * @param {number} opacity opacidade
+     * @param {boolean} interactive é interativa ou decorativa
+     * @param {object} data quaisquer informações podem ser associadas à particula
+     */
     constructor(x,y, r, color, opacity, interactive, data) {
         this.radius = r;
         this.x = x;

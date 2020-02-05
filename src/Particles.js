@@ -1,5 +1,5 @@
 /**
- * inspirado no Particle.js
+ * inspirado no Particles.js
  * https://vincentgarreau.com/particles.js
  */
 import Particle from './Particle';
@@ -10,7 +10,8 @@ export default class Particles {
         this.canvasEl = canvas;
         this.context = this.canvasEl.getContext('2d');
         this.options = options;
-        this.particlesArray = [];
+
+        this.allParticlesArray = [];
         this.interactiveParticlesArray = [];
         this.selected = null;
         this.isDragging = false;
@@ -20,42 +21,54 @@ export default class Particles {
             offsetX: 0, 
             offsetY: 0,
         };
+        this.customCursor = document.querySelector('#cursor');
     }
 
+    /**
+     * 
+     */
     init() {
         console.log('[PARTICLES] init');
         if(this.context) {
-            this.addEventListeners();
-            this.resize();
+            this.startEventListeners();
             this.isDragging = true;
 
-            //adiciona particulas não interativas (decorativas)
             for(let i=0; i< this.options.decorativeParticles.total; i++) {
                 this.addDecorativeParticle();
             }
 
-            //this.selected = this.particlesArray[0];
             this.draw();
         } else {
             //TODO canvas não suportado
         }
     }
 
-    addEventListeners() {
-        window.addEventListener('resize', this.resize.bind(this));
-        // this.canvasEl.addEventListener('click', this.click.bind(this));
+    /**
+     * Escuta os eventos no canvas
+     */
+    startEventListeners() {
         this.canvasEl.addEventListener('mousedown', this.mousedown.bind(this));
         this.canvasEl.addEventListener('mouseup', this.mouseup.bind(this));
         this.canvasEl.addEventListener('mousemove', this.mousemove.bind(this));
     }
 
+    /**
+     * Adiciona uma particula decorativa numa posição aleatória do canvas
+     */
     addDecorativeParticle(){
-        let p = new Particle(Math.random() * this.canvasEl.width, Math.random() * this.canvasEl.height, this.options.decorativeParticles.radius, this.options.decorativeParticles.color, this.options.decorativeParticles.opacity, false);
-        this.particlesArray.push(p);
+        let p = new Particle(
+            Math.random() * this.canvasEl.width,
+            Math.random() * this.canvasEl.height,
+            this.options.decorativeParticles.radius,
+            this.options.decorativeParticles.color,
+            this.options.decorativeParticles.opacity,
+            false
+        );
+        this.allParticlesArray.push(p);
     }
 
     /**
-     * Adiciona uma particula interativa
+     * Adiciona uma particula interativa numa posição aleatória do canvas
      * @param {*} id 
      * @param {*} url 
      */
@@ -72,36 +85,36 @@ export default class Particles {
                 img: url,
             }
         );
-        this.particlesArray.push(p);
+        this.allParticlesArray.push(p);
         this.interactiveParticlesArray.push(p);
     }
 
-    checkHover(){
-        //TODO transformar focus num atributo da classe
-        const focus = document.querySelector('#focus');
-        focus.style.left = this.mousePos.offsetX + 'px';
-        focus.style.top = this.mousePos.offsetY + 'px';
+    /**
+     * Atualiza a posição do cursor personalizado do mouse 
+     * e exibe o thumbnail ao fazer hover sobre uma partícula
+     */
+    updateCustomMouseCursor(){
+        this.customCursor.style.left = this.mousePos.offsetX + 'px';
+        this.customCursor.style.top = this.mousePos.offsetY + 'px';
 
-        // const ripple = document.querySelector('#ripple');
-        // ripple.style.left = this.mousePos.offsetX + 'px';
-        // ripple.style.top = this.mousePos.offsetY + 'px';
-
-        const particleHover = this.isParticleInCoordinate(this.mousePos.offsetX, this.mousePos.offsetY);
-        if(particleHover !== null) {
+        const particleHover = this.getParticleInCoordinate(this.mousePos.offsetX, this.mousePos.offsetY);
+        if(particleHover) {
             this.selected = particleHover;
-            focus.classList.add('is-particle');
-            focus.style.backgroundImage = `url('${this.selected.data.img}')`;
-            // ripple.style.backgroundImage = `url('${this.selected.data.img}')`;
-            // ripple.classList.add('is-particle');
-            
+            this.customCursor.classList.add('cursor--thumbnail-active');
+            this.customCursor.style.backgroundImage = `url('${this.selected.data.img}')`;            
         } else {
-            focus.classList.remove('is-particle');
-            focus.style.backgroundImage = '';
-            // ripple.classList.remove('is-particle');
+            this.customCursor.classList.remove('cursor--thumbnail-active');
+            this.customCursor.style.backgroundImage = '';
         }
     }
 
-    isParticleInCoordinate(x, y) {
+    /**
+     * Verifica se existe uma partícula na coordenada
+     * @param {number} x 
+     * @param {number} y 
+     * @returns {Particle} retorna uma particula ou null
+     */
+    getParticleInCoordinate(x, y) {
         for(let i=0; i< this.interactiveParticlesArray.length; i++){
             let p = this.interactiveParticlesArray[i];
             if(x >= p.x - p.radius*2 && x <= p.x + p.radius*2) {
@@ -113,16 +126,13 @@ export default class Particles {
         return null;
     }
 
-    click(e) {
-        const particle = this.isParticleInCoordinate(e.offsetX, e.offsetY);
-        if(particle !== null){
-            this.selected = particle;
-        }
-    }
-
+    /**
+     * Ao clicar numa partícula, mostra a imagem correspondente no slide
+     * @param {Event} e
+     */
     mousedown(e) {
-        const particle = this.isParticleInCoordinate(e.offsetX, e.offsetY);
-        if(particle !== null){
+        const particle = this.getParticleInCoordinate(e.offsetX, e.offsetY);
+        if(particle){
             this.selected = particle;
             this.isDragging = true;
             this.dragStart = { x: e.offsetX, y: e.offsetY };
@@ -133,13 +143,17 @@ export default class Particles {
         }
     }
 
+    /**
+     * Interação com as particulas ao mover o mouse sobre elas 
+     * @param {Event} e 
+     */
     mousemove(e) {
         //FIXIT quando só existe uma particula interativa é ipossível clicar nela porque ela foge muito rápido
         this.mousePos = e;
 
-        if(e.offsetX == this.dragStart.x && e.offsetY == this.dragStart.y) {
-            // this.isDragging = false;
-        }
+        // if(e.offsetX == this.dragStart.x && e.offsetY == this.dragStart.y) {
+        //     this.isDragging = false;
+        // }
 
         if(this.isDragging && this.selected) {
             const posRelativeToMouse = {
@@ -147,19 +161,18 @@ export default class Particles {
                 y: e.movementY
             };
 
-            var distance = Math.sqrt(
+            const distance = Math.sqrt(
                 posRelativeToMouse.x * posRelativeToMouse.x +
                 posRelativeToMouse.y * posRelativeToMouse.y
             );
 
-            var forceDirection = {
+            const forceDirection = {
                 x: posRelativeToMouse.x / distance,
                 y: posRelativeToMouse.y / distance,
             };
 
-            // distance past which the force is zero
-            var force = (distance) * 0.08;
-            // if we went below zero, set it to zero.
+  
+            let force = (distance) * 0.08;
             if (force > 0){
                 this.selected.vx += force;
                 this.selected.vy += force;
@@ -173,107 +186,120 @@ export default class Particles {
 
     }
 
+    /**
+     * Interação ao arrastar uma partícula com o mouse
+     * @param {Event} e 
+     */
     mouseup(e) {
         this.dragEnd = { x: e.offsetX, y: e.offsetY };
 
-        if(this.dragEnd.x == this.dragStart.x && this.dragEnd.y == this.dragStart.y) {
-            // this.isDragging = false;
+        // if(this.dragEnd.x == this.dragStart.x && this.dragEnd.y == this.dragStart.y) {
+        //     this.isDragging = false;
+        // }
+    }
+
+    moveParticle(particle) {
+        /* move particle */
+        const velFactor = 5;
+        particle.x += particle.direction.x * particle.vx/velFactor;
+        particle.y += particle.direction.y * particle.vy/velFactor;
+
+        /* faz a velocidade sempre cair lentamente para 1, mas nunca abaixo de 1*/
+        if(particle.vx > 1) {
+            particle.vx -= 0.2;
         }
+        if(particle.vy > 1) {
+            particle.vy -= 0.2;
+        }
+        if(particle.vx < 1) particle.vx = 1;
+        if(particle.vy < 1) particle.vy = 1;
+
+        // faz a direção ficar sempre em torno de (-1,-1) até (1,1)
+        if(particle.direction.x > 1) {
+            particle.direction.x = 1;
+        } else if(particle.direction.x < -1) {
+            particle.direction.x = -1;
+        }
+        if(particle.direction.y > 1) {
+            particle.direction.y = 1;
+        } else if(particle.direction.y < -1) {
+            particle.direction.y = -1;
+        }
+
+        /* check position  - into the canvas ao chegar num extremo é teletransportada para o outro extremo continuando na mesma direção*/
+        if(particle.x > this.canvasEl.width + this.options.links.maxDistance) particle.x = -this.options.links.maxDistance/2;
+        else if(particle.x < 0 - this.options.links.maxDistance) particle.x = this.canvasEl.width + this.options.links.maxDistance/2;
+        if(particle.y > this.canvasEl.height + this.options.links.maxDistance) particle.y = -this.options.links.maxDistance/2;
+        else if(particle.y < 0 - this.options.links.maxDistance) particle.y = this.canvasEl.height + this.options.links.maxDistance/2;
+
     }
 
-    //TODO mover resize para Album.js
-    resize() {
-        this.canvasEl.width = window.innerWidth;
-        this.canvasEl.height = window.innerHeight;
-    }
+    /**
+     * Atualiza parâmetros de uma particula (posição, direção, velocidade, links, cor, raio, etc...) 
+     * e desenha no canvas
+     * @param {*} particle 
+     * @param {*} i 
+     */
+    updateParticle(particle, i){
+        /* move particle */
+        this.moveParticle(particle);
 
-    moveParticles() {
-        // console.log('vx:' + this.particlesArray[0].vx, 'vy:'+ this.particlesArray[0].vy, 'dx:' + this.particlesArray[0].direction.x,  'dy:' + this.particlesArray[0].direction.y);
-        this.particlesArray.forEach((particle, i) => {
-            /* move particle */
-            const velFactor = 5;
-            particle.x += particle.direction.x * particle.vx/velFactor;
-            particle.y += particle.direction.y * particle.vy/velFactor;
+        /* links e interactions between particles */
+        for(let j = i + 1; j < this.allParticlesArray.length; j++) {
+            this.linkParticles(particle, this.allParticlesArray[j]);
+            this.attractParticles(particle, this.allParticlesArray[j]);
+        }
 
-            /* faz a velocidade sempre cair para 1, mas nunca abaixo de 1*/
-            if(particle.vx > 1) {
-                particle.vx -= 0.2;
-            }
-            if(particle.vy > 1) {
-                particle.vy -= 0.2;
-            }
-            if(particle.vx < 1) particle.vx = 1;
-            if(particle.vy < 1) particle.vy = 1;
-
-            /* faz a direção ficar sempre em torno de (-1,-1) (1,1) */
-            if(particle.direction.x > 1) {
-                particle.direction.x = 1;
-            } else if(particle.direction.x < -1) {
-                particle.direction.x = -1;
-            }
-            if(particle.direction.y > 1) {
-                particle.direction.y = 1;
-            } else if(particle.direction.y < -1) {
-                particle.direction.y = -1;
-            }
-
-            /* check position  - into the canvas ao chegar num extremo é teletransportada para o outro extremo continuando na mesma direção*/
-            if(particle.x > this.canvasEl.width + this.options.links.maxDistance) particle.x = -this.options.links.maxDistance/2;
-            else if(particle.x < 0 - this.options.links.maxDistance) particle.x = this.canvasEl.width + this.options.links.maxDistance/2;
-            if(particle.y > this.canvasEl.height + this.options.links.maxDistance) particle.y = -this.options.links.maxDistance/2;
-            else if(particle.y < 0 - this.options.links.maxDistance) particle.y = this.canvasEl.height + this.options.links.maxDistance/2;
-
-            /* interactions between particles */
-            for(let j = i + 1; j < this.particlesArray.length; j++) {
-                this.linkParticles(particle, this.particlesArray[j]);
-                this.attractParticles(particle, this.particlesArray[j]);
-            }
-
-            if(particle == this.selected){
-                this.context.fillStyle = 'rgb(0, 0, 200)';
-            } else {
-                // console.log(particle.animation.state);
-                if(particle.animation.state === 'adding') {
-                    if(particle.animation.radius<particle.radius){
-                        particle.animation.radius+=0.05;
-                    } else {
-                        particle.animation.state === 'added';
-                    }
+        //TODO refatorar esse código confuso
+        if(particle == this.selected){
+            this.context.fillStyle = 'rgb(0, 0, 200)';
+        } else {
+            // console.log(particle.animation.state);
+            if(particle.animation.state === 'adding') {
+                if(particle.animation.radius<particle.radius){
+                    particle.animation.radius+=0.05;
                 } else {
-                    // this.context.globalAlpha = 1;
+                    particle.animation.state === 'added';
                 }
-                this.context.fillStyle = particle.color;
+            } else {
+                // this.context.globalAlpha = 1;
             }
-            this.context.beginPath();
-            this.context.arc(particle.x, particle.y, particle.animation.radius, 0, Math.PI * 2, false);
-            this.context.fill();
+            this.context.fillStyle = particle.color;
+        }
 
-            this.checkHover();
-            
-        });
+        this.context.beginPath();
+        this.context.arc(particle.x, particle.y, particle.animation.radius, 0, Math.PI * 2, false);
+        this.context.fill();
+
+        
     }
-
+    
+    /**
+     * Desenha as partículas e links no canvas (em loop)
+     */
     draw(){
-        this.context.clearRect(0, 0, this.canvasEl.width, this.canvasEl.height); // clear canvas
-
-        this.moveParticles();
+        // clear canvas
+        this.context.clearRect(0, 0, this.canvasEl.width, this.canvasEl.height);
+        
+        this.allParticlesArray.forEach((particle, i) => this.updateParticle(particle, i));
+        
+        this.updateCustomMouseCursor();
 
         window.requestAnimationFrame(this.draw.bind(this));
     }
 
     /**
-     * Atração das particulas
-     * @param {*} p1 
-     * @param {*} p2 
+     * Atração entre partículas próximas
+     * @param {Particle} p1 
+     * @param {Particle} p2 
      */
     attractParticles(p1, p2) {
-        /* condensed particles */
         const posRelative = {
             x: p1.x - p2.x,
             y: p1.y - p2.y
         };
 
-        var distance = Math.sqrt(
+        const distance = Math.sqrt(
             posRelative.x * posRelative.x +
             posRelative.y * posRelative.y
         );
@@ -302,13 +328,25 @@ export default class Particles {
         }
     }
 
+    /**
+     * Desenha links entre as partículas próximas
+     * @param {Particle} p1 
+     * @param {Particle} p2 
+     */
     linkParticles(p1, p2) {
-        const dx = p1.x - p2.x,
-        dy = p1.y - p2.y,
-        dist = Math.sqrt(dx*dx + dy*dy);
+        const posRelative = {
+            x: p1.x - p2.x,
+            y: p1.y - p2.y
+        };
 
-        if(dist <= this.options.links.maxDistance + 100) {
-            const opacity = this.options.links.opacity - (dist / (1/this.options.links.opacity)) / this.options.links.maxDistance;
+        const distance = Math.sqrt(
+            posRelative.x * posRelative.x +
+            posRelative.y * posRelative.y
+        );
+
+        //TODO criar uma distancia máxima para link
+        if(distance <= this.options.links.maxDistance + 100) {
+            const opacity = this.options.links.opacity - (distance / (1/this.options.links.opacity)) / this.options.links.maxDistance;
             this.context.lineWidth = this.options.links.width;
             this.context.strokeStyle = 'rgba(255,255,255, ' + opacity + ')';
             this.context.beginPath();

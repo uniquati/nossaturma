@@ -22,7 +22,7 @@ export default class Slide {
         ripple.style.left = mousePos.offsetX + 'px';
         ripple.style.top = mousePos.offsetY + 'px';
         ripple.style.backgroundImage = `url('${url}')`;
-        ripple.classList.add('is-particle');
+        ripple.classList.add('ripple--active');
         this.albumEl.appendChild(ripple);
 
         setTimeout(() => {
