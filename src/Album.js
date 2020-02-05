@@ -12,13 +12,14 @@ export default class Album {
                 numberInteractiveParticles: 20,
                 minRadius: 7,
                 maxRadius: 15,
-                color: "rgb(255,255,255)",
+                color: 'rgb(255,255,255)',
+                visitedColor: 'rgba(200, 200, 200, .8)',
                 opacity: 0.9,
             },
             decorativeParticles: {
                 total: 10,
                 radius: 3,
-                color: "rgb(255,255,255)",
+                color: 'rgb(255,255,255)',
                 opacity: 0.8,
             },
             links: {
@@ -34,7 +35,7 @@ export default class Album {
         this.el = document.querySelector('#album1');
         this.slideController = new Slide(this.el);
 
-        this.particlesController = new Particles(this.slideController, this.canvasEl, options);
+        this.particlesController = new Particles(this, this.canvasEl, options);
     }
 
     resize() {
@@ -48,6 +49,10 @@ export default class Album {
         window.addEventListener('resize', this.resize.bind(this));
         this.resize();
         this.particlesController.init();
+
+        const interval = setInterval(() => {
+            this.slideController.next();
+        }, 8000);
     }
 
     /**
@@ -89,11 +94,14 @@ export default class Album {
             para conseguir utilizar a url da imagem em outros lugares e obter o efeito desejado de assync load */
             document.body.appendChild(image);
             
-            const id = 'img'+Math.floor((Math.random()*1000));
-            //adiciona a imagem no slide
-            this.slideController.add(url);
+            const data = {
+                id: 'img'+ '_' + Math.random().toString(36).substr(2, 9),
+                img: url,
+            };
             //adiciona uma particula
-            this.particlesController.addInteractiveParticle(id, url);
+            const particle = this.particlesController.addInteractiveParticle(data);
+            //adiciona a imagem no slide
+            this.slideController.add(particle);
         }).catch((err) => {
             console.log(err);
         });

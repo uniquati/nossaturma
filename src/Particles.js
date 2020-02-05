@@ -5,8 +5,8 @@
 import Particle from './Particle';
 
 export default class Particles {
-    constructor(slide, canvas, options) {
-        this.slideController = slide,
+    constructor(album, canvas, options) {
+        this.albumController = album,
         this.canvasEl = canvas;
         this.context = this.canvasEl.getContext('2d');
         this.options = options;
@@ -74,8 +74,9 @@ export default class Particles {
      * Adiciona uma particula interativa numa posição aleatória do canvas
      * @param {*} id 
      * @param {*} url 
+     * @returns Particle
      */
-    addInteractiveParticle(id, url) {
+    addInteractiveParticle(data) {
         let p = new Particle(
             Math.random() * this.canvasEl.width,
             Math.random() * this.canvasEl.height,
@@ -83,13 +84,11 @@ export default class Particles {
             this.options.particles.color,
             this.options.particles.opacity,
             true,
-            { 
-                id: id,
-                img: url,
-            }
+            data
         );
         this.allParticlesArray.push(p);
         this.interactiveParticlesArray.push(p);
+        return p;
     }
 
     /**
@@ -142,7 +141,7 @@ export default class Particles {
 
             this.selected.vx += 10;
             this.selected.vy += 10;
-            this.slideController.showImage(particle.data.id, particle.data.img, this.mousePos);
+            this.albumController.slideController.showImage(particle);
         }
     }
 
@@ -258,20 +257,24 @@ export default class Particles {
         }
 
         //TODO refatorar esse código confuso
-        if(particle == this.selected){
-            this.context.fillStyle = 'rgb(0, 0, 200)';
-        } else {
-            // console.log(particle.animation.state);
-            if(particle.animation.state === 'adding') {
-                if(particle.animation.radius<particle.radius){
-                    particle.animation.radius+=0.05;
-                } else {
-                    particle.animation.state === 'added';
-                }
+        // console.log(particle.animation.state);
+        if(particle.animation.state === 'adding') {
+            if(particle.animation.radius<particle.radius){
+                particle.animation.radius+=0.05;
             } else {
-                // this.context.globalAlpha = 1;
+                particle.animation.state === 'added';
             }
-            this.context.fillStyle = particle.color;
+        } else {
+            // this.context.globalAlpha = 1;
+        }
+        this.context.fillStyle = particle.color;
+
+        // if(particle == this.selected){
+        //     this.context.fillStyle = 'rgb(0, 0, 200)';
+        // }
+
+        if(particle.visited) {
+            this.context.fillStyle = this.options.particles.visitedColor;
         }
 
         this.context.beginPath();
