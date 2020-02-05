@@ -31,7 +31,10 @@ export default class Particles {
         console.log('[PARTICLES] init');
         if(this.context) {
             this.startEventListeners();
-            this.isDragging = true;
+
+            if(this.options.interaction.dragMode){
+                this.isDragging = true;
+            }
 
             for(let i=0; i< this.options.decorativeParticles.total; i++) {
                 this.addDecorativeParticle();
@@ -192,6 +195,10 @@ export default class Particles {
      */
     mouseup(e) {
         this.dragEnd = { x: e.offsetX, y: e.offsetY };
+
+        if(!this.options.interaction.dragMode){
+            this.isDragging = false;
+        }
 
         // if(this.dragEnd.x == this.dragStart.x && this.dragEnd.y == this.dragStart.y) {
         //     this.isDragging = false;

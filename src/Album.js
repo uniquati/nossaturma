@@ -26,6 +26,9 @@ export default class Album {
                 opacity: .7, /* máxima opacidade */
                 width: 1,
             },
+            interaction : {
+                dragMode: true, /* quando TRUE, mover o mouse já interage com as particulas, não sendo necessário clicar e arrastar para movê-las */
+            }
         };
         this.canvasEl = document.querySelector("#canvas");
         this.el = document.querySelector('#album1');
