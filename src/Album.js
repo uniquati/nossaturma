@@ -14,6 +14,7 @@ export default class Album {
                 maxRadius: 15,
                 color: 'rgb(255,255,255)',
                 visitedColor: 'rgba(200, 200, 200, .8)',
+                activeColor: 'rgb(67, 24, 168)',
                 opacity: 0.9,
             },
             decorativeParticles: {

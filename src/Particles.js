@@ -13,7 +13,7 @@ export default class Particles {
 
         this.allParticlesArray = [];
         this.interactiveParticlesArray = [];
-        this.selected = null;
+        this.hovered = null;
         this.isDragging = false;
         this.dragStart = {};
         this.dragEnd = {};
@@ -101,9 +101,9 @@ export default class Particles {
 
         const particleHover = this.getParticleInCoordinate(this.mousePos.offsetX, this.mousePos.offsetY);
         if(particleHover) {
-            this.selected = particleHover;
+            this.hovered = particleHover;
             this.customCursor.classList.add('cursor--thumbnail-active');
-            this.customCursor.style.backgroundImage = `url('${this.selected.data.img}')`;            
+            this.customCursor.style.backgroundImage = `url('${this.hovered.data.img}')`;            
         } else {
             this.customCursor.classList.remove('cursor--thumbnail-active');
             this.customCursor.style.backgroundImage = '';
@@ -135,12 +135,12 @@ export default class Particles {
     mousedown(e) {
         const particle = this.getParticleInCoordinate(e.offsetX, e.offsetY);
         if(particle){
-            this.selected = particle;
+            this.hovered = particle;
             this.isDragging = true;
             this.dragStart = { x: e.offsetX, y: e.offsetY };
 
-            this.selected.vx += 10;
-            this.selected.vy += 10;
+            this.hovered.vx += 10;
+            this.hovered.vy += 10;
             this.albumController.slideController.showImage(particle);
         }
     }
@@ -157,7 +157,7 @@ export default class Particles {
         //     this.isDragging = false;
         // }
 
-        if(this.isDragging && this.selected) {
+        if(this.isDragging && this.hovered) {
             const posRelativeToMouse = {
                 x: e.movementX,
                 y: e.movementY
@@ -176,13 +176,13 @@ export default class Particles {
   
             let force = (distance) * 0.08;
             if (force > 0){
-                this.selected.vx += force;
-                this.selected.vy += force;
-                this.selected.direction.x = forceDirection.x;
-                this.selected.direction.y = forceDirection.y;
+                this.hovered.vx += force;
+                this.hovered.vy += force;
+                this.hovered.direction.x = forceDirection.x;
+                this.hovered.direction.y = forceDirection.y;
     
-                if(this.selected.vx < 1) this.selected.vx = 1;
-                if(this.selected.vy < 1) this.selected.vy = 1;
+                if(this.hovered.vx < 1) this.hovered.vx = 1;
+                if(this.hovered.vy < 1) this.hovered.vy = 1;
             }
         }
 
@@ -275,6 +275,9 @@ export default class Particles {
 
         if(particle.visited) {
             this.context.fillStyle = this.options.particles.visitedColor;
+        }
+        if(particle.active) {
+            this.context.fillStyle = this.options.particles.activeColor;
         }
 
         this.context.beginPath();

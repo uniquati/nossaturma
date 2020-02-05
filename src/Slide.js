@@ -3,6 +3,7 @@ export default class Slide {
         this.albumEl = album;
         this.particles = [];
         this.index = null;
+        this.active = null;
     }
 
     add(particle){
@@ -15,8 +16,13 @@ export default class Slide {
     }
 
     showImage(particle) {
+        if(this.active){
+            this.active.active = false;
+        }
+        this.active = particle;
         console.log('[SLIDE] show image ', particle);
         particle.visited = true;
+        particle.active = true;
 
         
         const ripple = document.createElement('div');
