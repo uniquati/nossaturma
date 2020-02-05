@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     let i = 0;
     const interval = setInterval(() => {
         if(i<array.length)
-            albumController.addPhoto(array[i++]);
+            albumController.loadImage(array[i++]);
         else 
             clearInterval(interval);
     }, 4000);

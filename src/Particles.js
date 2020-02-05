@@ -5,9 +5,10 @@
 import Particle from './Particle';
 
 export default class Particles {
-    constructor(canvas, options) {
-        this.canvas = canvas;
-        this.ctx = this.canvas.getContext('2d');
+    constructor(slide, canvas, options) {
+        this.slideController = slide,
+        this.canvasEl = canvas;
+        this.context = this.canvasEl.getContext('2d');
         this.options = options;
         this.particlesArray = [];
         this.interactiveParticlesArray = [];
@@ -15,51 +16,42 @@ export default class Particles {
         this.isDragging = false;
         this.dragStart = {};
         this.dragEnd = {};
-        this.mousePos = {offsetX:0,offsetY:0};
-    }
-
-    openFullscreen() {
-        let elem = document.querySelector("body");
-        /* When the openFullscreen() function is executed, open the video in fullscreen.
-        Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
-        if (elem.requestFullscreen) {
-        elem.requestFullscreen();
-        } else if (elem.mozRequestFullScreen) { /* Firefox */
-        elem.mozRequestFullScreen();
-        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
-        elem.webkitRequestFullscreen();
-        } else if (elem.msRequestFullscreen) { /* IE/Edge */
-        elem.msRequestFullscreen();
-        }
+        this.mousePos = {
+            offsetX: 0, 
+            offsetY: 0,
+        };
     }
 
     init() {
-
         console.log('[PARTICLES] init');
-        if(this.canvas.getContext) {
-            // this.openFullscreen();
+        if(this.context) {
             this.addEventListeners();
             this.resize();
             this.isDragging = true;
 
-            for(let i=0; i< this.options.particles.totalNumber - this.options.particles.numberInteractiveParticles; i++) {
-                let p = new Particle(Math.random() * this.canvas.width, Math.random() * this.canvas.height, 3, "rgb(255,255,255)", 0.8,false);
-                this.particlesArray.push(p);
+            //adiciona particulas não interativas (decorativas)
+            for(let i=0; i< this.options.decorativeParticles.total; i++) {
+                this.addDecorativeParticle();
             }
 
             //this.selected = this.particlesArray[0];
             this.draw();
         } else {
-            //canvas não suportado
+            //TODO canvas não suportado
         }
     }
 
     addEventListeners() {
         window.addEventListener('resize', this.resize.bind(this));
-        // this.canvas.addEventListener('click', this.click.bind(this));
-        this.canvas.addEventListener('mousedown', this.mousedown.bind(this));
-        this.canvas.addEventListener('mouseup', this.mouseup.bind(this));
-        this.canvas.addEventListener('mousemove', this.mousemove.bind(this));
+        // this.canvasEl.addEventListener('click', this.click.bind(this));
+        this.canvasEl.addEventListener('mousedown', this.mousedown.bind(this));
+        this.canvasEl.addEventListener('mouseup', this.mouseup.bind(this));
+        this.canvasEl.addEventListener('mousemove', this.mousemove.bind(this));
+    }
+
+    addDecorativeParticle(){
+        let p = new Particle(Math.random() * this.canvasEl.width, Math.random() * this.canvasEl.height, this.options.decorativeParticles.radius, this.options.decorativeParticles.color, this.options.decorativeParticles.opacity, false);
+        this.particlesArray.push(p);
     }
 
     /**
@@ -69,8 +61,8 @@ export default class Particles {
      */
     addInteractiveParticle(id, url) {
         let p = new Particle(
-            Math.random() * this.canvas.width,
-            Math.random() * this.canvas.height,
+            Math.random() * this.canvasEl.width,
+            Math.random() * this.canvasEl.height,
             (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius,
             this.options.particles.color,
             this.options.particles.opacity,
@@ -82,10 +74,10 @@ export default class Particles {
         );
         this.particlesArray.push(p);
         this.interactiveParticlesArray.push(p);
-        // console.log(p);
     }
 
     checkHover(){
+        //TODO transformar focus num atributo da classe
         const focus = document.querySelector('#focus');
         focus.style.left = this.mousePos.offsetX + 'px';
         focus.style.top = this.mousePos.offsetY + 'px';
@@ -98,7 +90,6 @@ export default class Particles {
         if(particleHover !== null) {
             this.selected = particleHover;
             focus.classList.add('is-particle');
-            console.log(this.selected.data.id, this.selected.data.img);
             focus.style.backgroundImage = `url('${this.selected.data.img}')`;
             // ripple.style.backgroundImage = `url('${this.selected.data.img}')`;
             // ripple.classList.add('is-particle');
@@ -138,7 +129,7 @@ export default class Particles {
 
             this.selected.vx += 10;
             this.selected.vy += 10;
-            this.showImage(particle.data.id);
+            this.slideController.showImage(particle.data.id, particle.data.img, this.mousePos);
         }
     }
 
@@ -190,9 +181,10 @@ export default class Particles {
         }
     }
 
+    //TODO mover resize para Album.js
     resize() {
-        this.canvas.width = window.innerWidth;
-        this.canvas.height = window.innerHeight;
+        this.canvasEl.width = window.innerWidth;
+        this.canvasEl.height = window.innerHeight;
     }
 
     moveParticles() {
@@ -226,10 +218,10 @@ export default class Particles {
             }
 
             /* check position  - into the canvas ao chegar num extremo é teletransportada para o outro extremo continuando na mesma direção*/
-            if(particle.x > this.canvas.width + this.options.links.maxDistance) particle.x = -this.options.links.maxDistance/2;
-            else if(particle.x < 0 - this.options.links.maxDistance) particle.x = this.canvas.width + this.options.links.maxDistance/2;
-            if(particle.y > this.canvas.height + this.options.links.maxDistance) particle.y = -this.options.links.maxDistance/2;
-            else if(particle.y < 0 - this.options.links.maxDistance) particle.y = this.canvas.height + this.options.links.maxDistance/2;
+            if(particle.x > this.canvasEl.width + this.options.links.maxDistance) particle.x = -this.options.links.maxDistance/2;
+            else if(particle.x < 0 - this.options.links.maxDistance) particle.x = this.canvasEl.width + this.options.links.maxDistance/2;
+            if(particle.y > this.canvasEl.height + this.options.links.maxDistance) particle.y = -this.options.links.maxDistance/2;
+            else if(particle.y < 0 - this.options.links.maxDistance) particle.y = this.canvasEl.height + this.options.links.maxDistance/2;
 
             /* interactions between particles */
             for(let j = i + 1; j < this.particlesArray.length; j++) {
@@ -238,7 +230,7 @@ export default class Particles {
             }
 
             if(particle == this.selected){
-                this.ctx.fillStyle = 'rgb(0, 0, 200)';
+                this.context.fillStyle = 'rgb(0, 0, 200)';
             } else {
                 // console.log(particle.animation.state);
                 if(particle.animation.state === 'adding') {
@@ -248,13 +240,13 @@ export default class Particles {
                         particle.animation.state === 'added';
                     }
                 } else {
-                    // this.ctx.globalAlpha = 1;
+                    // this.context.globalAlpha = 1;
                 }
-                this.ctx.fillStyle = particle.color;
+                this.context.fillStyle = particle.color;
             }
-            this.ctx.beginPath();
-            this.ctx.arc(particle.x, particle.y, particle.animation.radius, 0, Math.PI * 2, false);
-            this.ctx.fill();
+            this.context.beginPath();
+            this.context.arc(particle.x, particle.y, particle.animation.radius, 0, Math.PI * 2, false);
+            this.context.fill();
 
             this.checkHover();
             
@@ -262,7 +254,7 @@ export default class Particles {
     }
 
     draw(){
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // clear canvas
+        this.context.clearRect(0, 0, this.canvasEl.width, this.canvasEl.height); // clear canvas
 
         this.moveParticles();
 
@@ -317,36 +309,13 @@ export default class Particles {
 
         if(dist <= this.options.links.maxDistance + 100) {
             const opacity = this.options.links.opacity - (dist / (1/this.options.links.opacity)) / this.options.links.maxDistance;
-            this.ctx.lineWidth = this.options.links.width;
-            this.ctx.strokeStyle = 'rgba(255,255,255, ' + opacity + ')';
-            this.ctx.beginPath();
-            this.ctx.moveTo( p1.x, p1.y);
-            this.ctx.lineTo(p2.x, p2.y);
-            this.ctx.closePath();
-            this.ctx.stroke();
+            this.context.lineWidth = this.options.links.width;
+            this.context.strokeStyle = 'rgba(255,255,255, ' + opacity + ')';
+            this.context.beginPath();
+            this.context.moveTo( p1.x, p1.y);
+            this.context.lineTo(p2.x, p2.y);
+            this.context.closePath();
+            this.context.stroke();
         }
-    }
-
-    showImage(id) {
-        console.log('show image ' + id);
-
-        const ripple = document.createElement('div');
-        ripple.classList.add('ripple');
-        ripple.id = 'ripple' + (Math.random() * 1000);
-        ripple.style.left = this.mousePos.offsetX + 'px';
-        ripple.style.top = this.mousePos.offsetY + 'px';
-        ripple.style.backgroundImage = `url('${this.selected.data.img}')`;
-        ripple.classList.add('is-particle');
-        document.querySelector('#album1').appendChild(ripple);
-
-        setTimeout(() => {
-            document.querySelector('#album1').style.backgroundImage = ripple.style.backgroundImage;
-            ripple.remove();
-        }, 700);
-
-        // document.querySelectorAll('.album_img').forEach(img => {
-        //     img.classList.remove('album_img--active');
-        // });
-        // document.querySelector('#'+id).classList.add('album_img--active');
     }
 }

@@ -1,4 +1,5 @@
 import Particles from './Particles';
+import Slide from './Slide';
 
 /**
  * Gerencia um album, pré carregamento das imagens, e autoplay...
@@ -14,27 +15,56 @@ export default class Album {
                 color: "rgb(255,255,255)",
                 opacity: 0.9,
             },
+            decorativeParticles: {
+                total: 10,
+                radius: 3,
+                color: "rgb(255,255,255)",
+                opacity: 0.8,
+            },
             links: {
                 maxDistance: 250,
                 opacity: .7, /* máxima opacidade */
                 width: 1,
             },
         };
-        this.particlesController = new Particles(document.querySelector("#canvas"), options);
+        this.canvasEl = document.querySelector("#canvas");
+        this.el = document.querySelector('#album1');
+        this.slideController = new Slide(this.el);
+
+        this.particlesController = new Particles(this.slideController, this.canvasEl, options);
     }
 
     init(){
         console.log('[ALBUM] init');
+        // this.openFullscreen();
         this.particlesController.init();
     }
 
     /**
-     * Adiciona uma imagem ao álbum
+     * 
+     */
+    openFullscreen() {
+        let elem = document.body;
+        /* When the openFullscreen() function is executed, open the video in fullscreen.
+        Note that we must include prefixes for different browsers, as they don't support the requestFullscreen method yet */
+        if (elem.requestFullscreen) {
+        elem.requestFullscreen();
+        } else if (elem.mozRequestFullScreen) { /* Firefox */
+        elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+        elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE/Edge */
+        elem.msRequestFullscreen();
+        }
+    }
+
+    /**
+     * Baixa uma imagem da url e adiciona ao álbum
      * 
      * Utiliza Promisses para baixar as imagens de forma assíncrona.
      * @param {string} url Endreço da imagem
      */
-    addPhoto(url) {
+    loadImage(url) {
         const promisse = new Promise( (resolve, reject) => {
             const image = new Image();
             image.src = url;
@@ -44,16 +74,15 @@ export default class Album {
         });
 
         promisse.then( image => {
+            
             /* é preciso adicionar uma img com a url e escondê-la com display:none; 
             para conseguir utilizar a url da imagem em outros lugares e obter o efeito desejado de assync load */
             document.body.appendChild(image);
-
-            const photo_div = document.createElement('div');
+            
             const id = 'img'+Math.floor((Math.random()*1000));
-            photo_div.id = id;
-            photo_div.classList.add('album_img');
-            photo_div.style.backgroundImage = `url('${url}')`;
-            document.querySelector('#album1').appendChild(photo_div);
+            //adiciona a imagem no slide
+            this.slideController.add(url);
+            //adiciona uma particula
             this.particlesController.addInteractiveParticle(id, url);
         }).catch((err) => {
             console.log(err);
