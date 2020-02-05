@@ -23,12 +23,12 @@ body {
     height: 100vh;
     filter: brightness(80%);
 
-    /* display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    align-items: flex-start;
-    align-content: flex-start; */
     overflow: hidden;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
 }
 
 .album_img {
@@ -93,30 +93,44 @@ body {
 .ripple {
     position: absolute;
     z-index: 1;
-    width: 50px;
-    height: 50px;
-    margin-left: calc(-50px/2);
-    margin-top: calc(-50px/2);
     pointer-events: none;
     border-radius: 100%;
-    /* top: -100px;
-    left: -100px; */
-    
-    /* opacity: .8; */
     box-sizing: border-box;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    transition: transform .3s ease-out;
-    background-color: red;;
     background-attachment: fixed;
-    transition:  margin .3s ease-out, width .3s ease-out, height .3s ease-out;
+    transition: transform .3s ease-out;
+
+;
+    /* transition:  margin .3s ease-out, width .3s ease-out, height .3s ease-out; */
+    /* transition:  margin 2s ease-out, width 2s ease-out, height 2s ease-out; */
+}
+
+@keyframes ripple {
+    from {
+        width: 50px;
+        height: 50px;
+        margin-left: -25px;
+        margin-top: -25px;
+    }
+    to {
+        width: 200vw;
+        height: 200vw;
+        margin-left: -100vw;
+        margin-top: -100vw;
+    }
 }
 
 .ripple.is-particle {
     /*FIXIT só cobre a tela inteira em movo landscape, mas não funciona em modo portrait*/
-    width: 200vw;
+    /* width: 200vw;
     height: 200vw;
     margin-left: calc(-200vw/2);
-    margin-top: calc(-200vw/2);
+    margin-top: calc(-200vw/2); */
+    animation-name: ripple;
+    animation-duration: .7s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+
 }

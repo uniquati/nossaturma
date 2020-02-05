@@ -90,9 +90,9 @@ export default class Particles {
         focus.style.left = this.mousePos.offsetX + 'px';
         focus.style.top = this.mousePos.offsetY + 'px';
 
-        const ripple = document.querySelector('#ripple');
-        ripple.style.left = this.mousePos.offsetX + 'px';
-        ripple.style.top = this.mousePos.offsetY + 'px';
+        // const ripple = document.querySelector('#ripple');
+        // ripple.style.left = this.mousePos.offsetX + 'px';
+        // ripple.style.top = this.mousePos.offsetY + 'px';
 
         const particleHover = this.isParticleInCoordinate(this.mousePos.offsetX, this.mousePos.offsetY);
         if(particleHover !== null) {
@@ -100,14 +100,13 @@ export default class Particles {
             focus.classList.add('is-particle');
             console.log(this.selected.data.id, this.selected.data.img);
             focus.style.backgroundImage = `url('${this.selected.data.img}')`;
-            ripple.style.backgroundImage = `url('${this.selected.data.img}')`;
-            ripple.classList.add('is-particle');
+            // ripple.style.backgroundImage = `url('${this.selected.data.img}')`;
+            // ripple.classList.add('is-particle');
             
-            // console.log(this.mousePos.offsetX, this.mousePos.offsetY, particleHover);
         } else {
             focus.classList.remove('is-particle');
             focus.style.backgroundImage = '';
-            ripple.classList.remove('is-particle');
+            // ripple.classList.remove('is-particle');
         }
     }
 
@@ -330,9 +329,24 @@ export default class Particles {
 
     showImage(id) {
         console.log('show image ' + id);
-        document.querySelectorAll('.album_img').forEach(img => {
-            img.classList.remove('album_img--active');
-        });
-        document.querySelector('#'+id).classList.add('album_img--active');
+
+        const ripple = document.createElement('div');
+        ripple.classList.add('ripple');
+        ripple.id = 'ripple' + (Math.random() * 1000);
+        ripple.style.left = this.mousePos.offsetX + 'px';
+        ripple.style.top = this.mousePos.offsetY + 'px';
+        ripple.style.backgroundImage = `url('${this.selected.data.img}')`;
+        ripple.classList.add('is-particle');
+        document.querySelector('#album1').appendChild(ripple);
+
+        setTimeout(() => {
+            document.querySelector('#album1').style.backgroundImage = ripple.style.backgroundImage;
+            ripple.remove();
+        }, 700);
+
+        // document.querySelectorAll('.album_img').forEach(img => {
+        //     img.classList.remove('album_img--active');
+        // });
+        // document.querySelector('#'+id).classList.add('album_img--active');
     }
 }
