@@ -38,7 +38,7 @@ export default class Album {
         const promisse = new Promise( (resolve, reject) => {
             const image = new Image();
             image.src = url;
-            image.style.display = 'none';
+            // image.style.display = 'none';
             image.onload = () => resolve(image);
             image.onerror = () => reject(new Error('[ALBUM] could not load image: ' + url));
         });

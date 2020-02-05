@@ -28,7 +28,7 @@ body {
     justify-content: start;
     align-items: flex-start;
     align-content: flex-start; */
-
+    overflow: hidden;
 }
 
 .album_img {
@@ -45,6 +45,7 @@ body {
     top: 0;
     left: 0;
     display: none;
+
 }
 
 .album_img.album_img--active {
@@ -53,14 +54,13 @@ body {
 }
 
 .focus-radius {
-    position: fixed;
+    position: absolute;
     width: 40px;
     height: 40px;
     margin-left: -20px;
     margin-top: -20px;
     pointer-events: none;
     border-radius: 100%;
-    transition: transform .3s ease-out;
     top: -100px;
     left: -100px;
     
@@ -70,6 +70,7 @@ body {
     background-repeat: no-repeat;
     background-position: center center;
     border: 2px solid rgba(255, 255, 255, 1);
+    transition: transform .3s ease-out;
 }
 
 /* .focus-radius::before {
@@ -87,9 +88,35 @@ body {
 
 .focus-radius.is-particle {
     transform: scale(4);
-    /* background-color: rgba(255,255,255,1); */
 }
 
-/* .focus-radius.is-particle::before {
-    transform: scale(.6);
-} */
+.ripple {
+    position: absolute;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+    margin-left: calc(-50px/2);
+    margin-top: calc(-50px/2);
+    pointer-events: none;
+    border-radius: 100%;
+    /* top: -100px;
+    left: -100px; */
+    
+    /* opacity: .8; */
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: transform .3s ease-out;
+    background-color: red;;
+    background-attachment: fixed;
+    transition:  margin .3s ease-out, width .3s ease-out, height .3s ease-out;
+}
+
+.ripple.is-particle {
+    /*FIXIT só cobre a tela inteira em movo landscape, mas não funciona em modo portrait*/
+    width: 200vw;
+    height: 200vw;
+    margin-left: calc(-200vw/2);
+    margin-top: calc(-200vw/2);
+}

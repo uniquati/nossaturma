@@ -89,17 +89,25 @@ export default class Particles {
         const focus = document.querySelector('#focus');
         focus.style.left = this.mousePos.offsetX + 'px';
         focus.style.top = this.mousePos.offsetY + 'px';
+
+        const ripple = document.querySelector('#ripple');
+        ripple.style.left = this.mousePos.offsetX + 'px';
+        ripple.style.top = this.mousePos.offsetY + 'px';
+
         const particleHover = this.isParticleInCoordinate(this.mousePos.offsetX, this.mousePos.offsetY);
         if(particleHover !== null) {
             this.selected = particleHover;
             focus.classList.add('is-particle');
             console.log(this.selected.data.id, this.selected.data.img);
             focus.style.backgroundImage = `url('${this.selected.data.img}')`;
+            ripple.style.backgroundImage = `url('${this.selected.data.img}')`;
+            ripple.classList.add('is-particle');
             
             // console.log(this.mousePos.offsetX, this.mousePos.offsetY, particleHover);
         } else {
             focus.classList.remove('is-particle');
             focus.style.backgroundImage = '';
+            ripple.classList.remove('is-particle');
         }
     }
 
