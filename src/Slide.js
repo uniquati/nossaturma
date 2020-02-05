@@ -1,18 +1,9 @@
 export default class Slide {
-    constructor(album){
-        this.albumEl = album;
-        this.particles = [];
+    constructor(albumEl, photosArray){
+        this.photosArray = photosArray;
+        this.albumEl = albumEl;
         this.index = null;
         this.active = null;
-    }
-
-    add(particle){
-        // console.log('[SLIDE] added photo ', photo);
-        this.particles.push(particle);
-    }
-    
-    remove() {
-
     }
 
     showImage(particle) {
@@ -42,17 +33,17 @@ export default class Slide {
     }
 
     next(){
-        if(this.particles.length>0){
+        if(this.photosArray.length>0){
             if(this.index === null) {
                 this.index = 0;
             } else {
                 this.index++;
-                if(this.index>=this.particles.length){
+                if(this.index>=this.photosArray.length){
                     this.index = 0;
                 }
             }
 
-            this.showImage(this.particles[this.index]);
+            this.showImage(this.photosArray[this.index]);
         }
     }
 }

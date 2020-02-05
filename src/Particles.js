@@ -5,8 +5,9 @@
 import Particle from './Particle';
 
 export default class Particles {
-    constructor(album, canvas, options) {
-        this.albumController = album,
+    constructor(canvas, options, photosArray, slideController) {
+        this.slideController = slideController;
+        this.photosArray = photosArray;
         this.canvasEl = canvas;
         this.context = this.canvasEl.getContext('2d');
         this.options = options;
@@ -87,7 +88,6 @@ export default class Particles {
             data
         );
         this.allParticlesArray.push(p);
-        this.interactiveParticlesArray.push(p);
         return p;
     }
 
@@ -117,8 +117,8 @@ export default class Particles {
      * @returns {Particle} retorna uma particula ou null
      */
     getParticleInCoordinate(x, y) {
-        for(let i=0; i< this.interactiveParticlesArray.length; i++){
-            let p = this.interactiveParticlesArray[i];
+        for(let i=0; i< this.photosArray.length; i++){
+            let p = this.photosArray[i];
             if(x >= p.x - p.radius*2 && x <= p.x + p.radius*2) {
                 if(y >= p.y - p.radius*2 && y <= p.y + p.radius*2){
                     return p;
@@ -141,7 +141,7 @@ export default class Particles {
 
             this.hovered.vx += 10;
             this.hovered.vy += 10;
-            this.albumController.slideController.showImage(particle);
+            this.slideController.showImage(particle);
         }
     }
 

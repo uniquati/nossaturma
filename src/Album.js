@@ -8,7 +8,7 @@ export default class Album {
     constructor(){
         const options = {
             particles: {
-                totalNumber: 30,
+                totalNumber: 30,//FIXIT o total não é usado
                 numberInteractiveParticles: 20,
                 minRadius: 7,
                 maxRadius: 15,
@@ -34,9 +34,10 @@ export default class Album {
         };
         this.canvasEl = document.querySelector("#canvas");
         this.el = document.querySelector('#album1');
-        this.slideController = new Slide(this.el);
+        this.photos = [];
+        this.slideController = new Slide(this.el, this.photos);
 
-        this.particlesController = new Particles(this, this.canvasEl, options);
+        this.particlesController = new Particles(this.canvasEl, options, this.photos, this.slideController);
     }
 
     resize() {
@@ -102,7 +103,7 @@ export default class Album {
             //adiciona uma particula
             const particle = this.particlesController.addInteractiveParticle(data);
             //adiciona a imagem no slide
-            this.slideController.add(particle);
+            this.photos.push(particle);
         }).catch((err) => {
             console.log(err);
         });
