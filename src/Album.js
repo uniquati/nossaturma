@@ -5,7 +5,7 @@ import Particles from './Particles';
  */
 export default class Album {
     constructor(){
-        const options = {
+        this.options = {
             particles: {
                 totalNumber: 30,//FIXIT o total não é usado
                 numberInteractiveParticles: 20,
@@ -29,15 +29,20 @@ export default class Album {
             },
             interaction : {
                 dragMode: true, /* quando TRUE, mover o mouse já interage com as particulas, não sendo necessário clicar e arrastar para movê-las */
+            },
+            slide : {
+                autoplay: true,
+                duration: 4000 /* período de exibição de cada foto em milissegundos */
             }
         };
         this.canvasEl = document.querySelector("#canvas");
         this.el = document.querySelector('#album1');
         this.photos = [];
         this.index = null;
-        this.active = null;
+        this.activeParticle = null;
 
-        this.particlesController = new Particles(this.canvasEl, options, this);
+        this.particlesController = new Particles(this.canvasEl, this.options, this);
+        this.interval;
     }
 
     resize() {
@@ -52,9 +57,23 @@ export default class Album {
         this.resize();
         this.particlesController.init();
 
-        const interval = setInterval(() => {
+        if(this.options.slide.autoplay) {
+            this.startPresentation();
+        }
+
+    }
+
+    /**
+     * Inicia a apresentação automática das fotos se o modo options.slide.autoplay estiver ligado
+     */
+    startPresentation(){
+        if(this.photos.length){
             this.next();
-        }, 8000);
+        } else {
+            this.interval = setTimeout(() => {
+                this.startPresentation();
+            }, this.options.slide.duration);
+        }
     }
 
     /**
@@ -109,16 +128,20 @@ export default class Album {
         });
     }
 
+    /**
+     * Mostra a imagem associada a uma particula específica
+     */
     show(particle) {
-        if(this.active){
-            this.active.active = false;
+        if(this.activeParticle){
+            this.activeParticle.active = false;
         }
-        this.active = particle;
+        this.activeParticle = particle;
         console.log('[SLIDE] show image ', particle);
         particle.visited = true;
         particle.active = true;
 
         
+        /* ripple transition effect */
         const ripple = document.createElement('div');
         ripple.classList.add('ripple');
         ripple.id = 'ripple' + (Math.random() * 1000);
@@ -133,9 +156,20 @@ export default class Album {
             ripple.remove();
         }, 700);
 
+        if(this.options.slide.autoplay) {
+            clearInterval(this.interval);
+            this.interval = setTimeout(() => {
+                this.next();
+            }, this.options.slide.duration);
+        }
+
     }
 
+    /**
+     * Mostra a imagem na próxima particula do array, reiniciando a contagem quando chega na ultima
+     */
     next(){
+        console.log('next')
         if(this.photos.length>0){
             if(this.index === null) {
                 this.index = 0;
