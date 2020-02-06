@@ -5,9 +5,8 @@
 import Particle from './Particle';
 
 export default class Particles {
-    constructor(canvas, options, photosArray, slideController) {
-        this.slideController = slideController;
-        this.photosArray = photosArray;
+    constructor(canvas, options, albumEl) {
+        this.albumEl = albumEl;
         this.canvasEl = canvas;
         this.context = this.canvasEl.getContext('2d');
         this.options = options;
@@ -65,8 +64,7 @@ export default class Particles {
             Math.random() * this.canvasEl.height,
             this.options.decorativeParticles.radius,
             this.options.decorativeParticles.color,
-            this.options.decorativeParticles.opacity,
-            false
+            false,
         );
         this.allParticlesArray.push(p);
     }
@@ -83,9 +81,8 @@ export default class Particles {
             Math.random() * this.canvasEl.height,
             (Math.random() * (this.options.particles.maxRadius-this.options.particles.minRadius))+this.options.particles.minRadius,
             this.options.particles.color,
-            this.options.particles.opacity,
             true,
-            data
+            data,
         );
         this.allParticlesArray.push(p);
         return p;
@@ -117,8 +114,8 @@ export default class Particles {
      * @returns {Particle} retorna uma particula ou null
      */
     getParticleInCoordinate(x, y) {
-        for(let i=0; i< this.photosArray.length; i++){
-            let p = this.photosArray[i];
+        for(let i=0; i< this.albumEl.photos.length; i++){
+            let p = this.albumEl.photos[i];
             if(x >= p.x - p.radius*2 && x <= p.x + p.radius*2) {
                 if(y >= p.y - p.radius*2 && y <= p.y + p.radius*2){
                     return p;
@@ -141,7 +138,7 @@ export default class Particles {
 
             this.hovered.vx += 10;
             this.hovered.vy += 10;
-            this.slideController.showImage(particle);
+            this.albumEl.show(particle);
         }
     }
 
@@ -269,10 +266,6 @@ export default class Particles {
         }
         this.context.fillStyle = particle.color;
 
-        // if(particle == this.selected){
-        //     this.context.fillStyle = 'rgb(0, 0, 200)';
-        // }
-
         if(particle.visited) {
             this.context.fillStyle = this.options.particles.visitedColor;
         }
@@ -293,7 +286,7 @@ export default class Particles {
     draw(){
         // clear canvas
         this.context.clearRect(0, 0, this.canvasEl.width, this.canvasEl.height);
-        
+
         this.allParticlesArray.forEach((particle, i) => this.updateParticle(particle, i));
         
         this.updateCustomMouseCursor();

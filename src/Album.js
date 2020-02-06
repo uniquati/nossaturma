@@ -1,5 +1,4 @@
 import Particles from './Particles';
-import Slide from './Slide';
 
 /**
  * Gerencia um album, pré carregamento das imagens, e autoplay...
@@ -35,9 +34,10 @@ export default class Album {
         this.canvasEl = document.querySelector("#canvas");
         this.el = document.querySelector('#album1');
         this.photos = [];
-        this.slideController = new Slide(this.el, this.photos);
+        this.index = null;
+        this.active = null;
 
-        this.particlesController = new Particles(this.canvasEl, options, this.photos, this.slideController);
+        this.particlesController = new Particles(this.canvasEl, options, this);
     }
 
     resize() {
@@ -53,7 +53,7 @@ export default class Album {
         this.particlesController.init();
 
         const interval = setInterval(() => {
-            this.slideController.next();
+            this.next();
         }, 8000);
     }
 
@@ -107,6 +107,47 @@ export default class Album {
         }).catch((err) => {
             console.log(err);
         });
+    }
+
+    show(particle) {
+        if(this.active){
+            this.active.active = false;
+        }
+        this.active = particle;
+        console.log('[SLIDE] show image ', particle);
+        particle.visited = true;
+        particle.active = true;
+
+        
+        const ripple = document.createElement('div');
+        ripple.classList.add('ripple');
+        ripple.id = 'ripple' + (Math.random() * 1000);
+        ripple.style.left = particle.x + 'px';
+        ripple.style.top = particle.y + 'px';
+        ripple.style.backgroundImage = `url('${particle.data.img}')`;
+        ripple.classList.add('ripple--active');
+        this.el.appendChild(ripple);
+
+        setTimeout(() => {
+            this.el.style.backgroundImage = `url('${particle.data.img}')`;
+            ripple.remove();
+        }, 700);
+
+    }
+
+    next(){
+        if(this.photos.length>0){
+            if(this.index === null) {
+                this.index = 0;
+            } else {
+                this.index++;
+                if(this.index>=this.photos.length){
+                    this.index = 0;
+                }
+            }
+
+            this.show(this.photos[this.index]);
+        }
     }
 
 }

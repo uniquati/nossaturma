@@ -13,7 +13,7 @@ export default class Particle {
      * @param {boolean} interactive é interativa ou decorativa
      * @param {object} data quaisquer informações podem ser associadas à particula
      */
-    constructor(x,y, r, color, opacity, interactive, data) {
+    constructor(x,y, r, color, interactive, data) {
         this.radius = r;
         this.x = x;
         this.y = y;
@@ -24,8 +24,8 @@ export default class Particle {
         // this.opacity = opacity;//FIX IT opacidade das particulas não está sendo aplicada
         this.isInteractive = interactive;
         this.data = data;
-        this.visited = false;
-        this.active = false;
+        this.visited = false,
+        this.active = false,
         this.animation = {
             state : 'adding',
             radius: 0,
