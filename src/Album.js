@@ -32,7 +32,7 @@ export default class Album {
             },
             slide : {
                 autoplay: true,
-                duration: 4000 /* período de exibição de cada foto em milissegundos */
+                duration: 6000 /* período de exibição de cada foto em milissegundos */
             }
         };
         this.canvasEl = document.querySelector("#canvas");
@@ -104,22 +104,21 @@ export default class Album {
         const promisse = new Promise( (resolve, reject) => {
             const image = new Image();
             image.src = url;
-            // image.style.display = 'none';
+            image.style.display = 'none';
             image.onload = () => resolve(image);
             image.onerror = () => reject(new Error('[ALBUM] could not load image: ' + url));
         });
 
         promisse.then( image => {
-            
             /* é preciso adicionar uma img com a url e escondê-la com display:none; 
             para conseguir utilizar a url da imagem em outros lugares e obter o efeito desejado de assync load */
             document.body.appendChild(image);
             
+            //adiciona uma particula
             const data = {
                 id: 'img'+ '_' + Math.random().toString(36).substr(2, 9),
                 img: url,
             };
-            //adiciona uma particula
             const particle = this.particlesController.addInteractiveParticle(data);
             //adiciona a imagem no slide
             this.photos.push(particle);
@@ -132,30 +131,37 @@ export default class Album {
      * Mostra a imagem associada a uma particula específica
      */
     show(particle) {
+        console.log('[SLIDE] show image ', particle);
         if(this.activeParticle){
             this.activeParticle.active = false;
         }
         this.activeParticle = particle;
-        console.log('[SLIDE] show image ', particle);
         particle.visited = true;
         particle.active = true;
-
         
         /* ripple transition effect */
         const ripple = document.createElement('div');
         ripple.classList.add('ripple');
-        ripple.id = 'ripple' + (Math.random() * 1000);
         ripple.style.left = particle.x + 'px';
         ripple.style.top = particle.y + 'px';
         ripple.style.backgroundImage = `url('${particle.data.img}')`;
-        ripple.classList.add('ripple--active');
         this.el.appendChild(ripple);
-
         setTimeout(() => {
-            this.el.style.backgroundImage = `url('${particle.data.img}')`;
+            this.el.querySelector('.album_background').style.backgroundImage = `url('${particle.data.img}')`;
             ripple.remove();
+            var foregrounds = document.querySelectorAll('.album_foreground');
+            if(foregrounds.length > 1) {
+                foregrounds[0].remove();
+            }
         }, 700);
 
+        /* responsive image foreground */
+        const foreground = document.createElement('div');
+        foreground.classList.add('album_foreground');
+        foreground.style.backgroundImage = `url('${particle.data.img}')`;
+        this.el.appendChild(foreground);
+        
+        /* autoplay */
         if(this.options.slide.autoplay) {
             clearInterval(this.interval);
             this.interval = setTimeout(() => {
@@ -169,7 +175,6 @@ export default class Album {
      * Mostra a imagem na próxima particula do array, reiniciando a contagem quando chega na ultima
      */
     next(){
-        console.log('next')
         if(this.photos.length>0){
             if(this.index === null) {
                 this.index = 0;

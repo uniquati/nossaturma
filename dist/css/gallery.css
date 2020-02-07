@@ -6,51 +6,7 @@ body {
     background-color: black;
     padding: 0;
     margin: 0;
-}
-
-#canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.album {
-    background-color: rgb(0, 0, 70);
-    position: absolute;
-    left: 0;
-    top:0;
-    width: 100vw;
-    height: 100vh;
-    filter: brightness(80%);
-
-    overflow: hidden;
-
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-}
-
-.album_img {
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center center;
-
-    /* width: 10vw;
-    height: 10vh; */
-
-    width: 100vw;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: none;
-
-}
-
-.album_img.album_img--active {
-    display: block;
-    /* border: 6px solid white; */
+    overflow-x: hidden;
 }
 
 .cursor {
@@ -63,7 +19,6 @@ body {
     border-radius: 100%;
     top: -100px;
     left: -100px;
-    
     opacity: .8;
     box-sizing: border-box;
     background-size: cover;
@@ -73,38 +28,23 @@ body {
     transition: transform .3s ease-out;
 }
 
-/* .cursor::before {
-    content: '';
-    position: absolute;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%;
-    border-radius: 100%;
-
-    box-sizing: border-box;
-    transition: transform .3s ease-out;
-} */
-
 .cursor.cursor--thumbnail-active {
     transform: scale(4);
 }
 
-.ripple {
+#canvas {
     position: absolute;
-    z-index: 1;
-    pointer-events: none;
-    border-radius: 100%;
-    box-sizing: border-box;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: fixed;
-    transition: transform .3s ease-out;
+    top: 0;
+    left: 0;
+}
 
-;
-    /* transition:  margin .3s ease-out, width .3s ease-out, height .3s ease-out; */
-    /* transition:  margin 2s ease-out, width 2s ease-out, height 2s ease-out; */
+.album {
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 @keyframes ripple {
@@ -113,24 +53,76 @@ body {
         height: 50px;
         margin-left: -25px;
         margin-top: -25px;
+        filter: brightness(100%) blur(8px) saturate(100%);
     }
     to {
         width: 200vw;
         height: 200vw;
         margin-left: -100vw;
         margin-top: -100vw;
+        filter: brightness(40%) blur(8px) saturate(70%);
     }
 }
 
-.ripple.ripple--active {
-    /*FIXIT só cobre a tela inteira em movo landscape, mas não funciona em modo portrait*/
-    /* width: 200vw;
-    height: 200vw;
-    margin-left: calc(-200vw/2);
-    margin-top: calc(-200vw/2); */
+.ripple {
+    position: absolute;
+    pointer-events: none;
+    border-radius: 100%;
+    box-sizing: border-box;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
     animation-name: ripple;
     animation-duration: .7s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
+}
 
+.album_background {
+    background-color: rgb(0, 0, 70);
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    filter: brightness(40%) blur(8px);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+@keyframes slidein {
+    0% {
+        opacity: 0;
+        transform: scale(0.65);
+    }
+    10% {
+        opacity: 1;
+        transform: scale(.80);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.album_foreground {
+    filter: brightness(80%) drop-shadow(6px 6px 16px rgba(0,0,0,0.9));
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    animation-name: slidein;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: .4s;
+    animation-timing-function: ease-out;
 }
