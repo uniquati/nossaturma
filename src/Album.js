@@ -32,7 +32,7 @@ export default class Album {
             },
             slide : {
                 autoplay: true,
-                duration: 6000 /* período de exibição de cada foto em milissegundos */
+                duration: 8000 /* período de exibição de cada foto em milissegundos */
             }
         };
         this.canvasEl = document.querySelector("#canvas");
