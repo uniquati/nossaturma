@@ -53,14 +53,12 @@ body {
         height: 50px;
         margin-left: -25px;
         margin-top: -25px;
-        /* filter: brightness(100%) blur(8px) saturate(100%); */
     }
     to {
         width: 200vw;
         height: 200vw;
         margin-left: -100vw;
         margin-top: -100vw;
-        /* filter: brightness(40%) blur(8px) saturate(70%); */
     }
 }
 
@@ -109,15 +107,6 @@ body {
     }
 }
 
-@keyframes slideinSimple {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-
 .album_foreground {
     filter: brightness(80%) drop-shadow(6px 6px 16px rgba(0,0,0,0.9));
     background-size: contain;
@@ -130,15 +119,8 @@ body {
     left: 0;
     opacity: 0;
 
-    /* animation-name: slidein;
+    animation-name: slidein;
     animation-duration: 10s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-delay: .4s;
-    animation-timing-function: ease-out; */
-    transform: scale(.9);
-    animation-name: slideinSimple;
-    animation-duration: .7s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
     animation-delay: .4s;
