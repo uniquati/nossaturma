@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack --watch"
+    "dev": "webpack --watch",
+    "resize": "gulp resizeImages"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,9 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/register": "^7.7.7",
     "babel-loader": "^8.0.6",
+    "flat-map": "^1.0.0",
+    "gulp": "^4.0.2",
+    "gulp-scale-images": "^2.0.1",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   },

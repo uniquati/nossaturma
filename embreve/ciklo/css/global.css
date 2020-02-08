@@ -1,0 +1,110 @@
+/**
+* Estilo global das páginas de exemplo
+*
+* Não afeta os componentes (exceto a definição da font-family) e pode ser ignorado
+*/
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Major Mono Display', monospace;
+    overflow-x: hidden;
+}
+
+a {
+    color: rgb(166, 11, 197);
+    font-weight: bold;
+}
+
+.section {
+    display: flex;
+    justify-content: center;   
+    padding: 40px 0px;
+}
+
+.section--dark {
+    background: black;
+    color: white;
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    text-align: right;
+    font-size: .75em;
+    padding: 15px 0;
+    color: white;
+    background: black;
+}
+
+.title {
+    margin-bottom: 30px;
+}
+
+.quote {
+    position: relative;
+    padding: 30px 36px;
+    line-height: 1.4em;
+    font-size: .75em;
+    text-transform: lowercase;
+}
+
+.quote::before {
+    position: absolute;
+    left: 0;
+    top: .8em;
+    content: '"';
+    font-size: 3em;
+}
+
+.quote cite {
+    opacity: .8;
+}
+
+
+pre {
+    font-size: .85em;
+}
+
+
+
+/* Dispositivos extra small (telefones em modo retrato, com menos de 576px)
+ Sem media query para `xs`, já que este é o padrão, no Bootstrap.*/
+
+/* Dispositivos small (telefones em modo paisagem, com 576px ou mais)*/
+@media (min-width: 576px) {
+    .quote {
+        padding: 50px 60px;
+        font-size: .75em;
+    }
+
+    .quote::before {
+        font-size: 5em;
+    }
+}
+
+/* Dispositivos médios (tablets com 768px ou mais)*/
+/* @media (min-width: 768px) { 
+
+} */
+
+/* Dispositivos large (desktops com 992px ou mais)*/
+@media (min-width: 992px) {
+    .container {
+        max-width: 992px;
+    }
+}
+
+/* Dispositivos extra large (desktops grandes com 1200px ou mais)*/
+/* @media (min-width: 1200px) {
+
+} */
