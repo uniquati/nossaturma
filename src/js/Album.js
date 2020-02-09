@@ -31,7 +31,7 @@ export default class Album {
                 dragMode: true, /* quando TRUE, mover o mouse já interage com as particulas, não sendo necessário clicar e arrastar para movê-las */
             },
             slide : {
-                autoplay: true,
+                autoplay: false,
                 duration: 8000 /* período de exibição de cada foto em milissegundos */
             }
         };
@@ -43,6 +43,7 @@ export default class Album {
 
         this.particlesController = new Particles(this.canvasEl, this.options, this);
         this.interval;
+        this.playing = false;
     }
 
     resize() {
@@ -68,6 +69,7 @@ export default class Album {
      */
     startPresentation(){
         if(this.photos.length){
+            this.playing = true;
             this.next();
         } else {
             this.interval = setTimeout(() => {
@@ -162,7 +164,7 @@ export default class Album {
         this.el.appendChild(foreground);
         
         /* autoplay */
-        if(this.options.slide.autoplay) {
+        if(this.playing) {
             clearInterval(this.interval);
             this.interval = setTimeout(() => {
                 this.next();

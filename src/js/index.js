@@ -1,8 +1,16 @@
 import Album from './Album';
 
 document.addEventListener("DOMContentLoaded", function(event) {
+
+    
     const albumController = new Album();
     albumController.init();
+    
+    document.querySelector('.capa').addEventListener("click", function(event) {
+        console.log('iniciar');
+        this.classList.add('capa-hidden');
+        albumController.startPresentation();
+    });
 
     const array = [];
     // array.push('https://source.unsplash.com/1600x900/?galaxy');

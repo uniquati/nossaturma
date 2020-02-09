@@ -36,6 +36,88 @@ body {
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 2;
+}
+
+.album .capa {
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-image:  url('../../src/assets/photos/_MG_7969essa.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+}
+
+.album .capa::before {
+    z-index: 1;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image:  url('../../src/assets/photos/_MG_7969essa.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    /* background-attachment: fixed; */
+    transition: filter 1s ease-out;
+    filter: blur(0);
+}
+
+.album:hover .capa::before {
+    filter: blur(2px);
+}
+
+.album:hover .capa::after {
+    filter: brightness(80%);
+    transform: scale(1.01);
+}
+
+.album .capa::after {
+    z-index: 3;
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image:  url('../../src/assets/photos/capa-bg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    transition: filter .4s ease-out, transform 1s ease-out;
+}
+
+.album .capa h1 {
+    position: relative;
+    z-index: 4;
+    color: white;
+    font-family: sans-serif;
+    font-size: 3em;
+    padding-left: 20px;
+    padding-top: 20px;
+    font-variant: small-caps;
+}
+
+.album .capa h2 {
+    position: relative;
+    z-index: 4;
+    color: white;
+    font-family: sans-serif;
+    font-size: 1em;
+    font-variant: small-caps;
+    padding-left: 20px;
+}
+
+.album .capa.capa-hidden {
+    display: none;
 }
 
 .album {
@@ -79,7 +161,7 @@ body {
 }
 
 .album_background {
-    background-color: rgb(0, 0, 70);
+    /* background-color: rgb(0, 0, 70); */
     position: absolute;
     left: 0;
     top:0;
