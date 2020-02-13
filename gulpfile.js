@@ -17,12 +17,12 @@ const computeFileName = (output, scale, cb) => {
 
 const resizeConfig = (file, cb) => {
     const jpegFile = file.clone()
-    jpegFile.scale = {maxWidth: 1600, format: 'jpeg'}
+    jpegFile.scale = {maxWidth: 1600}
     cb(null, [jpegFile])
 }
 
 function streamTask(){
-    return src('src/assets/photos/*.{jpeg,jpg,png,gif}')
+    return src('src/assets/photos/**/*.{jpeg,jpg,png,gif}')
     .pipe(flatMap(resizeConfig))
     .pipe(scaleImages(computeFileName))
     .pipe(dest('dist/assets/photos'))

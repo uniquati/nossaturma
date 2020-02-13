@@ -51,11 +51,15 @@ export default class Album {
         this.canvasEl.height = window.innerHeight;
     }
 
-    init(){
+    init(capaBackground, capaForeground){
         console.log('[ALBUM] init');
+        document.querySelector('.capa__background').style.backgroundImage = `url('${capaBackground}')`;
+        document.querySelector('.capa__foreground').style.backgroundImage = `url('${capaForeground}')`;
         // this.openFullscreen();
+
         window.addEventListener('resize', this.resize.bind(this));
         this.resize();
+        this.el.querySelector('.capa').addEventListener('click', this.startPresentation.bind(this));
         this.particlesController.init();
 
         if(this.options.slide.autoplay) {
@@ -68,6 +72,7 @@ export default class Album {
      * Inicia a apresentação automática das fotos se o modo options.slide.autoplay estiver ligado
      */
     startPresentation(){
+        this.el.classList.add('album--playing');
         if(this.photos.length){
             this.playing = true;
             this.next();

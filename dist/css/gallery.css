@@ -46,22 +46,27 @@ body {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-image:  url('../../src/assets/photos/_MG_7969essa.jpg');
+    /* background-image:  url('../assets/photos/palaciocultura/capa-bg.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: fixed;
+    opacity: 1;
+    transition: opacity 1s ease-out;
 }
 
-.album .capa::before {
+.album.album--playing .capa {
+    opacity: 0;
+}
+
+.album .capa .capa__background {
     z-index: 1;
-    content: '';
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    background-image:  url('../../src/assets/photos/_MG_7969essa.jpg');
+    /* background-image:  url('../assets/photos/palaciocultura/capa-bg.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -70,16 +75,16 @@ body {
     filter: blur(0);
 }
 
-.album:hover .capa::before {
+.album:hover .capa .capa__background {
     filter: blur(2px);
 }
 
-.album:hover .capa::after {
+.album:hover .capa .capa__foreground {
     filter: brightness(80%);
     transform: scale(1.01);
 }
 
-.album .capa::after {
+.album .capa .capa__foreground {
     z-index: 3;
     content: '';
     position: absolute;
@@ -87,7 +92,7 @@ body {
     top: 0;
     width: 100%;
     height: 100%;
-    background-image:  url('../../src/assets/photos/capa-bg.png');
+    /* background-image:  url('../assets/photos/palaciocultura/capa-fg.png'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -116,9 +121,7 @@ body {
     padding-left: 20px;
 }
 
-.album .capa.capa-hidden {
-    display: none;
-}
+
 
 .album {
     position: absolute;
