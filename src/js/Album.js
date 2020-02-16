@@ -35,45 +35,87 @@ export default class Album {
                 duration: 8000 /* período de exibição de cada foto em milissegundos */
             }
         };
-        this.canvasEl = document.querySelector("#canvas");
-        this.el = document.querySelector('#album1');
+        this.albumEl;
+        this.particlesCanvasEl;
+        this.particlesController;
         this.photos = [];
         this.index = null;
         this.activeParticle = null;
 
-        this.particlesController = new Particles(this.canvasEl, this.options, this);
         this.interval;
         this.playing = false;
     }
 
     resize() {
-        this.canvasEl.width = window.innerWidth;
-        this.canvasEl.height = window.innerHeight;
+        this.particlesCanvasEl.width = window.innerWidth;
+        this.particlesCanvasEl.height = window.innerHeight;
+    }
+
+    buildAlbum(capaBackground, capaForeground) {
+        this.albumEl = document.createElement('section');
+        this.albumEl.classList.add('album');
+        // this.albumEl.id = 'album1';
+        
+        const capa = document.createElement('div');
+        capa.classList.add('capa');
+        capa.addEventListener('click', this.startPresentation.bind(this));
+        this.albumEl.appendChild(capa);
+
+        const capa__background = document.createElement('div');
+        capa__background.classList.add('capa__background');
+        capa__background.style.backgroundImage = `url('${capaBackground}')`;
+        capa.appendChild(capa__background);
+        
+        const capa__foreground = document.createElement('div');
+        capa__foreground.classList.add('capa__foreground');
+        capa__foreground.style.backgroundImage = `url('${capaForeground}')`;
+        capa.appendChild(capa__foreground);
+
+        const h1 = document.createElement('h1');
+        h1.innerHTML = 'Nossa Turma é cultura';
+        capa.appendChild(h1);
+
+        const h2 = document.createElement('h2');
+        h2.innerHTML = '1999 - Natal/RN - Palácio da Cultura';
+        capa.appendChild(h2);
+
+        const album__background = document.createElement('div');
+        album__background.classList.add('album__background');
+        this.albumEl.appendChild(album__background);
+
+        this.particlesCanvasEl = document.createElement('canvas');
+        this.particlesCanvasEl.classList.add('particles-canvas');
+        this.albumEl.appendChild(this.particlesCanvasEl);
+
+        const controls = document.createElement('button');
+        controls.classList.add('controls');
+        controls.addEventListener('click', this.pausePresentation.bind(this));
+        this.albumEl.appendChild(controls);
+        
+        document.querySelector('main').appendChild(this.albumEl);
     }
 
     init(capaBackground, capaForeground){
         console.log('[ALBUM] init');
-        document.querySelector('.capa__background').style.backgroundImage = `url('${capaBackground}')`;
-        document.querySelector('.capa__foreground').style.backgroundImage = `url('${capaForeground}')`;
+        this.buildAlbum(capaBackground, capaForeground);
+        
         // this.openFullscreen();
-
         window.addEventListener('resize', this.resize.bind(this));
         this.resize();
-        this.el.querySelector('.capa').addEventListener('click', this.startPresentation.bind(this));
-        this.el.querySelector('#btnPause').addEventListener('click', this.pausePresentation.bind(this));
+        
+        this.particlesController = new Particles(this.particlesCanvasEl, this.options, this);
         this.particlesController.init();
 
         if(this.options.slide.autoplay) {
             this.startPresentation();
         }
-
     }
 
     /**
      * Inicia a apresentação automática das fotos se o modo options.slide.autoplay estiver ligado
      */
     startPresentation(){
-        this.el.classList.add('album--playing');
+        this.albumEl.classList.add('album--playing');
         if(this.photos.length){
             this.playing = true;
             this.next();
@@ -86,12 +128,12 @@ export default class Album {
 
     pausePresentation() {
         if(this.playing) {
-            this.el.querySelector('#btnPause').classList.add('paused');
+            this.albumEl.querySelector('.controls').classList.add('paused');
             clearInterval(this.interval);
             this.playing = false;
             console.log(this.playing);
         } else {
-            this.el.querySelector('#btnPause').classList.remove('paused');
+            this.albumEl.querySelector('.controls').classList.remove('paused');
             this.playing = true;
             console.log(this.playing);
             this.next();
@@ -167,11 +209,11 @@ export default class Album {
         ripple.style.left = particle.x + 'px';
         ripple.style.top = particle.y + 'px';
         ripple.style.backgroundImage = `url('${particle.data.img}')`;
-        this.el.appendChild(ripple);
+        this.albumEl.appendChild(ripple);
         setTimeout(() => {
-            this.el.querySelector('.album_background').style.backgroundImage = `url('${particle.data.img}')`;
+            this.albumEl.querySelector('.album__background').style.backgroundImage = `url('${particle.data.img}')`;
             ripple.remove();
-            var foregrounds = document.querySelectorAll('.album_foreground');
+            var foregrounds = this.albumEl.querySelectorAll('.album_foreground');
             if(foregrounds.length > 1) {
                 foregrounds[0].remove();
             }
@@ -181,7 +223,7 @@ export default class Album {
         const foreground = document.createElement('div');
         foreground.classList.add('album_foreground');
         foreground.style.backgroundImage = `url('${particle.data.img}')`;
-        this.el.appendChild(foreground);
+        this.albumEl.appendChild(foreground);
         
         /* autoplay */
         if(this.playing) {
