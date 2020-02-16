@@ -10,6 +10,7 @@ body {
 }
 
 .cursor {
+    opacity: 0;
     position: absolute;
     z-index: 4;
     width: 40px;
@@ -20,7 +21,6 @@ body {
     border-radius: 100%;
     top: -100px;
     left: -100px;
-    opacity: .8;
     box-sizing: border-box;
     background-size: cover;
     background-repeat: no-repeat;
@@ -71,7 +71,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    /* background-attachment: fixed; */
+    background-attachment: fixed;
     transition: filter 1s ease-out;
     filter: blur(0);
 }
@@ -125,11 +125,9 @@ body {
 
 
 .album {
-    position: absolute;
-    left: 0;
-    top:0;
-    width: 100%;
-    height: 100%;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
     overflow: hidden;
 }
 
@@ -214,9 +212,11 @@ body {
 }
 
 .controls {
-    position: fixed;
-    top: 20px;
-    right: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-right: 20px;
+    margin-top: 20px;
     z-index: 2;
     background: none;
     outline: none;

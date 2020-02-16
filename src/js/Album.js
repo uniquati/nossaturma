@@ -54,7 +54,10 @@ export default class Album {
     buildAlbum(capaBackground, capaForeground) {
         this.albumEl = document.createElement('section');
         this.albumEl.classList.add('album');
-        // this.albumEl.id = 'album1';
+
+        const cursor = document.createElement('div');
+        cursor.classList.add('cursor');
+        this.albumEl.appendChild(cursor);
         
         const capa = document.createElement('div');
         capa.classList.add('capa');

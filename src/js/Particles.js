@@ -5,8 +5,8 @@
 import Particle from './Particle';
 
 export default class Particles {
-    constructor(canvas, options, albumEl) {
-        this.albumEl = albumEl;
+    constructor(canvas, options, album) {
+        this.albumController = album;
         this.canvasEl = canvas;
         this.context = this.canvasEl.getContext('2d');
         this.options = options;
@@ -21,7 +21,7 @@ export default class Particles {
             offsetX: 0, 
             offsetY: 0,
         };
-        this.customCursor = document.querySelector('#cursor');
+        this.customCursor = this.albumController.albumEl.querySelector('.cursor');
     }
 
     /**
@@ -53,6 +53,8 @@ export default class Particles {
         this.canvasEl.addEventListener('mousedown', this.mousedown.bind(this));
         this.canvasEl.addEventListener('mouseup', this.mouseup.bind(this));
         this.canvasEl.addEventListener('mousemove', this.mousemove.bind(this));
+        this.canvasEl.addEventListener('mouseenter', this.mouseenter.bind(this));
+        this.canvasEl.addEventListener('mouseleave', this.mouseleave.bind(this));
     }
 
     /**
@@ -114,8 +116,8 @@ export default class Particles {
      * @returns {Particle} retorna uma particula ou null
      */
     getParticleInCoordinate(x, y) {
-        for(let i=0; i< this.albumEl.photos.length; i++){
-            let p = this.albumEl.photos[i];
+        for(let i=0; i< this.albumController.photos.length; i++){
+            let p = this.albumController.photos[i];
             if(x >= p.x - p.radius*2 && x <= p.x + p.radius*2) {
                 if(y >= p.y - p.radius*2 && y <= p.y + p.radius*2){
                     return p;
@@ -130,6 +132,7 @@ export default class Particles {
      * @param {Event} e
      */
     mousedown(e) {
+        console.log(e);
         const particle = this.getParticleInCoordinate(e.offsetX, e.offsetY);
         if(particle){
             this.hovered = particle;
@@ -138,7 +141,7 @@ export default class Particles {
 
             this.hovered.vx += 10;
             this.hovered.vy += 10;
-            this.albumEl.show(particle);
+            this.albumController.show(particle);
         }
     }
 
@@ -199,6 +202,22 @@ export default class Particles {
         // if(this.dragEnd.x == this.dragStart.x && this.dragEnd.y == this.dragStart.y) {
         //     this.isDragging = false;
         // }
+    }
+
+    mouseenter(e) {
+        console.log('mouse enter');
+        this.customCursor.style.opacity = 0.8;
+    }
+
+    mouseleave(e) {
+        console.log('mouse leave');
+        // this.customCursor.style.left = '0px';
+        // this.customCursor.style.top = '0px';
+        this.customCursor.style.opacity = 0;
+        this.hovered = null;
+        if(!this.options.interaction.dragMode){
+            this.isDragging = false;
+        }
     }
 
     moveParticle(particle) {
