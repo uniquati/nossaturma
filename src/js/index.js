@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     
     const albumController = new Album();
-    albumController.init('../dist/assets/photos/palaciocultura/capa-bg.jpg', '../dist/assets/photos/palaciocultura/capa-fg.png');
+    albumController.init('palaciocultura/capa-bg.jpg', 'palaciocultura/capa-fg.png');
 
     const array = [];
     // array.push('https://source.unsplash.com/1600x900/?galaxy');
