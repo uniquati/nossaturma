@@ -60,6 +60,7 @@ export default class Album {
         window.addEventListener('resize', this.resize.bind(this));
         this.resize();
         this.el.querySelector('.capa').addEventListener('click', this.startPresentation.bind(this));
+        this.el.querySelector('#btnPause').addEventListener('click', this.pausePresentation.bind(this));
         this.particlesController.init();
 
         if(this.options.slide.autoplay) {
@@ -80,6 +81,20 @@ export default class Album {
             this.interval = setTimeout(() => {
                 this.startPresentation();
             }, this.options.slide.duration);
+        }
+    }
+
+    pausePresentation() {
+        if(this.playing) {
+            this.el.querySelector('#btnPause').classList.add('paused');
+            clearInterval(this.interval);
+            this.playing = false;
+            console.log(this.playing);
+        } else {
+            this.el.querySelector('#btnPause').classList.remove('paused');
+            this.playing = true;
+            console.log(this.playing);
+            this.next();
         }
     }
 
