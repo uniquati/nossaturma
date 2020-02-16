@@ -100,11 +100,8 @@ export default class Album {
     }
 
     init(capaBackground, capaForeground){
-        console.log(this.toAbsoluteURL(capaBackground));
-        console.log(this.toAbsoluteURL(capaForeground));
-
         console.log('[ALBUM] init');
-        this.buildAlbum(this.toAbsoluteURL(capaBackground), this.toAbsoluteURL(capaForeground));
+        this.buildAlbum(this.toAbsoluteURL(capaBackground, 'dist/assets/photos/'), this.toAbsoluteURL(capaForeground, 'dist/assets/photos/'));
         
         // this.openFullscreen();
         window.addEventListener('resize', this.resize.bind(this));
@@ -165,10 +162,10 @@ export default class Album {
         }
     }
 
-    toAbsoluteURL(url) {
+    toAbsoluteURL(url, caminho) {
         if(!isWebUri(url)){
             var n = window.location.href.lastIndexOf("/");
-            return window.location.href.slice(0, n) + '/' + 'dist/assets/photos/' + url;
+            return window.location.href.slice(0, n) + '/' + caminho + url;
         }
         return url;
     }
@@ -180,8 +177,7 @@ export default class Album {
      * @param {string} url Endreço da imagem
      */
     loadImage(url) {
-        url = this.toAbsoluteURL(url);
-        console.log(url); 
+        url = this.toAbsoluteURL(url, 'dist/assets/photos/');
 
         const promisse = new Promise( (resolve, reject) => {
             const image = new Image();
