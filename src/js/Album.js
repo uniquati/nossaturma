@@ -1,4 +1,5 @@
 import Particles from './Particles';
+import {isWebUri} from 'valid-url'; 
 
 /**
  * Gerencia um album, pré carregamento das imagens, e autoplay...
@@ -168,6 +169,12 @@ export default class Album {
      * @param {string} url Endreço da imagem
      */
     loadImage(url) {
+        if(!isWebUri(url)){
+            var n = window.location.href.lastIndexOf("/");
+            // console.log(window.location.href.slice(0, n) + '/' + 'dist/assets/photos/');
+            url = window.location.href.slice(0, n) + '/' + 'dist/assets/photos/' + url;
+            console.log(url); 
+        }
         const promisse = new Promise( (resolve, reject) => {
             const image = new Image();
             image.src = url;

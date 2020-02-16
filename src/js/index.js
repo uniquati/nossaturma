@@ -48,24 +48,24 @@ document.addEventListener("DOMContentLoaded", function(event) {
     // array.push('https://source.unsplash.com/900x900/?ocean');
     // array.push('https://source.unsplash.com/400x400/?heart');
 
-    array.push('../dist/assets/photos/palaciocultura/_MG_7912.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7921.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7925essa.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7926essa.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7930essa.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7934.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7937essa.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7942essa.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7946.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7948essa.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7952essa.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7955.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7959.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7966essa.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7967.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7969essa.jpg');
-    array.push('../dist/assets/photos/palaciocultura/_MG_7974.jpg');
-    array.push('../dist/assets/photos/palaciocultura/IMG-20150603-WA0002.jpg');
+    array.push('palaciocultura/_MG_7912.jpg');
+    array.push('palaciocultura/_MG_7921.jpg');
+    array.push('palaciocultura/_MG_7925essa.jpg');
+    array.push('palaciocultura/_MG_7926essa.jpg');
+    array.push('palaciocultura/_MG_7930essa.jpg');
+    array.push('palaciocultura/_MG_7934.jpg');
+    array.push('palaciocultura/_MG_7937essa.jpg');
+    array.push('palaciocultura/_MG_7942essa.jpg');
+    array.push('palaciocultura/_MG_7946.jpg');
+    array.push('palaciocultura/_MG_7948essa.jpg');
+    array.push('palaciocultura/_MG_7952essa.jpg');
+    array.push('palaciocultura/_MG_7955.jpg');
+    array.push('palaciocultura/_MG_7959.jpg');
+    array.push('palaciocultura/_MG_7966essa.jpg');
+    array.push('palaciocultura/_MG_7967.jpg');
+    array.push('palaciocultura/_MG_7969essa.jpg');
+    array.push('palaciocultura/_MG_7974.jpg');
+    array.push('palaciocultura/IMG-20150603-WA0002.jpg');
 
     // let i = 0;
     // const interval = setInterval(() => {
