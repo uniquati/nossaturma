@@ -39,6 +39,7 @@ export default class Album {
         this.albumEl;
         this.particlesCanvasEl;
         this.particlesController;
+        this.particles = [];
         this.photos = [];
         this.index = null;
         this.activeParticle = null;
@@ -99,7 +100,8 @@ export default class Album {
         document.querySelector('main').appendChild(this.albumEl);
     }
 
-    init(capaBackground, capaForeground){
+    init(capaBackground, capaForeground, photos){
+        this.photos = photos;
         console.log('[ALBUM] init');
         this.buildAlbum(this.toAbsoluteURL(capaBackground, 'dist/assets/photos/'), this.toAbsoluteURL(capaForeground, 'dist/assets/photos/'));
         
@@ -119,8 +121,10 @@ export default class Album {
      * Inicia a apresentação automática das fotos se o modo options.slide.autoplay estiver ligado
      */
     startPresentation(){
+        this.loadAllImages();
+
         this.albumEl.classList.add('album--playing');
-        if(this.photos.length){
+        if(this.particles.length){
             this.playing = true;
             this.next();
         } else {
@@ -170,6 +174,12 @@ export default class Album {
         return url;
     }
 
+    loadAllImages() {
+        this.photos.forEach(photoUrl => {
+           this.loadImage(photoUrl);
+        });
+    }
+
     /**
      * Baixa uma imagem da url e adiciona ao álbum
      * 
@@ -199,7 +209,7 @@ export default class Album {
             };
             const particle = this.particlesController.addInteractiveParticle(data);
             //adiciona a imagem no slide
-            this.photos.push(particle);
+            this.particles.push(particle);
         }).catch((err) => {
             console.log(err);
         });
@@ -253,17 +263,17 @@ export default class Album {
      * Mostra a imagem na próxima particula do array, reiniciando a contagem quando chega na ultima
      */
     next(){
-        if(this.photos.length>0){
+        if(this.particles.length>0){
             if(this.index === null) {
                 this.index = 0;
             } else {
                 this.index++;
-                if(this.index>=this.photos.length){
+                if(this.index>=this.particles.length){
                     this.index = 0;
                 }
             }
 
-            this.show(this.photos[this.index]);
+            this.show(this.particles[this.index]);
         }
     }
 

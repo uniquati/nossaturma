@@ -205,14 +205,12 @@ export default class Particles {
     }
 
     mouseenter(e) {
-        console.log('mouse enter');
+        // console.log('mouse enter');
         this.customCursor.style.opacity = 0.8;
     }
 
     mouseleave(e) {
-        console.log('mouse leave');
-        // this.customCursor.style.left = '0px';
-        // this.customCursor.style.top = '0px';
+        // console.log('mouse leave');
         this.customCursor.style.opacity = 0;
         this.hovered = null;
         if(!this.options.interaction.dragMode){
