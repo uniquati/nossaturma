@@ -39,7 +39,7 @@ export default class Album {
         this.albumEl;
         this.particlesCanvasEl;
         this.particlesController;
-        this.particles = [];
+        this.interactiveParticles = [];
         this.photos = [];
         this.index = null;
         this.activeParticle = null;
@@ -121,13 +121,12 @@ export default class Album {
      * Inicia a apresentação automática das fotos se o modo options.slide.autoplay estiver ligado
      */
     startPresentation(){
-        this.loadAllImages();
-
         this.albumEl.classList.add('album--playing');
-        if(this.particles.length){
+        if(this.interactiveParticles.length){
             this.playing = true;
             this.next();
         } else {
+            this.loadAllImages();
             this.interval = setTimeout(() => {
                 this.startPresentation();
             }, this.options.slide.duration);
@@ -209,7 +208,7 @@ export default class Album {
             };
             const particle = this.particlesController.addInteractiveParticle(data);
             //adiciona a imagem no slide
-            this.particles.push(particle);
+            this.interactiveParticles.push(particle);
         }).catch((err) => {
             console.log(err);
         });
@@ -263,17 +262,17 @@ export default class Album {
      * Mostra a imagem na próxima particula do array, reiniciando a contagem quando chega na ultima
      */
     next(){
-        if(this.particles.length>0){
+        if(this.interactiveParticles.length>0){
             if(this.index === null) {
                 this.index = 0;
             } else {
                 this.index++;
-                if(this.index>=this.particles.length){
+                if(this.index>=this.interactiveParticles.length){
                     this.index = 0;
                 }
             }
 
-            this.show(this.particles[this.index]);
+            this.show(this.interactiveParticles[this.index]);
         }
     }
 

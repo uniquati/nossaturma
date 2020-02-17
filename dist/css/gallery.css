@@ -38,6 +38,7 @@ body {
     top: 0;
     left: 0;
     z-index: 2;
+    cursor: none;
 }
 
 .album .capa {
@@ -58,6 +59,8 @@ body {
 
 .album.album--playing .capa {
     opacity: 0;
+    transition: opacity 10s ease-out;
+    pointer-events: none;
 }
 
 .album .capa .capa__background {

@@ -12,14 +12,14 @@ export default class Particles {
         this.options = options;
 
         this.allParticlesArray = [];
-        this.interactiveParticlesArray = [];
+        // this.interactiveParticlesArray = [];
         this.hovered = null;
         this.isDragging = false;
         this.dragStart = {};
         this.dragEnd = {};
         this.mousePos = {
-            offsetX: 0, 
-            offsetY: 0,
+            offsetX: window.innerWidth/2, 
+            offsetY: window.innerHeight/2,
         };
         this.customCursor = this.albumController.albumEl.querySelector('.cursor');
     }
@@ -95,6 +95,7 @@ export default class Particles {
      * e exibe o thumbnail ao fazer hover sobre uma partícula
      */
     updateCustomMouseCursor(){
+        // console.log(this.mousePos);
         this.customCursor.style.left = this.mousePos.offsetX + 'px';
         this.customCursor.style.top = this.mousePos.offsetY + 'px';
 
@@ -116,8 +117,8 @@ export default class Particles {
      * @returns {Particle} retorna uma particula ou null
      */
     getParticleInCoordinate(x, y) {
-        for(let i=0; i< this.albumController.photos.length; i++){
-            let p = this.albumController.photos[i];
+        for(let i=0; i< this.albumController.interactiveParticles.length; i++){
+            let p = this.albumController.interactiveParticles[i];
             if(x >= p.x - p.radius*2 && x <= p.x + p.radius*2) {
                 if(y >= p.y - p.radius*2 && y <= p.y + p.radius*2){
                     return p;
