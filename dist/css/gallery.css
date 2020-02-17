@@ -55,6 +55,7 @@ body {
     background-attachment: fixed;
     opacity: 1;
     transition: opacity 1s ease-out;
+    cursor: pointer;
 }
 
 .album.album--playing .capa {
@@ -240,4 +241,15 @@ body {
 
 .controls:hover {
     border-color: transparent transparent transparent rgb(67, 24, 168);
+}
+
+.progress-bar {
+    width: 0%;
+    height: 10px;
+    background: rgb(67, 24, 168);
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    pointer-events: none;
+    transition: width 8s linear;
 }

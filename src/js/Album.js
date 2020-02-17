@@ -96,6 +96,10 @@ export default class Album {
         controls.classList.add('controls');
         controls.addEventListener('click', this.pausePresentation.bind(this));
         this.albumEl.appendChild(controls);
+
+        const progressBar = document.createElement('div');
+        progressBar.classList.add('progress-bar');
+        this.albumEl.appendChild(progressBar);
         
         document.querySelector('main').appendChild(this.albumEl);
     }
@@ -271,6 +275,9 @@ export default class Album {
                     this.index = 0;
                 }
             }
+            
+            const percent = (this.index + 1) / this.interactiveParticles.length * 100;
+            this.albumEl.querySelector('.progress-bar').style.width = percent + '%';
 
             this.show(this.interactiveParticles[this.index]);
         }
