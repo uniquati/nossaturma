@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack --watch",
-    "resize": "gulp resizeImages"
+    "resize": "gulp resizeImages",
+    "database": "gulp buildFirebase",
+    "fire": "node database.js"
   },
   "repository": {
     "type": "git",
@@ -24,11 +26,14 @@
     "@babel/preset-env": "^7.7.7",
     "@babel/register": "^7.7.7",
     "babel-loader": "^8.0.6",
+    "cross-blob": "^1.2.1",
     "flat-map": "^1.0.0",
     "gulp": "^4.0.2",
     "gulp-scale-images": "^2.0.1",
+    "stream-to-blob": "^2.0.0",
     "webpack": "^4.41.5",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "xhr2": "^0.2.0"
   },
   "dependencies": {
     "@babel/polyfill": "^7.7.0",

@@ -11,8 +11,9 @@ const computeFileName = (output, scale, cb) => {
     const fileName = [
         path.basename(output.path, output.extname), // strip extension
         output.extname
-    ].join('')
-    cb(null, fileName)
+    ].join('');
+    // console.log(fileName);
+    cb(null, fileName);
 }
 
 const resizeConfig = (file, cb) => {
@@ -22,17 +23,17 @@ const resizeConfig = (file, cb) => {
 }
 
 function streamTask(){
-    return src('src/assets/photos/**/*.{jpeg,jpg,png,gif}')
+    return src('src/assets/**/*.{jpeg,jpg,png,gif}')
     .pipe(flatMap(resizeConfig))
     .pipe(scaleImages(computeFileName))
-    .pipe(dest('dist/assets/photos'))
+    .pipe(dest('dist/assets/'));
 }
 
 function otimizarParaFirebase(){
     return src('albums/**/*.{jpeg,jpg,png,gif}')
     .pipe(flatMap(resizeConfig))
     .pipe(scaleImages(computeFileName))
-    .pipe(dest('database'))
+    .pipe(dest('database'));
 }
 
 exports.resizeImages = streamTask;

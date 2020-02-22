@@ -5,7 +5,9 @@ import {isWebUri} from 'valid-url';
  * Gerencia um album, pré carregamento das imagens, e autoplay...
  */
 export default class Album {
-    constructor(){
+
+    constructor(firebase){
+        this.firebase = firebase,
         this.options = {
             particles: {
                 totalNumber: 30,//FIXIT o total não é usado
@@ -104,10 +106,10 @@ export default class Album {
         document.querySelector('main').appendChild(this.albumEl);
     }
 
-    init(capaBackground, capaForeground, photos){
-        this.photos = photos;
+    init(folder, capaBackground, capaForeground){
+        this.folder = folder;
         console.log('[ALBUM] init');
-        this.buildAlbum(this.toAbsoluteURL(capaBackground, 'dist/assets/photos/'), this.toAbsoluteURL(capaForeground, 'dist/assets/photos/'));
+        this.buildAlbum(this.toAbsoluteURL(capaBackground, 'dist/assets/'), this.toAbsoluteURL(capaForeground, 'dist/assets/'));
         
         // this.openFullscreen();
         window.addEventListener('resize', this.resize.bind(this));
@@ -124,17 +126,76 @@ export default class Album {
     /**
      * Inicia a apresentação automática das fotos se o modo options.slide.autoplay estiver ligado
      */
-    startPresentation(){
-        this.albumEl.classList.add('album--playing');
-        if(this.interactiveParticles.length){
-            this.playing = true;
-            this.next();
-        } else {
-            this.loadAllImages();
-            this.interval = setTimeout(() => {
-                this.startPresentation();
-            }, this.options.slide.duration);
-        }
+    async startPresentation(){
+
+        // https://gist.github.com/guilhermepontes/17ae0cc71fa2b13ea8c20c94c5c35dc4
+        // fully random by @BetonMAN
+        const shuffleArray = arr => arr
+        .map(a => [Math.random(), a])
+        .sort((a, b) => a[0] - b[0])
+        .map(a => a[1]);
+
+        this.albumEl.classList.add('album--loading');
+
+        const {items} = await this.firebase.listAll(this.folder);
+
+        console.log(items);
+        let i = 10;
+        const rodizio = shuffleArray(items).slice(0,i);
+
+        rodizio.forEach(photo => {
+            console.log(photo);
+            photo.getDownloadURL().then(url => {
+                i--;
+
+                // `url` is the download URL
+                console.log(url);
+                this.photos.push(url);
+
+                const image = new Image();
+                image.src = url;
+                image.style.display = 'none';
+                /* é preciso adicionar uma img com a url e escondê-la com display:none; 
+                para conseguir utilizar a url da imagem em outros lugares e obter o efeito desejado de assync load */
+                document.body.appendChild(image);
+                
+                //adiciona uma particula
+                const data = {
+                    id: 'img'+ '_' + Math.random().toString(36).substr(2, 9),
+                    img: url,
+                };
+                const particle = this.particlesController.addInteractiveParticle(data);
+                //adiciona a imagem no slide
+                this.interactiveParticles.push(particle);
+
+                if(i==0){
+                    console.log('fim do carregamento');
+                    this.albumEl.classList.remove('album--loading');
+                    this.albumEl.classList.add('album--playing');
+                    if(this.interactiveParticles.length){
+                        this.playing = true;
+                        this.next();
+                    } else {
+                        console.log('não há imagens para iniciar a apresentação');
+                    }
+                }
+
+                console.log(i);
+                if(i==0){
+                    console.log('fim do carregamento');
+                }
+            }).catch(function(error) {
+                // Handle any errors
+                console.log('não foi possível fazer o download da imagem');
+                i--;
+            });
+        });
+            
+
+
+
+ 
+
     }
 
     pausePresentation() {
