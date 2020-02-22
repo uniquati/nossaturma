@@ -4,6 +4,31 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     
     
+    const arrayPlaca = [];
+    arrayPlaca.push('placa/adila.jpg');
+    arrayPlaca.push('placa/alison.jpg');
+    arrayPlaca.push('placa/alyne.jpg');
+    arrayPlaca.push('placa/andre.jpg');
+    arrayPlaca.push('placa/emerson.jpg');
+    arrayPlaca.push('placa/esau.jpg');
+    arrayPlaca.push('placa/felipe.jpg');
+    arrayPlaca.push('placa/fernando.jpg');
+    arrayPlaca.push('placa/gilmar.jpg');
+    arrayPlaca.push('placa/giovanni.jpg');
+    arrayPlaca.push('placa/iana.jpg');
+    arrayPlaca.push('placa/joaopedro.jpg');
+    arrayPlaca.push('placa/juarez.jpg');
+    arrayPlaca.push('placa/mara.jpg');
+    arrayPlaca.push('placa/mateus.jpg');
+    arrayPlaca.push('placa/rafael.jpg');
+    arrayPlaca.push('placa/ruan.jpg');
+    arrayPlaca.push('placa/sanderson.jpg');
+    arrayPlaca.push('placa/wendel.jpg');
+
+    const placaController = new Album();
+    placaController.init('placa/capa-bg.png', 'placa/capa-bg.png', arrayPlaca);
+
+
     const array = [];
     array.push('palaciocultura/_MG_7912.jpg');
     array.push('palaciocultura/_MG_7921.jpg');
@@ -22,11 +47,51 @@ document.addEventListener("DOMContentLoaded", function(event) {
     array.push('palaciocultura/_MG_7967.jpg');
     array.push('palaciocultura/_MG_7969essa.jpg');
     array.push('palaciocultura/_MG_7974.jpg');
-    // array.push('palaciocultura/IMG-20150603-WA0002.jpg');
     
-    const albumController = new Album();
-    albumController.init('palaciocultura/capa-bg.jpg', 'palaciocultura/capa-fg.png', array);
+    const palacioCulturaController = new Album();
+    palacioCulturaController.init('palaciocultura/capa-bg.jpg', 'palaciocultura/capa-fg.png', array);
 
+
+    const formaturaArray = [];
+    formaturaArray.push('formatura/DSC00278.jpg');
+    formaturaArray.push('formatura/DSC00279.jpg');
+    formaturaArray.push('formatura/DSC00280.jpg');
+    formaturaArray.push('formatura/DSC00281.jpg');
+    formaturaArray.push('formatura/DSC00282.jpg');
+    formaturaArray.push('formatura/DSC00283.jpg');
+    formaturaArray.push('formatura/DSC00285.jpg');
+    formaturaArray.push('formatura/DSC00286.jpg');
+    formaturaArray.push('formatura/DSC00289.jpg');
+    formaturaArray.push('formatura/DSC00290.jpg');
+    formaturaArray.push('formatura/DSC00291.jpg');
+    formaturaArray.push('formatura/DSC00292.jpg');
+    formaturaArray.push('formatura/DSC00293.jpg');
+    formaturaArray.push('formatura/DSC00294.jpg');
+    formaturaArray.push('formatura/DSC00295.jpg');
+    formaturaArray.push('formatura/DSC00296.jpg');
+    formaturaArray.push('formatura/DSC00299.jpg');
+    formaturaArray.push('formatura/DSC00302.jpg');
+    formaturaArray.push('formatura/DSC00307.jpg');
+    formaturaArray.push('formatura/DSC00310.jpg');
+
+    const formaturaController = new Album();
+    formaturaController.init('formatura/DSC00283.jpg', 'formatura/DSC00283.jpg', formaturaArray);
+    
+    const casaAlison2014Array = [];
+    casaAlison2014Array.push('casaalison2014/CAM00855.jpg');
+    casaAlison2014Array.push('casaalison2014/CAM00856.jpg');
+    casaAlison2014Array.push('casaalison2014/CAM00856-SMILE.jpg');
+    casaAlison2014Array.push('casaalison2014/CAM00858.jpg');
+    casaAlison2014Array.push('casaalison2014/CAM00859.jpg');
+    casaAlison2014Array.push('casaalison2014/CAM00860.jpg');
+    casaAlison2014Array.push('casaalison2014/CAM00862.jpg');
+    casaAlison2014Array.push('casaalison2014/CAM00863.jpg');
+    casaAlison2014Array.push('casaalison2014/CAM00864.jpg');
+    casaAlison2014Array.push('casaalison2014/CAM00865.jpg');
+    casaAlison2014Array.push('casaalison2014/CAM00867.jpg');
+    
+    const casaAlison2014Controller = new Album();
+    casaAlison2014Controller.init('casaalison2014/CAM00859.jpg', 'casaalison2014/CAM00859.jpg', casaAlison2014Array);
     
     const array2 = [];
     array2.push('https://source.unsplash.com/1600x900/?galaxy');
