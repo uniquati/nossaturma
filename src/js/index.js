@@ -1,7 +1,58 @@
 import Album from './Album';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyAOwvLWqI8X6Sv2M0FsJ5nC1sOlYKAjcdk",
+    authDomain: "teste-firebase-321.firebaseapp.com",
+    databaseURL: "https://teste-firebase-321.firebaseio.com",
+    projectId: "teste-firebase-321",
+    storageBucket: "teste-firebase-321.appspot.com",
+    messagingSenderId: "617140261644",
+    appId: "1:617140261644:web:be08644f2344c243e12f29"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 
 document.addEventListener("DOMContentLoaded", function(event) {
+    // Get a reference to the storage service, which is used to create references in your storage bucket
+    const storage = firebase.storage();
+    
+    // Create a storage reference from our storage service
+    var storageRef = storage.ref('photos');
 
+    storageRef.listAll().then(({items}) => {
+        // console.log(items);
+        items.forEach(photo => {
+            photo.getDownloadURL().then(url => {
+                console.log(url);
+                // `url` is the download URL
+            
+                // // This can be downloaded directly:
+                // var xhr = new XMLHttpRequest();
+                // xhr.responseType = 'blob';
+                // xhr.onload = function(event) {
+                //     var blob = xhr.response;
+                // };
+                // xhr.open('GET', url);
+                // xhr.send();
+            
+                // Or inserted into an <img> element:
+                // const img = document.getElementById('myimg');
+                // img.src = url;
+            }).catch(function(error) {
+                // Handle any errors
+                console.log('não foi possível fazer o download da imagem');
+            });
+        });
+
+    }).catch(function(error) {
+        // Handle any errors
+        console.log('não foi possível localizar os arquivos');
+    });
     
     
     const arrayPlaca = [];
