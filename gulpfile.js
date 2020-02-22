@@ -16,9 +16,9 @@ const computeFileName = (output, scale, cb) => {
 }
 
 const resizeConfig = (file, cb) => {
-    const jpegFile = file.clone()
-    jpegFile.scale = {maxWidth: 1600}
-    cb(null, [jpegFile])
+    const cloneFile = file.clone()
+    cloneFile.scale = {maxWidth: 1600}
+    cb(null, [cloneFile])
 }
 
 function streamTask(){
@@ -28,4 +28,12 @@ function streamTask(){
     .pipe(dest('dist/assets/photos'))
 }
 
+function otimizarParaFirebase(){
+    return src('albums/**/*.{jpeg,jpg,png,gif}')
+    .pipe(flatMap(resizeConfig))
+    .pipe(scaleImages(computeFileName))
+    .pipe(dest('database'))
+}
+
 exports.resizeImages = streamTask;
+exports.buildFirebase = otimizarParaFirebase;
