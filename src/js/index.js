@@ -3,6 +3,7 @@ import FirebaseConfig from './FirebaseConfig';
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
+
     //firebase code
     const firebase = new FirebaseConfig();
 
@@ -18,6 +19,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
     const formaturaController = new Album(firebase);
     formaturaController.init('photos/formatura', 'formatura-bg.jpg', 'formatura-bg.jpg', 'Formatura', 'IFRN-ZN, 11 de Abril de 2014', 10);
+    
+    const aniversarioRuan2016 = new Album(firebase);
+    aniversarioRuan2016.init('photos/aniversarioruan2016', 'placa-bg.png', 'placa-bg.png', 'Aniversário Surpresa de Ruan', 'Casa de Mara, 20 de Março de 2016', 10);
+    
+    const aniversarioMara2016 = new Album(firebase);
+    aniversarioMara2016.init('photos/aniversariomara2016', 'placa-bg.png', 'placa-bg.png', 'Aniversário Surpresa de Mara', 'Casa de Irwing, 20 de Agosto de 2016', 10);
     
     const casaAlison2014 = new Album(firebase);
     casaAlison2014.init('photos/casaalison2014', 'casaalison2014-bg.jpg', 'casaalison2014-bg.jpg', 'Encontro da Turma (só os Neguebas)', 'Casa de Alison, 18 de Outubro de 2014', 10);
