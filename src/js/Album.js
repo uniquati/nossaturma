@@ -48,6 +48,7 @@ export default class Album {
 
         this.interval;
         this.playing = false;
+        this.sizeLimit = 10;
     }
 
     resize() {
@@ -55,7 +56,7 @@ export default class Album {
         this.particlesCanvasEl.height = window.innerHeight;
     }
 
-    buildAlbum(capaBackground, capaForeground) {
+    buildAlbum(capaBackground, capaForeground, title, description) {
         this.albumEl = document.createElement('section');
         this.albumEl.classList.add('album');
 
@@ -79,11 +80,11 @@ export default class Album {
         capa.appendChild(capa__foreground);
 
         const h1 = document.createElement('h1');
-        h1.innerHTML = 'Nossa Turma é cultura';
+        h1.innerHTML = title;
         capa.appendChild(h1);
 
         const h2 = document.createElement('h2');
-        h2.innerHTML = '1999 - Natal/RN - Palácio da Cultura';
+        h2.innerHTML = description;
         capa.appendChild(h2);
 
         const album__background = document.createElement('div');
@@ -106,10 +107,11 @@ export default class Album {
         document.querySelector('main').appendChild(this.albumEl);
     }
 
-    init(folder, capaBackground, capaForeground){
+    init(folder, capaBackground, capaForeground, title, description, sizeLimit){
         this.folder = folder;
+        this.sizeLimit = sizeLimit;
         console.log('[ALBUM] init');
-        this.buildAlbum(this.toAbsoluteURL(capaBackground, 'dist/assets/'), this.toAbsoluteURL(capaForeground, 'dist/assets/'));
+        this.buildAlbum(this.toAbsoluteURL(capaBackground, 'dist/assets/'), this.toAbsoluteURL(capaForeground, 'dist/assets/'), title, description);
         
         // this.openFullscreen();
         window.addEventListener('resize', this.resize.bind(this));
@@ -140,57 +142,61 @@ export default class Album {
         const {items} = await this.firebase.listAll(this.folder);
 
         console.log(items);
-        let i = 10;
-        const rodizio = shuffleArray(items).slice(0,i);
+        if(items.length > 0){
+            let i = items.length <= this.sizeLimit ? items.length : this.sizeLimit;
+            const rodizio = shuffleArray(items).slice(0,i);
+    
+            rodizio.forEach(photo => {
+                console.log(photo);
+                photo.getDownloadURL().then(url => {
+                    i--;
+    
+                    // `url` is the download URL
+                    console.log(url);
+                    this.photos.push(url);
+    
+                    const image = new Image();
+                    image.src = url;
+                    image.style.display = 'none';
+                    /* é preciso adicionar uma img com a url e escondê-la com display:none; 
+                    para conseguir utilizar a url da imagem em outros lugares e obter o efeito desejado de assync load */
+                    document.body.appendChild(image);
+                    
+                    //adiciona uma particula
+                    const data = {
+                        id: 'img'+ '_' + Math.random().toString(36).substr(2, 9),
+                        img: url,
+                    };
+                    const particle = this.particlesController.addInteractiveParticle(data);
+                    //adiciona a imagem no slide
+                    this.interactiveParticles.push(particle);
 
-        rodizio.forEach(photo => {
-            console.log(photo);
-            photo.getDownloadURL().then(url => {
-                i--;
-
-                // `url` is the download URL
-                console.log(url);
-                this.photos.push(url);
-
-                const image = new Image();
-                image.src = url;
-                image.style.display = 'none';
-                /* é preciso adicionar uma img com a url e escondê-la com display:none; 
-                para conseguir utilizar a url da imagem em outros lugares e obter o efeito desejado de assync load */
-                document.body.appendChild(image);
-                
-                //adiciona uma particula
-                const data = {
-                    id: 'img'+ '_' + Math.random().toString(36).substr(2, 9),
-                    img: url,
-                };
-                const particle = this.particlesController.addInteractiveParticle(data);
-                //adiciona a imagem no slide
-                this.interactiveParticles.push(particle);
-
-                if(i==0){
-                    console.log('fim do carregamento');
-                    this.albumEl.classList.remove('album--loading');
-                    this.albumEl.classList.add('album--playing');
-                    if(this.interactiveParticles.length){
-                        this.playing = true;
-                        this.next();
-                    } else {
-                        console.log('não há imagens para iniciar a apresentação');
+                    if(i==0){
+                        console.log('fim do carregamento');
+                        this.albumEl.classList.remove('album--loading');
+                        this.albumEl.classList.add('album--playing');
+                        if(this.interactiveParticles.length){//FIX IT esse if parace um unreachable code
+                            this.playing = true;
+                            this.next();
+                        }
                     }
-                }
-
-                console.log(i);
-                if(i==0){
-                    console.log('fim do carregamento');
-                }
-            }).catch(function(error) {
-                // Handle any errors
-                console.log('não foi possível fazer o download da imagem');
-                i--;
+    
+                    console.log(i);
+                    if(i==0){
+                        console.log('fim do carregamento');
+                    }
+                }).catch(function(error) {
+                    // Handle any errors
+                    console.log('não foi possível fazer o download da imagem');
+                    i--;
+                });
             });
-        });
-            
+                
+        } else {
+            console.log('não há imagens');
+            this.albumEl.classList.remove('album--loading');
+            this.albumEl.classList.add('album--empty');
+        }
 
 
 
