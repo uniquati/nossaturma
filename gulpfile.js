@@ -23,17 +23,17 @@ const resizeConfig = (file, cb) => {
 }
 
 function streamTask(){
-    return src('src/assets/**/*.{jpeg,jpg,png,gif}')
+    return src('src/assets/**/*.{jpeg,jpg,JPG,png,gif}')
     .pipe(flatMap(resizeConfig))
     .pipe(scaleImages(computeFileName))
     .pipe(dest('dist/assets/'));
 }
 
 function otimizarParaFirebase(){
-    return src('albums/**/*.{jpeg,jpg,png,gif}')
+    return src('albums/zueira/*.{jpeg,jpg,JPG,png,gif}')
     .pipe(flatMap(resizeConfig))
     .pipe(scaleImages(computeFileName))
-    .pipe(dest('database'));
+    .pipe(dest('database/zueira'));
 }
 
 exports.resizeImages = streamTask;
