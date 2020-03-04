@@ -30,10 +30,10 @@ function streamTask(){
 }
 
 function otimizarParaFirebase(){
-    return src('albums/zueira/*.{jpeg,jpg,JPG,png,gif}')
+    return src('albums/2013fabio/*.{jpeg,jpg,JPG,png,gif}')
     .pipe(flatMap(resizeConfig))
     .pipe(scaleImages(computeFileName))
-    .pipe(dest('database/zueira'));
+    .pipe(dest('database/fabio2013'));
 }
 
 exports.resizeImages = streamTask;
