@@ -302,12 +302,15 @@ export default class Particles {
      * Desenha as partículas e links no canvas (em loop)
      */
     draw(){
-        // clear canvas
-        this.context.clearRect(0, 0, this.canvasEl.width, this.canvasEl.height);
-
-        this.allParticlesArray.forEach((particle, i) => this.updateParticle(particle, i));
-        
-        this.updateCustomMouseCursor();
+        // console.log(this.albumController.isOffScreen);
+        if(!this.albumController.isOffScreen) {
+            // clear canvas
+            this.context.clearRect(0, 0, this.canvasEl.width, this.canvasEl.height);
+    
+            this.allParticlesArray.forEach((particle, i) => this.updateParticle(particle, i));
+            
+            this.updateCustomMouseCursor();
+        }
 
         window.requestAnimationFrame(this.draw.bind(this));
     }

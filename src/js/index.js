@@ -3,16 +3,14 @@ import FirebaseConfig from './FirebaseConfig';
 
 document.addEventListener("DOMContentLoaded", function(event) {
 
-
     //firebase code
     const firebase = new FirebaseConfig();
 
-    //FIX TI vai dar erro se o album tiver menos de 10 fotos
-    const placaController = new Album(firebase);//TODO o primeiro album está limitado a 10 fotos, mas deveria listar todas as 19
+    const placaController = new Album(firebase);
     placaController.init('photos/placa', 'placa-bg.png', 'placa-bg.png', 'Geração Kekulé', 'Informática 2013.2', 19);
 
     const palacioCulturaController = new Album(firebase);
-    palacioCulturaController.init('photos/palaciocultura', 'palaciocultura-bg.jpg', 'palaciocultura-fg.png', 'Together Is Better', 'Palácio da Cultura, Natal/RN, 2015', 10);
+    palacioCulturaController.init('photos/palaciocultura', 'palaciocultura-bg.jpg', 'palaciocultura-bg.jpg', 'Together Is Better', 'Palácio da Cultura, Natal/RN, 2015', 10);
     
     const formaturaController = new Album(firebase);
     formaturaController.init('photos/formatura', 'formatura-bg.jpg', 'formatura-bg.jpg', 'Uma Boa Turma', 'Dia da Formatura, IFRN-ZN, 11 de Abril de 2014', 10);
@@ -48,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     museucamarcascudo2013.init('photos/museucamaracascudo2013', 'museucamaracascudo-bg.jpg', 'museucamaracascudo-bg.jpg', 'Drosophila melanogaster', 'Museu Câmara Cascudo (Era pra gente estar vendo fotos de Giovanni, Alison e Rafael recebendo as medalhas da OBEMEP), 28 de Março de 2013', 10);
     
     const aniversarioFabio2013 = new Album(firebase);
-    aniversarioFabio2013.init('photos/fabio2013', 'fabio-bg.jpg', 'fabio-bg.jpg', 'BD... BD... BD BD BD...', 'Aniversário de Fábio, 21 de Junho de 2013', 10);
+    aniversarioFabio2013.init('photos/fabio2013', 'fabio-bg.JPG', 'fabio-bg.JPG', 'BD... BD... BD BD BD...', 'Aniversário de Fábio, 21 de Junho de 2013', 10);
     
     // const cearamirim2013 = new Album(firebase);
     // cearamirim2013.init('photos/cearamirim2013', 'placa-bg.png', 'placa-bg.png', 'Turistando em Ceará-Mirim', 'Ceará Mirim/RN, 1 de Maio de 2013', 10);

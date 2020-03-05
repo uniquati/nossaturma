@@ -47,8 +47,9 @@ export default class Album {
         this.activeParticle = null;
 
         this.interval;
-        this.playing = false;
-        this.sizeLimit = 10;
+        this.playing = false;//a apresentação está play ou paused 
+        this.sizeLimit = 10;//quantidade máxima de fotos no album
+        this.isOffScreen = true;//se o album está fora da região visivel da tela (scroll)
     }
 
     resize() {
@@ -107,6 +108,36 @@ export default class Album {
         document.querySelector('main').appendChild(this.albumEl);
     }
 
+    // isOffScreen() {
+    //     const elemRect = this.albumEl.getBoundingClientRect();
+        
+    //     if(elemRect.top <= window.innerHeight && elemRect.bottom >= 0) {
+    //         console.log('dentro', this.folder);
+    //         this.isOffScreen = false;
+    //     } else {
+    //         this.isOffScreen = true;
+    //     }
+    // }
+
+    /**
+     * Quando o album sai da área visível da tela, ele para de executar as animações para economizar processamento
+     * @param {Event} e
+     */
+    scroll(e) {
+        const elemRect = this.albumEl.getBoundingClientRect();
+        
+        if(elemRect.top <= window.innerHeight && elemRect.bottom >= 0) {//o album está dentro da tela
+            // console.log('dentro', this.folder);
+            if(this.isOffScreen === true && this.playing === true){
+                this.next();
+            }
+            this.isOffScreen = false;
+        } else {//o album está fora da tela
+            this.isOffScreen = true;
+            clearInterval(this.interval);//pausa a execução do carrossel de imagens
+        }
+    }
+
     init(folder, capaBackground, capaForeground, title, description, sizeLimit){
         this.folder = folder;
         this.sizeLimit = sizeLimit;
@@ -115,10 +146,9 @@ export default class Album {
         
         // this.openFullscreen();
         window.addEventListener('resize', this.resize.bind(this));
+        window.addEventListener('scroll', this.scroll.bind(this));
         this.resize();
-        
-        this.particlesController = new Particles(this.particlesCanvasEl, this.options, this);
-        this.particlesController.init();
+        this.scroll();
 
         if(this.options.slide.autoplay) {
             this.startPresentation();
@@ -129,6 +159,8 @@ export default class Album {
      * Inicia a apresentação automática das fotos se o modo options.slide.autoplay estiver ligado
      */
     async startPresentation(){
+        this.particlesController = new Particles(this.particlesCanvasEl, this.options, this);
+        this.particlesController.init();
 
         // https://gist.github.com/guilhermepontes/17ae0cc71fa2b13ea8c20c94c5c35dc4
         // fully random by @BetonMAN
