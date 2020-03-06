@@ -16,7 +16,7 @@ export default class Album {
                 maxRadius: 15,
                 color: 'rgb(255,255,255)',
                 visitedColor: 'rgba(200, 200, 200, .8)',
-                activeColor: 'rgb(67, 24, 168)',
+                activeColor: 'rgb(92, 126, 230)',
                 opacity: 0.9,
             },
             decorativeParticles: {
@@ -117,11 +117,13 @@ export default class Album {
 
         const btnPlay = document.createElement('button');
         btnPlay.classList.add('btnPlay');
+        btnPlay.title= 'Play/Pause';
         btnPlay.addEventListener('click', this.pausePresentation.bind(this));
         controls.appendChild(btnPlay);
 
         const btnNext = document.createElement('button');
         btnNext.classList.add('btnNext');
+        btnNext.title = 'Random';
         btnNext.addEventListener('click', this.nextPage.bind(this));
         controls.appendChild(btnNext);
 
@@ -132,17 +134,6 @@ export default class Album {
         
         document.querySelector('main').appendChild(this.albumEl);
     }
-
-    // isOffScreen() {
-    //     const elemRect = this.albumEl.getBoundingClientRect();
-        
-    //     if(elemRect.top <= window.innerHeight && elemRect.bottom >= 0) {
-    //         console.log('dentro', this.folder);
-    //         this.isOffScreen = false;
-    //     } else {
-    //         this.isOffScreen = true;
-    //     }
-    // }
 
     /**
      * Quando o album sai da área visível da tela, ele para de executar as animações para economizar processamento
@@ -184,6 +175,7 @@ export default class Album {
      * Mostra a próxima 'página' de fotos (simula uma paginação com array)
      */
     nextPage() {
+        this.albumEl.classList.add('album--loading');
         const countPages = Math.ceil(this.firebaseRefs.length/this.sizeLimit);
         const pageItems = this.firebaseRefs.slice(this.page * this.sizeLimit, this.page * this.sizeLimit + this.sizeLimit);
         console.log('page index:', this.page, 'countPages:',countPages, this.page * this.sizeLimit, '-', this.page * this.sizeLimit + this.sizeLimit);
@@ -222,10 +214,9 @@ export default class Album {
                     console.log('fim do carregamento');
                     this.albumEl.classList.remove('album--loading');
                     this.albumEl.classList.add('album--playing');
-                    if(this.interactiveParticles.length){//FIX IT esse if parace um unreachable code
-                        this.playing = true;
-                        this.next();
-                    }
+                    // this.playing = true;
+                    this.next();
+
                 }
 
                 console.log(i);
@@ -266,6 +257,7 @@ export default class Album {
         this.firebaseRefs = shuffleArray(allItems);
         console.log('length', this.firebaseRefs.length)
         if(this.firebaseRefs.length > 0){
+            this.playing = true;
             this.nextPage(); 
         } else {
             console.log('não há imagens');

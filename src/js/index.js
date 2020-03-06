@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     aniversarioFabio2013.init('photos/fabio2013', 'fabio-bg.JPG', 'fabio-bg.JPG', 'BD... BD... BD BD BD...', 'Aniversário de Fábio', 'IFRN, 21 de Junho de 2013', 10);
     
     const cearamirim2013 = new Album(firebase);
-    cearamirim2013.init('photos/cearamirim2013', 'placa-bg.png', 'placa-bg.png', 'É muita cana!', 'Passeando de trem', 'Ceará Mirim/RN, 1 de Maio de 2013', 10);
+    cearamirim2013.init('photos/cearamirim2013', 'cearamirim-bg.jpg', 'cearamirim-bg.jpg', 'É muita cana!', 'Passeando de trem até Ceará Mirim', 'Ceará Mirim/RN, 1 de Maio de 2013', 10);
     
     const restolhoRN2013 = new Album(firebase);
     restolhoRN2013.init('photos/restolho2013', 'restolho-bg.jpg', 'restolho-bg.jpg', 'Restolho, Agave e Turmalina.', 'Segunda viagem da turma', 'Mesorregiões do RN, Abril de 2013', 10);

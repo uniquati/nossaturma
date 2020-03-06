@@ -60,19 +60,26 @@ body {
     cursor: pointer;
 }
 
-.album--loading::before {
+.album::before {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
-    color: white;
-    /* background-color: rgba(255, 255, 255, 0.315); */
     background-color: rgba(92, 126, 230,.7);
-    font-size: 5em;
+    opacity: 0;
     z-index: 5;
     pointer-events: none;
+    transition: opacity 1s ease-out;
+}
+.album--loading::before {
+    background-color: rgba(92, 126, 230,.7);
+    /* transition-delay: 2s; */
+    opacity: 1;
+    /* background-color: rgba(255, 255, 255, 0.315); */
+    font-size: 5em;
+
     /* background-image: url('../assets/ajax-loader.gif'); */
 }
 
@@ -109,6 +116,7 @@ body {
     font-size: 5em;
     pointer-events: none;
     z-index: 4;
+    opacity: 1;
 }
 
 .album--empty::after {
@@ -321,20 +329,24 @@ body {
     position: absolute;
     top: 0;
     right: 0;
-    margin-right: 20px;
+    margin-right: 40px;
     margin-top: 20px;
     z-index: 2;
     /* background: red; */
+    display: flex;
 }
 
 /* https://codepen.io/vkjgr/pen/nEvFA */
 .btnNext {
-    height: 2em;
-    padding: .25em;
-    width: 2em;
+    height: 50px;
+    /* padding: .25em; */
+    width: 50px;
     background: transparent;
     border: none;
     position: relative;
+    cursor: pointer;
+    outline: none;
+    transition: 100ms all ease;
   }
 
 .btnNext:before, .btnNext:after {
@@ -346,9 +358,9 @@ body {
     border-color: transparent white white white;
     border-radius: 50%;
     border-style: solid;
-    border-width: .125em;
-    height: 1.5em;
-    width: 1.5em;
+    border-width: 10px;
+    height: 30px;
+    width: 30px;
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }
@@ -356,41 +368,48 @@ body {
 .btnNext:after {
     border-color: transparent transparent transparent white;
     border-style: solid;
-    border-width: .3125em 0 .3125em .5em;
+    border-width: 12px 0 12px 22px;
     height: 0;
     position: absolute;
-    top: 0;
+    top: -4px;
     left: 50%;
     width: 0;
 }
 
+.btnNext:hover:before {
+    border-color: transparent rgb(92, 126, 230) rgb(92, 126, 230) rgb(92, 126, 230);
+}
+
+.btnNext:hover:after {
+    border-color: transparent transparent transparent rgb(92, 126, 230);
+}
+
 .btnPlay {
-    
     background: none;
     outline: none;
     cursor: pointer;
     transition: 100ms all ease;
 
-    width: 74px;
-    height: 74px;
+    width: 50px;
+    height: 50px;
     border-color: transparent transparent transparent white;
     border-style: double;
-    border-width: 0px 0px 0px 70px;
+    border-width: 0px 0px 0px 50px;
 }
 
 .btnPlay.paused {
     border-style: solid;
-    border-width: 37px 0px 37px 60px;
+    border-width: 25px 0px 25px 40px;
 }
 
 .btnPlay:hover {
-    border-color: transparent transparent transparent rgb(67, 24, 168);
+    border-color: transparent transparent transparent rgb(92, 126, 230);
 }
 
 .progress-bar {
     width: 0%;
     height: 10px;
-    background: rgb(67, 24, 168);
+    background: rgb(92, 126, 230);
     position: absolute;
     bottom: 0;
     z-index: 3;
