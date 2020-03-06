@@ -36,9 +36,9 @@ export default class Particles {
                 this.isDragging = true;
             }
 
-            for(let i=0; i< this.options.decorativeParticles.total; i++) {
-                this.addDecorativeParticle();
-            }
+            // for(let i=0; i< this.options.decorativeParticles.total; i++) {
+            //     this.addDecorativeParticle();
+            // }
 
             this.draw();
         } else {
@@ -60,6 +60,7 @@ export default class Particles {
     /**
      * Adiciona uma particula decorativa numa posição aleatória do canvas
      */
+    //FIX IT particulas decorativas não sao mais utilizadas
     addDecorativeParticle(){
         let p = new Particle(
             Math.random() * this.canvasEl.width,
