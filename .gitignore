@@ -1,4 +1,4 @@
 node_modules
 .vscode
-albums/
-database/
+albums/**/*
+database/**/*

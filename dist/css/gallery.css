@@ -416,3 +416,25 @@ body {
     pointer-events: none;
     transition: width 8s linear;
 }
+
+.album--circle-theme .album_foreground {
+    filter: brightness(80%) drop-shadow(6px 6px 16px rgba(0,0,0,0.9));
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 90vh;
+    height: 90vh;
+    position: absolute;
+    top: calc(50% - 45vh);
+    left: calc(50% - 45vh);
+    border-radius: 50%;
+    border: 15px solid white;
+    opacity: 0;
+
+    animation-name: slidein;
+    animation-duration: 10s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    animation-delay: .4s;
+    animation-timing-function: ease-out;
+}

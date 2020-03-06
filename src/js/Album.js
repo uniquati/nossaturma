@@ -60,9 +60,12 @@ export default class Album {
         this.particlesCanvasEl.height = window.innerHeight;
     }
 
-    buildAlbum(capaBackground, capaForeground, title, description, metadata) {
+    buildAlbum(capaBackground, capaForeground, title, description, metadata, theme) {
         this.albumEl = document.createElement('section');
         this.albumEl.classList.add('album');
+        if(theme){
+            this.albumEl.classList.add(theme);
+        }
 
         const cursor = document.createElement('div');
         cursor.classList.add('cursor');
@@ -154,11 +157,11 @@ export default class Album {
         }
     }
 
-    init(folder, capaBackground, capaForeground, title, description, metadata, sizeLimit){
+    init(folder, capaBackground, capaForeground, title, description, metadata, sizeLimit, theme){
         this.folder = folder;
         this.sizeLimit = sizeLimit;
         console.log('[ALBUM] init');
-        this.buildAlbum(this.toAbsoluteURL(capaBackground, 'dist/assets/'), this.toAbsoluteURL(capaForeground, 'dist/assets/'), title, description, metadata);
+        this.buildAlbum(this.toAbsoluteURL(capaBackground, 'dist/assets/'), this.toAbsoluteURL(capaForeground, 'dist/assets/'), title, description, metadata,theme);
         
         // this.openFullscreen();
         window.addEventListener('resize', this.resize.bind(this));
