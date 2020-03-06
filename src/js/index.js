@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     casaAlison2014.init('photos/casaalison2014', 'casaalison2014-bg.jpg', 'casaalison2014-bg.jpg', 'Só os Negueba ô!', '','Casa de Alison, 18 de Outubro de 2014', 10);
     
     const ultimoDia2014 = new Album(firebase);
-    ultimoDia2014.init('photos/ultimodia2014', 'ultimodia-bg.jpg', 'ultimodia-bg.jpg', 'Último Dia em Escala Nanométrica', 'Invasão da piscina no último dia de aula!', 'IFRN, 17 de Fevereiro de 2014', 10);
+    ultimoDia2014.init('photos/ultimodia2014', 'ultimodia-bg.jpg', 'ultimodia-bg.jpg', 'Último Dia de Escala Nanométrica', 'Invasão da piscina no último dia de aula!', 'IFRN, 17 de Fevereiro de 2014', 10);
     
     const fortaleza2014 = new Album(firebase);
     fortaleza2014.init('photos/fortaleza2014', 'fortaleza-bg.jpg', 'fortaleza-bg.jpg', 'Ai que bom, ai que beleza, Nossa Turma em Fortaleza!', 'Terceira viagem da turma', 'Fortaleza/CE, Janeiro de 2014', 10);
@@ -48,11 +48,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
     const aniversarioFabio2013 = new Album(firebase);
     aniversarioFabio2013.init('photos/fabio2013', 'fabio-bg.JPG', 'fabio-bg.JPG', 'BD... BD... BD BD BD...', 'Aniversário de Fábio', 'IFRN, 21 de Junho de 2013', 10);
     
-    // const cearamirim2013 = new Album(firebase);
-    // cearamirim2013.init('photos/cearamirim2013', 'placa-bg.png', 'placa-bg.png', 'Turistando em Ceará-Mirim', 'Andando de trem', 'Ceará Mirim/RN, 1 de Maio de 2013', 10);
+    const cearamirim2013 = new Album(firebase);
+    cearamirim2013.init('photos/cearamirim2013', 'placa-bg.png', 'placa-bg.png', 'É muita cana!', 'Passeando de trem', 'Ceará Mirim/RN, 1 de Maio de 2013', 10);
     
     const restolhoRN2013 = new Album(firebase);
-    restolhoRN2013.init('photos/restolho2013', 'restolho-bg.jpg', 'restolho-bg.jpg', 'Muito Restolho, Agave e Turmalina.', 'Segunda viagem da turma', 'Mesorregiões do RN, Abril de 2013', 10);
+    restolhoRN2013.init('photos/restolho2013', 'restolho-bg.jpg', 'restolho-bg.jpg', 'Restolho, Agave e Turmalina.', 'Segunda viagem da turma', 'Mesorregiões do RN, Abril de 2013', 10);
     
     const sorvete2013 = new Album(firebase);
     sorvete2013.init('photos/sorvete2013', 'sorvete-bg.jpg', 'sorvete-bg.jpg', 'Tu qué galfo ou qué culé?', '','Sorveteria ali perto do IF, 18 de Janeiro de 2013', 10);
