@@ -61,18 +61,42 @@ body {
 }
 
 .album--loading::before {
-    content: 'carregando...';
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     color: white;
-    background-color: rgba(255, 255, 255, 0.315);
+    /* background-color: rgba(255, 255, 255, 0.315); */
+    background-color: rgba(92, 126, 230,.7);
     font-size: 5em;
+    z-index: 5;
     pointer-events: none;
-    z-index: 4;
+    /* background-image: url('../assets/ajax-loader.gif'); */
 }
+
+.album--loading::after {
+    position: absolute;
+    top: calc(50% - 2.5em);
+    left: calc(50% - 2.5em);
+    content: '';
+    z-index: 5;
+    /* border: 1em solid #f3f3f3;
+    border-top: 1em solid rgb(92, 126, 230); */
+    border: 1em solid transparent;
+    border-top: 1em solid white;
+    border-radius: 50%;
+    width: 5em;
+    height: 5em;
+    animation: spin 2s linear infinite;
+  }
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 
 .album--empty::before {
     content: 'em breve...';
@@ -150,7 +174,8 @@ body {
 
 .album .capa h1 {   
     color: white;
-    font-family: 'Bebas Neue', cursive;
+    font-family: 'Bebas Neue', sans-serif;
+    text-transform: uppercase;
     font-size: 6em;
     margin: 0;
     /* padding-top: 20px; */
