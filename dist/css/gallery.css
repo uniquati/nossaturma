@@ -255,6 +255,48 @@ body {
     margin-right: 20px;
     margin-top: 20px;
     z-index: 2;
+    /* background: red; */
+}
+
+/* https://codepen.io/vkjgr/pen/nEvFA */
+.btnNext {
+    height: 2em;
+    padding: .25em;
+    width: 2em;
+    background: transparent;
+    border: none;
+    position: relative;
+  }
+
+.btnNext:before, .btnNext:after {
+    content: '';
+    display: block;
+}
+
+.btnNext:before {
+    border-color: transparent white white white;
+    border-radius: 50%;
+    border-style: solid;
+    border-width: .125em;
+    height: 1.5em;
+    width: 1.5em;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.btnNext:after {
+    border-color: transparent transparent transparent white;
+    border-style: solid;
+    border-width: .3125em 0 .3125em .5em;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 0;
+}
+
+.btnPlay {
+    
     background: none;
     outline: none;
     cursor: pointer;
@@ -267,12 +309,12 @@ body {
     border-width: 0px 0px 0px 70px;
 }
 
-.controls.paused {
+.btnPlay.paused {
     border-style: solid;
     border-width: 37px 0px 37px 60px;
 }
 
-.controls:hover {
+.btnPlay:hover {
     border-color: transparent transparent transparent rgb(67, 24, 168);
 }
 

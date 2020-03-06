@@ -43,13 +43,16 @@ export default class Album {
         this.particlesController;
         this.interactiveParticles = [];
         this.photos = [];
-        this.index = null;
+        this.index = null;//foto atual sendo apresentada
         this.activeParticle = null;
 
         this.interval;
         this.playing = false;//a apresentação está play ou paused 
         this.sizeLimit = 10;//quantidade máxima de fotos no album
         this.isOffScreen = true;//se o album está fora da região visivel da tela (scroll)
+
+        this.firebaseRefs;//array com referencia a todas as imagens do album no firebase
+        this.page = 0;//indica qual 'página' de fotos está sendo exibida no album
     }
 
     resize() {
@@ -95,11 +98,21 @@ export default class Album {
         this.particlesCanvasEl = document.createElement('canvas');
         this.particlesCanvasEl.classList.add('particles-canvas');
         this.albumEl.appendChild(this.particlesCanvasEl);
-
-        const controls = document.createElement('button');
+        
+        const controls = document.createElement('div');
         controls.classList.add('controls');
-        controls.addEventListener('click', this.pausePresentation.bind(this));
         this.albumEl.appendChild(controls);
+
+        const btnPlay = document.createElement('button');
+        btnPlay.classList.add('btnPlay');
+        btnPlay.addEventListener('click', this.pausePresentation.bind(this));
+        controls.appendChild(btnPlay);
+
+        const btnNext = document.createElement('button');
+        btnNext.classList.add('btnNext');
+        btnNext.addEventListener('click', this.nextPage.bind(this));
+        controls.appendChild(btnNext);
+
 
         const progressBar = document.createElement('div');
         progressBar.classList.add('progress-bar');
@@ -156,6 +169,72 @@ export default class Album {
     }
 
     /**
+     * Mostra a próxima 'página' de fotos (simula uma paginação com array)
+     */
+    nextPage() {
+        const countPages = Math.ceil(this.firebaseRefs.length/this.sizeLimit);
+        const pageItems = this.firebaseRefs.slice(this.page * this.sizeLimit, this.page * this.sizeLimit + this.sizeLimit);
+        console.log('page index:', this.page, 'countPages:',countPages, this.page * this.sizeLimit, '-', this.page * this.sizeLimit + this.sizeLimit);
+        let i = pageItems.length;
+
+        this.particlesController.allParticlesArray = [];
+        this.interactiveParticles = [];
+        this.index = null;
+
+        pageItems.forEach(photo => {
+            console.log(photo);
+            photo.getDownloadURL().then(url => {
+                i--;
+
+                // `url` is the download URL
+                console.log(url);
+                this.photos.push(url);
+
+                const image = new Image();
+                image.src = url;
+                image.style.display = 'none';
+                /* é preciso adicionar uma img com a url e escondê-la com display:none; 
+                para conseguir utilizar a url da imagem em outros lugares e obter o efeito desejado de assync load */
+                document.body.appendChild(image);
+                
+                //adiciona uma particula
+                const data = {
+                    id: 'img'+ '_' + Math.random().toString(36).substr(2, 9),
+                    img: url,
+                };
+                const particle = this.particlesController.addInteractiveParticle(data);
+                //adiciona a imagem no slide
+                this.interactiveParticles.push(particle);
+
+                if(i==0){
+                    console.log('fim do carregamento');
+                    this.albumEl.classList.remove('album--loading');
+                    this.albumEl.classList.add('album--playing');
+                    if(this.interactiveParticles.length){//FIX IT esse if parace um unreachable code
+                        this.playing = true;
+                        this.next();
+                    }
+                }
+
+                console.log(i);
+                if(i==0){
+                    console.log('fim do carregamento');
+                }
+            }).catch(function(error) {
+                // Handle any errors
+                console.log('não foi possível fazer o download da imagem');
+                i--;
+            });
+        });
+
+        this.page++;
+        if(this.page === countPages) {
+            this.page = 0;
+        }
+        // this.page = (this.page === countPages - 1) ? 0 : this.page++;
+    }
+
+    /**
      * Inicia a apresentação automática das fotos se o modo options.slide.autoplay estiver ligado
      */
     async startPresentation(){
@@ -171,79 +250,26 @@ export default class Album {
 
         this.albumEl.classList.add('album--loading');
 
-        const {items} = await this.firebase.listAll(this.folder);
-
-        console.log(items);
-        if(items.length > 0){
-            let i = items.length <= this.sizeLimit ? items.length : this.sizeLimit;
-            const rodizio = shuffleArray(items).slice(0,i);
-    
-            rodizio.forEach(photo => {
-                console.log(photo);
-                photo.getDownloadURL().then(url => {
-                    i--;
-    
-                    // `url` is the download URL
-                    console.log(url);
-                    this.photos.push(url);
-    
-                    const image = new Image();
-                    image.src = url;
-                    image.style.display = 'none';
-                    /* é preciso adicionar uma img com a url e escondê-la com display:none; 
-                    para conseguir utilizar a url da imagem em outros lugares e obter o efeito desejado de assync load */
-                    document.body.appendChild(image);
-                    
-                    //adiciona uma particula
-                    const data = {
-                        id: 'img'+ '_' + Math.random().toString(36).substr(2, 9),
-                        img: url,
-                    };
-                    const particle = this.particlesController.addInteractiveParticle(data);
-                    //adiciona a imagem no slide
-                    this.interactiveParticles.push(particle);
-
-                    if(i==0){
-                        console.log('fim do carregamento');
-                        this.albumEl.classList.remove('album--loading');
-                        this.albumEl.classList.add('album--playing');
-                        if(this.interactiveParticles.length){//FIX IT esse if parace um unreachable code
-                            this.playing = true;
-                            this.next();
-                        }
-                    }
-    
-                    console.log(i);
-                    if(i==0){
-                        console.log('fim do carregamento');
-                    }
-                }).catch(function(error) {
-                    // Handle any errors
-                    console.log('não foi possível fazer o download da imagem');
-                    i--;
-                });
-            });
-                
+        const {items: allItems} = await this.firebase.listAll(this.folder);
+        this.firebaseRefs = shuffleArray(allItems);
+        console.log('length', this.firebaseRefs.length)
+        if(this.firebaseRefs.length > 0){
+            this.nextPage(); 
         } else {
             console.log('não há imagens');
             this.albumEl.classList.remove('album--loading');
             this.albumEl.classList.add('album--empty');
         }
-
-
-
- 
-
     }
 
     pausePresentation() {
         if(this.playing) {
-            this.albumEl.querySelector('.controls').classList.add('paused');
+            this.albumEl.querySelector('.btnPlay').classList.add('paused');
             clearInterval(this.interval);
             this.playing = false;
             console.log(this.playing);
         } else {
-            this.albumEl.querySelector('.controls').classList.remove('paused');
+            this.albumEl.querySelector('.btnPlay').classList.remove('paused');
             this.playing = true;
             console.log(this.playing);
             this.next();
