@@ -60,7 +60,7 @@ export default class Album {
         this.particlesCanvasEl.height = window.innerHeight;
     }
 
-    buildAlbum(capaBackground, capaForeground, title, description) {
+    buildAlbum(capaBackground, capaForeground, title, description, metadata) {
         this.albumEl = document.createElement('section');
         this.albumEl.classList.add('album');
 
@@ -83,13 +83,25 @@ export default class Album {
         capa__foreground.style.backgroundImage = `url('${capaForeground}')`;
         capa.appendChild(capa__foreground);
 
+        const info = document.createElement('div');
+        info.classList.add('info');
+        capa.appendChild(info);
+
+        if(metadata){
+            const h2 = document.createElement('h2');
+            h2.innerHTML = metadata;
+            info.appendChild(h2);
+        }
+
         const h1 = document.createElement('h1');
         h1.innerHTML = title;
-        capa.appendChild(h1);
+        info.appendChild(h1);
 
-        const h2 = document.createElement('h2');
-        h2.innerHTML = description;
-        capa.appendChild(h2);
+        if(description) {
+            const p = document.createElement('p');
+            p.innerHTML = description;
+            info.appendChild(p);
+        }
 
         const album__background = document.createElement('div');
         album__background.classList.add('album__background');
@@ -151,11 +163,11 @@ export default class Album {
         }
     }
 
-    init(folder, capaBackground, capaForeground, title, description, sizeLimit){
+    init(folder, capaBackground, capaForeground, title, description, metadata, sizeLimit){
         this.folder = folder;
         this.sizeLimit = sizeLimit;
         console.log('[ALBUM] init');
-        this.buildAlbum(this.toAbsoluteURL(capaBackground, 'dist/assets/'), this.toAbsoluteURL(capaForeground, 'dist/assets/'), title, description);
+        this.buildAlbum(this.toAbsoluteURL(capaBackground, 'dist/assets/'), this.toAbsoluteURL(capaForeground, 'dist/assets/'), title, description, metadata);
         
         // this.openFullscreen();
         window.addEventListener('resize', this.resize.bind(this));

@@ -7,6 +7,8 @@ body {
     padding: 0;
     margin: 0;
     overflow-x: hidden;
+    /* font-family: 'Bebas Neue', cursive; */
+    font-family: 'Open Sans', sans-serif;
 }
 
 .cursor {
@@ -118,8 +120,8 @@ body {
 }
 
 .album:hover .capa__foreground {
-    filter: brightness(80%);
-    transform: scale(1.01);
+    filter: brightness(70%);
+    transform: scale(1.02);
 }
 
 .album .capa__foreground {
@@ -136,27 +138,58 @@ body {
     background-position: center center;
     background-attachment: fixed;
     transition: filter .4s ease-out, transform 1s ease-out;
+    filter: brightness(80%);
 }
 
-.album .capa h1 {
-    position: relative;
+.album .capa .info {
+    position: absolute;
     z-index: 4;
+    margin: 40px 20px;
+    bottom: 0;
+}
+
+.album .capa h1 {   
     color: white;
-    font-family: sans-serif;
-    font-size: 3em;
-    padding-left: 20px;
-    padding-top: 20px;
-    font-variant: small-caps;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 6em;
+    margin: 0;
+    /* padding-top: 20px; */
+    font-weight: normal;
+    /* text-shadow: -10px 10px 0px #00e6e6,
+                 -20px 20px 0px #01cccc,
+                 -30px 30px 0px #00bdbd; */
+    text-shadow: 4px 3px 0px rgb(92, 126, 230), 9px 8px 0px rgba(0,0,0,0.5);	
+    /* text-shadow: 6px 6px 0px rgba(0,0,0,0.5); */
+    transition: text-shadow .3s ease-out;
+}
+
+.album:hover .capa h1 {
+    /* color: black; */
+    /* font-style: italic; */
+    text-shadow: .10em .05em 0px rgba(92, 126, 230, .6),
+                 .10em -.10em 0px rgba(101, 5, 60, .6),
+                 -.10em .15em 0px rgba(20, 9, 88, .6);
 }
 
 .album .capa h2 {
-    position: relative;
-    z-index: 4;
     color: white;
-    font-family: sans-serif;
-    font-size: 1em;
-    font-variant: small-caps;
-    padding-left: 20px;
+    /* font-family: sans-serif; */
+    font-size: .8em;
+    margin: 0;
+    font-weight: normal;
+    background: rgb(20,9,88);
+    display: inline-block;
+    padding: 0.5em;
+}
+
+.album .capa p {
+    color: white;
+    font-size: 1.5em;
+    margin: 0;
+    margin-top: -1em;
+    font-weight: normal;
+    padding: 0.5em 0;
+    font-style: italic;
 }
 
 
