@@ -46,13 +46,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
     museucamarcascudo2013.init('photos/museucamaracascudo2013', 'museucamaracascudo-bg.jpg', 'museucamaracascudo-bg.jpg', 'Drosophila melanogaster', '(Era pra gente estar vendo fotos de Giovanni, Alison e Rafael recebendo as medalhas da OBEMEP)', 'Museu Câmara Cascudo, 28 de Março de 2013', 10, '');
     
     const aniversarioFabio2013 = new Album(firebase);
-    aniversarioFabio2013.init('photos/fabio2013', 'fabio-bg.JPG', 'fabio-bg.JPG', 'BD... BD... BD BD BD...', 'Aniversário de Fábio', 'IFRN, 21 de Junho de 2013', 10, '');
+    aniversarioFabio2013.init('photos/fabio2013', 'fabio-bg.jpg', 'fabio-bg.jpg', 'BD... BD... BD BD BD...', 'Aniversário de Fábio', 'IFRN, 21 de Junho de 2013', 10, '');
     
     const cearamirim2013 = new Album(firebase);
     cearamirim2013.init('photos/cearamirim2013', 'cearamirim-bg.jpg', 'cearamirim-bg.jpg', 'É muita cana!', 'Passeando de trem até Ceará Mirim', 'Ceará Mirim/RN, 1 de Maio de 2013', 10, '');
     
     const restolhoRN2013 = new Album(firebase);
-    restolhoRN2013.init('photos/restolho2013', 'restolho-bg.jpg', 'restolho-bg.jpg', 'Restolho, Agave e Turmalina.', 'Segunda viagem da turma', 'Mesorregiões do RN, Abril de 2013', 10, '');
+    restolhoRN2013.init('photos/restolho2013', 'restolho.jpg', 'restolho.jpg', 'Restolho, Agave e Turmalina.', 'Segunda viagem da turma', 'Mesorregiões do RN, Abril de 2013', 10, '');
     
     const sorvete2013 = new Album(firebase);
     sorvete2013.init('photos/sorvete2013', 'sorvete-bg.jpg', 'sorvete-bg.jpg', 'Tu qué galfo ou qué culé?', '','Sorveteria ali perto do IF, 18 de Janeiro de 2013', 10, '');
