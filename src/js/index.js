@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //////////
 
     const dezAnos = new Album(firebase);
-    dezAnos.init('photos/dezAnos2020', '10anos-bg.jpg', '10anos-bg.jpg', '10 anos', 'Como diria o filósofo: "10 anos não são 10 dias. 10 anos são 3653 dias (se contar anos bissextos)"', '08 de Março de 2020', 11, '');
+    dezAnos.init('photos/dezAnos2020', '10anos-bg.jpg', '10anos-bg.jpg', '10 anos', 'Como diria o filósofo: "10 anos não são 10 dias. 10 anos são 3653 dias (se contar anos bissextos)"', 'Praia de Perobas, Rio do Fogo/RN, 08 de Março de 2020', 11, '');
     
     const adila2019 = new Album(firebase);
     adila2019.init('photos/adila2019', 'adila-bg.jpg', 'adila-bg.jpg', 'Cheguei, chegaste...', 'Reencontro com Ádila', 'Cachorro Quente, 27 de Setembro de 2019', 11, '');
@@ -77,4 +77,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
     //Drosophila melanogaster
     //the zueira never ends
     //tijolo
+    //eu to chutando
 });
