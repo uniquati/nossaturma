@@ -121,7 +121,7 @@ body {
 
 .album--empty::after {
     position: absolute;
-    content: '404 not found :(';
+    content: '404 not found yet :(';
     font-family: 'Courier New', Courier, monospace;
     color: white;
     z-index: 4;
