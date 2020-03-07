@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Geração Kekulé</title>
+		<link rel="stylesheet" href="embreve/ciklo/css/digitalClock.css">
+        <link rel="stylesheet" href="embreve/css/countdownPage.css?v=679">
+        <script>document.documentElement.className = 'js';</script>
+	</head>
+	<body class="loading">
+		<!-- The canvas where ThreeJs renders the WebGL -->
+		<canvas id="scene"></canvas>
+		<main>
+            <div class="content">
+				<div id="regressive"></div>
+				<div id="elapsed">
+					<h1>Estamos nos aturando há <span id="elapsedDays">0</span> dias</h1>
+					<p>&copy; together is better since 2010</p>
+				</div>
+				<div id="suportAlert"></div>
+				<a class="btn" href="index.html">Surpresa!</a>
+			</div>
+		</main>
+
+		<script src="embreve/js/WebGL.js"></script>
+		<script src="embreve/js/vendors/three.min.js"></script>
+		<script src="embreve/js/vendors/TweenMax.min.js"></script>
+        <script src="embreve/js/tunnel.js"></script>
+        <script src="embreve/js/main.js?v=678"></script>
+	</body>
+</html>
